@@ -1,31 +1,36 @@
 using UnityEngine;
 using Mirror;
 
-public class SendRecive : NetworkBehaviour
+public class SendReceive : NetworkBehaviour
 {
-    public GameSimulation sim;
+    GameSimulation sim;
 
-    private void Update()
+    void Start()
     {
-        InputFrame input = new InputFrame
-        {
-            frame = sim.frame,
-            moveDir = sim.p1Input
-        };
+        sim = FindObjectOfType<GameSimulation>();
+    }
+
+    void Update()
+    {
+        if (!isLocalPlayer) return; // only local player sends input
+
+        int input = Input.anyKey ? 6 : 0;
+        if (sim == null) sim = FindObjectOfType<GameSimulation>();
+        sim.p1Input = input;
+        CmdSendInput(input);
     }
 
     [Command]
-    void CmdSendInput(InputFrame input)
+    void CmdSendInput(int input)
     {
-        RpcReceiveInput(input, netId);
+        RpcSetP1Input(input);
     }
 
-    [ClientRpc]
-    void RpcReceiveInput(InputFrame input, uint senderId)
+
+    [ClientRpc(includeOwner = false)]
+    void RpcSetP1Input(int input)
     {
-        if (netId != senderId)
-        {
-            sim.p1Input = input.moveDir;
-        }
+        if (sim == null) sim = FindObjectOfType<GameSimulation>();
+        sim.p2Input = input;
     }
 }
