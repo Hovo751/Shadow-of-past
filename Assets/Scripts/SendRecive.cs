@@ -19,6 +19,8 @@ public class SendReceive : NetworkBehaviour
         sim = FindObjectOfType<GameSimulation>();
         inputBuffer = FindObjectOfType<InputBuffer>();
         if (sim != null) sim.frame = 0;
+        if (inputBuffer) inputBuffer.p1inputs.Reset();
+        if (inputBuffer) inputBuffer.p2inputs.Reset();
     }
 
     void Update()

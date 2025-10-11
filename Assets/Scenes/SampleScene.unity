@@ -257,6 +257,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simulation: {fileID: 1936128842}
+  p1inputs:
+    buffer: []
+    size: 0
+    simulation: {fileID: 0}
+  p2inputs:
+    buffer: []
+    size: 0
+    simulation: {fileID: 0}
 --- !u!4 &272436076
 Transform:
   m_ObjectHideFlags: 0

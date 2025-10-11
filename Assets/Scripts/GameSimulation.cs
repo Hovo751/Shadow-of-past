@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
-using static SendReceive;
 using static Memory;
+using static SendReceive;
 
 public class GameSimulation : MonoBehaviour
 {
@@ -107,12 +108,13 @@ public class GameSimulation : MonoBehaviour
                 Debug.Log(realFrame + " P1 p:" + p1Data.playerPos + ", P2 p:" + p2Data.playerPos);
                 string a = " ";
                 string b = ",    ";
+                DateTime currentTime = DateTime.Now;
                 for (int i = 0; i < 60; i++)
                 {
                     a += inputBuffer.p1inputs.Get(realFrame - i).moveDir + "  ";
                     b += inputBuffer.p2inputs.Get(realFrame - i).moveDir + "  ";
                 }
-                Debug.Log(realFrame + a + b);
+                Debug.Log(currentTime.ToString() + "  " + realFrame + a + b);
             }
             return;
         }

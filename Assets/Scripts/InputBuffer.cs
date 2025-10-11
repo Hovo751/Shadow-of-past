@@ -4,11 +4,12 @@ using static SendReceive;
 public class InputBuffer : MonoBehaviour
 {
     public GameSimulation simulation;
+    [System.Serializable]
     public class InputBufferArray
     {
-        private InputFrame[] buffer;
-        private int size;
-        private GameSimulation simulation;
+        public InputFrame[] buffer;
+        public int size;
+        public GameSimulation simulation;
 
         public InputBufferArray(int size, GameSimulation sim)
         {
@@ -21,6 +22,15 @@ public class InputBuffer : MonoBehaviour
             }
 
             this.simulation = sim;
+        }
+
+        public void Reset()
+        {
+            for (int i = 0; i < buffer.Length; i++)
+            {
+                buffer[i].frame = -1;
+                buffer[i].moveDir = -1;
+            }
         }
 
         public void Set(InputFrame input, bool rollback)
