@@ -1,36 +1,62 @@
-using UnityEngine;
 using Mirror;
+using UnityEngine;
+
+
 
 public class SendReceive : NetworkBehaviour
 {
-    GameSimulation sim;
-
+    private GameSimulation sim;
+    private InputBuffer inputBuffer;
+    [SyncVar] public int playerNumber;
+    [System.Serializable]
+    public struct InputFrame
+    {
+        public int frame;
+        public int moveDir;
+    }
     void Start()
     {
         sim = FindObjectOfType<GameSimulation>();
+        inputBuffer = FindObjectOfType<InputBuffer>();
+        if (sim != null) sim.frame = 0;
     }
 
     void Update()
     {
         if (!isLocalPlayer) return; // only local player sends input
 
-        int input = Input.anyKey ? 6 : 0;
+        InputFrame input = new InputFrame
+        {
+            frame = sim.frame,
+            moveDir = Input.GetKey(KeyCode.LeftArrow) ? 4 : (Input.GetKey(KeyCode.RightArrow) ? 6 : 0)
+        };
+
         if (sim == null) sim = FindObjectOfType<GameSimulation>();
-        sim.p1Input = input;
+
+        if (playerNumber == 1)
+            inputBuffer.p1inputs.Set(input, false);
+        else
+            inputBuffer.p2inputs.Set(input, false);
+
         CmdSendInput(input);
     }
 
     [Command]
-    void CmdSendInput(int input)
+    void CmdSendInput(InputFrame input)
     {
-        RpcSetP1Input(input);
+        RpcSetInput(input);
     }
 
-
     [ClientRpc(includeOwner = false)]
-    void RpcSetP1Input(int input)
+    void RpcSetInput(InputFrame input)
     {
         if (sim == null) sim = FindObjectOfType<GameSimulation>();
-        sim.p2Input = input;
+        if (inputBuffer == null) inputBuffer = FindObjectOfType<InputBuffer>();
+
+        if (playerNumber == 1)
+            inputBuffer.p1inputs.Set(input, true);
+        else
+            inputBuffer.p2inputs.Set(input, true);
+
     }
 }
