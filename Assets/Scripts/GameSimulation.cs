@@ -102,7 +102,18 @@ public class GameSimulation : MonoBehaviour
         if (realFrame >= frame)
         {
             Render();
-            if (realFrame % 10 == 0) Debug.Log(realFrame + "   Player1 pos:" + p1Data.playerPos + ", Player2 pos:" + p2Data.playerPos);
+            if (realFrame % 60 == 0)
+            {
+                Debug.Log(realFrame + " P1 p:" + p1Data.playerPos + ", P2 p:" + p2Data.playerPos);
+                string a = " ";
+                string b = ",    ";
+                for (int i = 0; i < 60; i++)
+                {
+                    a += inputBuffer.p1inputs.Get(realFrame - i).moveDir + "  ";
+                    b += inputBuffer.p2inputs.Get(realFrame - i).moveDir + "  ";
+                }
+                Debug.Log(realFrame + a + b);
+            }
             return;
         }
         Simulate();
