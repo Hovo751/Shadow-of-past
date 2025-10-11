@@ -102,6 +102,7 @@ public class GameSimulation : MonoBehaviour
         if (realFrame >= frame)
         {
             Render();
+            if (realFrame % 10 == 0) Debug.Log(realFrame + "   Player1 pos:" + p1Data.playerPos + ", Player2 pos:" + p2Data.playerPos);
             return;
         }
         Simulate();
