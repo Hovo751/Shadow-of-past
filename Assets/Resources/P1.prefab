@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialBufferSize: 32
-  InitialInputDelay: 3
+  InitialInputDelay: 1
   DisconnectOnTimeReset: 0
   DestroyOnInputAuthorityDisconnected: 1
   UseFixedSimulationFrames: 1
@@ -269,3 +269,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
+  horizontalPos: 0
+  verticalPos: 0
