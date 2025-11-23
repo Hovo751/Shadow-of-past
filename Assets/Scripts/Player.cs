@@ -1,4 +1,5 @@
 using Coherence.Toolkit;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(CoherenceSync))]
@@ -6,9 +7,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Movement speed in units/sec
-    public float Speed = 5f;
+    public int Speed = 50;
+    public int JumpPower = 100;
+    public int JumpPowerSide = 50;
+    public int Gravity = 10;
     public int horizontalPos = -5000;
     public int verticalPos = 0;
+    public int horizontalSpeed = 0;
+    public int verticalSpeed = 0;
+    public TextMeshPro textMeshPro;
 
     private CoherenceInput input;
     private void Update()
