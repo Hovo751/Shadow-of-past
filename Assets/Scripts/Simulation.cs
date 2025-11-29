@@ -15,15 +15,15 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         if (player.verticalPos <= 0)
         {
             player.verticalPos = 0;
-            player.verticalSpeed = 0;
+            player.verticalVelocity = 0;
             return false;
         }
         return true;
     }
     private void Jump(Player player, int horizontalDir)
     {
-        player.verticalSpeed = player.JumpPower;
-        player.horizontalSpeed = player.JumpPowerSide * horizontalDir;
+        player.verticalVelocity = player.JumpPower;
+        player.horizontalVelocity = player.JumpPowerSide * horizontalDir;
     }
 
     protected override void Simulate(long simulationFrame)
@@ -40,19 +40,29 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             int verticalMovement = (movement - 1) / 3 - 1;
             if (isInAir(player))
             {
-                player.verticalSpeed -= player.Gravity;
+                player.verticalVelocity -= player.Gravity;
             }
             else
             {
-                player.horizontalSpeed = player.Speed * horizontalMovement;
+                player.horizontalVelocity = player.Speed * horizontalMovement;
                 if (verticalMovement == 1)
                 {
                     Jump(player, horizontalMovement);
                 }
             }
 
-            player.horizontalPos += player.horizontalSpeed;
-            player.verticalPos += player.verticalSpeed;
+            player.horizontalPos += player.horizontalVelocity;
+            player.verticalPos += player.verticalVelocity;
+
+            if (player.horizontalPos < -10000)
+            {
+                player.horizontalPos = -10000;
+            }
+            if (player.horizontalPos > 10000)
+            {
+                player.horizontalPos = 10000;
+            }
+
         }
     }
 
@@ -64,17 +74,26 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             Player player = AllClients[i].GameObject.GetComponent<Player>();
             player.horizontalPos = state.PlayerPositionsHorizontal[i];
             player.verticalPos = state.PlayerPositionsVertical[i];
+            player.horizontalVelocity = state.PlayerVelocityHorizontal[i];
+            player.verticalVelocity = state.PlayerVelocityVertical[i];
         }
     }
 
     protected override SimulationState CreateState()
     {
-        var simulationState = new SimulationState { PlayerPositionsHorizontal = new int[AllClients.Count] , PlayerPositionsVertical = new int[AllClients.Count] };
+        var simulationState = new SimulationState { 
+            PlayerPositionsHorizontal = new int[AllClients.Count] , 
+            PlayerPositionsVertical = new int[AllClients.Count],
+            PlayerVelocityHorizontal = new int[AllClients.Count],
+            PlayerVelocityVertical = new int[AllClients.Count]
+        };
         for (var i = 0; i < AllClients.Count; i++)
         {
             Player player = AllClients[i].GameObject.GetComponent<Player>();
-            simulationState.PlayerPositionsHorizontal[i] = (int)(player.horizontalPos);
-            simulationState.PlayerPositionsVertical[i] = (int)(player.verticalPos);
+            simulationState.PlayerPositionsHorizontal[i] = player.horizontalPos;
+            simulationState.PlayerPositionsVertical[i] = player.verticalPos;
+            simulationState.PlayerVelocityHorizontal[i] = player.horizontalVelocity;
+            simulationState.PlayerVelocityVertical[i] = player.verticalVelocity;
         }
 
         return simulationState;

@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     public int Gravity = 10;
     public int horizontalPos = -5000;
     public int verticalPos = 0;
-    public int horizontalSpeed = 0;
-    public int verticalSpeed = 0;
+    public int horizontalVelocity = 0;
+    public int verticalVelocity = 0;
     public TextMeshPro textMeshPro;
 
     private CoherenceInput input;
