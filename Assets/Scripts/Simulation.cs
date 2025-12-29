@@ -3,6 +3,22 @@ using UnityEngine;
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
 {
+    public bool drawHitbox = true;
+    [System.Serializable]
+    public struct AnimationData
+    {
+        public AnimBase data;
+        public int nextAnim;
+    }
+    [System.Serializable]
+    public struct Character
+    {
+        public string name;
+        public AnimationData[] data;
+    }
+
+    public Character[] characters;
+
     public Camera _camera;
     protected override void SetInputs(CoherenceClientConnection client)
     {
@@ -119,5 +135,62 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     protected override void OnClientLeft(CoherenceClientConnection client)
     {
         SimulationEnabled = AllClients.Count >= 2;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (drawHitbox)
+        {
+            int k = 0;
+            foreach (CoherenceClientConnection client in AllClients)
+            {
+                Player player = client.GameObject.GetComponent<Player>();
+                Player otherPlayer = null;
+                if (k == 1)
+                {
+                    otherPlayer = AllClients[0].GameObject.GetComponent<Player>();
+                }
+                else if (k == 0)
+                {
+                    otherPlayer = AllClients[1].GameObject.GetComponent<Player>();
+                }
+                k++;
+                AnimBase anim = characters[player.character].data[player.animationType].data;
+                float dir = 1;
+                if (player.horizontalPos > otherPlayer.horizontalPos)
+                {
+                    dir = -1;
+                }
+                Frame frame = anim.frames[player.animationFrame];
+                //hurtbox
+                Gizmos.color = new Color(0f, 0f, 1f, 0.5f);
+                for (int i = 0; i < frame.hurtbox.Length; i++)
+                {
+                    Rectengale rect = frame.hurtbox[i];
+                    Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
+                }
+                //hitbox
+                Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
+                for (int i = 0; i < frame.hitbox.Length; i++)
+                {
+                    Rectengale rect = frame.hitbox[i];
+                    Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
+                }
+                //collisionbox
+                Gizmos.color = new Color(0f, 1f, 0f, 0.5f);
+                for (int i = 0; i < frame.collisionBox.Length; i++)
+                {
+                    Rectengale rect = frame.collisionBox[i];
+                    Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
+                }
+                //throwbox
+                Gizmos.color = new Color(1f, 0f, 1f, 0.5f);
+                for (int i = 0; i < frame.throwbox.Length; i++)
+                {
+                    Rectengale rect = frame.throwbox[i];
+                    Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
+                }
+            }
+        }
     }
 }
