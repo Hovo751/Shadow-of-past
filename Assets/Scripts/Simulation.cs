@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
 {
+    //player1.posx > player2.posx --> player1 is looking left player2 is looking right
     public bool drawHitbox = true;
     [System.Serializable]
     public struct AnimationData
