@@ -1,3 +1,4 @@
+using Coherence.Cloud;
 using Coherence.Toolkit;
 using UnityEngine;
 
@@ -44,42 +45,60 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     }
 
     protected override void Simulate(long simulationFrame)
-    {
-        foreach (CoherenceClientConnection client in AllClients)
+    {//FIX LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if (SimulationEnabled)
         {
-            Player player = client.GameObject.GetComponent<Player>();
-            int movement = (int)player.GetMovement(simulationFrame);
-            if (movement > 9 || movement < 1)
+            Player player1 = AllClients[0].GameObject.GetComponent<Player>();
+            Player player2 = AllClients[1].GameObject.GetComponent<Player>();
+            int[] horizontalPos = { player1.horizontalPos, player2.horizontalPos };
+            int[] verticalPos = { 0, 0 };
+            int playerNumber = 0;
+            //calculate
+            foreach (CoherenceClientConnection client in AllClients)
             {
-                continue;
-            }
-            int horizontalMovement = (movement - 1) % 3 - 1;
-            int verticalMovement = (movement - 1) / 3 - 1;
-            if (isInAir(player))
-            {
-                player.verticalVelocity -= player.Gravity;
-            }
-            else
-            {
-                player.horizontalVelocity = player.Speed * horizontalMovement;
-                if (verticalMovement == 1)
+                Player player = client.GameObject.GetComponent<Player>();
+                int movement = (int)player.GetMovement(simulationFrame);
+                if (movement > 9 || movement < 1)
                 {
-                    Jump(player, horizontalMovement);
+                    continue;
                 }
-            }
+                int horizontalMovement = (movement - 1) % 3 - 1;
+                int verticalMovement = (movement - 1) / 3 - 1;
+                if (isInAir(player))
+                {
+                    player.verticalVelocity -= player.Gravity;
+                }
+                else
+                {
+                    player.horizontalVelocity = player.Speed * horizontalMovement;
+                    if (verticalMovement == 1)
+                    {
+                        Jump(player, horizontalMovement);
+                    }
+                }
 
-            player.horizontalPos += player.horizontalVelocity;
-            player.verticalPos += player.verticalVelocity;
+                player.horizontalPos += player.horizontalVelocity;
+                player.verticalPos += player.verticalVelocity;
 
-            if (player.horizontalPos < -10000)
-            {
-                player.horizontalPos = -10000;
+                if (player.horizontalPos < -10000)
+                {
+                    player.horizontalPos = -10000;
+                }
+                if (player.horizontalPos > 10000)
+                {
+                    player.horizontalPos = 10000;
+                }
+                playerNumber++;
             }
-            if (player.horizontalPos > 10000)
-            {
-                player.horizontalPos = 10000;
-            }
-
+            //apply changes
+            //playerNumber = 0;
+            //foreach (CoherenceClientConnection client in AllClients)
+            //{
+            //    Player player = client.GameObject.GetComponent<Player>();
+            //    player.horizontalPos = horizontalPos[playerNumber];
+            //    player.verticalPos = verticalPos[playerNumber];
+            //    playerNumber++;
+            //}
         }
     }
 
@@ -93,6 +112,9 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             player.verticalPos = state.PlayerPositionsVertical[i];
             player.horizontalVelocity = state.PlayerVelocityHorizontal[i];
             player.verticalVelocity = state.PlayerVelocityVertical[i];
+            player.animationType = state.PlayerAnimation[i];
+            player.nextAnimation = state.PlayerNextAnimation[i];
+            player.animationFrame = state.PlayerAnimationFrame[i];
         }
     }
 
@@ -102,7 +124,10 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             PlayerPositionsHorizontal = new int[AllClients.Count] , 
             PlayerPositionsVertical = new int[AllClients.Count],
             PlayerVelocityHorizontal = new int[AllClients.Count],
-            PlayerVelocityVertical = new int[AllClients.Count]
+            PlayerVelocityVertical = new int[AllClients.Count],
+            PlayerAnimation = new int[AllClients.Count],
+            PlayerNextAnimation = new int[AllClients.Count],
+            PlayerAnimationFrame = new int[AllClients.Count],
         };
         for (var i = 0; i < AllClients.Count; i++)
         {
@@ -111,6 +136,9 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             simulationState.PlayerPositionsVertical[i] = player.verticalPos;
             simulationState.PlayerVelocityHorizontal[i] = player.horizontalVelocity;
             simulationState.PlayerVelocityVertical[i] = player.verticalVelocity;
+            simulationState.PlayerAnimation[i] = player.animationType;
+            simulationState.PlayerNextAnimation[i] = player.nextAnimation;
+            simulationState.PlayerAnimationFrame[i] = player.animationFrame;
         }
 
         return simulationState;
@@ -121,8 +149,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         Player player1 = AllClients[0].GameObject.GetComponent<Player>();
         player1.horizontalPos = -5000;
         player1.verticalPos = 0;
-        SimulationEnabled = AllClients.Count >= 2;
-        if (SimulationEnabled)
+        if (AllClients.Count >= 2)
         {
             Player player2 = AllClients[1].GameObject.GetComponent<Player>();
             player2.horizontalPos = 5000;
@@ -130,6 +157,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             _camera.player1 = player1.transform;
             _camera.player2 = player2.transform;
             StateStore.Clear();
+            SimulationEnabled = AllClients.Count >= 2;
         }
     }
 

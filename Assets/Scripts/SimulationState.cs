@@ -6,4 +6,7 @@ public struct SimulationState
     public int[] PlayerPositionsVertical;
     public int[] PlayerVelocityHorizontal;
     public int[] PlayerVelocityVertical;
+    public int[] PlayerAnimation;
+    public int[] PlayerNextAnimation;
+    public int[] PlayerAnimationFrame;
 }
