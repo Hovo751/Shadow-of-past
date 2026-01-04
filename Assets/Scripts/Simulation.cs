@@ -28,78 +28,94 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         player.SetMovement();
     }
 
-    private bool isInAir(Player player)
+    private bool isInAir(PlayerChangebleStats player)
     {
-        if (player.verticalPos <= 0)
+        if (player.PlayerPositionVertical <= 0)
         {
-            player.verticalPos = 0;
-            player.verticalVelocity = 0;
             return false;
         }
         return true;
     }
-    private void Jump(Player player, int horizontalDir)
+    private PlayerChangebleStats Jump(Player player, int horizontalDir)
     {
-        player.verticalVelocity = player.JumpPower;
-        player.horizontalVelocity = player.JumpPowerSide * horizontalDir;
+        PlayerChangebleStats result = new PlayerChangebleStats();
+        result.PlayerVelocityVertical = player.JumpPower;
+        result.PlayerVelocityHorizontal = player.JumpPowerSide * horizontalDir;
+        return result;
+    }
+    private PlayerChangebleStats CalculatePerPlayer(int playerNumber, long simulationFrame)
+    {
+        Player player = AllClients[playerNumber].GameObject.GetComponent<Player>();
+        PlayerChangebleStats result = player.changebleStats;
+        Player otherPlayer = null;
+        if (playerNumber == 1)
+        {
+            otherPlayer = AllClients[0].GameObject.GetComponent<Player>();
+        }
+        else if (playerNumber == 0)
+        {
+            otherPlayer = AllClients[1].GameObject.GetComponent<Player>();
+        }
+
+        int movement = (int)player.GetMovement(simulationFrame);
+        if (movement > 9 || movement < 1)
+        {
+            return player.changebleStats;
+        }
+        int horizontalMovement = (movement - 1) % 3 - 1;
+        int verticalMovement = (movement - 1) / 3 - 1;
+        if (isInAir(result))
+        {
+            result.PlayerVelocityVertical -= player.Gravity;
+        }
+        else
+        {
+            result.PlayerVelocityVertical = 0;
+            result.PlayerPositionVertical = 0;
+            result.PlayerVelocityHorizontal = player.Speed * horizontalMovement;
+            if (verticalMovement == 1)
+            {
+                PlayerChangebleStats p = Jump(player, horizontalMovement);
+                result.PlayerVelocityVertical = p.PlayerVelocityVertical;
+                result.PlayerVelocityHorizontal = p.PlayerVelocityHorizontal;
+            }
+        }
+
+        result.PlayerPositionHorizontal += result.PlayerVelocityHorizontal;
+        result.PlayerPositionVertical += result.PlayerVelocityVertical;
+
+        if (result.PlayerPositionHorizontal < -10000)
+        {
+            result.PlayerPositionHorizontal = -10000;
+        }
+        if (result.PlayerPositionHorizontal  > 10000)
+        {
+            result.PlayerPositionHorizontal = 10000;
+        }
+
+        result.PlayerAnimationFrame++;
+
+        if (characters[player.character].data[result.PlayerAnimation].data.frames.Length <= result.PlayerAnimationFrame)
+        {
+            result.PlayerAnimationFrame = 0;
+            result.PlayerAnimation = result.PlayerNextAnimation;
+            result.PlayerNextAnimation = characters[player.character].data[result.PlayerAnimation].nextAnim;
+        }
+
+        return result;
     }
 
     protected override void Simulate(long simulationFrame)
-    {//FIX LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if (SimulationEnabled)
-        {
-            Player player1 = AllClients[0].GameObject.GetComponent<Player>();
-            Player player2 = AllClients[1].GameObject.GetComponent<Player>();
-            int[] horizontalPos = { player1.horizontalPos, player2.horizontalPos };
-            int[] verticalPos = { 0, 0 };
-            int playerNumber = 0;
-            //calculate
-            foreach (CoherenceClientConnection client in AllClients)
-            {
-                Player player = client.GameObject.GetComponent<Player>();
-                int movement = (int)player.GetMovement(simulationFrame);
-                if (movement > 9 || movement < 1)
-                {
-                    continue;
-                }
-                int horizontalMovement = (movement - 1) % 3 - 1;
-                int verticalMovement = (movement - 1) / 3 - 1;
-                if (isInAir(player))
-                {
-                    player.verticalVelocity -= player.Gravity;
-                }
-                else
-                {
-                    player.horizontalVelocity = player.Speed * horizontalMovement;
-                    if (verticalMovement == 1)
-                    {
-                        Jump(player, horizontalMovement);
-                    }
-                }
+    {
+        Player player1 = AllClients[0].GameObject.GetComponent<Player>();
+        Player player2 = AllClients[1].GameObject.GetComponent<Player>();
+        //calculate
 
-                player.horizontalPos += player.horizontalVelocity;
-                player.verticalPos += player.verticalVelocity;
+        PlayerChangebleStats player1Data = CalculatePerPlayer(0, simulationFrame);
+        PlayerChangebleStats player2Data = CalculatePerPlayer(1, simulationFrame);
 
-                if (player.horizontalPos < -10000)
-                {
-                    player.horizontalPos = -10000;
-                }
-                if (player.horizontalPos > 10000)
-                {
-                    player.horizontalPos = 10000;
-                }
-                playerNumber++;
-            }
-            //apply changes
-            //playerNumber = 0;
-            //foreach (CoherenceClientConnection client in AllClients)
-            //{
-            //    Player player = client.GameObject.GetComponent<Player>();
-            //    player.horizontalPos = horizontalPos[playerNumber];
-            //    player.verticalPos = verticalPos[playerNumber];
-            //    playerNumber++;
-            //}
-        }
+        player1.changebleStats = player1Data;
+        player2.changebleStats = player2Data;
     }
 
     protected override void Rollback(long toFrame, SimulationState state)
@@ -108,37 +124,19 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         for (var i = 0; i < AllClients.Count; i++)
         {
             Player player = AllClients[i].GameObject.GetComponent<Player>();
-            player.horizontalPos = state.PlayerPositionsHorizontal[i];
-            player.verticalPos = state.PlayerPositionsVertical[i];
-            player.horizontalVelocity = state.PlayerVelocityHorizontal[i];
-            player.verticalVelocity = state.PlayerVelocityVertical[i];
-            player.animationType = state.PlayerAnimation[i];
-            player.nextAnimation = state.PlayerNextAnimation[i];
-            player.animationFrame = state.PlayerAnimationFrame[i];
+            player.changebleStats = state.PlayerData[i];
         }
     }
 
     protected override SimulationState CreateState()
     {
         var simulationState = new SimulationState { 
-            PlayerPositionsHorizontal = new int[AllClients.Count] , 
-            PlayerPositionsVertical = new int[AllClients.Count],
-            PlayerVelocityHorizontal = new int[AllClients.Count],
-            PlayerVelocityVertical = new int[AllClients.Count],
-            PlayerAnimation = new int[AllClients.Count],
-            PlayerNextAnimation = new int[AllClients.Count],
-            PlayerAnimationFrame = new int[AllClients.Count],
+            PlayerData = new PlayerChangebleStats[AllClients.Count] ,
         };
         for (var i = 0; i < AllClients.Count; i++)
         {
             Player player = AllClients[i].GameObject.GetComponent<Player>();
-            simulationState.PlayerPositionsHorizontal[i] = player.horizontalPos;
-            simulationState.PlayerPositionsVertical[i] = player.verticalPos;
-            simulationState.PlayerVelocityHorizontal[i] = player.horizontalVelocity;
-            simulationState.PlayerVelocityVertical[i] = player.verticalVelocity;
-            simulationState.PlayerAnimation[i] = player.animationType;
-            simulationState.PlayerNextAnimation[i] = player.nextAnimation;
-            simulationState.PlayerAnimationFrame[i] = player.animationFrame;
+            simulationState.PlayerData[i] = player.changebleStats;
         }
 
         return simulationState;
@@ -147,13 +145,13 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     protected override void OnClientJoined(CoherenceClientConnection client)
     {
         Player player1 = AllClients[0].GameObject.GetComponent<Player>();
-        player1.horizontalPos = -5000;
-        player1.verticalPos = 0;
+        player1.changebleStats.PlayerPositionHorizontal = -5000;
+        player1.changebleStats.PlayerPositionVertical = 0;
         if (AllClients.Count >= 2)
         {
             Player player2 = AllClients[1].GameObject.GetComponent<Player>();
-            player2.horizontalPos = 5000;
-            player2.verticalPos = 0;
+            player2.changebleStats.PlayerPositionHorizontal = 5000;
+            player2.changebleStats.PlayerPositionVertical = 0;
             _camera.player1 = player1.transform;
             _camera.player2 = player2.transform;
             StateStore.Clear();
@@ -184,13 +182,13 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                     otherPlayer = AllClients[1].GameObject.GetComponent<Player>();
                 }
                 k++;
-                AnimBase anim = characters[player.character].data[player.animationType].data;
+                AnimBase anim = characters[player.character].data[player.changebleStats.PlayerAnimation].data;
                 float dir = 1;
-                if (player.horizontalPos > otherPlayer.horizontalPos)
+                if (player.changebleStats.PlayerPositionHorizontal > otherPlayer.changebleStats.PlayerPositionHorizontal)
                 {
                     dir = -1;
                 }
-                Frame frame = anim.frames[player.animationFrame];
+                Frame frame = anim.frames[player.changebleStats.PlayerAnimationFrame];
                 //hurtbox
                 Gizmos.color = new Color(0f, 0f, 1f, 0.5f);
                 for (int i = 0; i < frame.hurtbox.Length; i++)
