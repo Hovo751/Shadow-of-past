@@ -269,14 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: 0
-  animationType: 0
-  nextAnimation: 0
-  animationFrame: 0
   Speed: 50
   JumpPower: 200
   JumpPowerSide: 100
   Gravity: 10
-  horizontalPos: 0
-  verticalPos: 0
-  horizontalVelocity: 0
-  verticalVelocity: 0
