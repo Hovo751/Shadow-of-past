@@ -1002,6 +1002,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room Connection Dialog
       objectReference: {fileID: 0}
+    - target: {fileID: 8032803758216718398, guid: 0d56f1ec50ee0ca4183ada754fbc975c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8067038621614843023, guid: 0d56f1ec50ee0ca4183ada754fbc975c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
