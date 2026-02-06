@@ -8,7 +8,7 @@ public class Camera : MonoBehaviour
     {
         if (player1 == null) return;
         if (player2 == null) return;
-        transform.position = Vector3.Lerp(transform.position, (player1.position + player2.position) / 2f, 0.1f);
+        transform.position = Vector3.Lerp(transform.position, (player1.position + player2.position) / 2f + new Vector3(0, 4, 0), 0.1f);
         transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
 }
