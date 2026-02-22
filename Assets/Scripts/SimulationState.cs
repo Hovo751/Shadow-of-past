@@ -14,6 +14,8 @@ public struct PlayerChangebleStats
     public int PlayerAnimation;
     public int PlayerNextAnimation;
     public int PlayerAnimationFrame;
+    public int HitLanded;
+    public int InHitstun;
 
     public static PlayerChangebleStats operator +(PlayerChangebleStats x, PlayerChangebleStats y)
     {
@@ -25,7 +27,9 @@ public struct PlayerChangebleStats
             PlayerVelocityVertical = x.PlayerVelocityVertical + y.PlayerVelocityVertical,
             PlayerAnimation = x.PlayerAnimation + y.PlayerAnimation,
             PlayerNextAnimation = x.PlayerNextAnimation + y.PlayerNextAnimation,
-            PlayerAnimationFrame = x.PlayerAnimationFrame + y.PlayerAnimationFrame
+            PlayerAnimationFrame = x.PlayerAnimationFrame + y.PlayerAnimationFrame,
+            HitLanded = x.HitLanded + y.HitLanded,
+            InHitstun = x.InHitstun + y.InHitstun
         };
     }
 
@@ -39,7 +43,9 @@ public struct PlayerChangebleStats
             PlayerVelocityVertical = x.PlayerVelocityVertical - y.PlayerVelocityVertical,
             PlayerAnimation = x.PlayerAnimation - y.PlayerAnimation,
             PlayerNextAnimation = x.PlayerNextAnimation - y.PlayerNextAnimation,
-            PlayerAnimationFrame = x.PlayerAnimationFrame - y.PlayerAnimationFrame
+            PlayerAnimationFrame = x.PlayerAnimationFrame - y.PlayerAnimationFrame,
+            HitLanded = x.HitLanded - y.HitLanded,
+            InHitstun = x.InHitstun - y.InHitstun
         };
     }
 }

@@ -20,6 +20,7 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
+    hurtboxHit: 0
     hitbox:
     - posX: 1000
       posY: 0
@@ -35,3 +36,143 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []
+  - addPosX: 0
+    addPosY: 0
+    hurtbox: []
+    hurtboxHit: 0
+    hitbox: []
+    throwbox: []
+    collisionBox: []

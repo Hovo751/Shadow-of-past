@@ -1,5 +1,6 @@
 using Coherence.Cloud;
 using Coherence.Toolkit;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
@@ -9,6 +10,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     [System.Serializable]
     public struct AnimationData
     {
+        public string name;
         public AnimBase data;
         public int nextAnim;
     }
@@ -109,6 +111,14 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     {
         Player player1 = AllClients[0].GameObject.GetComponent<Player>();
         Player player2 = AllClients[1].GameObject.GetComponent<Player>();
+
+        int movement = (int)player1.GetMovement(simulationFrame);
+        int movement2 = (int)player2.GetMovement(simulationFrame);
+
+        if (movement > 9 || movement < 1 || movement2 > 9 || movement2 < 1)
+        {
+            return;
+        }
         //calculate
 
         PlayerChangebleStats player1Data = CalculatePerPlayer(0, simulationFrame);
@@ -152,6 +162,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             Player player2 = AllClients[1].GameObject.GetComponent<Player>();
             player2.changebleStats.PlayerPositionHorizontal = 5000;
             player2.changebleStats.PlayerPositionVertical = 0;
+            player1.changebleStats.PlayerAnimationFrame = 0;
+            player2.changebleStats.PlayerAnimationFrame = 0;
             _camera.player1 = player1.transform;
             _camera.player2 = player2.transform;
             StateStore.Clear();

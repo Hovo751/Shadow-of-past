@@ -13,6 +13,7 @@ public struct Frame
     public int addPosX;
     public int addPosY;
     public Rectengale[] hurtbox;
+    public int hurtboxHit;
     public Rectengale[] hitbox;
     public Rectengale[] throwbox;
     public Rectengale[] collisionBox;
