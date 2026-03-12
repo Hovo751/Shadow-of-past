@@ -53,10 +53,26 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         if (playerNumber == 1)
         {
             otherPlayer = AllClients[0].GameObject.GetComponent<Player>();
+            if (otherPlayer.changebleStats.PlayerPositionHorizontal > player.changebleStats.PlayerPositionHorizontal)
+            {
+                result.IsLookingRight = true;
+            }
+            else
+            {
+                result.IsLookingRight = false;
+            }
         }
         else if (playerNumber == 0)
         {
             otherPlayer = AllClients[1].GameObject.GetComponent<Player>();
+            if (player.changebleStats.PlayerPositionHorizontal > otherPlayer.changebleStats.PlayerPositionHorizontal)
+            {
+                result.IsLookingRight = false;
+            }
+            else
+            {
+                result.IsLookingRight = true;
+            }
         }
 
         int movement = (int)player.GetMovement(simulationFrame);

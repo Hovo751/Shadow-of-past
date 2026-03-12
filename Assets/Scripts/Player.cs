@@ -26,6 +26,14 @@ public class Player : MonoBehaviour
     private void Update()
     {
         transform.position = new Vector3(changebleStats.PlayerPositionHorizontal / 1000.0f, changebleStats.PlayerPositionVertical / 1000.0f, 0);
+        if (changebleStats.IsLookingRight)
+        {
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, -90, 0);
+        }
     }
 
     private void Awake()

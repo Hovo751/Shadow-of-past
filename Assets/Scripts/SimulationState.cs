@@ -4,7 +4,7 @@ public struct SimulationState
 {
     public PlayerChangebleStats[] PlayerData;
 }
-
+[System.Serializable]
 public struct PlayerChangebleStats
 {
     public int PlayerPositionHorizontal;
@@ -16,6 +16,7 @@ public struct PlayerChangebleStats
     public int PlayerAnimationFrame;
     public int HitLanded;
     public int InHitstun;
+    public bool IsLookingRight;
 
     public static PlayerChangebleStats operator +(PlayerChangebleStats x, PlayerChangebleStats y)
     {
