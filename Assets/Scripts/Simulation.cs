@@ -37,28 +37,31 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         Player player = AllClients[playerNumber].GameObject.GetComponent<Player>();
         PlayerChangebleStats result = player.changebleStats;
         Player otherPlayer = null;
-        if (playerNumber == 1)
+        if (!isInAir(result))
         {
-            otherPlayer = AllClients[0].GameObject.GetComponent<Player>();
-            if (otherPlayer.changebleStats.PlayerPositionHorizontal > player.changebleStats.PlayerPositionHorizontal)
+            if (playerNumber == 1)
             {
-                result.IsLookingRight = true;
+                otherPlayer = AllClients[0].GameObject.GetComponent<Player>();
+                if (otherPlayer.changebleStats.PlayerPositionHorizontal > player.changebleStats.PlayerPositionHorizontal)
+                {
+                    result.IsLookingRight = true;
+                }
+                else
+                {
+                    result.IsLookingRight = false;
+                }
             }
-            else
+            else if (playerNumber == 0)
             {
-                result.IsLookingRight = false;
-            }
-        }
-        else if (playerNumber == 0)
-        {
-            otherPlayer = AllClients[1].GameObject.GetComponent<Player>();
-            if (player.changebleStats.PlayerPositionHorizontal > otherPlayer.changebleStats.PlayerPositionHorizontal)
-            {
-                result.IsLookingRight = false;
-            }
-            else
-            {
-                result.IsLookingRight = true;
+                otherPlayer = AllClients[1].GameObject.GetComponent<Player>();
+                if (player.changebleStats.PlayerPositionHorizontal > otherPlayer.changebleStats.PlayerPositionHorizontal)
+                {
+                    result.IsLookingRight = false;
+                }
+                else
+                {
+                    result.IsLookingRight = true;
+                }
             }
         }
 

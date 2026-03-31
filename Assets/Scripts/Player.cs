@@ -36,16 +36,13 @@ public class Player : MonoBehaviour
     private void Update()
     {
         transform.position = new Vector3(changebleStats.PlayerPositionHorizontal / 1000.0f, changebleStats.PlayerPositionVertical / 1000.0f, 0);
-        if (!changebleStats.IsInAir)
+        if (changebleStats.IsLookingRight)
         {
-            if (changebleStats.IsLookingRight)
-            {
-                transform.rotation = Quaternion.Euler(0, 90, 0);
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(0, -90, 0);
-            }
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, -90, 0);
         }
         transitionDuration += Time.deltaTime;
         string animationName = characters.characters[character].data[changebleStats.PlayerAnimation].name;
