@@ -17,6 +17,7 @@ public struct PlayerChangebleStats
     public int HitLanded;
     public int InHitstun;
     public bool IsLookingRight;
+    public bool IsInAir;
 
     public static PlayerChangebleStats operator +(PlayerChangebleStats x, PlayerChangebleStats y)
     {

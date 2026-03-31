@@ -69,7 +69,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         }
         int horizontalMovement = (movement - 1) % 3 - 1;
         int verticalMovement = (movement - 1) / 3 - 1;
-        if (isInAir(result))
+        result.IsInAir = isInAir(result);
+        if (result.IsInAir)
         {
             result.PlayerVelocityVertical -= player.Gravity;
         }
@@ -112,13 +113,19 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         result.PlayerAnimationFrame++;
 
-        if (result.PlayerAnimation == 0 && movement == 4 && !isInAir(result))
+        if ((result.PlayerAnimation == 0 || result.PlayerAnimation == 2) && movement == 4 && !isInAir(result))
         {
             result.PlayerAnimationFrame = 0;
             result.PlayerAnimation = 1;
             result.PlayerNextAnimation = characters.characters[player.character].data[1].nextAnim;
         }
-        else if (result.PlayerAnimation == 1 && movement != 4 && !isInAir(result))
+        else if ((result.PlayerAnimation == 0 || result.PlayerAnimation == 1) && movement == 6 && !isInAir(result))
+        {
+            result.PlayerAnimationFrame = 0;
+            result.PlayerAnimation = 2;
+            result.PlayerNextAnimation = characters.characters[player.character].data[2].nextAnim;
+        }
+        else if ((result.PlayerAnimation == 1 || result.PlayerAnimation == 2) && movement != 6 && movement != 4 && !isInAir(result))
         {
             result.PlayerAnimationFrame = 0;
             result.PlayerAnimation = 0;

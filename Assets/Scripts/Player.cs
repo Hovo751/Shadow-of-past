@@ -31,20 +31,25 @@ public class Player : MonoBehaviour
     private float prevT;
     private string previousAnimSaved;
     private float prevTSaved;
+
+    private float transitionTime = 0.2f;
     private void Update()
     {
         transform.position = new Vector3(changebleStats.PlayerPositionHorizontal / 1000.0f, changebleStats.PlayerPositionVertical / 1000.0f, 0);
-        if (changebleStats.IsLookingRight)
+        if (!changebleStats.IsInAir)
         {
-            transform.rotation = Quaternion.Euler(0, 90, 0);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0, -90, 0);
+            if (changebleStats.IsLookingRight)
+            {
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+            }
         }
         transitionDuration += Time.deltaTime;
         string animationName = characters.characters[character].data[changebleStats.PlayerAnimation].name;
-        float t = changebleStats.PlayerAnimationFrame / 45.0f;
+        float t = ((float) changebleStats.PlayerAnimationFrame) / characters.characters[character].data[changebleStats.PlayerAnimation].data.frames.Length;
         animator.Play(animationName, 0, t);
 
         if (animationName != previousAnim)
@@ -58,7 +63,7 @@ public class Player : MonoBehaviour
         animator.Play(previousAnimSaved, 1, prevTSaved);
 
         // blend weight
-        float blend = Mathf.Clamp01(transitionDuration / 0.15f);
+        float blend = Mathf.Clamp01(transitionDuration / transitionTime);
         animator.SetLayerWeight(1, 1f - blend);
 
         animator.Update(0f);

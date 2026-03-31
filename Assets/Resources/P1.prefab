@@ -345,6 +345,8 @@ MonoBehaviour:
       lodStepsActive: 1
     - component: {fileID: 1985942581838586751}
       lodStepsActive: 1
+    - component: {fileID: 4826924264246593144}
+      lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
   interpolationLocation: 1
   RigidbodyUpdateMode: 2
@@ -874,6 +876,11 @@ Transform:
 --- !u!4 &4534981478071851494 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1336226149312045532, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
+  m_PrefabInstance: {fileID: 3198759950145288250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4826924264246593144 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1253996098385199550, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
   m_PrefabInstance: {fileID: 3198759950145288250}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4928856953162236549 stripped
