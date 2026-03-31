@@ -7,21 +7,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 {
     //player1.posx > player2.posx --> player1 is looking left player2 is looking right
     public bool drawHitbox = true;
-    [System.Serializable]
-    public struct AnimationData
-    {
-        public string name;
-        public AnimBase data;
-        public int nextAnim;
-    }
-    [System.Serializable]
-    public struct Character
-    {
-        public string name;
-        public AnimationData[] data;
-    }
 
-    public Character[] characters;
+    public Characters characters;
 
     public Camera _camera;
     protected override void SetInputs(CoherenceClientConnection client)
@@ -111,13 +98,37 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             result.PlayerPositionHorizontal = 10000;
         }
 
+        if (!result.IsLookingRight)
+        {
+            if (movement % 3 == 1)
+            {
+                movement += 2;
+            }
+            else if (movement % 3 == 0)
+            {
+                movement -= 2;
+            }
+        }
+
         result.PlayerAnimationFrame++;
 
-        if (characters[player.character].data[result.PlayerAnimation].data.frames.Length <= result.PlayerAnimationFrame)
+        if (result.PlayerAnimation == 0 && movement == 4 && !isInAir(result))
+        {
+            result.PlayerAnimationFrame = 0;
+            result.PlayerAnimation = 1;
+            result.PlayerNextAnimation = characters.characters[player.character].data[1].nextAnim;
+        }
+        else if (result.PlayerAnimation == 1 && movement != 4 && !isInAir(result))
+        {
+            result.PlayerAnimationFrame = 0;
+            result.PlayerAnimation = 0;
+            result.PlayerNextAnimation = characters.characters[player.character].data[0].nextAnim;
+        }
+        else if (characters.characters[player.character].data[result.PlayerAnimation].data.frames.Length <= result.PlayerAnimationFrame)
         {
             result.PlayerAnimationFrame = 0;
             result.PlayerAnimation = result.PlayerNextAnimation;
-            result.PlayerNextAnimation = characters[player.character].data[result.PlayerAnimation].nextAnim;
+            result.PlayerNextAnimation = characters.characters[player.character].data[result.PlayerAnimation].nextAnim;
         }
 
         return result;
@@ -210,7 +221,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                     otherPlayer = AllClients[1].GameObject.GetComponent<Player>();
                 }
                 k++;
-                AnimBase anim = characters[player.character].data[player.changebleStats.PlayerAnimation].data;
+                AnimBase anim = characters.characters[player.character].data[player.changebleStats.PlayerAnimation].data;
                 float dir = 1;
                 if (player.changebleStats.PlayerPositionHorizontal > otherPlayer.changebleStats.PlayerPositionHorizontal)
                 {

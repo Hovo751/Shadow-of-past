@@ -1575,12 +1575,7 @@ MonoBehaviour:
   coherenceBridge: {fileID: 1936648567}
   PauseAutomatically: 0
   drawHitbox: 1
-  characters:
-  - name: Test
-    data:
-    - name: Idle
-      data: {fileID: 11400000, guid: d1e11a49896bbf3428c65e9d63bd4dc7, type: 2}
-      nextAnim: 0
+  characters: {fileID: 11400000, guid: d069c27ff20b28340a6213ba28a5d6b7, type: 2}
   _camera: {fileID: 330585548}
 --- !u!1 &2074519337
 GameObject:

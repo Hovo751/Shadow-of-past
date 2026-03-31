@@ -1,6 +1,7 @@
 using Coherence.Toolkit;
 using TMPro;
 using UnityEngine;
+using static System.TimeZoneInfo;
 
 [RequireComponent(typeof(CoherenceSync))]
 [RequireComponent(typeof(CoherenceInput))]
@@ -21,8 +22,15 @@ public class Player : MonoBehaviour
     //public int animationFrame = 0;
 
     public PlayerChangebleStats changebleStats;
+    public Animator animator;
+    public Characters characters;
 
     private CoherenceInput input;
+    private float transitionDuration = 1.0f;
+    private string previousAnim;
+    private float prevT;
+    private string previousAnimSaved;
+    private float prevTSaved;
     private void Update()
     {
         transform.position = new Vector3(changebleStats.PlayerPositionHorizontal / 1000.0f, changebleStats.PlayerPositionVertical / 1000.0f, 0);
@@ -34,11 +42,35 @@ public class Player : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, -90, 0);
         }
+        transitionDuration += Time.deltaTime;
+        string animationName = characters.characters[character].data[changebleStats.PlayerAnimation].name;
+        float t = changebleStats.PlayerAnimationFrame / 45.0f;
+        animator.Play(animationName, 0, t);
+
+        if (animationName != previousAnim)
+        {
+            previousAnimSaved = previousAnim;
+            prevTSaved = prevT;
+            transitionDuration = 0;
+        }
+
+        // previous anim (layer 1)
+        animator.Play(previousAnimSaved, 1, prevTSaved);
+
+        // blend weight
+        float blend = Mathf.Clamp01(transitionDuration / 0.15f);
+        animator.SetLayerWeight(1, 1f - blend);
+
+        animator.Update(0f);
+
+        previousAnim = animationName;
+        prevT = t;
     }
 
     private void Awake()
     {
         input = GetComponent<CoherenceInput>();
+        animator.speed = 0.0f;
     }
 
     // Retrieves the "movement" input state for a given frame
