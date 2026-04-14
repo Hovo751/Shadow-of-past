@@ -486,13 +486,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6265472, y: -0.19698387, z: 0.1678828, w: 0.735154}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.5348862, y: -0.21551333, z: 0.1433223, w: 0.80430686}
+  m_LocalPosition: {x: 0.04, y: 3.5, z: -0.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 80.88, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 67.25, y: -30, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1657,7 +1657,6 @@ GameObject:
   - component: {fileID: 2120107714}
   - component: {fileID: 2120107713}
   - component: {fileID: 2120107712}
-  - component: {fileID: 2120107711}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1665,27 +1664,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &2120107711
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120107710}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2120107712
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1748,7 +1726,7 @@ Transform:
   m_GameObject: {fileID: 2120107710}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 249.76, y: 1, z: 8.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
