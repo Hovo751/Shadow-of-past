@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3a24a27f11e1634f9ea8ef77c05e57d, type: 3}
-  m_Name: TestWalkBack
+  m_Name: TestJump
   m_EditorClassIdentifier: 
   cancelLvl: 0
   inAir: 0
   frames:
-  - cancelLvl: 0
-    addPosX: -35
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -38,8 +38,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -61,8 +61,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -84,8 +84,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -107,8 +107,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -130,9 +130,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 200
     hurtbox:
     - posX: 0
       posY: 0
@@ -153,9 +153,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 190
     hurtbox:
     - posX: 0
       posY: 0
@@ -176,9 +176,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 180
     hurtbox:
     - posX: 0
       posY: 0
@@ -199,9 +199,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 170
     hurtbox:
     - posX: 0
       posY: 0
@@ -222,9 +222,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 160
     hurtbox:
     - posX: 0
       posY: 0
@@ -245,9 +245,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 150
     hurtbox:
     - posX: 0
       posY: 0
@@ -268,9 +268,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 140
     hurtbox:
     - posX: 0
       posY: 0
@@ -291,9 +291,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 130
     hurtbox:
     - posX: 0
       posY: 0
@@ -314,9 +314,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 120
     hurtbox:
     - posX: 0
       posY: 0
@@ -337,9 +337,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 110
     hurtbox:
     - posX: 0
       posY: 0
@@ -360,9 +360,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 100
     hurtbox:
     - posX: 0
       posY: 0
@@ -383,9 +383,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 90
     hurtbox:
     - posX: 0
       posY: 0
@@ -406,9 +406,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 80
     hurtbox:
     - posX: 0
       posY: 0
@@ -429,9 +429,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 70
     hurtbox:
     - posX: 0
       posY: 0
@@ -452,9 +452,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 60
     hurtbox:
     - posX: 0
       posY: 0
@@ -475,9 +475,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 50
     hurtbox:
     - posX: 0
       posY: 0
@@ -498,9 +498,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 40
     hurtbox:
     - posX: 0
       posY: 0
@@ -521,9 +521,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 30
     hurtbox:
     - posX: 0
       posY: 0
@@ -544,9 +544,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 20
     hurtbox:
     - posX: 0
       posY: 0
@@ -567,9 +567,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 10
     hurtbox:
     - posX: 0
       posY: 0
@@ -590,9 +590,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -613,9 +613,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -20
     hurtbox:
     - posX: 0
       posY: 0
@@ -636,9 +636,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -30
     hurtbox:
     - posX: 0
       posY: 0
@@ -659,9 +659,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -40
     hurtbox:
     - posX: 0
       posY: 0
@@ -682,9 +682,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -50
     hurtbox:
     - posX: 0
       posY: 0
@@ -705,9 +705,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -60
     hurtbox:
     - posX: 0
       posY: 0
@@ -728,9 +728,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -70
     hurtbox:
     - posX: 0
       posY: 0
@@ -751,9 +751,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -80
     hurtbox:
     - posX: 0
       posY: 0
@@ -774,9 +774,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -90
     hurtbox:
     - posX: 0
       posY: 0
@@ -797,9 +797,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -100
     hurtbox:
     - posX: 0
       posY: 0
@@ -820,9 +820,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -110
     hurtbox:
     - posX: 0
       posY: 0
@@ -843,9 +843,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -120
     hurtbox:
     - posX: 0
       posY: 0
@@ -866,9 +866,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -130
     hurtbox:
     - posX: 0
       posY: 0
@@ -889,9 +889,9 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -140
     hurtbox:
     - posX: 0
       posY: 0
@@ -912,9 +912,124 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: -35
-    addPosY: 0
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -150
+    hurtbox:
+    - posX: 0
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
+    hitbox:
+    - posX: 1000
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    blockbox: []
+    collisionBox:
+    - posX: 0
+      posY: 1000
+      sizeX: 1000
+      sizeY: 1000
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -160
+    hurtbox:
+    - posX: 0
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
+    hitbox:
+    - posX: 1000
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    blockbox: []
+    collisionBox:
+    - posX: 0
+      posY: 1000
+      sizeX: 1000
+      sizeY: 1000
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -170
+    hurtbox:
+    - posX: 0
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
+    hitbox:
+    - posX: 1000
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    blockbox: []
+    collisionBox:
+    - posX: 0
+      posY: 1000
+      sizeX: 1000
+      sizeY: 1000
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -180
+    hurtbox:
+    - posX: 0
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
+    hitbox:
+    - posX: 1000
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    blockbox: []
+    collisionBox:
+    - posX: 0
+      posY: 1000
+      sizeX: 1000
+      sizeY: 1000
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -190
+    hurtbox:
+    - posX: 0
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
+    hitbox:
+    - posX: 1000
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    blockbox: []
+    collisionBox:
+    - posX: 0
+      posY: 1000
+      sizeX: 1000
+      sizeY: 1000
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: -200
     hurtbox:
     - posX: 0
       posY: 0

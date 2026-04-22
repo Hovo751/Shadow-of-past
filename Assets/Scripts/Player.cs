@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     private string previousAnimSaved;
     private float prevTSaved;
 
-    private float transitionTime = 0.2f;
+    public float transitionTime = 0.2f;
     private void Update()
     {
         transform.position = new Vector3(changebleStats.PlayerPositionHorizontal / 1000.0f, changebleStats.PlayerPositionVertical / 1000.0f, 0);

@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a24a27f11e1634f9ea8ef77c05e57d, type: 3}
   m_Name: TestWalkForward
   m_EditorClassIdentifier: 
+  cancelLvl: 0
+  inAir: 0
   frames:
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -21,22 +24,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -44,22 +47,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -67,22 +70,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -90,22 +93,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -113,22 +116,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -136,22 +139,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -159,22 +162,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -182,22 +185,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -205,22 +208,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -228,22 +231,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -251,22 +254,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -274,22 +277,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -297,22 +300,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -320,22 +323,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -343,22 +346,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -366,22 +369,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -389,22 +392,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -412,22 +415,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -435,22 +438,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -458,22 +461,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -481,22 +484,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -504,22 +507,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -527,22 +530,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -550,22 +553,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -573,22 +576,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -596,22 +599,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -619,22 +622,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -642,22 +645,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -665,22 +668,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -688,22 +691,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -711,22 +714,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -734,22 +737,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -757,22 +760,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -780,22 +783,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -803,22 +806,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -826,22 +829,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -849,22 +852,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -872,22 +875,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -895,22 +898,22 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - addPosX: 0
+  - cancelLvl: 0
+    addPosX: 50
     addPosY: 0
     hurtbox:
     - posX: 0
@@ -918,16 +921,15 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
     hitbox:
     - posX: 1000
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    throwbox:
-    - posX: -1000
-      posY: 0
-      sizeX: 1000
-      sizeY: 1000
+    blockbox: []
     collisionBox:
     - posX: 0
       posY: 1000

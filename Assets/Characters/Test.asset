@@ -18,7 +18,10 @@ MonoBehaviour:
     nextAnim: 0
   - name: WalkBack
     data: {fileID: 11400000, guid: 8d503d9040991af409b50deb4211fe72, type: 2}
-    nextAnim: 1
+    nextAnim: 0
   - name: WalkForward
     data: {fileID: 11400000, guid: 83cd5bfa03b397043a87175b5f2718cc, type: 2}
-    nextAnim: 1
+    nextAnim: 0
+  - name: JumpStraight
+    data: {fileID: 11400000, guid: 26c7849e2fefa094cb6d7388ee85c993, type: 2}
+    nextAnim: 0

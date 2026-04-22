@@ -10,11 +10,15 @@ public struct Rectengale
 [System.Serializable]
 public struct Frame
 {
+    public int cancelLvl;
     public int addPosX;
     public int addPosY;
     public Rectengale[] hurtbox;
     public int hurtboxHit;
+    public int hurtboxDamage;
+    public int hurtboxHitStun;
+    public int hurtboxBlockStun;
     public Rectengale[] hitbox;
-    public Rectengale[] throwbox;
+    public Rectengale[] blockbox;
     public Rectengale[] collisionBox;
 }

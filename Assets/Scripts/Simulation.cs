@@ -1,6 +1,7 @@
 using Coherence.Cloud;
 using Coherence.Toolkit;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
@@ -25,12 +26,22 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         }
         return true;
     }
-    private PlayerChangebleStats Jump(Player player, int horizontalDir)
+    private void PlayAnimation(ref PlayerChangebleStats result, Player player, int anim)
     {
-        PlayerChangebleStats result = new PlayerChangebleStats();
+        result.PlayerAnimationFrame = 0;
+        result.PlayerAnimation = anim;
+        result.PlayerNextAnimation = characters.characters[player.character].data[anim].nextAnim;
+    }
+    bool CanCancelInto(PlayerChangebleStats result, Player player, int anim)
+    {
+        if (result.PlayerAnimation != anim && characters.characters[player.character].data[result.PlayerAnimation].data.frames[result.PlayerAnimationFrame].cancelLvl <= characters.characters[player.character].data[1].data.cancelLvl && characters.characters[player.character].data[1].data.inAir == isInAir(result))
+            return true;
+        return false;
+    }
+    private void Jump(ref PlayerChangebleStats result, Player player, int horizontalDir)
+    {
         result.PlayerVelocityVertical = player.JumpPower;
         result.PlayerVelocityHorizontal = player.JumpPowerSide * horizontalDir;
-        return result;
     }
     private PlayerChangebleStats CalculatePerPlayer(int playerNumber, long simulationFrame)
     {
@@ -73,25 +84,24 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         int horizontalMovement = (movement - 1) % 3 - 1;
         int verticalMovement = (movement - 1) / 3 - 1;
         result.IsInAir = isInAir(result);
-        if (result.IsInAir)
-        {
-            result.PlayerVelocityVertical -= player.Gravity;
-        }
-        else
-        {
-            result.PlayerVelocityVertical = 0;
-            result.PlayerPositionVertical = 0;
-            result.PlayerVelocityHorizontal = player.Speed * horizontalMovement;
-            if (verticalMovement == 1)
-            {
-                PlayerChangebleStats p = Jump(player, horizontalMovement);
-                result.PlayerVelocityVertical = p.PlayerVelocityVertical;
-                result.PlayerVelocityHorizontal = p.PlayerVelocityHorizontal;
-            }
-        }
+        //if (result.IsInAir)
+        //{
+        //    result.PlayerVelocityVertical -= player.Gravity;
+        //}
+        //else
+        //{
+        //    result.PlayerVelocityVertical = 0;
+        //    result.PlayerPositionVertical = 0;
+        //    result.PlayerVelocityHorizontal = player.Speed * horizontalMovement;
+        //    if (verticalMovement == 1)
+        //    {
+        //        Jump(ref result, player, horizontalMovement);
+        //        PlayAnimation(ref result, player, 3);
+        //    }
+        //}
 
-        result.PlayerPositionHorizontal += result.PlayerVelocityHorizontal;
-        result.PlayerPositionVertical += result.PlayerVelocityVertical;
+        //result.PlayerPositionHorizontal += result.PlayerVelocityHorizontal;
+        //result.PlayerPositionVertical += result.PlayerVelocityVertical;
 
         if (result.PlayerPositionHorizontal < -10000)
         {
@@ -101,6 +111,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             result.PlayerPositionHorizontal = 10000;
         }
+
+        int direction = 1;
 
         if (!result.IsLookingRight)
         {
@@ -112,33 +124,39 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             {
                 movement -= 2;
             }
+            direction = -1;
+        }
+
+        AnimBase currentAnimation = characters.characters[player.character].data[result.PlayerAnimation].data;
+        result.PlayerPositionHorizontal += currentAnimation.frames[result.PlayerAnimationFrame].addPosX * direction;
+        result.PlayerPositionVertical += currentAnimation.frames[result.PlayerAnimationFrame].addPosY;
+
+        if (result.PlayerPositionVertical < 0)
+        {
+            result.PlayerPositionVertical = 0;
         }
 
         result.PlayerAnimationFrame++;
 
-        if ((result.PlayerAnimation == 0 || result.PlayerAnimation == 2) && movement == 4 && !isInAir(result))
+        if (currentAnimation.frames.Length <= result.PlayerAnimationFrame)
         {
-            result.PlayerAnimationFrame = 0;
-            result.PlayerAnimation = 1;
-            result.PlayerNextAnimation = characters.characters[player.character].data[1].nextAnim;
+            PlayAnimation(ref result, player, result.PlayerNextAnimation);
         }
-        else if ((result.PlayerAnimation == 0 || result.PlayerAnimation == 1) && movement == 6 && !isInAir(result))
+        else if (CanCancelInto(result, player, 1) && movement == 4)
         {
-            result.PlayerAnimationFrame = 0;
-            result.PlayerAnimation = 2;
-            result.PlayerNextAnimation = characters.characters[player.character].data[2].nextAnim;
+            PlayAnimation(ref result, player, 1);
         }
-        else if ((result.PlayerAnimation == 1 || result.PlayerAnimation == 2) && movement != 6 && movement != 4 && !isInAir(result))
+        else if (CanCancelInto(result, player, 2) && movement == 6)
         {
-            result.PlayerAnimationFrame = 0;
-            result.PlayerAnimation = 0;
-            result.PlayerNextAnimation = characters.characters[player.character].data[0].nextAnim;
+            PlayAnimation(ref result, player, 2);
         }
-        else if (characters.characters[player.character].data[result.PlayerAnimation].data.frames.Length <= result.PlayerAnimationFrame)
+        else if (CanCancelInto(result, player, 3) && movement == 8)
         {
-            result.PlayerAnimationFrame = 0;
-            result.PlayerAnimation = result.PlayerNextAnimation;
-            result.PlayerNextAnimation = characters.characters[player.character].data[result.PlayerAnimation].nextAnim;
+            PlayAnimation(ref result, player, 3);
+        }
+        else if (CanCancelInto(result, player, 0) && movement == 5)
+        {
+            PlayAnimation(ref result, player, 0);
         }
 
         return result;
@@ -261,9 +279,9 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 }
                 //throwbox
                 Gizmos.color = new Color(1f, 0f, 1f, 0.5f);
-                for (int i = 0; i < frame.throwbox.Length; i++)
+                for (int i = 0; i < frame.blockbox.Length; i++)
                 {
-                    Rectengale rect = frame.throwbox[i];
+                    Rectengale rect = frame.blockbox[i];
                     Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
                 }
             }
