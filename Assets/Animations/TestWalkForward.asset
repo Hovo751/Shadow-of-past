@@ -18,6 +18,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -41,6 +45,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -64,6 +72,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -87,6 +99,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -110,6 +126,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -133,6 +153,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -156,6 +180,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -179,6 +207,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -202,6 +234,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -225,6 +261,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -248,6 +288,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -271,6 +315,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -294,6 +342,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -317,6 +369,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -340,6 +396,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -363,6 +423,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -386,6 +450,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -409,6 +477,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -432,6 +504,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -455,6 +531,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -478,6 +558,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -501,6 +585,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -524,6 +612,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -547,6 +639,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -570,6 +666,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -593,6 +693,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -616,6 +720,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -639,6 +747,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -662,6 +774,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -685,6 +801,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -708,6 +828,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -731,6 +855,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -754,6 +882,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -777,6 +909,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -800,6 +936,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -823,6 +963,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -846,6 +990,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -869,6 +1017,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -892,6 +1044,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0
@@ -915,6 +1071,10 @@ MonoBehaviour:
   - cancelLvl: 0
     addPosX: 50
     addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityVertical: 0
+    setAccelerationHorizontal: 0
+    setAccelerationVertical: -10
     hurtbox:
     - posX: 0
       posY: 0

@@ -48,6 +48,101 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         Player player = AllClients[playerNumber].GameObject.GetComponent<Player>();
         PlayerChangebleStats result = player.changebleStats;
         Player otherPlayer = null;
+
+        int movement = (int)player.GetMovement(simulationFrame);
+        if (movement > 9 || movement < 1)
+        {
+            return player.changebleStats;
+        }
+        int horizontalMovement = (movement - 1) % 3 - 1;
+        int verticalMovement = (movement - 1) / 3 - 1;
+        result.IsInAir = isInAir(result);
+        //if (result.IsInAir)
+        //{
+        //    result.PlayerVelocityVertical -= player.Gravity;
+        //}
+        //else
+        //{
+        //    result.PlayerVelocityVertical = 0;
+        //    result.PlayerPositionVertical = 0;
+        //    result.PlayerVelocityHorizontal = player.Speed * horizontalMovement;
+        //    if (verticalMovement == 1)
+        //    {
+        //        Jump(ref result, player, horizontalMovement);
+        //        PlayAnimation(ref result, player, 3);
+        //    }
+        //}
+
+        if (result.PlayerPositionHorizontal < -10000)
+        {
+            result.PlayerPositionHorizontal = -10000;
+        }
+        if (result.PlayerPositionHorizontal  > 10000)
+        {
+            result.PlayerPositionHorizontal = 10000;
+        }
+
+        int direction = 1;
+
+        if (!result.IsLookingRight)
+        {
+            if (movement % 3 == 1)
+            {
+                movement += 2;
+            }
+            else if (movement % 3 == 0)
+            {
+                movement -= 2;
+            }
+            direction = -1;
+        }
+        
+        AnimBase currentAnimation = characters.characters[player.character].data[result.PlayerAnimation].data;
+
+        result.PlayerAnimationFrame++;
+
+        if (currentAnimation.frames.Length <= result.PlayerAnimationFrame)
+        {
+            PlayAnimation(ref result, player, result.PlayerNextAnimation);
+        }
+        else if (CanCancelInto(result, player, 1) && movement == 4)
+        {
+            PlayAnimation(ref result, player, 1);
+        }
+        else if (CanCancelInto(result, player, 2) && movement == 6)
+        {
+            PlayAnimation(ref result, player, 2);
+        }
+        else if (CanCancelInto(result, player, 3) && movement == 8)
+        {
+            PlayAnimation(ref result, player, 3);
+        }
+        else if (CanCancelInto(result, player, 0) && movement == 5)
+        {
+            PlayAnimation(ref result, player, 0);
+        }
+
+        //result.PlayerPositionHorizontal += currentAnimation.frames[result.PlayerAnimationFrame].addPosX * direction;
+        //result.PlayerPositionVertical += currentAnimation.frames[result.PlayerAnimationFrame].addPosY;
+        //if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHbool)
+        //    result.PlayerVelocityHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHorizontal * direction;
+        //if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVbool)
+        //    result.PlayerVelocityVertical = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVertical;
+        //if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHbool)
+        //    result.PlayerAccelerationHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHorizontal * direction;
+        //if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVbool)
+        //    result.PlayerAccelerationVertical = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVertical;
+
+        //result.PlayerVelocityHorizontal += result.PlayerAccelerationHorizontal;
+        //result.PlayerVelocityVertical += result.PlayerAccelerationVertical;
+        //result.PlayerPositionHorizontal += result.PlayerVelocityHorizontal;
+        //result.PlayerPositionVertical += result.PlayerVelocityVertical;
+
+        if (result.PlayerPositionVertical < 0)
+        {
+            result.PlayerPositionVertical = 0;
+        }
+
         if (!isInAir(result))
         {
             if (playerNumber == 1)
@@ -74,89 +169,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                     result.IsLookingRight = true;
                 }
             }
-        }
-
-        int movement = (int)player.GetMovement(simulationFrame);
-        if (movement > 9 || movement < 1)
-        {
-            return player.changebleStats;
-        }
-        int horizontalMovement = (movement - 1) % 3 - 1;
-        int verticalMovement = (movement - 1) / 3 - 1;
-        result.IsInAir = isInAir(result);
-        //if (result.IsInAir)
-        //{
-        //    result.PlayerVelocityVertical -= player.Gravity;
-        //}
-        //else
-        //{
-        //    result.PlayerVelocityVertical = 0;
-        //    result.PlayerPositionVertical = 0;
-        //    result.PlayerVelocityHorizontal = player.Speed * horizontalMovement;
-        //    if (verticalMovement == 1)
-        //    {
-        //        Jump(ref result, player, horizontalMovement);
-        //        PlayAnimation(ref result, player, 3);
-        //    }
-        //}
-
-        //result.PlayerPositionHorizontal += result.PlayerVelocityHorizontal;
-        //result.PlayerPositionVertical += result.PlayerVelocityVertical;
-
-        if (result.PlayerPositionHorizontal < -10000)
-        {
-            result.PlayerPositionHorizontal = -10000;
-        }
-        if (result.PlayerPositionHorizontal  > 10000)
-        {
-            result.PlayerPositionHorizontal = 10000;
-        }
-
-        int direction = 1;
-
-        if (!result.IsLookingRight)
-        {
-            if (movement % 3 == 1)
-            {
-                movement += 2;
-            }
-            else if (movement % 3 == 0)
-            {
-                movement -= 2;
-            }
-            direction = -1;
-        }
-
-        AnimBase currentAnimation = characters.characters[player.character].data[result.PlayerAnimation].data;
-        result.PlayerPositionHorizontal += currentAnimation.frames[result.PlayerAnimationFrame].addPosX * direction;
-        result.PlayerPositionVertical += currentAnimation.frames[result.PlayerAnimationFrame].addPosY;
-
-        if (result.PlayerPositionVertical < 0)
-        {
-            result.PlayerPositionVertical = 0;
-        }
-
-        result.PlayerAnimationFrame++;
-
-        if (currentAnimation.frames.Length <= result.PlayerAnimationFrame)
-        {
-            PlayAnimation(ref result, player, result.PlayerNextAnimation);
-        }
-        else if (CanCancelInto(result, player, 1) && movement == 4)
-        {
-            PlayAnimation(ref result, player, 1);
-        }
-        else if (CanCancelInto(result, player, 2) && movement == 6)
-        {
-            PlayAnimation(ref result, player, 2);
-        }
-        else if (CanCancelInto(result, player, 3) && movement == 8)
-        {
-            PlayAnimation(ref result, player, 3);
-        }
-        else if (CanCancelInto(result, player, 0) && movement == 5)
-        {
-            PlayAnimation(ref result, player, 0);
         }
 
         return result;
@@ -251,7 +263,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 k++;
                 AnimBase anim = characters.characters[player.character].data[player.changebleStats.PlayerAnimation].data;
                 float dir = 1;
-                if (player.changebleStats.PlayerPositionHorizontal > otherPlayer.changebleStats.PlayerPositionHorizontal)
+                if (!player.changebleStats.IsLookingRight)
                 {
                     dir = -1;
                 }
@@ -279,6 +291,13 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 }
                 //throwbox
                 Gizmos.color = new Color(1f, 0f, 1f, 0.5f);
+                for (int i = 0; i < frame.throwbox.Length; i++)
+                {
+                    Rectengale rect = frame.throwbox[i];
+                    Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
+                }
+                //blockbox
+                Gizmos.color = new Color(0f, 1f, 1f, 0.5f);
                 for (int i = 0; i < frame.blockbox.Length; i++)
                 {
                     Rectengale rect = frame.blockbox[i];

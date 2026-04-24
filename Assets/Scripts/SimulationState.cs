@@ -11,6 +11,8 @@ public struct PlayerChangebleStats
     public int PlayerPositionVertical;
     public int PlayerVelocityHorizontal;
     public int PlayerVelocityVertical;
+    public int PlayerAccelerationHorizontal;
+    public int PlayerAccelerationVertical;
     public int PlayerAnimation;
     public int PlayerNextAnimation;
     public int PlayerAnimationFrame;
@@ -27,6 +29,8 @@ public struct PlayerChangebleStats
             PlayerPositionVertical = x.PlayerPositionVertical + y.PlayerPositionVertical,
             PlayerVelocityHorizontal = x.PlayerVelocityHorizontal + y.PlayerVelocityHorizontal,
             PlayerVelocityVertical = x.PlayerVelocityVertical + y.PlayerVelocityVertical,
+            PlayerAccelerationHorizontal = x.PlayerAccelerationHorizontal + y.PlayerAccelerationHorizontal,
+            PlayerAccelerationVertical = x.PlayerAccelerationVertical + y.PlayerAccelerationVertical,
             PlayerAnimation = x.PlayerAnimation + y.PlayerAnimation,
             PlayerNextAnimation = x.PlayerNextAnimation + y.PlayerNextAnimation,
             PlayerAnimationFrame = x.PlayerAnimationFrame + y.PlayerAnimationFrame,
@@ -43,6 +47,8 @@ public struct PlayerChangebleStats
             PlayerPositionVertical = x.PlayerPositionVertical - y.PlayerPositionVertical,
             PlayerVelocityHorizontal = x.PlayerVelocityHorizontal - y.PlayerVelocityHorizontal,
             PlayerVelocityVertical = x.PlayerVelocityVertical - y.PlayerVelocityVertical,
+            PlayerAccelerationHorizontal = x.PlayerAccelerationHorizontal - y.PlayerAccelerationHorizontal,
+            PlayerAccelerationVertical = x.PlayerAccelerationVertical - y.PlayerAccelerationVertical,
             PlayerAnimation = x.PlayerAnimation - y.PlayerAnimation,
             PlayerNextAnimation = x.PlayerNextAnimation - y.PlayerNextAnimation,
             PlayerAnimationFrame = x.PlayerAnimationFrame - y.PlayerAnimationFrame,
