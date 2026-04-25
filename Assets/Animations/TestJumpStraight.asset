@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3a24a27f11e1634f9ea8ef77c05e57d, type: 3}
-  m_Name: TestWalkForward
+  m_Name: TestJumpStraight
   m_EditorClassIdentifier: 
   cancelLvl: 0
   inAir: 0
   frames:
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -47,8 +47,136 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 0
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 0
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
+    hitbox:
+    - posX: 1000
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    blockbox: []
+    throwbox: []
+    collisionBox:
+    - posX: 0
+      posY: 1000
+      sizeX: 1000
+      sizeY: 1000
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 0
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 0
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
+    hitbox:
+    - posX: 1000
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    blockbox: []
+    throwbox: []
+    collisionBox:
+    - posX: 0
+      posY: 1000
+      sizeX: 1000
+      sizeY: 1000
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 0
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 0
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
+    hitbox:
+    - posX: 1000
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    blockbox: []
+    throwbox: []
+    collisionBox:
+    - posX: 0
+      posY: 1000
+      sizeX: 1000
+      sizeY: 1000
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 400
+    setVelocityVbool: 1
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: -20
+    setAccelerationVbool: 1
+    hurtbox:
+    - posX: 0
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
+    hitbox:
+    - posX: 1000
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    blockbox: []
+    throwbox: []
+    collisionBox:
+    - posX: 0
+      posY: 1000
+      sizeX: 1000
+      sizeY: 1000
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -79,8 +207,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -111,8 +239,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -143,8 +271,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -175,8 +303,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -207,8 +335,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -239,8 +367,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -271,8 +399,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -303,8 +431,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -335,8 +463,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -367,8 +495,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -399,8 +527,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -431,8 +559,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -463,8 +591,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -495,8 +623,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -527,8 +655,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -559,8 +687,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -591,8 +719,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -623,8 +751,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -655,8 +783,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -687,8 +815,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -719,8 +847,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -751,8 +879,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -783,8 +911,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -815,8 +943,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -847,8 +975,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -879,8 +1007,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -911,8 +1039,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -943,8 +1071,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -975,8 +1103,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -1007,8 +1135,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -1039,8 +1167,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -1071,8 +1199,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -1103,8 +1231,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -1135,8 +1263,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -1167,8 +1295,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -1199,8 +1327,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -1231,8 +1359,8 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0
@@ -1263,8 +1391,40 @@ MonoBehaviour:
       posY: 1000
       sizeX: 1000
       sizeY: 1000
-  - cancelLvl: 0
-    addPosX: 50
+  - cancelLvl: 1
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 0
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: -10
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 0
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
+    hitbox:
+    - posX: 1000
+      posY: 0
+      sizeX: 1000
+      sizeY: 1000
+    blockbox: []
+    throwbox: []
+    collisionBox:
+    - posX: 0
+      posY: 1000
+      sizeX: 1000
+      sizeY: 1000
+  - cancelLvl: 1
+    addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 0

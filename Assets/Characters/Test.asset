@@ -25,3 +25,6 @@ MonoBehaviour:
   - name: JumpStraight
     data: {fileID: 11400000, guid: 26c7849e2fefa094cb6d7388ee85c993, type: 2}
     nextAnim: 0
+  - name: JumpForward
+    data: {fileID: 11400000, guid: df62928e5e371da4aa7f4216052e50a4, type: 2}
+    nextAnim: 0

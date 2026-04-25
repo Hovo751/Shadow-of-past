@@ -117,26 +117,30 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             PlayAnimation(ref result, player, 3);
         }
+        else if (CanCancelInto(result, player, 4) && movement == 9)
+        {
+            PlayAnimation(ref result, player, 4);
+        }
         else if (CanCancelInto(result, player, 0) && movement == 5)
         {
             PlayAnimation(ref result, player, 0);
         }
 
-        //result.PlayerPositionHorizontal += currentAnimation.frames[result.PlayerAnimationFrame].addPosX * direction;
-        //result.PlayerPositionVertical += currentAnimation.frames[result.PlayerAnimationFrame].addPosY;
-        //if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHbool)
-        //    result.PlayerVelocityHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHorizontal * direction;
-        //if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVbool)
-        //    result.PlayerVelocityVertical = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVertical;
-        //if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHbool)
-        //    result.PlayerAccelerationHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHorizontal * direction;
-        //if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVbool)
-        //    result.PlayerAccelerationVertical = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVertical;
+        result.PlayerPositionHorizontal += currentAnimation.frames[result.PlayerAnimationFrame].addPosX * direction;
+        result.PlayerPositionVertical += currentAnimation.frames[result.PlayerAnimationFrame].addPosY;
+        if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHbool)
+            result.PlayerVelocityHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHorizontal * direction;
+        if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVbool)
+            result.PlayerVelocityVertical = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVertical;
+        if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHbool)
+            result.PlayerAccelerationHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHorizontal * direction;
+        if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVbool)
+            result.PlayerAccelerationVertical = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVertical;
 
-        //result.PlayerVelocityHorizontal += result.PlayerAccelerationHorizontal;
-        //result.PlayerVelocityVertical += result.PlayerAccelerationVertical;
-        //result.PlayerPositionHorizontal += result.PlayerVelocityHorizontal;
-        //result.PlayerPositionVertical += result.PlayerVelocityVertical;
+        result.PlayerVelocityHorizontal += result.PlayerAccelerationHorizontal;
+        result.PlayerVelocityVertical += result.PlayerAccelerationVertical;
+        result.PlayerPositionHorizontal += result.PlayerVelocityHorizontal;
+        result.PlayerPositionVertical += result.PlayerVelocityVertical;
 
         if (result.PlayerPositionVertical < 0)
         {

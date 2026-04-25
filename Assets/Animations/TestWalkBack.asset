@@ -19,13 +19,13 @@ MonoBehaviour:
     addPosX: -35
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 0
+    setVelocityHbool: 1
     setVelocityVertical: 0
-    setVelocityVbool: 0
+    setVelocityVbool: 1
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 0
-    setAccelerationVertical: -10
-    setAccelerationVbool: 0
+    setAccelerationHbool: 1
+    setAccelerationVertical: 0
+    setAccelerationVbool: 1
     hurtbox:
     - posX: -147
       posY: 1753
