@@ -105,13 +105,21 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             PlayAnimation(ref result, player, result.PlayerNextAnimation);
         }
-        else if (CanCancelInto(result, player, 1) && movement == 4)
+        if (CanCancelInto(result, player, 1) && movement == 4)
         {
             PlayAnimation(ref result, player, 1);
         }
         else if (CanCancelInto(result, player, 2) && movement == 6)
         {
             PlayAnimation(ref result, player, 2);
+        }
+        else if (CanCancelInto(result, player, 6) && (movement == 2 || movement == 3))
+        {
+            PlayAnimation(ref result, player, 6);
+        }
+        else if (CanCancelInto(result, player, 7) && movement == 1)
+        {
+            PlayAnimation(ref result, player, 7);
         }
         else if (CanCancelInto(result, player, 3) && movement == 8)
         {
@@ -120,6 +128,10 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         else if (CanCancelInto(result, player, 4) && movement == 9)
         {
             PlayAnimation(ref result, player, 4);
+        }
+        else if (CanCancelInto(result, player, 5) && movement == 7)
+        {
+            PlayAnimation(ref result, player, 5);
         }
         else if (CanCancelInto(result, player, 0) && movement == 5)
         {

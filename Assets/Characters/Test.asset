@@ -28,3 +28,12 @@ MonoBehaviour:
   - name: JumpForward
     data: {fileID: 11400000, guid: df62928e5e371da4aa7f4216052e50a4, type: 2}
     nextAnim: 0
+  - name: JumpBack
+    data: {fileID: 11400000, guid: c582e70cfa23e2040aa9445c74427750, type: 2}
+    nextAnim: 0
+  - name: Crouch
+    data: {fileID: 11400000, guid: 6eafed27dc336534a99ce7e39573d4cc, type: 2}
+    nextAnim: 0
+  - name: CrouchBack
+    data: {fileID: 11400000, guid: 6eafed27dc336534a99ce7e39573d4cc, type: 2}
+    nextAnim: 0

@@ -45,7 +45,9 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, -90, 0);
         }
         transitionDuration += Time.deltaTime;
-        string animationName = characters.characters[character].data[changebleStats.PlayerAnimation].name;
+        int animId = changebleStats.PlayerAnimation;
+        if (animId == 7) animId = 6;
+        string animationName = characters.characters[character].data[animId].name;
         float t = ((float) changebleStats.PlayerAnimationFrame) / characters.characters[character].data[changebleStats.PlayerAnimation].data.frames.Length;
         animator.Play(animationName, 0, t);
 

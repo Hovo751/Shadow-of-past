@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a24a27f11e1634f9ea8ef77c05e57d, type: 3}
+  m_Name: TestCrouchBack
+  m_EditorClassIdentifier: 
+  cancelLvl: 0
+  inAir: 0
+  frames:
+  - cancelLvl: 0
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 1
+    setVelocityVertical: 0
+    setVelocityVbool: 1
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 1
+    setAccelerationVertical: 0
+    setAccelerationVbool: 1
+    hurtbox:
+    - posX: -147
+      posY: 1753
+      sizeX: 1213
+      sizeY: 3465
+    - posX: -147
+      posY: 3643
+      sizeX: 817
+      sizeY: 431
+    hurtboxHit: 0
+    hurtboxDamage: 0
+    hurtboxHitStun: 0
+    hurtboxBlockStun: 0
+    hitbox: []
+    blockbox: []
+    throwbox:
+    - posX: -147
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
+    collisionBox:
+    - posX: -155
+      posY: 1646
+      sizeX: 1000
+      sizeY: 3293
