@@ -509,6 +509,8 @@ MonoBehaviour:
     PlayerPositionVertical: 0
     PlayerVelocityHorizontal: 0
     PlayerVelocityVertical: 0
+    PlayerAccelerationHorizontal: 0
+    PlayerAccelerationVertical: 0
     PlayerAnimation: 0
     PlayerNextAnimation: 0
     PlayerAnimationFrame: 0
@@ -518,6 +520,8 @@ MonoBehaviour:
     IsInAir: 0
   animator: {fileID: 3136657249523467253}
   characters: {fileID: 11400000, guid: d069c27ff20b28340a6213ba28a5d6b7, type: 2}
+  x: 0.5
+  transitionTime: 0.2
 --- !u!1001 &3198759950145288250
 PrefabInstance:
   m_ObjectHideFlags: 0

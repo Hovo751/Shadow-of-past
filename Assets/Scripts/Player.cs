@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public PlayerChangebleStats changebleStats;
     public Animator animator;
     public Characters characters;
+    public float x;
 
     private CoherenceInput input;
     private float transitionDuration = 1.0f;
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
     public float transitionTime = 0.2f;
     private void Update()
     {
-        transform.position = new Vector3(changebleStats.PlayerPositionHorizontal / 1000.0f, changebleStats.PlayerPositionVertical / 1000.0f, 0);
+        transform.position = new Vector3(changebleStats.PlayerPositionHorizontal / 1000.0f, changebleStats.PlayerPositionVertical / 1000.0f + x, 0);
         if (changebleStats.IsLookingRight)
         {
             transform.rotation = Quaternion.Euler(0, 90, 0);
