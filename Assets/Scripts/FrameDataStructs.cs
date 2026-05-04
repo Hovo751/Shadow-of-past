@@ -22,12 +22,12 @@ public struct Frame
     public int setAccelerationVertical;
     public bool setAccelerationVbool;
     public Rectengale[] hurtbox;
-    public int hurtboxHit;
-    public int hurtboxDamage;
-    public int hurtboxHitStun;
-    public int hurtboxBlockStun;
+    public int hitboxHit;
+    public int hitboxDamage;
+    public int hitboxHitStun;
+    public int hitboxBlockStun;
     public Rectengale[] hitbox;
     public Rectengale[] blockbox;
     public Rectengale[] throwbox;
-    public Rectengale[] collisionBox;
+    public Rectengale collisionBox;
 }

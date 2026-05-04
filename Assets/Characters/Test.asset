@@ -37,3 +37,6 @@ MonoBehaviour:
   - name: CrouchBack
     data: {fileID: 11400000, guid: 6eafed27dc336534a99ce7e39573d4cc, type: 2}
     nextAnim: 0
+  - name: DashForward
+    data: {fileID: 11400000, guid: 87aace3a03cb72540bd151dca5974af0, type: 2}
+    nextAnim: 0

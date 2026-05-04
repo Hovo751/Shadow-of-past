@@ -1,17 +1,32 @@
 using Coherence.Cloud;
 using Coherence.Toolkit;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
+public static class Animations
+{
+    public const int Idle = 0;
+    public const int WalkBack = 1;
+    public const int WalkForward = 2;
+    public const int JumpStraight = 3;
+    public const int JumpBack = 5;
+    public const int JumpForward = 4;
+    public const int Crouch = 6;
+    public const int CrouchBlock = 7;
+    public const int DashForward = 8;
+}
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
 {
-    //player1.posx > player2.posx --> player1 is looking left player2 is looking right
+
     public bool drawHitbox = true;
 
     public Characters characters;
 
     public Camera _camera;
+    public bool CheckCollision(Rectengale a, Rectengale b)
+    {
+        return Mathf.Abs(a.posX - b.posX) * 2 < (a.sizeX + b.sizeX) &&
+               Mathf.Abs(a.posY - b.posY) * 2 < (a.sizeY + b.sizeY);
+    }
     protected override void SetInputs(CoherenceClientConnection client)
     {
         var player = client.GameObject.GetComponent<Player>();
@@ -105,41 +120,41 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             PlayAnimation(ref result, player, result.PlayerNextAnimation);
         }
-        if (CanCancelInto(result, player, 1) && movement == 4)
+        if (CanCancelInto(result, player, Animations.WalkBack) && movement == 4)
         {
-            PlayAnimation(ref result, player, 1);
+            PlayAnimation(ref result, player, Animations.WalkBack);
         }
-        else if (CanCancelInto(result, player, 2) && movement == 6)
+        else if (CanCancelInto(result, player, Animations.WalkForward) && movement == 6)
         {
-            PlayAnimation(ref result, player, 2);
+            PlayAnimation(ref result, player, Animations.WalkForward);
         }
-        else if (CanCancelInto(result, player, 6) && (movement == 2 || movement == 3))
+        else if (CanCancelInto(result, player, Animations.Crouch) && (movement == 2 || movement == 3))
         {
-            PlayAnimation(ref result, player, 6);
+            PlayAnimation(ref result, player, Animations.Crouch);
         }
-        else if (CanCancelInto(result, player, 7) && movement == 1)
+        else if (CanCancelInto(result, player, Animations.CrouchBlock) && movement == 1)
         {
-            PlayAnimation(ref result, player, 7);
+            PlayAnimation(ref result, player, Animations.CrouchBlock);
         }
-        else if (CanCancelInto(result, player, 3) && movement == 8)
+        else if (CanCancelInto(result, player, Animations.JumpStraight) && movement == 8)
         {
-            PlayAnimation(ref result, player, 3);
+            PlayAnimation(ref result, player, Animations.JumpStraight);
         }
-        else if (CanCancelInto(result, player, 4) && movement == 9)
+        else if (CanCancelInto(result, player, Animations.JumpForward) && movement == 9)
         {
-            PlayAnimation(ref result, player, 4);
+            PlayAnimation(ref result, player, Animations.JumpForward);
         }
-        else if (CanCancelInto(result, player, 5) && movement == 7)
+        else if (CanCancelInto(result, player, Animations.JumpBack) && movement == 7)
         {
-            PlayAnimation(ref result, player, 5);
+            PlayAnimation(ref result, player, Animations.JumpBack);
         }
-        else if (CanCancelInto(result, player, 0) && movement == 5)
+        else if (CanCancelInto(result, player, Animations.Idle) && movement == 5)
         {
-            PlayAnimation(ref result, player, 0);
+            PlayAnimation(ref result, player, Animations.Idle);
         }
 
-        result.PlayerPositionHorizontal += currentAnimation.frames[result.PlayerAnimationFrame].addPosX * direction;
-        result.PlayerPositionVertical += currentAnimation.frames[result.PlayerAnimationFrame].addPosY;
+        currentAnimation = characters.characters[player.character].data[result.PlayerAnimation].data;
+
         if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHbool)
             result.PlayerVelocityHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHorizontal * direction;
         if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVbool)
@@ -153,38 +168,12 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         result.PlayerVelocityVertical += result.PlayerAccelerationVertical;
         result.PlayerPositionHorizontal += result.PlayerVelocityHorizontal;
         result.PlayerPositionVertical += result.PlayerVelocityVertical;
+        result.PlayerPositionHorizontal += currentAnimation.frames[result.PlayerAnimationFrame].addPosX * direction;
+        result.PlayerPositionVertical += currentAnimation.frames[result.PlayerAnimationFrame].addPosY;
 
         if (result.PlayerPositionVertical < 0)
         {
             result.PlayerPositionVertical = 0;
-        }
-
-        if (!isInAir(result))
-        {
-            if (playerNumber == 1)
-            {
-                otherPlayer = AllClients[0].GameObject.GetComponent<Player>();
-                if (otherPlayer.changebleStats.PlayerPositionHorizontal > player.changebleStats.PlayerPositionHorizontal)
-                {
-                    result.IsLookingRight = true;
-                }
-                else
-                {
-                    result.IsLookingRight = false;
-                }
-            }
-            else if (playerNumber == 0)
-            {
-                otherPlayer = AllClients[1].GameObject.GetComponent<Player>();
-                if (player.changebleStats.PlayerPositionHorizontal > otherPlayer.changebleStats.PlayerPositionHorizontal)
-                {
-                    result.IsLookingRight = false;
-                }
-                else
-                {
-                    result.IsLookingRight = true;
-                }
-            }
         }
 
         return result;
@@ -206,6 +195,75 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         PlayerChangebleStats player1Data = CalculatePerPlayer(0, simulationFrame);
         PlayerChangebleStats player2Data = CalculatePerPlayer(1, simulationFrame);
+
+        if (!isInAir(player1Data) && characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].cancelLvl == 0)
+        {
+            if (player1Data.PlayerPositionHorizontal > player2Data.PlayerPositionHorizontal)
+            {
+                player1Data.IsLookingRight = false;
+            }
+            else
+            {
+                player1Data.IsLookingRight = true;
+            }
+        }
+
+        if (!isInAir(player2Data) && characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].cancelLvl == 0)
+        {
+            if (player1Data.PlayerPositionHorizontal > player2Data.PlayerPositionHorizontal)
+            {
+                player2Data.IsLookingRight = true;
+            }
+            else
+            {
+                player2Data.IsLookingRight = false;
+            }
+        }
+
+        int player1Dir = 1;
+
+        if (!player1Data.IsLookingRight)
+        {
+            player1Dir = -1;
+        }
+
+        int player2Dir = 1;
+
+        if (!player2Data.IsLookingRight)
+        {
+            player2Dir = -1;
+        }
+
+        Rectengale player1Collision = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].collisionBox;
+        Rectengale player2Collision = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].collisionBox;
+        player1Collision.posX *= player1Dir;
+        player2Collision.posX *= player2Dir;
+        player1Collision.posX += player1Data.PlayerPositionHorizontal;
+        player1Collision.posY += player1Data.PlayerPositionVertical;
+        player2Collision.posX += player2Data.PlayerPositionHorizontal;
+        player2Collision.posY += player2Data.PlayerPositionVertical;
+        if (CheckCollision(player1Collision, player2Collision))
+        {
+            Rectengale player1CollisionCopy = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].collisionBox;
+            Rectengale player2CollisionCopy = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].collisionBox;
+            int midle = (player1Collision.posX + player2Collision.posX) / 2;
+            if (player1Collision.posX < midle)
+            {
+                player1Data.PlayerPositionHorizontal = midle - player1CollisionCopy.sizeX / 2 - player1CollisionCopy.posX * player1Dir;
+            }
+            else if (player1Collision.posX > midle)
+            {
+                player1Data.PlayerPositionHorizontal = midle + player1CollisionCopy.sizeX / 2 - player1CollisionCopy.posX * player1Dir;
+            }
+            if (player2Collision.posX < midle)
+            {
+                player2Data.PlayerPositionHorizontal = midle - player2CollisionCopy.sizeX / 2 - player2CollisionCopy.posX * player2Dir;
+            }
+            else if (player2Collision.posX > midle)
+            {
+                player2Data.PlayerPositionHorizontal = midle + player2CollisionCopy.sizeX / 2 - player2CollisionCopy.posX * player2Dir;
+            }
+        }
 
         player1.changebleStats = player1Data;
         player2.changebleStats = player2Data;
@@ -283,40 +341,39 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 {
                     dir = -1;
                 }
+                Rectengale rect;
                 Frame frame = anim.frames[player.changebleStats.PlayerAnimationFrame];
                 //hurtbox
                 Gizmos.color = new Color(0f, 0f, 1f, 0.5f);
                 for (int i = 0; i < frame.hurtbox.Length; i++)
                 {
-                    Rectengale rect = frame.hurtbox[i];
+                    rect = frame.hurtbox[i];
                     Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
                 }
                 //hitbox
                 Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
                 for (int i = 0; i < frame.hitbox.Length; i++)
                 {
-                    Rectengale rect = frame.hitbox[i];
+                    rect = frame.hitbox[i];
                     Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
                 }
                 //collisionbox
                 Gizmos.color = new Color(0f, 1f, 0f, 0.5f);
-                for (int i = 0; i < frame.collisionBox.Length; i++)
-                {
-                    Rectengale rect = frame.collisionBox[i];
-                    Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
-                }
+                rect = frame.collisionBox;
+                Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
+
                 //throwbox
                 Gizmos.color = new Color(1f, 0f, 1f, 0.5f);
                 for (int i = 0; i < frame.throwbox.Length; i++)
                 {
-                    Rectengale rect = frame.throwbox[i];
+                    rect = frame.throwbox[i];
                     Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
                 }
                 //blockbox
                 Gizmos.color = new Color(0f, 1f, 1f, 0.5f);
                 for (int i = 0; i < frame.blockbox.Length; i++)
                 {
-                    Rectengale rect = frame.blockbox[i];
+                    rect = frame.blockbox[i];
                     Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
                 }
             }
