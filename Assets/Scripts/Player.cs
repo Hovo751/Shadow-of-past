@@ -8,10 +8,6 @@ using static System.TimeZoneInfo;
 public class Player : MonoBehaviour
 {
     public int character = 0;
-    public int Speed = 50;
-    public int JumpPower = 100;
-    public int JumpPowerSide = 50;
-    public int Gravity = 10;
 
     //public int horizontalPos = -5000;
     //public int horizontalVelocity = 0;
@@ -81,7 +77,16 @@ public class Player : MonoBehaviour
     // Retrieves the "movement" input state for a given frame
     public int GetMovement(long frame)
     {
-        return input.GetInteger("Move", frame);
+        int a;
+        try
+        {
+            a = input.GetInteger("Move", frame);
+        }
+        catch
+        {
+            return -1;
+        }
+        return a;
     }
 
     // Sets the "movement" state for the current frame

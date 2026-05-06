@@ -1,5 +1,7 @@
 using Coherence.Cloud;
 using Coherence.Toolkit;
+using System;
+using System.Linq;
 using UnityEngine;
 public static class Animations
 {
@@ -53,40 +55,18 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             return true;
         return false;
     }
-    private void Jump(ref PlayerChangebleStats result, Player player, int horizontalDir)
-    {
-        result.PlayerVelocityVertical = player.JumpPower;
-        result.PlayerVelocityHorizontal = player.JumpPowerSide * horizontalDir;
-    }
     private PlayerChangebleStats CalculatePerPlayer(int playerNumber, long simulationFrame)
     {
         Player player = AllClients[playerNumber].GameObject.GetComponent<Player>();
         PlayerChangebleStats result = player.changebleStats;
-        Player otherPlayer = null;
 
         int movement = (int)player.GetMovement(simulationFrame);
         if (movement > 9 || movement < 1)
         {
             return player.changebleStats;
         }
-        int horizontalMovement = (movement - 1) % 3 - 1;
-        int verticalMovement = (movement - 1) / 3 - 1;
+
         result.IsInAir = isInAir(result);
-        //if (result.IsInAir)
-        //{
-        //    result.PlayerVelocityVertical -= player.Gravity;
-        //}
-        //else
-        //{
-        //    result.PlayerVelocityVertical = 0;
-        //    result.PlayerPositionVertical = 0;
-        //    result.PlayerVelocityHorizontal = player.Speed * horizontalMovement;
-        //    if (verticalMovement == 1)
-        //    {
-        //        Jump(ref result, player, horizontalMovement);
-        //        PlayAnimation(ref result, player, 3);
-        //    }
-        //}
 
         if (result.PlayerPositionHorizontal < -10000)
         {
@@ -111,7 +91,16 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             }
             direction = -1;
         }
-        
+        FrameInput input = new FrameInput();
+        input.movement = movement;
+        if (result.buffer == null)
+        {
+            result.buffer = new FrameBuffer();
+        }
+        result.buffer.addInput(input);
+
+        MovementInput[] movementBuffer = result.buffer.movementInputs.ToArray();
+
         AnimBase currentAnimation = characters.characters[player.character].data[result.PlayerAnimation].data;
 
         result.PlayerAnimationFrame++;
@@ -124,9 +113,21 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             PlayAnimation(ref result, player, Animations.WalkBack);
         }
-        else if (CanCancelInto(result, player, Animations.WalkForward) && movement == 6)
+        else if (movement == 6)
         {
-            PlayAnimation(ref result, player, Animations.WalkForward);
+            if (movementBuffer.Length > 3 &&
+                    movementBuffer[0].holdTime <= 10 &&
+                    movementBuffer[1].input == 5 && movementBuffer[1].holdTime <= 10 &&
+                    movementBuffer[2].input == 6 && movementBuffer[2].holdTime <= 10 &&
+                    CanCancelInto(result, player, Animations.DashForward))
+            {
+                PlayAnimation(ref result, player, Animations.DashForward);
+            }
+            else if (CanCancelInto(result, player, Animations.WalkForward))
+            {
+
+                PlayAnimation(ref result, player, Animations.WalkForward);
+            }
         }
         else if (CanCancelInto(result, player, Animations.Crouch) && (movement == 2 || movement == 3))
         {

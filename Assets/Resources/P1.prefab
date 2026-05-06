@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc97a814921d461188a38ca20db6787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialBufferSize: 32
+  InitialBufferSize: 64
   InitialInputDelay: 1
   DisconnectOnTimeReset: 0
   DestroyOnInputAuthorityDisconnected: 1
@@ -500,10 +500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: 0
-  Speed: 50
-  JumpPower: 200
-  JumpPowerSide: 100
-  Gravity: 10
   changebleStats:
     PlayerPositionHorizontal: 0
     PlayerPositionVertical: 0
