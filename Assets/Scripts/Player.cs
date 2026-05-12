@@ -33,19 +33,20 @@ public class Player : MonoBehaviour
     private void Update()
     {
         transform.position = new Vector3(changebleStats.PlayerPositionHorizontal / 1000.0f, changebleStats.PlayerPositionVertical / 1000.0f + x, 0);
+        transform.rotation = Quaternion.Euler(0, 90, 0);
         if (changebleStats.IsLookingRight)
         {
-            transform.rotation = Quaternion.Euler(0, 90, 0);
+            transform.localScale = Vector3.one;
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, -90, 0);
+            transform.localScale = new Vector3(1, 1, -1);
         }
         transitionDuration += Time.deltaTime;
         int animId = changebleStats.PlayerAnimation;
         if (animId == 7) animId = 6;
         string animationName = characters.characters[character].data[animId].name;
-        float t = ((float) changebleStats.PlayerAnimationFrame) / characters.characters[character].data[changebleStats.PlayerAnimation].data.frames.Length;
+        float t = ((float)changebleStats.PlayerAnimationFrame) / characters.characters[character].data[changebleStats.PlayerAnimation].data.frames.Length;
         animator.Play(animationName, 0, t);
 
         if (animationName != previousAnim)

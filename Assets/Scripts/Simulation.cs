@@ -1,7 +1,9 @@
 using Coherence.Cloud;
 using Coherence.Toolkit;
+using NUnit.Framework;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 public static class Animations
 {
@@ -14,11 +16,17 @@ public static class Animations
     public const int Crouch = 6;
     public const int CrouchBlock = 7;
     public const int DashForward = 8;
+    public const int DashBackward = 9;
 }
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
 {
-
+    public struct MovementInput
+    {
+        public int input;
+        public int holdTime;
+    }
+    private long validInputFrame = -1;
     public bool drawHitbox = true;
 
     public Characters characters;
@@ -55,27 +63,54 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             return true;
         return false;
     }
+    MovementInput[] SortInputs(int[] arr)
+    {
+        int prevInput = -1;
+        List<MovementInput> movementBuffer = new List<MovementInput>();
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] == prevInput)
+            {
+                MovementInput input = movementBuffer[movementBuffer.Count - 1];
+                input.holdTime++;
+                movementBuffer[movementBuffer.Count - 1] = input;
+            }
+            else
+            {
+                MovementInput input = new MovementInput();
+                input.input = arr[i];
+                input.holdTime = 1;
+
+                movementBuffer.Add(input);
+                prevInput = arr[i];
+            }
+        }
+
+        for (int i = 0; i < movementBuffer.Count; i++)
+        {
+            if (movementBuffer[i].holdTime == 64) break;
+            Debug.Log(
+                "Input: " + movementBuffer[i].input +
+                " HoldTime: " + movementBuffer[i].holdTime
+            );
+        }
+
+        return movementBuffer.ToArray();
+    }
     private PlayerChangebleStats CalculatePerPlayer(int playerNumber, long simulationFrame)
     {
         Player player = AllClients[playerNumber].GameObject.GetComponent<Player>();
         PlayerChangebleStats result = player.changebleStats;
 
         int movement = (int)player.GetMovement(simulationFrame);
+        int[] movementBufferNotSorted = new int[64];
         if (movement > 9 || movement < 1)
         {
             return player.changebleStats;
         }
 
         result.IsInAir = isInAir(result);
-
-        if (result.PlayerPositionHorizontal < -10000)
-        {
-            result.PlayerPositionHorizontal = -10000;
-        }
-        if (result.PlayerPositionHorizontal  > 10000)
-        {
-            result.PlayerPositionHorizontal = 10000;
-        }
 
         int direction = 1;
 
@@ -91,15 +126,30 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             }
             direction = -1;
         }
-        FrameInput input = new FrameInput();
-        input.movement = movement;
-        if (result.buffer == null)
+        for (long i = simulationFrame; i > simulationFrame - 64; i--)
         {
-            result.buffer = new FrameBuffer();
+            if (i >= validInputFrame)
+            {
+                int m = (int)player.GetMovement(i);
+                if (!result.IsLookingRight)
+                {
+                    if (m % 3 == 1)
+                    {
+                        m += 2;
+                    }
+                    else if (m % 3 == 0)
+                    {
+                        m -= 2;
+                    }
+                    direction = -1;
+                }
+                movementBufferNotSorted[(i - simulationFrame) * -1] = m;
+            }
+            else 
+                movementBufferNotSorted[(i - simulationFrame) * -1] = 5;
         }
-        result.buffer.addInput(input);
 
-        MovementInput[] movementBuffer = result.buffer.movementInputs.ToArray();
+        MovementInput[] movementBuffer = SortInputs(movementBufferNotSorted);
 
         AnimBase currentAnimation = characters.characters[player.character].data[result.PlayerAnimation].data;
 
@@ -109,9 +159,21 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             PlayAnimation(ref result, player, result.PlayerNextAnimation);
         }
-        if (CanCancelInto(result, player, Animations.WalkBack) && movement == 4)
+        if (movement == 4)
         {
-            PlayAnimation(ref result, player, Animations.WalkBack);
+            if (movementBuffer.Length > 3 &&
+                    movementBuffer[0].holdTime <= 10 &&
+                    movementBuffer[1].input == 5 && movementBuffer[1].holdTime <= 10 &&
+                    movementBuffer[2].input == 4 && movementBuffer[2].holdTime <= 10 &&
+                    CanCancelInto(result, player, Animations.DashBackward))
+            {
+                PlayAnimation(ref result, player, Animations.DashBackward);
+            }
+            else if (CanCancelInto(result, player, Animations.WalkBack))
+            {
+
+                PlayAnimation(ref result, player, Animations.WalkBack);
+            }
         }
         else if (movement == 6)
         {
@@ -192,6 +254,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             return;
         }
+        if (validInputFrame == -1)
+            validInputFrame = simulationFrame;
         //calculate
 
         PlayerChangebleStats player1Data = CalculatePerPlayer(0, simulationFrame);
@@ -211,13 +275,13 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         if (!isInAir(player2Data) && characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].cancelLvl == 0)
         {
-            if (player1Data.PlayerPositionHorizontal > player2Data.PlayerPositionHorizontal)
+            if (player2Data.PlayerPositionHorizontal > player1Data.PlayerPositionHorizontal)
             {
-                player2Data.IsLookingRight = true;
+                player2Data.IsLookingRight = false;
             }
             else
             {
-                player2Data.IsLookingRight = false;
+                player2Data.IsLookingRight = true;
             }
         }
 
@@ -264,6 +328,24 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             {
                 player2Data.PlayerPositionHorizontal = midle + player2CollisionCopy.sizeX / 2 - player2CollisionCopy.posX * player2Dir;
             }
+        }
+
+        if (player1Data.PlayerPositionHorizontal < -10000)
+        {
+            player1Data.PlayerPositionHorizontal = -10000;
+        }
+        if (player1Data.PlayerPositionHorizontal > 10000)
+        {
+            player1Data.PlayerPositionHorizontal = 10000;
+        }
+
+        if (player2Data.PlayerPositionHorizontal < -10000)
+        {
+            player2Data.PlayerPositionHorizontal = -10000;
+        }
+        if (player2Data.PlayerPositionHorizontal > 10000)
+        {
+            player2Data.PlayerPositionHorizontal = 10000;
         }
 
         player1.changebleStats = player1Data;

@@ -40,3 +40,6 @@ MonoBehaviour:
   - name: DashForward
     data: {fileID: 11400000, guid: 87aace3a03cb72540bd151dca5974af0, type: 2}
     nextAnim: 0
+  - name: DashBackward
+    data: {fileID: 11400000, guid: 68abef0b9a6d14c45b0c73eb9bb92352, type: 2}
+    nextAnim: 0
