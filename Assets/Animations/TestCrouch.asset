@@ -35,10 +35,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hurtboxHit: 0
-    hurtboxDamage: 0
-    hurtboxHitStun: 0
-    hurtboxBlockStun: 0
+    hitboxHit: 0
+    hitboxDamage: 0
+    hitboxHitStun: 0
+    hitboxBlockStun: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -47,7 +47,7 @@ MonoBehaviour:
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-    - posX: -155
-      posY: 1646
-      sizeX: 1000
-      sizeY: 3293
+      posX: 0
+      posY: 0
+      sizeX: 0
+      sizeY: 0

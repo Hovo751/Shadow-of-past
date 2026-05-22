@@ -22,7 +22,8 @@ public struct Frame
     public int setAccelerationVertical;
     public bool setAccelerationVbool;
     public Rectengale[] hurtbox;
-    public int hitboxHit;
+    public int hitboxPush;
+    public int hitboxLand;
     public int hitboxDamage;
     public int hitboxHitStun;
     public int hitboxBlockStun;

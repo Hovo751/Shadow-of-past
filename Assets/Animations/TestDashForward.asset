@@ -22,7 +22,7 @@ MonoBehaviour:
     setVelocityHbool: 1
     setVelocityVertical: 0
     setVelocityVbool: 1
-    setAccelerationHorizontal: 27
+    setAccelerationHorizontal: 28
     setAccelerationHbool: 1
     setAccelerationVertical: 0
     setAccelerationVbool: 1
@@ -310,7 +310,7 @@ MonoBehaviour:
     setVelocityHbool: 0
     setVelocityVertical: 0
     setVelocityVbool: 0
-    setAccelerationHorizontal: -27
+    setAccelerationHorizontal: -28
     setAccelerationHbool: 1
     setAccelerationVertical: 0
     setAccelerationVbool: 0

@@ -11,12 +11,14 @@ public static class Animations
     public const int WalkBack = 1;
     public const int WalkForward = 2;
     public const int JumpStraight = 3;
-    public const int JumpBack = 5;
     public const int JumpForward = 4;
+    public const int JumpBack = 5;
     public const int Crouch = 6;
     public const int CrouchBlock = 7;
     public const int DashForward = 8;
     public const int DashBackward = 9;
+    public const int GetHitUp = 10;
+    public const int GetHitDown = 11;
 }
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
@@ -56,6 +58,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         result.PlayerAnimationFrame = 0;
         result.PlayerAnimation = anim;
         result.PlayerNextAnimation = characters.characters[player.character].data[anim].nextAnim;
+        result.HitLanded = 0;
     }
     bool CanCancelInto(PlayerChangebleStats result, Player player, int anim)
     {
@@ -87,14 +90,14 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             }
         }
 
-        for (int i = 0; i < movementBuffer.Count; i++)
-        {
-            if (movementBuffer[i].holdTime == 64) break;
-            Debug.Log(
-                "Input: " + movementBuffer[i].input +
-                " HoldTime: " + movementBuffer[i].holdTime
-            );
-        }
+        //for (int i = 0; i < movementBuffer.Count; i++)
+        //{
+        //    if (movementBuffer[i].holdTime == 64) break;
+        //    Debug.Log(
+        //        "Input: " + movementBuffer[i].input +
+        //        " HoldTime: " + movementBuffer[i].holdTime
+        //    );
+        //}
 
         return movementBuffer.ToArray();
     }
@@ -155,7 +158,22 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         result.PlayerAnimationFrame++;
 
-        if (currentAnimation.frames.Length <= result.PlayerAnimationFrame)
+        if (result.PlayerAnimation == Animations.GetHitUp)
+        {
+            if (result.PlayerAnimationFrame >= currentAnimation.frames.Length)
+            {
+                result.PlayerAnimationFrame = currentAnimation.frames.Length - 1;
+            }
+            result.InHitstun--;
+            if (result.InHitstun <= 0)
+            {
+                result.PlayerAnimation = Animations.Idle;
+                result.PlayerAnimationFrame = 0;
+                result.InHitstun = 0;
+            }
+        }
+
+        if (currentAnimation.frames.Length <= result.PlayerAnimationFrame && result.PlayerAnimation != Animations.GetHitUp)
         {
             PlayAnimation(ref result, player, result.PlayerNextAnimation);
         }
@@ -218,14 +236,17 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         currentAnimation = characters.characters[player.character].data[result.PlayerAnimation].data;
 
-        if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHbool)
-            result.PlayerVelocityHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHorizontal * direction;
-        if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVbool)
-            result.PlayerVelocityVertical = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVertical;
-        if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHbool)
-            result.PlayerAccelerationHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHorizontal * direction;
-        if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVbool)
-            result.PlayerAccelerationVertical = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVertical;
+        if (result.PlayerAnimation != Animations.GetHitUp)
+        {
+            if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHbool)
+                result.PlayerVelocityHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHorizontal * direction;
+            if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVbool)
+                result.PlayerVelocityVertical = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVertical;
+            if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHbool)
+                result.PlayerAccelerationHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHorizontal * direction;
+            if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVbool)
+                result.PlayerAccelerationVertical = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVertical;
+        }
 
         result.PlayerVelocityHorizontal += result.PlayerAccelerationHorizontal;
         result.PlayerVelocityVertical += result.PlayerAccelerationVertical;
@@ -254,7 +275,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             return;
         }
-        if (validInputFrame == -1)
+        if (validInputFrame == -1 || validInputFrame > simulationFrame)
             validInputFrame = simulationFrame;
         //calculate
 
@@ -328,6 +349,93 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             {
                 player2Data.PlayerPositionHorizontal = midle + player2CollisionCopy.sizeX / 2 - player2CollisionCopy.posX * player2Dir;
             }
+        }
+
+        int player1Gothit = -1;
+        int player2Gothit = -1;
+
+        if (player1Data.HitLanded < characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxLand)
+        {
+            for (int i = 0; i < characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitbox.Length; i++)
+            {
+                for (int j = 0; j < characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hurtbox.Length; j++)
+                {
+                    player1Collision = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitbox[i];
+                    player2Collision = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hurtbox[j];
+                    player1Collision.posX *= player1Dir;
+                    player2Collision.posX *= player2Dir;
+                    player1Collision.posX += player1Data.PlayerPositionHorizontal;
+                    player1Collision.posY += player1Data.PlayerPositionVertical;
+                    player2Collision.posX += player2Data.PlayerPositionHorizontal;
+                    player2Collision.posY += player2Data.PlayerPositionVertical;
+                    if (CheckCollision(player1Collision, player2Collision))
+                    {
+                        if (player1Collision.posY > characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].collisionBox.posY)
+                        {
+                            player2Gothit = Animations.GetHitUp;
+                        }
+                        else
+                        {
+                            player2Gothit = Animations.GetHitDown;
+                        }
+                            break;
+                    }
+                }
+                if (player2Gothit != -1)
+                    break;
+            }
+        }
+
+        if (player2Data.HitLanded < characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxLand)
+        {
+            for (int i = 0; i < characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitbox.Length; i++)
+            {
+                for (int j = 0; j < characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hurtbox.Length; j++)
+                {
+                    player1Collision = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hurtbox[j];
+                    player2Collision = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitbox[i];
+                    player1Collision.posX *= player1Dir;
+                    player2Collision.posX *= player2Dir;
+                    player1Collision.posX += player1Data.PlayerPositionHorizontal;
+                    player1Collision.posY += player1Data.PlayerPositionVertical;
+                    player2Collision.posX += player2Data.PlayerPositionHorizontal;
+                    player2Collision.posY += player2Data.PlayerPositionVertical;
+                    if (CheckCollision(player1Collision, player2Collision))
+                    {
+                        if (player2Collision.posY > characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].collisionBox.posY)
+                        {
+                            player1Gothit = Animations.GetHitUp;
+                        }
+                        else
+                        {
+                            player1Gothit = Animations.GetHitDown;
+                        }
+                        break;
+                    }
+                }
+                if (player1Gothit != -1)
+                    break;
+            }
+        }
+
+        if (player1Gothit != -1)
+        {
+            player1Data.InHitstun = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxHitStun;
+            player1Data.PlayerAnimation = player1Gothit;
+            player1Data.PlayerAnimationFrame = 0;
+            player1Data.PlayerNextAnimation = Animations.Idle;
+            player1Data.PlayerVelocityHorizontal = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxPush * player2Dir;
+            player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+        }
+
+        if (player2Gothit != -1)
+        {
+            player2Data.InHitstun = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxHitStun;
+            player2Data.PlayerAnimation = player2Gothit;
+            player2Data.PlayerAnimationFrame = 0;
+            player2Data.PlayerNextAnimation = Animations.Idle;
+            player2Data.PlayerVelocityHorizontal = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxPush * player1Dir;
+            player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
         }
 
         if (player1Data.PlayerPositionHorizontal < -10000)

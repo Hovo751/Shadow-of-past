@@ -43,3 +43,9 @@ MonoBehaviour:
   - name: DashBackward
     data: {fileID: 11400000, guid: 68abef0b9a6d14c45b0c73eb9bb92352, type: 2}
     nextAnim: 0
+  - name: GetHitUp
+    data: {fileID: 11400000, guid: 1d282613c2a1ceb4ba501981f213c9d6, type: 2}
+    nextAnim: 0
+  - name: GetHitDown
+    data: {fileID: 11400000, guid: 1d282613c2a1ceb4ba501981f213c9d6, type: 2}
+    nextAnim: 0
