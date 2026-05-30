@@ -106,14 +106,14 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         Player player = AllClients[playerNumber].GameObject.GetComponent<Player>();
         PlayerChangebleStats result = player.changebleStats;
 
+        //Obtaining the players input
+
         int movement = (int)player.GetMovement(simulationFrame);
         int[] movementBufferNotSorted = new int[64];
         if (movement > 9 || movement < 1)
         {
             return player.changebleStats;
         }
-
-        result.IsInAir = isInAir(result);
 
         int direction = 1;
 
@@ -154,11 +154,15 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         MovementInput[] movementBuffer = SortInputs(movementBufferNotSorted);
 
+        result.IsInAir = isInAir(result);
+
+        //Stepping over to next frame of animation and changing it based on the inputs
+
         AnimBase currentAnimation = characters.characters[player.character].data[result.PlayerAnimation].data;
 
         result.PlayerAnimationFrame++;
 
-        if (result.PlayerAnimation == Animations.GetHitUp)
+        if (result.PlayerAnimation == Animations.GetHitUp || result.PlayerAnimation == Animations.GetHitDown)
         {
             if (result.PlayerAnimationFrame >= currentAnimation.frames.Length)
             {
@@ -236,17 +240,14 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         currentAnimation = characters.characters[player.character].data[result.PlayerAnimation].data;
 
-        if (result.PlayerAnimation != Animations.GetHitUp)
-        {
-            if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHbool)
-                result.PlayerVelocityHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHorizontal * direction;
-            if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVbool)
-                result.PlayerVelocityVertical = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVertical;
-            if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHbool)
-                result.PlayerAccelerationHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHorizontal * direction;
-            if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVbool)
-                result.PlayerAccelerationVertical = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVertical;
-        }
+        if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHbool)
+            result.PlayerVelocityHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHorizontal * direction;
+        if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVbool)
+            result.PlayerVelocityVertical = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVertical;
+        if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHbool)
+            result.PlayerAccelerationHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHorizontal * direction;
+        if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVbool)
+            result.PlayerAccelerationVertical = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVertical;
 
         result.PlayerVelocityHorizontal += result.PlayerAccelerationHorizontal;
         result.PlayerVelocityVertical += result.PlayerAccelerationVertical;
@@ -254,6 +255,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         result.PlayerPositionVertical += result.PlayerVelocityVertical;
         result.PlayerPositionHorizontal += currentAnimation.frames[result.PlayerAnimationFrame].addPosX * direction;
         result.PlayerPositionVertical += currentAnimation.frames[result.PlayerAnimationFrame].addPosY;
+
+        //Making sure that the player doesn't fall of the ground
 
         if (result.PlayerPositionVertical < 0)
         {
@@ -277,10 +280,13 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         }
         if (validInputFrame == -1 || validInputFrame > simulationFrame)
             validInputFrame = simulationFrame;
-        //calculate
+
+        //Calculating the players position based on velocity and acceleration and also playing animations based on players inputs
 
         PlayerChangebleStats player1Data = CalculatePerPlayer(0, simulationFrame);
         PlayerChangebleStats player2Data = CalculatePerPlayer(1, simulationFrame);
+
+        //Setting which way the players look
 
         if (!isInAir(player1Data) && characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].cancelLvl == 0)
         {
@@ -320,6 +326,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             player2Dir = -1;
         }
 
+        //Collision Box collision check (aka. make sure that the players are far enough from each other)
+
         Rectengale player1Collision = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].collisionBox;
         Rectengale player2Collision = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].collisionBox;
         player1Collision.posX *= player1Dir;
@@ -350,6 +358,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 player2Data.PlayerPositionHorizontal = midle + player2CollisionCopy.sizeX / 2 - player2CollisionCopy.posX * player2Dir;
             }
         }
+
+        //Detecting if anyone landed a hit
 
         int player1Gothit = -1;
         int player2Gothit = -1;
@@ -418,8 +428,11 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             }
         }
 
+        //Apply the required data if pl1 or pl2 got hit
+
         if (player1Gothit != -1)
         {
+            Debug.Log("Player1 got hit");
             player1Data.InHitstun = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxHitStun;
             player1Data.PlayerAnimation = player1Gothit;
             player1Data.PlayerAnimationFrame = 0;
@@ -430,6 +443,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         if (player2Gothit != -1)
         {
+            Debug.Log("Player2 got hit");
             player2Data.InHitstun = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxHitStun;
             player2Data.PlayerAnimation = player2Gothit;
             player2Data.PlayerAnimationFrame = 0;
@@ -437,6 +451,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             player2Data.PlayerVelocityHorizontal = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxPush * player1Dir;
             player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
         }
+
+        //Making sure that the players are not out of bounds
 
         if (player1Data.PlayerPositionHorizontal < -10000)
         {
@@ -455,6 +471,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             player2Data.PlayerPositionHorizontal = 10000;
         }
+
+        //Applying the changes
 
         player1.changebleStats = player1Data;
         player2.changebleStats = player2Data;

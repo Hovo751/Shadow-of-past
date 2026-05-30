@@ -19,13 +19,13 @@ MonoBehaviour:
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: -147
       posY: 1753
@@ -56,13 +56,13 @@ MonoBehaviour:
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: -147
       posY: 1753
@@ -93,13 +93,13 @@ MonoBehaviour:
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: -147
       posY: 1753
@@ -130,13 +130,13 @@ MonoBehaviour:
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: -147
       posY: 1753
@@ -167,13 +167,13 @@ MonoBehaviour:
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: -147
       posY: 1753
@@ -204,13 +204,13 @@ MonoBehaviour:
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: -147
       posY: 1753
@@ -241,13 +241,13 @@ MonoBehaviour:
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: -147
       posY: 1753
@@ -278,13 +278,13 @@ MonoBehaviour:
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: -147
       posY: 1753
@@ -315,13 +315,13 @@ MonoBehaviour:
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: -147
       posY: 1753
@@ -352,13 +352,13 @@ MonoBehaviour:
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: -147
       posY: 1753
@@ -389,13 +389,13 @@ MonoBehaviour:
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: -147
       posY: 1753
@@ -426,13 +426,13 @@ MonoBehaviour:
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: -147
       posY: 1753
