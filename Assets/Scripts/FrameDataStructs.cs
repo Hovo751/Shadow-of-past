@@ -26,6 +26,7 @@ public struct Frame
     public int hitboxLand;
     public int hitboxDamage;
     public int hitboxHitStun;
+    public int hitStop;
     public int hitboxBlockStun;
     public Rectengale[] hitbox;
     public Rectengale[] blockbox;

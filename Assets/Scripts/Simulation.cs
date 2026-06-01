@@ -29,6 +29,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         public int holdTime;
     }
     private long validInputFrame = -1;
+    private int skipFrames = 0;
     public bool drawHitbox = true;
 
     public Characters characters;
@@ -281,6 +282,15 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         if (validInputFrame == -1 || validInputFrame > simulationFrame)
             validInputFrame = simulationFrame;
 
+        if (skipFrames > 0) { 
+            skipFrames--;
+            player1.skip = true;
+            player2.skip = true;
+            return;
+        }
+        player1.skip = false;
+        player2.skip = false;
+
         //Calculating the players position based on velocity and acceleration and also playing animations based on players inputs
 
         PlayerChangebleStats player1Data = CalculatePerPlayer(0, simulationFrame);
@@ -439,6 +449,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             player1Data.PlayerNextAnimation = Animations.Idle;
             player1Data.PlayerVelocityHorizontal = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxPush * player2Dir;
             player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+            skipFrames = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitStop;
         }
 
         if (player2Gothit != -1)
@@ -450,6 +461,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             player2Data.PlayerNextAnimation = Animations.Idle;
             player2Data.PlayerVelocityHorizontal = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxPush * player1Dir;
             player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+            skipFrames = Mathf.Max(skipFrames, characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitStop);
         }
 
         //Making sure that the players are not out of bounds
@@ -486,12 +498,14 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             Player player = AllClients[i].GameObject.GetComponent<Player>();
             player.changebleStats = state.PlayerData[i];
         }
+        skipFrames = state.skipFrames;
     }
 
     protected override SimulationState CreateState()
     {
         var simulationState = new SimulationState { 
             PlayerData = new PlayerChangebleStats[AllClients.Count] ,
+            skipFrames = skipFrames,
         };
         for (var i = 0; i < AllClients.Count; i++)
         {

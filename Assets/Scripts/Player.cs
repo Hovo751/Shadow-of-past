@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public Animator animator;
     public Characters characters;
     public float x;
+    public bool skip = false;
 
     private CoherenceInput input;
     private float transitionDuration = 1.0f;
@@ -42,7 +43,8 @@ public class Player : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, -1);
         }
-        transitionDuration += Time.deltaTime;
+        if (!skip)
+            transitionDuration += Time.deltaTime;
         int animId = changebleStats.PlayerAnimation;
         if (animId == 7) animId = 6;
         string animationName = characters.characters[character].data[animId].name;

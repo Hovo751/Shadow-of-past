@@ -5,6 +5,7 @@ using UnityEngine;
 public struct SimulationState
 {
     public PlayerChangebleStats[] PlayerData;
+    public int skipFrames;
 }
 [System.Serializable]
 public struct PlayerChangebleStats
