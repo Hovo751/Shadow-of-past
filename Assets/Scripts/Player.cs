@@ -1,7 +1,9 @@
 using Coherence.Toolkit;
 using TMPro;
 using UnityEngine;
+using static Simulation;
 using static System.TimeZoneInfo;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 [RequireComponent(typeof(CoherenceSync))]
 [RequireComponent(typeof(CoherenceInput))]
@@ -47,8 +49,8 @@ public class Player : MonoBehaviour
             transitionDuration += Time.deltaTime;
         int animId = changebleStats.PlayerAnimation;
         if (animId == 7) animId = 6;
-        string animationName = characters.characters[character].data[animId].name;
-        float t = ((float)changebleStats.PlayerAnimationFrame) / characters.characters[character].data[changebleStats.PlayerAnimation].data.frames.Length;
+        string animationName = characters.characters[character].animations[animId].name;
+        float t = ((float)changebleStats.PlayerAnimationFrame) / characters.characters[character].animations[changebleStats.PlayerAnimation].data.frames.Length;
         animator.Play(animationName, 0, t);
 
         if (animationName != previousAnim)
@@ -78,24 +80,26 @@ public class Player : MonoBehaviour
     }
 
     // Retrieves the "movement" input state for a given frame
-    public int GetMovement(long frame)
+    public MovementAndButtonInput GetInput(long frame)
     {
-        int a;
-        try
-        {
-            a = input.GetInteger("Move", frame);
-        }
-        catch
-        {
-            return -1;
-        }
+        MovementAndButtonInput a;
+        a.movement = input.GetInteger("Move", frame);
+        a.light = input.GetButton("Light", frame);
+        a.medium = input.GetButton("Medium", frame);
+        a.heavy = input.GetButton("Heavy", frame);
         return a;
     }
 
     // Sets the "movement" state for the current frame
-    public void SetMovement()
+    public void SetInput()
     {
         int movement = 5 + (int)Input.GetAxis("Horizontal") + (int)Input.GetAxis("Vertical") * 3;
         input.SetInteger("Move", movement);
+        bool light = Input.GetButton("Fire1");
+        bool medium = Input.GetButton("Fire2");
+        bool heavy = Input.GetButton("Fire3");
+        input.SetButton("Light", light);
+        input.SetButton("Medium", medium);
+        input.SetButton("Heavy", heavy);
     }
 }

@@ -11,5 +11,5 @@ public class Character : ScriptableObject
         public AnimBase data;
         public int nextAnim;
     }
-    public AnimationData[] data;
+    public AnimationData[] animations;
 }

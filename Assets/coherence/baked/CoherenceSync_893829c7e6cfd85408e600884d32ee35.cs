@@ -254,6 +254,15 @@ namespace Coherence.Generated
         {
             switch (name)
             {
+                case "Light":
+                    currentInput.Light = value;
+                    break;
+                case "Medium":
+                    currentInput.Medium = value;
+                    break;
+                case "Heavy":
+                    currentInput.Heavy = value;
+                    break;
                 default:
                     logger.Error(Coherence.Log.Error.ToolkitInputMissingInput, $"No input button of name: {name}.");
                     break;
@@ -355,6 +364,24 @@ namespace Coherence.Generated
             
             switch (name)
             {
+                case "Light":
+                    if (ShouldPollCurrentInput(frame))
+                    {
+                        return currentInput.Light;
+                    }
+                    return input.Light;
+                case "Medium":
+                    if (ShouldPollCurrentInput(frame))
+                    {
+                        return currentInput.Medium;
+                    }
+                    return input.Medium;
+                case "Heavy":
+                    if (ShouldPollCurrentInput(frame))
+                    {
+                        return currentInput.Heavy;
+                    }
+                    return input.Heavy;
                 default:
                     logger.Error(Coherence.Log.Error.ToolkitInputMissingInput, $"No input button of name: {name}.");
                     break;

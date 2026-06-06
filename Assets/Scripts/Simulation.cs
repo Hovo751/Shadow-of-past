@@ -19,6 +19,7 @@ public static class Animations
     public const int DashBackward = 9;
     public const int GetHitUp = 10;
     public const int GetHitDown = 11;
+    public const int Light = 12;
 }
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
@@ -27,6 +28,13 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     {
         public int input;
         public int holdTime;
+    }
+    public struct MovementAndButtonInput
+    {
+        public int movement;
+        public bool light;
+        public bool medium;
+        public bool heavy;
     }
     private long validInputFrame = -1;
     private int skipFrames = 0;
@@ -43,7 +51,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     protected override void SetInputs(CoherenceClientConnection client)
     {
         var player = client.GameObject.GetComponent<Player>();
-        player.SetMovement();
+        player.SetInput();
     }
 
     private bool isInAir(PlayerChangebleStats player)
@@ -58,12 +66,12 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     {
         result.PlayerAnimationFrame = 0;
         result.PlayerAnimation = anim;
-        result.PlayerNextAnimation = characters.characters[player.character].data[anim].nextAnim;
+        result.PlayerNextAnimation = characters.characters[player.character].animations[anim].nextAnim;
         result.HitLanded = 0;
     }
     bool CanCancelInto(PlayerChangebleStats result, Player player, int anim)
     {
-        if (result.PlayerAnimation != anim && characters.characters[player.character].data[result.PlayerAnimation].data.frames[result.PlayerAnimationFrame].cancelLvl <= characters.characters[player.character].data[1].data.cancelLvl && characters.characters[player.character].data[1].data.inAir == isInAir(result))
+        if (result.PlayerAnimation != anim && characters.characters[player.character].animations[result.PlayerAnimation].data.frames[result.PlayerAnimationFrame].cancelLvl <= characters.characters[player.character].animations[anim].data.cancelLvl && characters.characters[player.character].animations[1].data.inAir == isInAir(result))
             return true;
         return false;
     }
@@ -109,7 +117,9 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         //Obtaining the players input
 
-        int movement = (int)player.GetMovement(simulationFrame);
+        MovementAndButtonInput input = player.GetInput(simulationFrame);
+        int movement = (int)input.movement;
+
         int[] movementBufferNotSorted = new int[64];
         if (movement > 9 || movement < 1)
         {
@@ -134,7 +144,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             if (i >= validInputFrame)
             {
-                int m = (int)player.GetMovement(i);
+                MovementAndButtonInput inputPast = player.GetInput(i);
+                int m = (int)inputPast.movement;
                 if (!result.IsLookingRight)
                 {
                     if (m % 3 == 1)
@@ -159,7 +170,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         //Stepping over to next frame of animation and changing it based on the inputs
 
-        AnimBase currentAnimation = characters.characters[player.character].data[result.PlayerAnimation].data;
+        AnimBase currentAnimation = characters.characters[player.character].animations[result.PlayerAnimation].data;
 
         result.PlayerAnimationFrame++;
 
@@ -181,6 +192,10 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         if (currentAnimation.frames.Length <= result.PlayerAnimationFrame && result.PlayerAnimation != Animations.GetHitUp)
         {
             PlayAnimation(ref result, player, result.PlayerNextAnimation);
+        }
+        if (input.light && CanCancelInto(result, player, Animations.Light))
+        {
+            PlayAnimation(ref result, player, Animations.Light);
         }
         if (movement == 4)
         {
@@ -239,7 +254,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             PlayAnimation(ref result, player, Animations.Idle);
         }
 
-        currentAnimation = characters.characters[player.character].data[result.PlayerAnimation].data;
+        currentAnimation = characters.characters[player.character].animations[result.PlayerAnimation].data;
 
         if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHbool)
             result.PlayerVelocityHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHorizontal * direction;
@@ -272,8 +287,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         Player player1 = AllClients[0].GameObject.GetComponent<Player>();
         Player player2 = AllClients[1].GameObject.GetComponent<Player>();
 
-        int movement = (int)player1.GetMovement(simulationFrame);
-        int movement2 = (int)player2.GetMovement(simulationFrame);
+        int movement = (int)player1.GetInput(simulationFrame).movement;
+        int movement2 = (int)player2.GetInput(simulationFrame).movement;
 
         if (movement > 9 || movement < 1 || movement2 > 9 || movement2 < 1)
         {
@@ -298,7 +313,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         //Setting which way the players look
 
-        if (!isInAir(player1Data) && characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].cancelLvl == 0)
+        if (!isInAir(player1Data) && characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].cancelLvl == 0)
         {
             if (player1Data.PlayerPositionHorizontal > player2Data.PlayerPositionHorizontal)
             {
@@ -310,7 +325,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             }
         }
 
-        if (!isInAir(player2Data) && characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].cancelLvl == 0)
+        if (!isInAir(player2Data) && characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].cancelLvl == 0)
         {
             if (player2Data.PlayerPositionHorizontal > player1Data.PlayerPositionHorizontal)
             {
@@ -338,8 +353,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         //Collision Box collision check (aka. make sure that the players are far enough from each other)
 
-        Rectengale player1Collision = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].collisionBox;
-        Rectengale player2Collision = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].collisionBox;
+        Rectengale player1Collision = characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].collisionBox;
+        Rectengale player2Collision = characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].collisionBox;
         player1Collision.posX *= player1Dir;
         player2Collision.posX *= player2Dir;
         player1Collision.posX += player1Data.PlayerPositionHorizontal;
@@ -348,8 +363,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         player2Collision.posY += player2Data.PlayerPositionVertical;
         if (CheckCollision(player1Collision, player2Collision))
         {
-            Rectengale player1CollisionCopy = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].collisionBox;
-            Rectengale player2CollisionCopy = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].collisionBox;
+            Rectengale player1CollisionCopy = characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].collisionBox;
+            Rectengale player2CollisionCopy = characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].collisionBox;
             int midle = (player1Collision.posX + player2Collision.posX) / 2;
             if (player1Collision.posX < midle)
             {
@@ -374,14 +389,14 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         int player1Gothit = -1;
         int player2Gothit = -1;
 
-        if (player1Data.HitLanded < characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxLand)
+        if (player1Data.HitLanded < characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxLand)
         {
-            for (int i = 0; i < characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitbox.Length; i++)
+            for (int i = 0; i < characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitbox.Length; i++)
             {
-                for (int j = 0; j < characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hurtbox.Length; j++)
+                for (int j = 0; j < characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hurtbox.Length; j++)
                 {
-                    player1Collision = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitbox[i];
-                    player2Collision = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hurtbox[j];
+                    player1Collision = characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitbox[i];
+                    player2Collision = characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hurtbox[j];
                     player1Collision.posX *= player1Dir;
                     player2Collision.posX *= player2Dir;
                     player1Collision.posX += player1Data.PlayerPositionHorizontal;
@@ -390,7 +405,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                     player2Collision.posY += player2Data.PlayerPositionVertical;
                     if (CheckCollision(player1Collision, player2Collision))
                     {
-                        if (player1Collision.posY > characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].collisionBox.posY)
+                        if (player1Collision.posY > characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].collisionBox.posY)
                         {
                             player2Gothit = Animations.GetHitUp;
                         }
@@ -406,14 +421,14 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             }
         }
 
-        if (player2Data.HitLanded < characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxLand)
+        if (player2Data.HitLanded < characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxLand)
         {
-            for (int i = 0; i < characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitbox.Length; i++)
+            for (int i = 0; i < characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitbox.Length; i++)
             {
-                for (int j = 0; j < characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hurtbox.Length; j++)
+                for (int j = 0; j < characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hurtbox.Length; j++)
                 {
-                    player1Collision = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hurtbox[j];
-                    player2Collision = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitbox[i];
+                    player1Collision = characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hurtbox[j];
+                    player2Collision = characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitbox[i];
                     player1Collision.posX *= player1Dir;
                     player2Collision.posX *= player2Dir;
                     player1Collision.posX += player1Data.PlayerPositionHorizontal;
@@ -422,7 +437,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                     player2Collision.posY += player2Data.PlayerPositionVertical;
                     if (CheckCollision(player1Collision, player2Collision))
                     {
-                        if (player2Collision.posY > characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].collisionBox.posY)
+                        if (player2Collision.posY > characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].collisionBox.posY)
                         {
                             player1Gothit = Animations.GetHitUp;
                         }
@@ -443,25 +458,41 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         if (player1Gothit != -1)
         {
             Debug.Log("Player1 got hit");
-            player1Data.InHitstun = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxHitStun;
+            player1Data.InHitstun = characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxHitStun;
             player1Data.PlayerAnimation = player1Gothit;
             player1Data.PlayerAnimationFrame = 0;
             player1Data.PlayerNextAnimation = Animations.Idle;
-            player1Data.PlayerVelocityHorizontal = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxPush * player2Dir;
-            player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
-            skipFrames = characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitStop;
+            if (player1Data.PlayerPositionHorizontal <= -10000 || player1Data.PlayerPositionHorizontal >= 10000)
+            {
+                player2Data.PlayerVelocityHorizontal = -characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxPush * player2Dir;
+                player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+            }
+            else
+            {
+                player1Data.PlayerVelocityHorizontal = characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxPush * player2Dir;
+                player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+            }
+            skipFrames = characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitStop;
         }
 
         if (player2Gothit != -1)
         {
             Debug.Log("Player2 got hit");
-            player2Data.InHitstun = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxHitStun;
+            player2Data.InHitstun = characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxHitStun;
             player2Data.PlayerAnimation = player2Gothit;
             player2Data.PlayerAnimationFrame = 0;
             player2Data.PlayerNextAnimation = Animations.Idle;
-            player2Data.PlayerVelocityHorizontal = characters.characters[player1.character].data[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxPush * player1Dir;
-            player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
-            skipFrames = Mathf.Max(skipFrames, characters.characters[player2.character].data[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitStop);
+            if (player2Data.PlayerPositionHorizontal <= -10000 || player2Data.PlayerPositionHorizontal >= 10000)
+            {
+                player1Data.PlayerVelocityHorizontal = -characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxPush * player1Dir;
+                player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+            }
+            else
+            {
+                player2Data.PlayerVelocityHorizontal = characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxPush * player1Dir;
+                player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+            }
+            skipFrames = Mathf.Max(skipFrames, characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitStop);
         }
 
         //Making sure that the players are not out of bounds
@@ -558,7 +589,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                     otherPlayer = AllClients[1].GameObject.GetComponent<Player>();
                 }
                 k++;
-                AnimBase anim = characters.characters[player.character].data[player.changebleStats.PlayerAnimation].data;
+                AnimBase anim = characters.characters[player.character].animations[player.changebleStats.PlayerAnimation].data;
                 float dir = 1;
                 if (!player.changebleStats.IsLookingRight)
                 {

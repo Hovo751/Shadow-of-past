@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23dbe6c68d063ee4dbe2e753253c1119, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  data:
+  animations:
   - name: Idle
     data: {fileID: 11400000, guid: d1e11a49896bbf3428c65e9d63bd4dc7, type: 2}
     nextAnim: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
     data: {fileID: 11400000, guid: 6eafed27dc336534a99ce7e39573d4cc, type: 2}
     nextAnim: 0
   - name: CrouchBack
-    data: {fileID: 11400000, guid: 6eafed27dc336534a99ce7e39573d4cc, type: 2}
+    data: {fileID: 11400000, guid: c761b6d713b21db488d700dd446257f6, type: 2}
     nextAnim: 0
   - name: DashForward
     data: {fileID: 11400000, guid: 87aace3a03cb72540bd151dca5974af0, type: 2}
@@ -48,4 +48,7 @@ MonoBehaviour:
     nextAnim: 0
   - name: GetHitDown
     data: {fileID: 11400000, guid: 1d282613c2a1ceb4ba501981f213c9d6, type: 2}
+    nextAnim: 0
+  - name: Light
+    data: {fileID: 11400000, guid: b3a286c1be2840043a634c38ed0a20ad, type: 2}
     nextAnim: 0

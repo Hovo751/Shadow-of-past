@@ -25,18 +25,27 @@ namespace Coherence.Generated
         {
             [FieldOffset(0)]
             public System.Int32 Move;
+            [FieldOffset(4)]
+            public System.Byte Light;
+            [FieldOffset(5)]
+            public System.Byte Medium;
+            [FieldOffset(6)]
+            public System.Byte Heavy;
         }
 
         public static unsafe _893829c7e6cfd85408e600884d32ee35 FromInterop(System.IntPtr data, System.Int32 dataSize)
         {
-            if (dataSize != 4) {
-                throw new System.Exception($"Given data size is not equal to the struct size. ({dataSize} != 4) " +
+            if (dataSize != 7) {
+                throw new System.Exception($"Given data size is not equal to the struct size. ({dataSize} != 7) " +
                     "for input with ID 0");
             }
 
             var orig = new _893829c7e6cfd85408e600884d32ee35();
             var comp = (Interop*)data;
             orig.Move = comp->Move;
+            orig.Light = comp->Light != 0;
+            orig.Medium = comp->Medium != 0;
+            orig.Heavy = comp->Heavy != 0;
             return orig;
         }
 
@@ -51,11 +60,17 @@ namespace Coherence.Generated
         private bool isRemoteInput;
 
         public System.Int32 Move;
+        public System.Boolean Light;
+        public System.Boolean Medium;
+        public System.Boolean Heavy;
 
         public _893829c7e6cfd85408e600884d32ee35(
         Entity entity,
         long frame,
         System.Int32 Move,
+        System.Boolean Light,
+        System.Boolean Medium,
+        System.Boolean Heavy,
         bool isRemoteInput)
         {
             this.Entity = entity;
@@ -66,11 +81,14 @@ namespace Coherence.Generated
             this.Frame = frame;
             this.isRemoteInput = isRemoteInput;
             this.Move = Move;
+            this.Light = Light;
+            this.Medium = Medium;
+            this.Heavy = Heavy;
         }
 
         public override string ToString()
         {
-            return $"Entity: {Entity}, Frame: {Frame}, Inputs: [Move:{Move}]";
+            return $"Entity: {Entity}, Frame: {Frame}, Inputs: [Move:{Move}, Light:{Light}, Medium:{Medium}, Heavy:{Heavy}]";
         }
 
         public IEntityMessage Clone()
@@ -109,23 +127,35 @@ namespace Coherence.Generated
         public bool Equals(_893829c7e6cfd85408e600884d32ee35 other)
         {
             return
-                this.Move == other.Move;
+                this.Move == other.Move&&
+                this.Light == other.Light&&
+                this.Medium == other.Medium&&
+                this.Heavy == other.Heavy;
         }
 
         public static void Serialize(_893829c7e6cfd85408e600884d32ee35 inputData, IOutProtocolBitStream bitStream)
         {
             bitStream.WriteIntegerRange(inputData.Move, 32, -2147483648);
+            bitStream.WriteBool(inputData.Light);
+            bitStream.WriteBool(inputData.Medium);
+            bitStream.WriteBool(inputData.Heavy);
         }
 
         public static _893829c7e6cfd85408e600884d32ee35 Deserialize(IInProtocolBitStream bitStream, Entity entity, long frame)
         {
             var dataMove = bitStream.ReadIntegerRange(32, -2147483648);
+            var dataLight = bitStream.ReadBool();
+            var dataMedium = bitStream.ReadBool();
+            var dataHeavy = bitStream.ReadBool();
 
             return new _893829c7e6cfd85408e600884d32ee35()
             {
                 Entity = entity,
                 Frame = frame,
                 Move = dataMove,
+                Light = dataLight,
+                Medium = dataMedium,
+                Heavy = dataHeavy,
                 isRemoteInput = true
             };
         }

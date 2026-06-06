@@ -487,6 +487,12 @@ MonoBehaviour:
   fields:
   - name: Move
     type: 6
+  - name: Light
+    type: 1
+  - name: Medium
+    type: 1
+  - name: Heavy
+    type: 1
 --- !u!114 &4071262622471428003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,9 +523,8 @@ MonoBehaviour:
   animator: {fileID: 3136657249523467253}
   characters: {fileID: 11400000, guid: d069c27ff20b28340a6213ba28a5d6b7, type: 2}
   x: 0.5
-  previousAnim: 
-  previousAnimSaved: 
-  transitionTime: 0.1
+  skip: 0
+  transitionTime: 0.05
 --- !u!1001 &3198759950145288250
 PrefabInstance:
   m_ObjectHideFlags: 0

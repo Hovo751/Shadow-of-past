@@ -368,8 +368,11 @@ namespace Coherence.Generated
                     var val = new _893829c7e6cfd85408e600884d32ee35.Interop();
 
                     val.Move = orig.Move;
+                    val.Light = orig.Light ? (System.Byte)1 : (System.Byte)0;
+                    val.Medium = orig.Medium ? (System.Byte)1 : (System.Byte)0;
+                    val.Heavy = orig.Heavy ? (System.Byte)1 : (System.Byte)0;
 
-                    sender.SendInput(entity, frame, type, val, 4);
+                    sender.SendInput(entity, frame, type, val, 7);
 
                     return;
                 }
