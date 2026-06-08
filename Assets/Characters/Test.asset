@@ -52,3 +52,6 @@ MonoBehaviour:
   - name: Light
     data: {fileID: 11400000, guid: b3a286c1be2840043a634c38ed0a20ad, type: 2}
     nextAnim: 0
+  - name: Medium
+    data: {fileID: 11400000, guid: 00226cd97f1aa6846b4df5555ac7bdf2, type: 2}
+    nextAnim: 0

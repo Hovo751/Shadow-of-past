@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public Characters characters;
     public float x;
     public bool skip = false;
+    public GameObject hitParticle;
 
     private CoherenceInput input;
     private float transitionDuration = 1.0f;
@@ -101,5 +102,16 @@ public class Player : MonoBehaviour
         input.SetButton("Light", light);
         input.SetButton("Medium", medium);
         input.SetButton("Heavy", heavy);
+    }
+    public void PlayHit(Vector3 pos)
+    {
+        pos /= 1000f;
+        GameObject newParticle =  Instantiate(hitParticle);
+        newParticle.transform.position = pos;
+        ParticleSystem particleSystem = newParticle.GetComponent<ParticleSystem>();
+        if (particleSystem != null)
+        {
+            particleSystem.Emit(30);
+        }
     }
 }
