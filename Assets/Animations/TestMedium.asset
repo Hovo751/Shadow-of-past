@@ -41,6 +41,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -79,6 +80,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -117,6 +119,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -155,6 +158,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -193,6 +197,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -229,13 +234,14 @@ MonoBehaviour:
     hitboxLand: 1
     hitboxDamage: 0
     hitboxHitStun: 15
-    hitStop: 0
+    hitStop: 6
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox:
     - posX: 750
-      posY: 2182
+      posY: 3000
       sizeX: 1603
-      sizeY: 1414
+      sizeY: 500
     blockbox: []
     throwbox:
     - posX: -147
@@ -271,13 +277,14 @@ MonoBehaviour:
     hitboxLand: 1
     hitboxDamage: 0
     hitboxHitStun: 15
-    hitStop: 0
+    hitStop: 6
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox:
     - posX: 750
-      posY: 2182
+      posY: 3000
       sizeX: 1603
-      sizeY: 1414
+      sizeY: 500
     blockbox: []
     throwbox:
     - posX: -147
@@ -313,13 +320,14 @@ MonoBehaviour:
     hitboxLand: 1
     hitboxDamage: 0
     hitboxHitStun: 15
-    hitStop: 0
+    hitStop: 6
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox:
     - posX: 750
-      posY: 2182
+      posY: 3000
       sizeX: 1603
-      sizeY: 1414
+      sizeY: 500
     blockbox: []
     throwbox:
     - posX: -147
@@ -357,6 +365,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -395,6 +404,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -433,6 +443,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -471,6 +482,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -509,6 +521,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -547,6 +560,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -585,6 +599,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -623,6 +638,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -661,6 +677,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -699,6 +716,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -737,6 +755,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -775,6 +794,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -813,6 +833,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -851,6 +872,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:
@@ -889,6 +911,7 @@ MonoBehaviour:
     hitboxHitStun: 0
     hitStop: 0
     hitboxBlockStun: 0
+    CanHitHighOrLow: 0
     hitbox: []
     blockbox: []
     throwbox:

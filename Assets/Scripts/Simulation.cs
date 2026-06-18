@@ -509,6 +509,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 player1Data.PlayerVelocityHorizontal = characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxPush * player2Dir;
                 player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
             }
+            player2Data.HitLanded = characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitboxLand;
             player2.PlayHit(new Vector3(player1HitX, player1HitY));
             skipFrames = characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitStop;
         }
@@ -530,8 +531,10 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 player2Data.PlayerVelocityHorizontal = characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxPush * player1Dir;
                 player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
             }
+            player1Data.HitLanded = characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitboxLand;
             player1.PlayHit(new Vector3(player2HitX, player2HitY));
-            skipFrames = Mathf.Max(skipFrames, characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame].hitStop);
+            if (skipFrames < characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitStop) 
+                skipFrames = characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame].hitStop;
         }
 
         //Making sure that the players are not out of bounds
