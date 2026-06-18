@@ -309,13 +309,17 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxPush: 0
-    hitboxLand: 0
+    hitboxPush: 65
+    hitboxLand: 1
     hitboxDamage: 0
-    hitboxHitStun: 0
+    hitboxHitStun: 15
     hitStop: 0
     hitboxBlockStun: 0
-    hitbox: []
+    hitbox:
+    - posX: 750
+      posY: 2182
+      sizeX: 1603
+      sizeY: 1414
     blockbox: []
     throwbox:
     - posX: -147
