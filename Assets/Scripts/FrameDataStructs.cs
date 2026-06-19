@@ -28,7 +28,8 @@ public struct Frame
     public int hitboxHitStun;
     public int hitStop;
     public int hitboxBlockStun;
-    public bool CanHitHighOrLow;
+    public bool canHitHighOrLow;
+    public bool canRotate;
     public Rectengale[] hitbox;
     public Rectengale[] blockbox;
     public Rectengale[] throwbox;

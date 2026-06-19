@@ -35,10 +35,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -75,10 +79,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -115,10 +123,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -155,10 +167,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -195,10 +211,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -235,10 +255,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -275,10 +299,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -315,10 +343,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -355,10 +387,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -395,10 +431,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -435,10 +475,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -475,10 +519,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -515,10 +563,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -555,10 +607,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -595,10 +651,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -635,10 +695,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -675,10 +739,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -715,10 +783,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -755,10 +827,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -795,10 +871,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -835,10 +915,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -875,10 +959,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -915,10 +1003,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -955,10 +1047,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -995,10 +1091,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1035,10 +1135,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1075,10 +1179,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1115,10 +1223,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1155,10 +1267,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1195,10 +1311,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1235,10 +1355,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1275,10 +1399,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1315,10 +1443,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1355,10 +1487,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1395,10 +1531,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1435,10 +1575,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1475,10 +1619,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1515,10 +1663,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1555,10 +1707,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87
@@ -1595,10 +1751,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
-    hitboxHit: 0
+    hitboxPush: 0
+    hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
+    hitStop: 0
     hitboxBlockStun: 0
+    canHitHighOrLow: 0
+    canRotate: 0
     hitbox: []
     blockbox:
     - posX: 87

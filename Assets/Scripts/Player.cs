@@ -105,14 +105,16 @@ public class Player : MonoBehaviour
     }
     public void PlayHit(Vector3 pos)
     {
-        pos /= 1000f;
+        pos.x /= 1000f;
+        pos.y /= 1000f;
+        pos.y += x;
         pos.z = -10.0f;
         GameObject newParticle =  Instantiate(hitParticle);
         newParticle.transform.position = pos;
         ParticleSystem particleSystem = newParticle.GetComponent<ParticleSystem>();
         if (particleSystem != null)
         {
-            particleSystem.Emit(30);
+            //particleSystem.Emit(30);
         }
     }
 }

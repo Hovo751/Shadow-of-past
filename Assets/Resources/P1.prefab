@@ -534,7 +534,7 @@ MonoBehaviour:
   characters: {fileID: 11400000, guid: d069c27ff20b28340a6213ba28a5d6b7, type: 2}
   x: 0.5
   skip: 0
-  hitParticle: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
+  hitParticle: {fileID: 1758527342429094642, guid: e7a64bd0a8aa425479e1ec4864922587, type: 3}
   transitionTime: 0.05
 --- !u!1001 &3198759950145288250
 PrefabInstance:
