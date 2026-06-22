@@ -23,6 +23,7 @@ public static class Animations
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
 {
+    // IF SMTH EXPLODES THAN GO TO LINE 1361 IN COHERENCEBRIDGE
     public struct MovementInput
     {
         public int input;

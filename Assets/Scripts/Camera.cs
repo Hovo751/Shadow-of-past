@@ -15,7 +15,7 @@ public class Camera : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = 60;
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+        Application.targetFrameRate = 30;
     }
 }
