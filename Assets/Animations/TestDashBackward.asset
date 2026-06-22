@@ -830,7 +830,7 @@ MonoBehaviour:
     hitStop: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
-    canRotate: 1
+    canRotate: 0
     hitbox:
     - posX: 1000
       posY: 0

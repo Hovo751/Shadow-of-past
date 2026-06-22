@@ -360,7 +360,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             }
         }
 
-        if (!isInAir(player2Data) && (player1Frame.cancelLvl == 0 || player1Frame.canRotate))
+        if (!isInAir(player2Data) && (player2Frame.cancelLvl == 0 || player2Frame.canRotate))
         {
             if (player2Data.PlayerPositionHorizontal > player1Data.PlayerPositionHorizontal)
             {

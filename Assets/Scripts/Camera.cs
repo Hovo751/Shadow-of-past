@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Camera : MonoBehaviour
 {
@@ -10,5 +11,11 @@ public class Camera : MonoBehaviour
         if (player2 == null) return;
         transform.position = Vector3.Lerp(transform.position, (player1.position + player2.position) / 2f + new Vector3(0, 4, 0), 0.1f);
         transform.position = new Vector3(transform.position.x, 4, -20);
+    }
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 }
