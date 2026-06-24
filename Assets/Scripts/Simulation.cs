@@ -3,6 +3,7 @@ using Coherence.Toolkit;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 public static class Animations
 {
     public const int Idle = 0;
@@ -17,8 +18,11 @@ public static class Animations
     public const int DashBackward = 9;
     public const int GetHitUp = 10;
     public const int GetHitDown = 11;
-    public const int Light = 12;
-    public const int Medium = 13;
+    public const int BlockHigh = 12;
+    public const int BlockLow = 13;
+    public const int Light = 14;
+    public const int Medium = 15;
+    
 }
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
@@ -203,7 +207,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         result.PlayerAnimationFrame++;
 
-        if (result.PlayerAnimation == Animations.GetHitUp || result.PlayerAnimation == Animations.GetHitDown)
+        if (result.PlayerAnimation == Animations.GetHitUp || result.PlayerAnimation == Animations.GetHitDown || 
+            result.PlayerAnimation == Animations.BlockHigh || result.PlayerAnimation == Animations.BlockLow)
         {
             if (result.PlayerAnimationFrame >= currentAnimation.frames.Length)
             {
@@ -320,10 +325,10 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         Player player1 = AllClients[0].GameObject.GetComponent<Player>();
         Player player2 = AllClients[1].GameObject.GetComponent<Player>();
 
-        int movement = (int)player1.GetInput(simulationFrame).movement;
-        int movement2 = (int)player2.GetInput(simulationFrame).movement;
+        int player1MovementInput = (int)player1.GetInput(simulationFrame).movement;
+        int player2MovementInput = (int)player2.GetInput(simulationFrame).movement;
 
-        if (movement > 9 || movement < 1 || movement2 > 9 || movement2 < 1)
+        if (player1MovementInput > 9 || player1MovementInput < 1 || player2MovementInput > 9 || player2MovementInput < 1)
         {
             return;
         }
@@ -377,6 +382,14 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         if (!player1Data.IsLookingRight)
         {
+            if (player1MovementInput % 3 == 1)
+            {
+                player1MovementInput += 2;
+            }
+            else if (player1MovementInput % 3 == 0)
+            {
+                player1MovementInput -= 2;
+            }
             player1Dir = -1;
         }
 
@@ -384,6 +397,14 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         if (!player2Data.IsLookingRight)
         {
+            if (player2MovementInput % 3 == 1)
+            {
+                player2MovementInput += 2;
+            }
+            else if (player2MovementInput % 3 == 0)
+            {
+                player2MovementInput -= 2;
+            }
             player2Dir = -1;
         }
 
@@ -427,7 +448,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         int player1HitX = 0;
         int player2HitX = 0;
         int player1HitY = 0;
-        int player2HitY = 0;
+        int player2HitY = 0; 
 
         if (player1Data.HitLanded < player1Frame.hitboxLand)
         {
@@ -443,17 +464,53 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                     player1Collision.posY += player1Data.PlayerPositionVertical;
                     player2Collision.posX += player2Data.PlayerPositionHorizontal;
                     player2Collision.posY += player2Data.PlayerPositionVertical;
+
                     if (CheckCollision(player1Collision, player2Collision, out player2HitX, out player2HitY))
                     {
-                        if (player1Collision.posY > player2Frame.collisionBox.posY)
+                        int isBlocking = -1;
+
+                        if (player2MovementInput == 4 && 
+                            (player2Data.PlayerAnimation == Animations.WalkBack || 
+                            player2Data.PlayerAnimation == Animations.BlockHigh || 
+                            player2Data.PlayerAnimation == Animations.BlockLow))
+                        {
+                            player2Collision = characters.characters[player2.character].blockHightBox;
+                            isBlocking = Animations.BlockHigh;
+                        }
+                        else if (player2MovementInput == 1 && 
+                            (player2Data.PlayerAnimation == Animations.CrouchBlock ||
+                            player2Data.PlayerAnimation == Animations.BlockHigh || 
+                            player2Data.PlayerAnimation == Animations.BlockLow))
+                        {
+                            player2Collision = characters.characters[player2.character].blockLowBox;
+                            isBlocking = Animations.BlockLow;
+                        }
+
+                        player2Collision = characters.characters[player2.character].blockHightBox;
+                        player2Collision.posX *= player2Dir;
+                        player2Collision.posX += player2Data.PlayerPositionHorizontal;
+                        player2Collision.posY += player2Data.PlayerPositionVertical;
+
+                        int didBlock = -1;
+
+                        if (isBlocking != -1 && CheckCollision(player1Collision, player2Collision))
+                        {
+                            didBlock = isBlocking;
+                        }
+
+                        if (player1Collision.posY > player2Frame.collisionBox.posY && didBlock == -1)
                         {
                             player2Gothit = Animations.GetHitUp;
                         }
-                        else
+                        else if (didBlock == -1)
                         {
                             player2Gothit = Animations.GetHitDown;
                         }
-                            break;
+                        else
+                        {
+                            player2Gothit = didBlock;
+                        }
+                        break;
                     }
                 }
                 if (player2Gothit != -1)
@@ -467,27 +524,68 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             {
                 for (int j = 0; j < player1Frame.hurtbox.Length; j++)
                 {
-                    player1Collision = player1Frame.hurtbox[j];
                     player2Collision = player2Frame.hitbox[i];
-                    player1Collision.posX *= player1Dir;
+                    player1Collision = player1Frame.hurtbox[j];
                     player2Collision.posX *= player2Dir;
-                    player1Collision.posX += player1Data.PlayerPositionHorizontal;
-                    player1Collision.posY += player1Data.PlayerPositionVertical;
+                    player1Collision.posX *= player1Dir;
                     player2Collision.posX += player2Data.PlayerPositionHorizontal;
                     player2Collision.posY += player2Data.PlayerPositionVertical;
-                    if (CheckCollision(player1Collision, player2Collision, out player1HitX, out player1HitY))
+                    player1Collision.posX += player1Data.PlayerPositionHorizontal;
+                    player1Collision.posY += player1Data.PlayerPositionVertical;
+
+                    if (CheckCollision(player2Collision, player1Collision, out player1HitX, out player1HitY))
                     {
-                        if (player2Collision.posY > player1Frame.collisionBox.posY)
+                        Debug.Log("Checking If Blocking");
+                        int isBlocking = -1;
+
+                        if (player1MovementInput == 4 &&
+                            (player1Data.PlayerAnimation == Animations.WalkBack ||
+                             player1Data.PlayerAnimation == Animations.BlockHigh ||
+                             player1Data.PlayerAnimation == Animations.BlockLow))
+                        {
+                            Debug.Log("Checking If Blocking High");
+                            player1Collision = characters.characters[player1.character].blockHightBox;
+                            isBlocking = Animations.BlockHigh;
+                        }
+                        else if (player1MovementInput == 1 &&
+                            (player1Data.PlayerAnimation == Animations.CrouchBlock ||
+                             player1Data.PlayerAnimation == Animations.BlockHigh ||
+                             player1Data.PlayerAnimation == Animations.BlockLow))
+                        {
+                            Debug.Log("Checking If Blocking Low");
+                            player1Collision = characters.characters[player1.character].blockLowBox;
+                            isBlocking = Animations.BlockLow;
+                        }
+
+                        player1Collision = characters.characters[player1.character].blockHightBox;
+                        player1Collision.posX *= player1Dir;
+                        player1Collision.posX += player1Data.PlayerPositionHorizontal;
+                        player1Collision.posY += player1Data.PlayerPositionVertical;
+
+                        int didBlock = -1;
+
+                        if (isBlocking != -1 && CheckCollision(player2Collision, player1Collision))
+                        {
+                            Debug.Log("Checking If Blocking Collided");
+                            didBlock = isBlocking;
+                        }
+
+                        if (player2Collision.posY > player1Frame.collisionBox.posY && didBlock == -1)
                         {
                             player1Gothit = Animations.GetHitUp;
                         }
-                        else
+                        else if (didBlock == -1)
                         {
                             player1Gothit = Animations.GetHitDown;
+                        }
+                        else
+                        {
+                            player1Gothit = didBlock;
                         }
                         break;
                     }
                 }
+
                 if (player1Gothit != -1)
                     break;
             }
@@ -497,47 +595,94 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         if (player1Gothit != -1)
         {
-            Debug.Log("Player1 got hit");
-            player1Data.InHitstun = player2Frame.hitboxHitStun;
-            player1Data.PlayerAnimation = player1Gothit;
-            player1Data.PlayerAnimationFrame = 0;
-            player1Data.PlayerNextAnimation = Animations.Idle;
-            if (player1Data.PlayerPositionHorizontal <= -9990 || player1Data.PlayerPositionHorizontal >= 9990)
+            if (player1Gothit == Animations.BlockHigh || player1Gothit == Animations.BlockLow)
             {
-                player2Data.PlayerVelocityHorizontal = -player2Frame.hitboxPush * player2Dir;
-                player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                Debug.Log("Player1 got blocked");
+                player1Data.InHitstun = player2Frame.hitboxBlockStun;
+                player1Data.PlayerAnimation = player1Gothit;
+                player1Data.PlayerAnimationFrame = 0;
+                player1Data.PlayerNextAnimation = Animations.Idle;
+                if (player1Data.PlayerPositionHorizontal <= -9990 || player1Data.PlayerPositionHorizontal >= 9990)
+                {
+                    player2Data.PlayerVelocityHorizontal = -player2Frame.hitboxPushOnBlock * player2Dir;
+                    player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                }
+                else
+                {
+                    player1Data.PlayerVelocityHorizontal = player2Frame.hitboxPushOnBlock * player2Dir;
+                    player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                }
+                player2Data.HitLanded = player2Frame.hitboxLand;
+                skipFrames = player2Frame.hitStopOnBlock;
             }
             else
             {
-                player1Data.PlayerVelocityHorizontal = player2Frame.hitboxPush * player2Dir;
-                player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                Debug.Log("Player1 got hit");
+                player1Data.InHitstun = player2Frame.hitboxHitStun;
+                player1Data.PlayerAnimation = player1Gothit;
+                player1Data.PlayerAnimationFrame = 0;
+                player1Data.PlayerNextAnimation = Animations.Idle;
+                if (player1Data.PlayerPositionHorizontal <= -9990 || player1Data.PlayerPositionHorizontal >= 9990)
+                {
+                    player2Data.PlayerVelocityHorizontal = -player2Frame.hitboxPush * player2Dir;
+                    player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                }
+                else
+                {
+                    player1Data.PlayerVelocityHorizontal = player2Frame.hitboxPush * player2Dir;
+                    player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                }
+                player2Data.HitLanded = player2Frame.hitboxLand;
+                player2.PlayHit(new Vector3(player1HitX, player1HitY));
+                skipFrames = player2Frame.hitStop;
             }
-            player2Data.HitLanded = player2Frame.hitboxLand;
-            player2.PlayHit(new Vector3(player1HitX, player1HitY));
-            skipFrames = player2Frame.hitStop;
         }
 
         if (player2Gothit != -1)
         {
-            Debug.Log("Player2 got hit");
-            player2Data.InHitstun = player1Frame.hitboxHitStun;
-            player2Data.PlayerAnimation = player2Gothit;
-            player2Data.PlayerAnimationFrame = 0;
-            player2Data.PlayerNextAnimation = Animations.Idle;
-            if (player2Data.PlayerPositionHorizontal <= -9990 || player2Data.PlayerPositionHorizontal >= 9990)
+            if (player2Gothit == Animations.BlockHigh || player2Gothit == Animations.BlockLow)
             {
-                player1Data.PlayerVelocityHorizontal = -player1Frame.hitboxPush * player1Dir;
-                player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                Debug.Log("Player2 got blocked");
+                player2Data.InHitstun = player1Frame.hitboxBlockStun;
+                player2Data.PlayerAnimation = player2Gothit;
+                player2Data.PlayerAnimationFrame = 0;
+                player2Data.PlayerNextAnimation = Animations.Idle;
+                if (player2Data.PlayerPositionHorizontal <= -9990 || player2Data.PlayerPositionHorizontal >= 9990)
+                {
+                    player1Data.PlayerVelocityHorizontal = -player1Frame.hitboxPushOnBlock * player1Dir;
+                    player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                }
+                else
+                {
+                    player2Data.PlayerVelocityHorizontal = player1Frame.hitboxPushOnBlock * player1Dir;
+                    player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                }
+                player1Data.HitLanded = player1Frame.hitboxLand;
+                if (skipFrames < player1Frame.hitStopOnBlock)
+                    skipFrames = player1Frame.hitStopOnBlock;
             }
             else
             {
-                player2Data.PlayerVelocityHorizontal = player1Frame.hitboxPush * player1Dir;
-                player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                Debug.Log("Player2 got hit");
+                player2Data.InHitstun = player1Frame.hitboxHitStun;
+                player2Data.PlayerAnimation = player2Gothit;
+                player2Data.PlayerAnimationFrame = 0;
+                player2Data.PlayerNextAnimation = Animations.Idle;
+                if (player2Data.PlayerPositionHorizontal <= -9990 || player2Data.PlayerPositionHorizontal >= 9990)
+                {
+                    player1Data.PlayerVelocityHorizontal = -player1Frame.hitboxPush * player1Dir;
+                    player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                }
+                else
+                {
+                    player2Data.PlayerVelocityHorizontal = player1Frame.hitboxPush * player1Dir;
+                    player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                }
+                player1Data.HitLanded = player1Frame.hitboxLand;
+                player1.PlayHit(new Vector3(player2HitX, player2HitY));
+                if (skipFrames < player1Frame.hitStop)
+                    skipFrames = player1Frame.hitStop;
             }
-            player1Data.HitLanded = player1Frame.hitboxLand;
-            player1.PlayHit(new Vector3(player2HitX, player2HitY));
-            if (skipFrames < player1Frame.hitStop) 
-                skipFrames = player1Frame.hitStop;
         }
 
         //Making sure that the players are not out of bounds
@@ -636,8 +781,17 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 k++;
                 AnimBase anim = characters.characters[player.character].animations[player.changebleStats.PlayerAnimation].data;
                 float dir = 1;
+                int input = player.GetInput().movement;
                 if (!player.changebleStats.IsLookingRight)
                 {
+                    if (input % 3 == 1)
+                    {
+                        input += 2;
+                    }
+                    else if (input % 3 == 0)
+                    {
+                        input -= 2;
+                    }
                     dir = -1;
                 }
                 Rectengale rect;
@@ -670,11 +824,12 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 }
                 //blockbox
                 Gizmos.color = new Color(0f, 1f, 1f, 0.5f);
-                for (int i = 0; i < frame.blockbox.Length; i++)
-                {
-                    rect = frame.blockbox[i];
+                rect = characters.characters[player.character].blockHightBox;
+                if (/*input == 4 &&*/ (player.changebleStats.PlayerAnimation == Animations.WalkBack || player.changebleStats.PlayerAnimation == Animations.BlockHigh || player.changebleStats.PlayerAnimation == Animations.BlockLow))
                     Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
-                }
+                rect = characters.characters[player.character].blockLowBox;
+                if (/*input == 1 && */(player.changebleStats.PlayerAnimation == Animations.CrouchBlock || player.changebleStats.PlayerAnimation == Animations.BlockHigh || player.changebleStats.PlayerAnimation == Animations.BlockLow))
+                    Gizmos.DrawCube(player.transform.position + new Vector3(rect.posX / 1000.0f * dir, rect.posY / 1000.0f), new Vector3(rect.sizeX / 1000.0f, rect.sizeY / 1000.0f));
             }
         }
     }

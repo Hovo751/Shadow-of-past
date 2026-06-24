@@ -1359,7 +1359,6 @@ namespace Coherence.Toolkit
                 // We shouldn't trust FixedUpdate time to be our current time, that is a lie. Our real current time is only during the normal updates.
                 Client.NetworkTime.Step(Time.timeAsDouble, stopApplyingServerSimFrame: Time.inFixedTimeStep);
                 Time.timeScale = Client.NetworkTime.NetworkTimeScale;
-                UnityEngine.Debug.Log(Time.timeScale);
                 //Added line
                 if ((60.0f / Application.targetFrameRate) > 1)
                     Time.timeScale = Client.NetworkTime.NetworkTimeScale * (60.0f / Application.targetFrameRate);

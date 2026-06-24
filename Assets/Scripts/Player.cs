@@ -1,9 +1,6 @@
 using Coherence.Toolkit;
-using TMPro;
 using UnityEngine;
 using static Simulation;
-using static System.TimeZoneInfo;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 [RequireComponent(typeof(CoherenceSync))]
 [RequireComponent(typeof(CoherenceInput))]
@@ -32,6 +29,7 @@ public class Player : MonoBehaviour
     private float prevT;
     private string previousAnimSaved;
     private float prevTSaved;
+    private long lastFrame = -1;
 
     public float transitionTime = 0.2f;
     private void Update()
@@ -59,6 +57,10 @@ public class Player : MonoBehaviour
             previousAnimSaved = previousAnim;
             prevTSaved = prevT;
             transitionDuration = 0;
+            if (animationName == "BlockHigh" || animationName == "BlockLow")
+            {
+                transitionDuration = 100000;
+            }
         }
 
         // previous anim (layer 1)
@@ -88,6 +90,25 @@ public class Player : MonoBehaviour
         a.light = input.GetButton("Light", frame);
         a.medium = input.GetButton("Medium", frame);
         a.heavy = input.GetButton("Heavy", frame);
+        lastFrame = frame;
+        return a;
+    }
+
+    public MovementAndButtonInput GetInput()
+    {
+        MovementAndButtonInput a;
+        if (lastFrame == -1)
+        {
+            a.movement = 0;
+            a.light = false;
+            a.medium = false;
+            a.heavy = false;
+            return a;
+        }
+        a.movement = input.GetInteger("Move", lastFrame);
+        a.light = input.GetButton("Light", lastFrame);
+        a.medium = input.GetButton("Medium", lastFrame);
+        a.heavy = input.GetButton("Heavy", lastFrame);
         return a;
     }
 
@@ -95,6 +116,7 @@ public class Player : MonoBehaviour
     public void SetInput()
     {
         int movement = 5 + (int)Input.GetAxis("Horizontal") + (int)Input.GetAxis("Vertical") * 3;
+        if ((int)Input.GetAxis("Horizontal") == 0) movement = 4;
         input.SetInteger("Move", movement);
         bool light = Input.GetButton("Fire1");
         bool medium = Input.GetButton("Fire2");

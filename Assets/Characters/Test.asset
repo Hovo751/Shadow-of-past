@@ -49,9 +49,25 @@ MonoBehaviour:
   - name: GetHitDown
     data: {fileID: 11400000, guid: 1d282613c2a1ceb4ba501981f213c9d6, type: 2}
     nextAnim: 0
+  - name: BlockHigh
+    data: {fileID: 11400000, guid: e4a39f6717a7c5e40b3c241ec797d03b, type: 2}
+    nextAnim: 0
+  - name: BlockLow
+    data: {fileID: 11400000, guid: 58385de532815b74680110e9c759b7ff, type: 2}
+    nextAnim: 0
   - name: Light
     data: {fileID: 11400000, guid: b3a286c1be2840043a634c38ed0a20ad, type: 2}
     nextAnim: 0
   - name: Medium
     data: {fileID: 11400000, guid: 00226cd97f1aa6846b4df5555ac7bdf2, type: 2}
     nextAnim: 0
+  blockHightBox:
+    posX: 87
+    posY: 2712
+    sizeX: 811
+    sizeY: 2485
+  blockLowBox:
+    posX: 87
+    posY: 2712
+    sizeX: 811
+    sizeY: 2485

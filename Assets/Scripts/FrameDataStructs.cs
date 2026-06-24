@@ -23,15 +23,16 @@ public struct Frame
     public bool setAccelerationVbool;
     public Rectengale[] hurtbox;
     public int hitboxPush;
+    public int hitboxPushOnBlock;
     public int hitboxLand;
     public int hitboxDamage;
     public int hitboxHitStun;
     public int hitStop;
+    public int hitStopOnBlock;
     public int hitboxBlockStun;
     public bool canHitHighOrLow;
     public bool canRotate;
     public Rectengale[] hitbox;
-    public Rectengale[] blockbox;
     public Rectengale[] throwbox;
     public Rectengale collisionBox;
 }
