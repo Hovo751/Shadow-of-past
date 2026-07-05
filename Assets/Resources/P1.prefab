@@ -67,8 +67,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 8fef362077f1a4141862fdbbf8a2e882, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -345,12 +344,6 @@ MonoBehaviour:
       lodStepsActive: 1
     - component: {fileID: 1806235276780944371}
       lodStepsActive: 1
-    - component: {fileID: 4826924264246593144}
-      lodStepsActive: 1
-    - component: {fileID: 544790191537865528}
-      lodStepsActive: 1
-    - component: {fileID: 4542536537081226613}
-      lodStepsActive: 1
     - component: {fileID: 8704474170926506421}
       lodStepsActive: 1
     - component: {fileID: 6076353435767645510}
@@ -362,6 +355,10 @@ MonoBehaviour:
     - component: {fileID: 7980604563568987467}
       lodStepsActive: 1
     - component: {fileID: 1133585918412017140}
+      lodStepsActive: 1
+    - component: {fileID: 544790191537865528}
+      lodStepsActive: 1
+    - component: {fileID: 4542536537081226613}
       lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
   interpolationLocation: 1
@@ -622,6 +619,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ee4410041e4655f4d9e9b07e182ccdcc, type: 2}
+    - target: {fileID: -6251002704577310260, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -5209596602206985111, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -687,6 +688,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: f97aefef586d09b48947b07a14f33b84, type: 2}
     - target: {fileID: 2584794989316978126, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584794989316978126, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584794989316978126, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f97aefef586d09b48947b07a14f33b84, type: 2}
@@ -711,7 +720,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: ee4410041e4655f4d9e9b07e182ccdcc, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8821623529969584324, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
@@ -1052,11 +1062,6 @@ SkinnedMeshRenderer:
 --- !u!4 &4655872204191451702 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7852232796018160140, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
-  m_PrefabInstance: {fileID: 3198759950145288250}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4826924264246593144 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -1253996098385199550, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
   m_PrefabInstance: {fileID: 3198759950145288250}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4914797719412917937 stripped
