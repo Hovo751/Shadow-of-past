@@ -305,6 +305,16 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         result.PlayerVelocityHorizontal += result.PlayerAccelerationHorizontal;
         result.PlayerVelocityVertical += result.PlayerAccelerationVertical;
+
+        if (result.PlayerAnimation == Animations.GetHitUp || result.PlayerAnimation == Animations.GetHitDown ||
+            result.PlayerAnimation == Animations.BlockHigh || result.PlayerAnimation == Animations.BlockLow)
+        {
+            if (result.PlayerVelocityHorizontal / direction > 0)
+            {
+                result.PlayerVelocityHorizontal = 0;
+            }
+        }
+
         result.PlayerPositionHorizontal += result.PlayerVelocityHorizontal;
         result.PlayerPositionVertical += result.PlayerVelocityVertical;
         result.PlayerPositionHorizontal += currentAnimation.frames[result.PlayerAnimationFrame].addPosX * direction;

@@ -27,31 +27,36 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
-      posY: 1753
+    - posX: -21
+      posY: 1165
       sizeX: 1213
-      sizeY: 3465
-    - posX: -147
-      posY: 3643
+      sizeY: 2330
+    - posX: 74
+      posY: 2495
       sizeX: 817
       sizeY: 431
+    - posX: 524
+      posY: 639
+      sizeX: 776
+      sizeY: 1219
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox: []
     throwbox:
-    - posX: -147
+    - posX: 6
       posY: 1753
-      sizeX: 1096
+      sizeX: 1085
       sizeY: 3182
     collisionBox:
       posX: 0
-      posY: 0
-      sizeX: 0
-      sizeY: 0
+      posY: 1328
+      sizeX: 1148
+      sizeY: 2644
