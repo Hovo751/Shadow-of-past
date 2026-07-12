@@ -23,6 +23,7 @@ public struct PlayerChangebleStats
     public int InHitstun;
     public bool IsLookingRight;
     public bool IsInAir;
+    public int Combo;
 
     //public static PlayerChangebleStats operator +(PlayerChangebleStats x, PlayerChangebleStats y)
     //{

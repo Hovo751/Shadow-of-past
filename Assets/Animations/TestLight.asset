@@ -204,7 +204,7 @@ MonoBehaviour:
     hitboxLand: 1
     hitboxDamage: 0
     hitboxHitStun: 15
-    hitStop: 5
+    hitStop: 0
     hitStopOnBlock: 1
     hitboxBlockStun: 15
     canHitHighOrLow: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
     hitboxLand: 1
     hitboxDamage: 0
     hitboxHitStun: 15
-    hitStop: 5
+    hitStop: 0
     hitStopOnBlock: 1
     hitboxBlockStun: 15
     canHitHighOrLow: 0

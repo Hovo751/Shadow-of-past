@@ -27,35 +27,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -71,35 +68,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -115,35 +109,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -159,35 +150,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -203,35 +191,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -247,35 +232,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -291,35 +273,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -335,35 +314,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -379,35 +355,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -423,35 +396,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -467,35 +437,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -511,35 +478,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -555,35 +519,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -599,35 +560,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -643,35 +601,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -687,35 +642,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -731,35 +683,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -775,35 +724,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -819,35 +765,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -863,35 +806,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -907,35 +847,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -951,35 +888,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -995,35 +929,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1039,35 +970,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1083,35 +1011,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1127,35 +1052,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1171,35 +1093,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1215,35 +1134,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1259,35 +1175,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1303,35 +1216,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1347,35 +1257,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1391,35 +1298,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1435,35 +1339,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1479,35 +1380,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1523,35 +1421,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1567,35 +1462,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1611,35 +1503,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1655,35 +1544,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1699,35 +1585,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230
@@ -1743,35 +1626,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
-    blockbox:
-    - posX: 87
-      posY: 2712
-      sizeX: 811
-      sizeY: 2485
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230

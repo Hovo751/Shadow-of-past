@@ -3,7 +3,6 @@ using Coherence.Toolkit;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Windows;
 public static class Animations
 {
     public const int Idle = 0;
@@ -28,11 +27,24 @@ public static class Animations
 public class Simulation : CoherenceInputSimulation<SimulationState>
 {
     // IF SMTH EXPLODES THAN GO TO LINE 1361 IN COHERENCEBRIDGE
+    public ComboCounter ComboCounter;
+    Dictionary<long, SimulationState> history = new Dictionary<long, SimulationState>();
     public struct MovementInput
     {
         public int input;
         public int holdTime;
     }
+    public struct ButtonInput
+    {
+        public bool buttonDown;
+        public int holdTime;
+    }
+    //public struct ButtonsInputs
+    //{
+    //    public bool light;
+    //    public bool medium;
+    //    public bool heavy;
+    //}
     public struct MovementAndButtonInput
     {
         public int movement;
@@ -143,6 +155,41 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         return movementBuffer.ToArray();
     }
+    ButtonInput[] SortInputs(bool[] arr, long startFrame)
+    {
+        bool prevInput = false;
+        List<ButtonInput> movementBuffer = new List<ButtonInput>();
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] == prevInput && i != 0)
+            {
+                ButtonInput input = movementBuffer[movementBuffer.Count - 1];
+                input.holdTime++;
+                movementBuffer[movementBuffer.Count - 1] = input;
+            }
+            else
+            {
+                ButtonInput input = new ButtonInput();
+                input.buttonDown = arr[i];
+                input.holdTime = 1;
+
+                movementBuffer.Add(input);
+                prevInput = arr[i];
+            }
+            if (startFrame - i > validInputFrame && validInputFrame != -1 && i != 0)
+            {
+                if (history[startFrame - i].skipFrames > 0)
+                {
+                    ButtonInput input = movementBuffer[movementBuffer.Count - 1];
+                    input.holdTime--;
+                    movementBuffer[movementBuffer.Count - 1] = input;
+                }
+            }
+        }
+
+        return movementBuffer.ToArray();
+    }
     private PlayerChangebleStats CalculatePerPlayer(int playerNumber, long simulationFrame)
     {
         Player player = AllClients[playerNumber].GameObject.GetComponent<Player>();
@@ -154,6 +201,9 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         int movement = (int)input.movement;
 
         int[] movementBufferNotSorted = new int[64];
+        bool[] lightButtonBufferNotSorted = new bool[64];
+        bool[] mediumButtonBufferNotSorted = new bool[64];
+        bool[] heavyButtonBufferNotSorted = new bool[64];
         if (movement > 9 || movement < 1)
         {
             return player.changebleStats;
@@ -191,13 +241,24 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                     }
                     direction = -1;
                 }
-                movementBufferNotSorted[(i - simulationFrame) * -1] = m;
+                movementBufferNotSorted[simulationFrame - i] = m;
+                lightButtonBufferNotSorted[simulationFrame - i] = inputPast.light;
+                mediumButtonBufferNotSorted[simulationFrame - i] = inputPast.medium;
+                heavyButtonBufferNotSorted[simulationFrame - i] = inputPast.heavy;
             }
-            else 
-                movementBufferNotSorted[(i - simulationFrame) * -1] = 5;
+            else
+            {
+                movementBufferNotSorted[simulationFrame - i] = 5;
+                lightButtonBufferNotSorted[simulationFrame - i] = false;
+                mediumButtonBufferNotSorted[simulationFrame - i] = false;
+                heavyButtonBufferNotSorted[simulationFrame - i] = false;
+            }
         }
 
         MovementInput[] movementBuffer = SortInputs(movementBufferNotSorted);
+        ButtonInput[] lightButtonBuffer = SortInputs(lightButtonBufferNotSorted, simulationFrame);
+        ButtonInput[] mediumButtonBuffer = SortInputs(mediumButtonBufferNotSorted, simulationFrame);
+        ButtonInput[] heavyButtonBuffer = SortInputs(heavyButtonBufferNotSorted, simulationFrame);
 
         result.IsInAir = isInAir(result);
 
@@ -227,11 +288,11 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             PlayAnimation(ref result, player, result.PlayerNextAnimation);
         }
-        if (input.medium && CanCancelInto(result, player, Animations.Medium))
+        if (mediumButtonBuffer[0].buttonDown == true && CanCancelInto(result, player, Animations.Medium) && mediumButtonBuffer[0].holdTime < 5)
         {
             PlayAnimation(ref result, player, Animations.Medium);
         }
-        else if (input.light && CanCancelInto(result, player, Animations.Light))
+        else if (lightButtonBuffer[0].buttonDown == true && CanCancelInto(result, player, Animations.Light) && lightButtonBuffer[0].holdTime < 5)
         {
             PlayAnimation(ref result, player, Animations.Light);
         }
@@ -344,11 +405,24 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         }
         if (validInputFrame == -1 || validInputFrame > simulationFrame)
             validInputFrame = simulationFrame;
+        SimulationState currentState = new SimulationState
+        {
+            PlayerData = new PlayerChangebleStats[AllClients.Count],
+            skipFrames = skipFrames,
+        };
 
         if (skipFrames > 0) { 
             skipFrames--;
             player1.skip = true;
             player2.skip = true;
+            try
+            {
+                history.Add(simulationFrame, currentState);
+            }
+            catch (ArgumentException)
+            {
+                history[simulationFrame] = currentState;
+            }
             return;
         }
         player1.skip = false;
@@ -628,6 +702,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             else
             {
                 Debug.Log("Player1 got hit");
+                player2Data.Combo++;
                 player1Data.InHitstun = player2Frame.hitboxHitStun;
                 player1Data.PlayerAnimation = player1Gothit;
                 player1Data.PlayerAnimationFrame = 0;
@@ -674,6 +749,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             else
             {
                 Debug.Log("Player2 got hit");
+                player1Data.Combo++;
                 player2Data.InHitstun = player1Frame.hitboxHitStun;
                 player2Data.PlayerAnimation = player2Gothit;
                 player2Data.PlayerAnimationFrame = 0;
@@ -693,6 +769,14 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 if (skipFrames < player1Frame.hitStop)
                     skipFrames = player1Frame.hitStop;
             }
+        }
+        if (player1Data.InHitstun == 0 && player1Data.PlayerAnimation != Animations.BlockLow && player1Data.PlayerAnimation != Animations.BlockHigh)
+        {
+            player2Data.Combo = 0;
+        }
+        if (player2Data.InHitstun == 0 && player2Data.PlayerAnimation != Animations.BlockLow && player2Data.PlayerAnimation != Animations.BlockHigh)
+        {
+            player1Data.Combo = 0;
         }
 
         //Making sure that the players are not out of bounds
@@ -719,10 +803,33 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         player1.changebleStats = player1Data;
         player2.changebleStats = player2Data;
+
+        //saving to history
+        currentState = new SimulationState
+        {
+            PlayerData = new PlayerChangebleStats[AllClients.Count],
+            skipFrames = skipFrames,
+        };
+        try
+        {
+            history.Add(simulationFrame, currentState);
+        }
+        catch (ArgumentException)
+        {
+            history[simulationFrame] = currentState;
+        }
     }
 
     protected override void Rollback(long toFrame, SimulationState state)
     {
+        try
+        {
+            history.Add(toFrame, state);
+        }
+        catch (ArgumentException)
+        {
+            history[toFrame] = state;
+        }
         Debug.Log("Rollback");
         for (var i = 0; i < AllClients.Count; i++)
         {
@@ -759,6 +866,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             player2.changebleStats.PlayerPositionVertical = 0;
             player1.changebleStats.PlayerAnimationFrame = 0;
             player2.changebleStats.PlayerAnimationFrame = 0;
+            ComboCounter.player1 = player1;
+            ComboCounter.player2 = player2;
             _camera.player1 = player1.transform;
             _camera.player2 = player2.transform;
             StateStore.Clear();
