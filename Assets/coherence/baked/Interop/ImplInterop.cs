@@ -42,6 +42,7 @@ namespace Coherence.Generated
                 case 15: return Scene.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 16: return AssetId.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 17: return GenericScale.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 18: return _893829c7e6cfd85408e600884d32ee35_4071262622471428003.FromInterop(data, dataSize, simFrames, simFramesCount);
             }
 
             throw new ArgumentException($"Unkown component type {type}", nameof(type));
@@ -252,6 +253,17 @@ namespace Coherence.Generated
                     val.value = orig.value;
 
                     updater.UpdateComponent(entity, componentType, val, 12, component.FieldsMask, component.StoppedMask, frames);
+
+                    return;
+                }
+                case 18:
+                {
+                    var orig = (_893829c7e6cfd85408e600884d32ee35_4071262622471428003)component;
+                    var val = new _893829c7e6cfd85408e600884d32ee35_4071262622471428003.Interop();
+
+                    val.startFrame = orig.startFrame;
+
+                    updater.UpdateComponent(entity, componentType, val, 8, component.FieldsMask, component.StoppedMask, frames);
 
                     return;
                 }

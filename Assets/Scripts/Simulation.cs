@@ -2,6 +2,7 @@ using Coherence.Cloud;
 using Coherence.Toolkit;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 public static class Animations
 {
@@ -52,9 +53,10 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         public bool medium;
         public bool heavy;
     }
-    private long validInputFrame = -1;
+    private long startFrame = -1;
     private int skipFrames = 0;
     public bool drawHitbox = true;
+    public TextMeshProUGUI txtDebug;
 
     public Characters characters;
 
@@ -177,7 +179,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 movementBuffer.Add(input);
                 prevInput = arr[i];
             }
-            if (startFrame - i > validInputFrame && validInputFrame != -1 && i != 0)
+            if (startFrame - i > startFrame && startFrame != -1 && i != 0)
             {
                 if (history[startFrame - i].skipFrames > 0)
                 {
@@ -225,7 +227,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         }
         for (long i = simulationFrame; i > simulationFrame - 64; i--)
         {
-            if (i >= validInputFrame)
+            if (i >= startFrame)
             {
                 MovementAndButtonInput inputPast = player.GetInput(i);
                 int m = (int)inputPast.movement;
@@ -399,12 +401,10 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         int player1MovementInput = (int)player1.GetInput(simulationFrame).movement;
         int player2MovementInput = (int)player2.GetInput(simulationFrame).movement;
 
-        if (player1MovementInput > 9 || player1MovementInput < 1 || player2MovementInput > 9 || player2MovementInput < 1)
+        if (player1MovementInput > 9 || player1MovementInput < 1 || player2MovementInput > 9 || player2MovementInput < 1 || startFrame == -1 || startFrame >= simulationFrame)
         {
             return;
         }
-        if (validInputFrame == -1 || validInputFrame > simulationFrame)
-            validInputFrame = simulationFrame;
         SimulationState currentState = new SimulationState
         {
             PlayerData = new PlayerChangebleStats[AllClients.Count],
@@ -413,8 +413,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         if (skipFrames > 0) { 
             skipFrames--;
-            player1.skip = true;
-            player2.skip = true;
             try
             {
                 history.Add(simulationFrame, currentState);
@@ -425,8 +423,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             }
             return;
         }
-        player1.skip = false;
-        player2.skip = false;
 
         //Calculating the players position based on velocity and acceleration and also playing animations based on players inputs
 
@@ -872,6 +868,20 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             _camera.player2 = player2.transform;
             StateStore.Clear();
             SimulationEnabled = AllClients.Count >= 2;
+            if (player1.startFrame == -1 && player2.startFrame == -1)
+            {
+                startFrame = CurrentSimulationFrame + 120;
+                player1.startFrame = startFrame;
+                player2.startFrame = startFrame;
+            }
+            else
+            {
+                startFrame = player1.startFrame;
+                if (startFrame == -1)
+                {
+                    startFrame = player2.startFrame;
+                }
+            }
         }
     }
 
