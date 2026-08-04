@@ -61,8 +61,11 @@ MonoBehaviour:
   - name: Medium
     data: {fileID: 11400000, guid: 00226cd97f1aa6846b4df5555ac7bdf2, type: 2}
     nextAnim: 0
+  - name: Heavy
+    data: {fileID: 11400000, guid: 1e41c03c462a45349ac653fc51acc64f, type: 2}
+    nextAnim: 0
   blockHightBox:
-    posX: 87
+    posX: 577
     posY: 2712
     sizeX: 811
     sizeY: 2485

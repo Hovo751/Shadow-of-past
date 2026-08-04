@@ -203,7 +203,7 @@ MonoBehaviour:
     hitboxPushOnBlock: 65
     hitboxLand: 1
     hitboxDamage: 0
-    hitboxHitStun: 15
+    hitboxHitStun: 14
     hitStop: 0
     hitStopOnBlock: 1
     hitboxBlockStun: 15
@@ -248,7 +248,7 @@ MonoBehaviour:
     hitboxPushOnBlock: 65
     hitboxLand: 1
     hitboxDamage: 0
-    hitboxHitStun: 15
+    hitboxHitStun: 14
     hitStop: 0
     hitStopOnBlock: 1
     hitboxBlockStun: 15

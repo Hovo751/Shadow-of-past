@@ -22,7 +22,8 @@ public static class Animations
     public const int BlockLow = 13;
     public const int Light = 14;
     public const int Medium = 15;
-    
+    public const int Heavy = 16;
+
 }
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
@@ -56,6 +57,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     private long startFrame = -1;
     private int skipFrames = 0;
     public bool drawHitbox = true;
+    public int frameBufferSize;
     public TextMeshProUGUI txtDebug;
 
     public Characters characters;
@@ -290,11 +292,15 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             PlayAnimation(ref result, player, result.PlayerNextAnimation);
         }
-        if (mediumButtonBuffer[0].buttonDown == true && CanCancelInto(result, player, Animations.Medium) && mediumButtonBuffer[0].holdTime < 5)
+        if (heavyButtonBuffer[0].buttonDown == true && CanCancelInto(result, player, Animations.Heavy) && heavyButtonBuffer[0].holdTime < frameBufferSize)
+        {
+            PlayAnimation(ref result, player, Animations.Heavy);
+        }
+        else if (mediumButtonBuffer[0].buttonDown == true && CanCancelInto(result, player, Animations.Medium) && mediumButtonBuffer[0].holdTime < frameBufferSize)
         {
             PlayAnimation(ref result, player, Animations.Medium);
         }
-        else if (lightButtonBuffer[0].buttonDown == true && CanCancelInto(result, player, Animations.Light) && lightButtonBuffer[0].holdTime < 5)
+        else if (lightButtonBuffer[0].buttonDown == true && CanCancelInto(result, player, Animations.Light) && lightButtonBuffer[0].holdTime < frameBufferSize)
         {
             PlayAnimation(ref result, player, Animations.Light);
         }

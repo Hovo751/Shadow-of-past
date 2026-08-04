@@ -2165,6 +2165,7 @@ MonoBehaviour:
   PauseAutomatically: 0
   ComboCounter: {fileID: 67180159}
   drawHitbox: 1
+  frameBufferSize: 5
   txtDebug: {fileID: 1964602098}
   characters: {fileID: 11400000, guid: d069c27ff20b28340a6213ba28a5d6b7, type: 2}
   _camera: {fileID: 330585548}
@@ -2206,7 +2207,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
