@@ -15,7 +15,7 @@ MonoBehaviour:
   cancelLvl: 0
   inAir: 0
   frames:
-  - cancelLvl: 0
+  - cancelLvl: 00000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -32,9 +32,9 @@ MonoBehaviour:
       sizeX: 1213
       sizeY: 2330
     - posX: 74
-      posY: 2495
+      posY: 2500
       sizeX: 817
-      sizeY: 431
+      sizeY: 484
     - posX: 524
       posY: 639
       sizeX: 776

@@ -15,7 +15,7 @@ MonoBehaviour:
   cancelLvl: 900
   inAir: 0
   frames:
-  - cancelLvl: 767
+  - cancelLvl: ff020000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -27,30 +27,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1213
       sizeY: 3465
-    - posX: -147
+    - posX: 100
       posY: 3643
       sizeX: 817
       sizeY: 431
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
     throwbox:
-    - posX: -147
+    - posX: 100
       posY: 1753
       sizeX: 1096
       sizeY: 3182
     collisionBox:
-      posX: -142
+      posX: 100
       posY: 1783
       sizeX: 1035
       sizeY: 3230

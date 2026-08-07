@@ -15,7 +15,7 @@ MonoBehaviour:
   cancelLvl: 0
   inAir: 0
   frames:
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -32,10 +32,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -44,14 +46,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -68,10 +69,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -80,14 +83,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -104,10 +106,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -116,14 +120,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -140,10 +143,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -152,14 +157,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -176,10 +180,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -188,14 +194,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -212,10 +217,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -224,14 +231,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -248,10 +254,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -260,14 +268,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -284,10 +291,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -296,14 +305,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -320,10 +328,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -332,14 +342,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -356,10 +365,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -368,14 +379,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -392,10 +402,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -404,14 +416,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -428,10 +439,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -440,14 +453,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -464,10 +476,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -476,14 +490,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -500,10 +513,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -512,14 +527,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -536,10 +550,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -548,14 +564,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -572,10 +587,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -584,14 +601,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -608,10 +624,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -620,14 +638,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -644,10 +661,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -656,14 +675,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -680,10 +698,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -692,14 +712,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -716,10 +735,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -728,14 +749,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -752,10 +772,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -764,14 +786,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -788,10 +809,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -800,14 +823,13 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0
       posY: 0
       sizeX: 0
       sizeY: 0
-  - cancelLvl: 1
+  - cancelLvl: 01000000 
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -824,10 +846,12 @@ MonoBehaviour:
       sizeX: 1000
       sizeY: 1000
     hitboxPush: 0
+    hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
     hitboxHitStun: 0
     hitStop: 0
+    hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
     canRotate: 0
@@ -836,7 +860,6 @@ MonoBehaviour:
       posY: 0
       sizeX: 1000
       sizeY: 1000
-    blockbox: []
     throwbox: []
     collisionBox:
       posX: 0

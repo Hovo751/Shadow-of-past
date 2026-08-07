@@ -10,7 +10,7 @@ public struct Rectengale
 [System.Serializable]
 public struct Frame
 {
-    public int cancelLvl;
+    public int[] cancelLvl;
     public int addPosX;
     public int addPosY;
     public int setVelocityHorizontal;

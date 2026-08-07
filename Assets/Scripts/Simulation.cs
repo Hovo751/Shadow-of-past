@@ -23,6 +23,7 @@ public static class Animations
     public const int Light = 14;
     public const int Medium = 15;
     public const int Heavy = 16;
+    public const int LightCrouch = 17;
 
 }
 
@@ -120,7 +121,11 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     }
     bool CanCancelInto(PlayerChangebleStats result, Player player, int anim)
     {
-        if (result.PlayerAnimation != anim && characters.characters[player.character].animations[result.PlayerAnimation].data.frames[result.PlayerAnimationFrame].cancelLvl <= characters.characters[player.character].animations[anim].data.cancelLvl && characters.characters[player.character].animations[1].data.inAir == isInAir(result))
+        AnimBase currentAnim = characters.characters[player.character].animations[result.PlayerAnimation].data;
+        AnimBase nextAnim = characters.characters[player.character].animations[anim].data;
+        if (result.PlayerAnimation != anim &&
+            currentAnim.frames[result.PlayerAnimationFrame].cancelLvl[Mathf.Min(result.HitLanded, currentAnim.frames[result.PlayerAnimationFrame].cancelLvl.Length - 1)] <= nextAnim.cancelLvl &&
+            currentAnim.inAir == isInAir(result))
             return true;
         return false;
     }
@@ -300,9 +305,12 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             PlayAnimation(ref result, player, Animations.Medium);
         }
-        else if (lightButtonBuffer[0].buttonDown == true && CanCancelInto(result, player, Animations.Light) && lightButtonBuffer[0].holdTime < frameBufferSize)
+        else if (lightButtonBuffer[0].buttonDown == true && lightButtonBuffer[0].holdTime < frameBufferSize)
         {
-            PlayAnimation(ref result, player, Animations.Light);
+            if (CanCancelInto(result, player, Animations.Light) && movement != 1 && movement != 2 && movement != 3)
+                PlayAnimation(ref result, player, Animations.Light);
+            else if (CanCancelInto(result, player, Animations.LightCrouch) && (movement == 1 || movement == 2 || movement == 3))
+                PlayAnimation(ref result, player, Animations.LightCrouch);
         }
         if (movement == 4)
         {
@@ -440,7 +448,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         Frame player1Frame = characters.characters[player1.character].animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame];
         Frame player2Frame = characters.characters[player2.character].animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame];
 
-        if (!isInAir(player1Data) && (player1Frame.cancelLvl == 0 || player1Frame.canRotate))
+        if (!isInAir(player1Data) && (player1Frame.cancelLvl[Mathf.Min(player1Data.HitLanded, player1Frame.cancelLvl.Length - 1)] == 0 || player1Frame.canRotate))
         {
             if (player1Data.PlayerPositionHorizontal > player2Data.PlayerPositionHorizontal)
             {
@@ -452,7 +460,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             }
         }
 
-        if (!isInAir(player2Data) && (player2Frame.cancelLvl == 0 || player2Frame.canRotate))
+        if (!isInAir(player2Data) && (player2Frame.cancelLvl[Mathf.Min(player2Data.HitLanded, player2Frame.cancelLvl.Length - 1)] == 0 || player2Frame.canRotate))
         {
             if (player2Data.PlayerPositionHorizontal > player1Data.PlayerPositionHorizontal)
             {
@@ -560,6 +568,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                             player2Data.PlayerAnimation == Animations.BlockHigh || 
                             player2Data.PlayerAnimation == Animations.BlockLow))
                         {
+                            Debug.Log(player2Data.PlayerAnimation);
                             player2Collision = characters.characters[player2.character].blockHightBox;
                             isBlocking = Animations.BlockHigh;
                         }
@@ -629,7 +638,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                              player1Data.PlayerAnimation == Animations.BlockHigh ||
                              player1Data.PlayerAnimation == Animations.BlockLow))
                         {
-                            Debug.Log("Checking If Blocking High");
+                            Debug.Log(player1Data.PlayerAnimation);
                             player1Collision = characters.characters[player1.character].blockHightBox;
                             isBlocking = Animations.BlockHigh;
                         }
@@ -675,6 +684,14 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 if (player1Gothit != -1)
                     break;
             }
+        }
+        if (player1Data.InHitstun == 0 && player1Data.PlayerAnimation != Animations.BlockLow && player1Data.PlayerAnimation != Animations.BlockHigh)
+        {
+            player2Data.Combo = 0;
+        }
+        if (player2Data.InHitstun == 0 && player2Data.PlayerAnimation != Animations.BlockLow && player2Data.PlayerAnimation != Animations.BlockHigh)
+        {
+            player1Data.Combo = 0;
         }
 
         //Apply the required data if pl1 or pl2 got hit
@@ -771,14 +788,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 if (skipFrames < player1Frame.hitStop)
                     skipFrames = player1Frame.hitStop;
             }
-        }
-        if (player1Data.InHitstun == 0 && player1Data.PlayerAnimation != Animations.BlockLow && player1Data.PlayerAnimation != Animations.BlockHigh)
-        {
-            player2Data.Combo = 0;
-        }
-        if (player2Data.InHitstun == 0 && player2Data.PlayerAnimation != Animations.BlockLow && player2Data.PlayerAnimation != Animations.BlockHigh)
-        {
-            player1Data.Combo = 0;
         }
 
         //Making sure that the players are not out of bounds

@@ -114,7 +114,7 @@ public class Player : MonoBehaviour
     public void SetInput()
     {
         int movement = 5 + (int)Input.GetAxis("Horizontal") + (int)Input.GetAxis("Vertical") * 3;
-        //if ((int)Input.GetAxis("Horizontal") == 0 && (int)Input.GetAxis("Vertical") == 0) movement = 1;
+        if ((int)Input.GetAxis("Horizontal") == 0 && (int)Input.GetAxis("Vertical") == 0) movement = 4;
         input.SetInteger("Move", movement);
         bool light = Input.GetButton("Fire1");
         bool medium = Input.GetButton("Fire2");
