@@ -320,7 +320,7 @@ MonoBehaviour:
     canHitHighOrLow: 1
     canRotate: 0
     hitbox:
-    - posX: 750
+    - posX: 1100
       posY: 1850
       sizeX: 1355
       sizeY: 500
@@ -369,7 +369,7 @@ MonoBehaviour:
     canHitHighOrLow: 1
     canRotate: 0
     hitbox:
-    - posX: 750
+    - posX: 1100
       posY: 1850
       sizeX: 1355
       sizeY: 500
@@ -395,18 +395,10 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox:
-    - posX: -21
-      posY: 1165
-      sizeX: 1213
-      sizeY: 2330
-    - posX: 74
-      posY: 2500
-      sizeX: 817
-      sizeY: 484
-    - posX: 524
-      posY: 639
-      sizeX: 776
-      sizeY: 1219
+    - posX: 1000
+      posY: 1850
+      sizeX: 1355
+      sizeY: 500
     hitboxPush: 65
     hitboxPushOnBlock: 65
     hitboxLand: 1
@@ -418,7 +410,7 @@ MonoBehaviour:
     canHitHighOrLow: 1
     canRotate: 0
     hitbox:
-    - posX: 750
+    - posX: 1100
       posY: 1850
       sizeX: 1355
       sizeY: 500
