@@ -24,7 +24,8 @@ public static class Animations
     public const int Medium = 15;
     public const int Heavy = 16;
     public const int LightCrouch = 17;
-
+    public const int MediumCrouch = 18;
+    public const int HeavyCrouch = 19;
 }
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
@@ -299,11 +300,17 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         }
         if (heavyButtonBuffer[0].buttonDown == true && CanCancelInto(result, player, Animations.Heavy) && heavyButtonBuffer[0].holdTime < frameBufferSize)
         {
-            PlayAnimation(ref result, player, Animations.Heavy);
+            if (CanCancelInto(result, player, Animations.Heavy) && movement != 1 && movement != 2 && movement != 3)
+                PlayAnimation(ref result, player, Animations.Heavy);
+            else if (CanCancelInto(result, player, Animations.HeavyCrouch) && (movement == 1 || movement == 2 || movement == 3))
+                PlayAnimation(ref result, player, Animations.HeavyCrouch);
         }
-        else if (mediumButtonBuffer[0].buttonDown == true && CanCancelInto(result, player, Animations.Medium) && mediumButtonBuffer[0].holdTime < frameBufferSize)
+        else if (mediumButtonBuffer[0].buttonDown == true && mediumButtonBuffer[0].holdTime < frameBufferSize)
         {
-            PlayAnimation(ref result, player, Animations.Medium);
+            if (CanCancelInto(result, player, Animations.Medium) && movement != 1 && movement != 2 && movement != 3)
+                PlayAnimation(ref result, player, Animations.Medium);
+            else if (CanCancelInto(result, player, Animations.MediumCrouch) && (movement == 1 || movement == 2 || movement == 3))
+                PlayAnimation(ref result, player, Animations.MediumCrouch);
         }
         else if (lightButtonBuffer[0].buttonDown == true && lightButtonBuffer[0].holdTime < frameBufferSize)
         {
@@ -512,11 +519,12 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         player1Collision.posY += player1Data.PlayerPositionVertical;
         player2Collision.posX += player2Data.PlayerPositionHorizontal;
         player2Collision.posY += player2Data.PlayerPositionVertical;
-        if (CheckCollision(player1Collision, player2Collision))
+        int midle;
+        int verticalMidle;
+        if (CheckCollision(player1Collision, player2Collision, out midle, out verticalMidle))
         {
             Rectengale player1CollisionCopy = player1Frame.collisionBox;
             Rectengale player2CollisionCopy = player2Frame.collisionBox;
-            int midle = (player1Collision.posX + player2Collision.posX) / 2;
             if (player1Collision.posX < midle)
             {
                 player1Data.PlayerPositionHorizontal = midle - player1CollisionCopy.sizeX / 2 - player1CollisionCopy.posX * player1Dir;

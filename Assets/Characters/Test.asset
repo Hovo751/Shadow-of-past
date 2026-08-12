@@ -67,6 +67,12 @@ MonoBehaviour:
   - name: LightCrouch
     data: {fileID: 11400000, guid: 70fd84b124a0bd146aee312f5919726c, type: 2}
     nextAnim: 0
+  - name: MediumCrouch
+    data: {fileID: 11400000, guid: d7b681df6793ed54488c710d714d1c96, type: 2}
+    nextAnim: 0
+  - name: HeavyCrouch
+    data: {fileID: 11400000, guid: 8ceb44e0c94b22f4c894312e68c5d359, type: 2}
+    nextAnim: 0
   blockHightBox:
     posX: 577
     posY: 3087
