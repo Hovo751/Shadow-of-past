@@ -49,6 +49,12 @@ MonoBehaviour:
   - name: GetHitDown
     data: {fileID: 11400000, guid: 1d282613c2a1ceb4ba501981f213c9d6, type: 2}
     nextAnim: 0
+  - name: GetHitAir
+    data: {fileID: 11400000, guid: 34dc61dc314aa6445a058ba240c04c30, type: 2}
+    nextAnim: 0
+  - name: KnockdownRec
+    data: {fileID: 11400000, guid: e69f347e268554a4ab75e7c1ec9d087d, type: 2}
+    nextAnim: 0
   - name: BlockHigh
     data: {fileID: 11400000, guid: e4a39f6717a7c5e40b3c241ec797d03b, type: 2}
     nextAnim: 0

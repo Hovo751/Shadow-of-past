@@ -18,14 +18,16 @@ public static class Animations
     public const int DashBackward = 9;
     public const int GetHitUp = 10;
     public const int GetHitDown = 11;
-    public const int BlockHigh = 12;
-    public const int BlockLow = 13;
-    public const int Light = 14;
-    public const int Medium = 15;
-    public const int Heavy = 16;
-    public const int LightCrouch = 17;
-    public const int MediumCrouch = 18;
-    public const int HeavyCrouch = 19;
+    public const int GetHitAir = 12;
+    public const int KnockdownRec = 13;
+    public const int BlockHigh = 14;
+    public const int BlockLow = 15;
+    public const int Light = 16;
+    public const int Medium = 17;
+    public const int Heavy = 18;
+    public const int LightCrouch = 19;
+    public const int MediumCrouch = 20;
+    public const int HeavyCrouch = 21;
 }
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
@@ -278,7 +280,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         result.PlayerAnimationFrame++;
 
-        if (result.PlayerAnimation == Animations.GetHitUp || result.PlayerAnimation == Animations.GetHitDown || 
+        if (result.PlayerAnimation == Animations.GetHitUp || result.PlayerAnimation == Animations.GetHitDown || result.PlayerAnimation == Animations.GetHitAir ||
             result.PlayerAnimation == Animations.BlockHigh || result.PlayerAnimation == Animations.BlockLow)
         {
             if (result.PlayerAnimationFrame >= currentAnimation.frames.Length)
@@ -291,6 +293,13 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 result.PlayerAnimation = Animations.Idle;
                 result.PlayerAnimationFrame = 0;
                 result.InHitstun = 0;
+            }
+            if (result.PlayerAnimation == Animations.GetHitAir && !isInAir(result))
+            {
+                result.PlayerAnimation = Animations.KnockdownRec;
+                result.PlayerAnimationFrame = 0;
+                result.InHitstun = 0;
+                result.PlayerPositionVertical = 0;
             }
         }
 
@@ -613,6 +622,10 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                         {
                             player2Gothit = didBlock;
                         }
+                        if (didBlock == -1 && isInAir(player2Data))
+                        {
+                            player2Gothit = Animations.GetHitAir;
+                        }
                         break;
                     }
                 }
@@ -685,6 +698,10 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                         {
                             player1Gothit = didBlock;
                         }
+                        if (didBlock == -1 && isInAir(player1Data))
+                        {
+                            player1Gothit = Animations.GetHitAir;
+                        }
                         break;
                     }
                 }
@@ -731,6 +748,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 Debug.Log("Player1 got hit");
                 player2Data.Combo++;
                 player1Data.InHitstun = player2Frame.hitboxHitStun;
+                if (player1Gothit == Animations.GetHitAir) player1Data.InHitstun = 999999;
                 player1Data.PlayerAnimation = player1Gothit;
                 player1Data.PlayerAnimationFrame = 0;
                 player1Data.PlayerNextAnimation = Animations.Idle;
@@ -743,7 +761,13 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 {
                     player1Data.PlayerVelocityHorizontal = player2Frame.hitboxPush * player2Dir;
                     player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                    if (player1Gothit == Animations.GetHitAir)
+                    {
+                        player1Data.PlayerVelocityHorizontal = player2Frame.hitboxPushAirHorizontal * player2Dir;
+                        player1Data.PlayerAccelerationHorizontal = 0;
+                    }
                 }
+                if (player1Gothit == Animations.GetHitAir) player1Data.PlayerVelocityVertical = player2Frame.hitboxPushAirVertical;
                 player2Data.HitLanded = player2Frame.hitboxLand;
                 player2.PlayHit(new Vector3(player1HitX, player1HitY));
                 skipFrames = player2Frame.hitStop;
@@ -778,6 +802,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 Debug.Log("Player2 got hit");
                 player1Data.Combo++;
                 player2Data.InHitstun = player1Frame.hitboxHitStun;
+                if (player2Gothit == Animations.GetHitAir) player2Data.InHitstun = 999999;
                 player2Data.PlayerAnimation = player2Gothit;
                 player2Data.PlayerAnimationFrame = 0;
                 player2Data.PlayerNextAnimation = Animations.Idle;
@@ -790,7 +815,13 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 {
                     player2Data.PlayerVelocityHorizontal = player1Frame.hitboxPush * player1Dir;
                     player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                    if (player2Gothit == Animations.GetHitAir)
+                    {
+                        player2Data.PlayerVelocityHorizontal = player1Frame.hitboxPushAirHorizontal * player1Dir;
+                        player2Data.PlayerAccelerationHorizontal = 0;
+                    }
                 }
+                if (player2Gothit == Animations.GetHitAir) player2Data.PlayerVelocityVertical = player1Frame.hitboxPushAirVertical;
                 player1Data.HitLanded = player1Frame.hitboxLand;
                 player1.PlayHit(new Vector3(player2HitX, player2HitY));
                 if (skipFrames < player1Frame.hitStop)
