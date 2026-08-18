@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3a24a27f11e1634f9ea8ef77c05e57d, type: 3}
-  m_Name: TestLight
+  m_Name: TestJumpLight
   m_EditorClassIdentifier: 
   cancelLvl: 0
-  inAir: 0
+  inAir: 1
   frames:
   - cancelLvl: 01000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
-    setVelocityHbool: 1
+    setVelocityHbool: 0
     setVelocityVertical: 0
-    setVelocityVbool: 1
+    setVelocityVbool: 0
     setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
+    setAccelerationHbool: 0
     setAccelerationVertical: 0
-    setAccelerationVbool: 1
+    setAccelerationVbool: 0
     hurtbox:
     - posX: 100
       posY: 1753
@@ -613,7 +613,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     canHitHighOrLow: 0
-    canRotate: 1
+    canRotate: 0
     hitbox: []
     throwbox:
     - posX: 100

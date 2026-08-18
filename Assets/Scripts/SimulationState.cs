@@ -19,6 +19,7 @@ public struct PlayerChangebleStats
     public int PlayerAnimation;
     public int PlayerNextAnimation;
     public int PlayerAnimationFrame;
+    public int PlayerNextAnimationFrame;
     public int HitLanded;
     public int InHitstun;
     public bool IsLookingRight;

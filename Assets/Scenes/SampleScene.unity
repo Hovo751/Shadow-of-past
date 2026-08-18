@@ -2164,6 +2164,7 @@ MonoBehaviour:
   coherenceBridge: {fileID: 1936648567}
   PauseAutomatically: 0
   ComboCounter: {fileID: 67180159}
+  simulationSpeed: 1
   drawHitbox: 1
   frameBufferSize: 5
   txtDebug: {fileID: 1964602098}
