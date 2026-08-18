@@ -1,5 +1,6 @@
 using Coherence.Cloud;
 using Coherence.Toolkit;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -119,8 +120,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     }
     private void PlayAnimation(ref PlayerChangebleStats result, Player player, int anim)
     {
-        Debug.Log(anim);
         result.PlayerNextAnimation = characters.characters[player.character].animations[anim].nextAnim;
+        result.PlayerNextAnimationFrame = 0;
         result.HitLanded = 0;
         if (characters.characters[player.character].animations[anim].data.inAir)
         {
@@ -140,7 +141,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         AnimBase currentAnim = characters.characters[player.character].animations[result.PlayerAnimation].data;
         AnimBase nextAnim = characters.characters[player.character].animations[anim].data;
         int hitLanded = Mathf.Min(result.HitLanded, currentAnim.frames[result.PlayerAnimationFrame].cancelLvl.Length - 1);
-        Debug.Log(hitLanded);
+        if (hitLanded != 0) Debug.Log(hitLanded);
         if (result.PlayerAnimation != anim &&
             currentAnim.frames[result.PlayerAnimationFrame].cancelLvl[hitLanded] <= nextAnim.cancelLvl &&
             nextAnim.inAir == isInAir(result))
@@ -216,6 +217,19 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         }
 
         return movementBuffer.ToArray();
+    }
+
+    private bool PressedButtonInFrameBuffer(ButtonInput[] buffer)
+    {
+        if (buffer[0].buttonDown == true && buffer[0].holdTime < frameBufferSize) return true;
+        if (buffer[0].buttonDown == false && buffer.Length >= 2)
+        {
+            if (buffer[1].buttonDown == true && buffer[0].holdTime + buffer[1].holdTime < frameBufferSize)
+            {
+                return true;
+            }
+        }
+        return false;
     }
     private PlayerChangebleStats CalculatePerPlayer(int playerNumber, long simulationFrame)
     {
@@ -330,21 +344,21 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             PlayAnimation(ref result, player, result.PlayerNextAnimation, result.PlayerNextAnimationFrame);
         }
-        if (heavyButtonBuffer[0].buttonDown == true && CanCancelInto(result, player, Animations.Heavy) && heavyButtonBuffer[0].holdTime < frameBufferSize)
+        if (PressedButtonInFrameBuffer(heavyButtonBuffer))
         {
             if (CanCancelInto(result, player, Animations.Heavy) && movement != 1 && movement != 2 && movement != 3)
                 PlayAnimation(ref result, player, Animations.Heavy);
             else if (CanCancelInto(result, player, Animations.HeavyCrouch) && (movement == 1 || movement == 2 || movement == 3))
                 PlayAnimation(ref result, player, Animations.HeavyCrouch);
         }
-        else if (mediumButtonBuffer[0].buttonDown == true && mediumButtonBuffer[0].holdTime < frameBufferSize)
+        else if (PressedButtonInFrameBuffer(mediumButtonBuffer))
         {
             if (CanCancelInto(result, player, Animations.Medium) && movement != 1 && movement != 2 && movement != 3)
                 PlayAnimation(ref result, player, Animations.Medium);
             else if (CanCancelInto(result, player, Animations.MediumCrouch) && (movement == 1 || movement == 2 || movement == 3))
                 PlayAnimation(ref result, player, Animations.MediumCrouch);
         }
-        else if (lightButtonBuffer[0].buttonDown == true && lightButtonBuffer[0].holdTime < frameBufferSize)
+        else if (PressedButtonInFrameBuffer(lightButtonBuffer))
         {
             if (CanCancelInto(result, player, Animations.Light) && movement != 1 && movement != 2 && movement != 3)
                 PlayAnimation(ref result, player, Animations.Light);
@@ -758,8 +772,11 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 player1Data.PlayerNextAnimationFrame = 0;
                 if (player1Data.PlayerPositionHorizontal <= -9990 || player1Data.PlayerPositionHorizontal >= 9990)
                 {
-                    player2Data.PlayerVelocityHorizontal = -player2Frame.hitboxPushOnBlock * player2Dir;
-                    player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                    if (!isInAir(player2Data))
+                    {
+                        player2Data.PlayerVelocityHorizontal = -player2Frame.hitboxPushOnBlock * player2Dir;
+                        player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                    }
                 }
                 else
                 {
@@ -781,8 +798,11 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 player1Data.PlayerNextAnimationFrame = 0;
                 if (player1Data.PlayerPositionHorizontal <= -9990 || player1Data.PlayerPositionHorizontal >= 9990)
                 {
-                    player2Data.PlayerVelocityHorizontal = -player2Frame.hitboxPush * player2Dir;
-                    player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                    if (!isInAir(player2Data))
+                    {
+                        player2Data.PlayerVelocityHorizontal = -player2Frame.hitboxPush * player2Dir;
+                        player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                    }
                 }
                 else
                 {
@@ -813,8 +833,12 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 player2Data.PlayerNextAnimationFrame = 0;
                 if (player2Data.PlayerPositionHorizontal <= -9990 || player2Data.PlayerPositionHorizontal >= 9990)
                 {
-                    player1Data.PlayerVelocityHorizontal = -player1Frame.hitboxPushOnBlock * player1Dir;
-                    player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+
+                    if (!isInAir(player1Data))
+                    {
+                        player1Data.PlayerVelocityHorizontal = -player1Frame.hitboxPushOnBlock * player1Dir;
+                        player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                    }
                 }
                 else
                 {
@@ -837,8 +861,11 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 player2Data.PlayerNextAnimationFrame = 0;
                 if (player2Data.PlayerPositionHorizontal <= -9990 || player2Data.PlayerPositionHorizontal >= 9990)
                 {
-                    player1Data.PlayerVelocityHorizontal = -player1Frame.hitboxPush * player1Dir;
-                    player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                    if (!isInAir(player1Data))
+                    {
+                        player1Data.PlayerVelocityHorizontal = -player1Frame.hitboxPush * player1Dir;
+                        player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                    }
                 }
                 else
                 {

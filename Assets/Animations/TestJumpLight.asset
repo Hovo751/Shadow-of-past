@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a24a27f11e1634f9ea8ef77c05e57d, type: 3}
   m_Name: TestJumpLight
   m_EditorClassIdentifier: 
-  cancelLvl: 0
+  cancelLvl: 1
   inAir: 1
   frames:
   - cancelLvl: 01000000
