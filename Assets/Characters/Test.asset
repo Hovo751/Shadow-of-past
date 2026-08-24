@@ -82,6 +82,9 @@ MonoBehaviour:
   - name: JumpLight
     data: {fileID: 11400000, guid: f662a00113d54114ebfca02ee7ad4690, type: 2}
     nextAnim: 0
+  - name: JumpMedium
+    data: {fileID: 11400000, guid: 15dc9483776cbf84c95ec18dcbfeb548, type: 2}
+    nextAnim: 0
   blockHightBox:
     posX: 577
     posY: 3087

@@ -30,6 +30,7 @@ public static class Animations
     public const int MediumCrouch = 20;
     public const int HeavyCrouch = 21;
     public const int JumpLight = 22;
+    public const int JumpMedium = 23;
 }
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
@@ -357,6 +358,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 PlayAnimation(ref result, player, Animations.Medium);
             else if (CanCancelInto(result, player, Animations.MediumCrouch) && (movement == 1 || movement == 2 || movement == 3))
                 PlayAnimation(ref result, player, Animations.MediumCrouch);
+            else if (CanCancelInto(result, player, Animations.JumpMedium))
+                PlayAnimation(ref result, player, Animations.JumpMedium);
         }
         else if (PressedButtonInFrameBuffer(lightButtonBuffer))
         {
@@ -482,6 +485,12 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         if (skipFrames > 0) { 
             skipFrames--;
+            for (var i = 0; i < AllClients.Count; i++)
+            {
+                Player player = AllClients[i].GameObject.GetComponent<Player>();
+                currentState.PlayerData[i] = player.changebleStats;
+            }
+            currentState.skipFrames = skipFrames;
             try
             {
                 history.Add(simulationFrame, currentState);
@@ -911,11 +920,11 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         player2.changebleStats = player2Data;
 
         //saving to history
-        currentState = new SimulationState
+        for (var i = 0; i < AllClients.Count; i++)
         {
-            PlayerData = new PlayerChangebleStats[AllClients.Count],
-            skipFrames = skipFrames,
-        };
+            Player player = AllClients[i].GameObject.GetComponent<Player>();
+            currentState.PlayerData[i] = player.changebleStats;
+        }
         try
         {
             history.Add(simulationFrame, currentState);
