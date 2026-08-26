@@ -31,6 +31,7 @@ public static class Animations
     public const int HeavyCrouch = 21;
     public const int JumpLight = 22;
     public const int JumpMedium = 23;
+    public const int JumpHeavy = 24;
 }
 
 public class Simulation : CoherenceInputSimulation<SimulationState>
@@ -136,6 +137,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     {
         PlayAnimation(ref result, player, anim);
         result.PlayerAnimationFrame = frame;
+        if (characters.characters[player.character].animations[anim].data.frames.Length <= frame)
+            result.PlayerAnimationFrame = characters.characters[player.character].animations[anim].data.frames.Length - 1;
     }
     bool CanCancelInto(PlayerChangebleStats result, Player player, int anim)
     {
@@ -351,6 +354,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                 PlayAnimation(ref result, player, Animations.Heavy);
             else if (CanCancelInto(result, player, Animations.HeavyCrouch) && (movement == 1 || movement == 2 || movement == 3))
                 PlayAnimation(ref result, player, Animations.HeavyCrouch);
+            else if (CanCancelInto(result, player, Animations.JumpHeavy))
+                PlayAnimation(ref result, player, Animations.JumpHeavy);
         }
         else if (PressedButtonInFrameBuffer(mediumButtonBuffer))
         {
@@ -633,7 +638,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                             player2Data.PlayerAnimation == Animations.BlockHigh || 
                             player2Data.PlayerAnimation == Animations.BlockLow))
                         {
-                            Debug.Log(player2Data.PlayerAnimation);
                             player2Collision = characters.characters[player2.character].blockHightBox;
                             isBlocking = Animations.BlockHigh;
                         }
@@ -658,7 +662,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                             didBlock = isBlocking;
                         }
 
-                        if (player1Collision.posY > player2Frame.collisionBox.posY && didBlock == -1)
+                        Character player2Character = characters.characters[player2.character];
+                        if (player1Collision.posY > (player2Character.blockHightBox.posY + player2Character.blockLowBox.posY) / 2 && didBlock == -1)
                         {
                             player2Gothit = Animations.GetHitUp;
                         }
@@ -699,7 +704,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
                     if (CheckCollision(player2Collision, player1Collision, out player1HitX, out player1HitY))
                     {
-                        Debug.Log("Checking If Blocking");
                         int isBlocking = -1;
 
                         if (player1MovementInput == 4 &&
@@ -707,7 +711,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                              player1Data.PlayerAnimation == Animations.BlockHigh ||
                              player1Data.PlayerAnimation == Animations.BlockLow))
                         {
-                            Debug.Log(player1Data.PlayerAnimation);
                             player1Collision = characters.characters[player1.character].blockHightBox;
                             isBlocking = Animations.BlockHigh;
                         }
@@ -716,7 +719,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                              player1Data.PlayerAnimation == Animations.BlockHigh ||
                              player1Data.PlayerAnimation == Animations.BlockLow))
                         {
-                            Debug.Log("Checking If Blocking Low");
                             player1Collision = characters.characters[player1.character].blockLowBox;
                             isBlocking = Animations.BlockLow;
                         }
@@ -730,11 +732,11 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
                         if (isBlocking != -1 && CheckCollision(player2Collision, player1Collision))
                         {
-                            Debug.Log("Checking If Blocking Collided");
                             didBlock = isBlocking;
                         }
 
-                        if (player2Collision.posY > player1Frame.collisionBox.posY && didBlock == -1)
+                        Character player1Character = characters.characters[player1.character];
+                        if (player2Collision.posY > (player1Character.blockHightBox.posY + player1Character.blockLowBox.posY) / 2 && didBlock == -1)
                         {
                             player1Gothit = Animations.GetHitUp;
                         }
@@ -773,7 +775,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             if (player1Gothit == Animations.BlockHigh || player1Gothit == Animations.BlockLow)
             {
-                Debug.Log("Player1 got blocked");
                 player1Data.InHitstun = player2Frame.hitboxBlockStun;
                 player1Data.PlayerAnimation = player1Gothit;
                 player1Data.PlayerAnimationFrame = 0;
@@ -797,7 +798,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             }
             else
             {
-                Debug.Log("Player1 got hit");
                 player2Data.Combo++;
                 player1Data.InHitstun = player2Frame.hitboxHitStun;
                 if (player1Gothit == Animations.GetHitAir) player1Data.InHitstun = 999999;
@@ -834,7 +834,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             if (player2Gothit == Animations.BlockHigh || player2Gothit == Animations.BlockLow)
             {
-                Debug.Log("Player2 got blocked");
                 player2Data.InHitstun = player1Frame.hitboxBlockStun;
                 player2Data.PlayerAnimation = player2Gothit;
                 player2Data.PlayerAnimationFrame = 0;
@@ -860,7 +859,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             }
             else
             {
-                Debug.Log("Player2 got hit");
                 player1Data.Combo++;
                 player2Data.InHitstun = player1Frame.hitboxHitStun;
                 if (player2Gothit == Animations.GetHitAir) player2Data.InHitstun = 999999;
@@ -945,7 +943,6 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             history[toFrame] = state;
         }
-        Debug.Log("Rollback");
         for (var i = 0; i < AllClients.Count; i++)
         {
             Player player = AllClients[i].GameObject.GetComponent<Player>();
