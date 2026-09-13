@@ -5,6 +5,8 @@ public class ComboCounter : MonoBehaviour
 {
     public TextMeshProUGUI player1ComboText;
     public TextMeshProUGUI player2ComboText;
+    public TextMeshProUGUI player1HealthText;
+    public TextMeshProUGUI player2HealthText;
     public Player player1;
     public Player player2;
 
@@ -16,10 +18,12 @@ public class ComboCounter : MonoBehaviour
         if (player1 != null)
         {
             player1Combo = player1.changebleStats.Combo;
+            player1HealthText.text = player1.changebleStats.Health.ToString();
         }
         if (player2 != null)
         {
             player2Combo = player2.changebleStats.Combo;
+            player2HealthText.text = player2.changebleStats.Health.ToString();
         }
         if (player1Combo > 0)
         {

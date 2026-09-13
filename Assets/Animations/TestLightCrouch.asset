@@ -40,13 +40,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 0
+    hitboxPushAirVertical: 0
+    hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
+    chipDamage: 0
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
     hitboxBlockStun: 0
+    addJuggleScaling: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -85,13 +89,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 0
+    hitboxPushAirVertical: 0
+    hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
+    chipDamage: 0
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
     hitboxBlockStun: 0
+    addJuggleScaling: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -130,13 +138,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 0
+    hitboxPushAirVertical: 0
+    hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
+    chipDamage: 0
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
     hitboxBlockStun: 0
+    addJuggleScaling: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -175,13 +187,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 0
+    hitboxPushAirVertical: 0
+    hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
+    chipDamage: 0
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
     hitboxBlockStun: 0
+    addJuggleScaling: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -220,13 +236,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 65
+    hitboxPushAirVertical: 125
+    hitboxPushAirHorizontal: 125
     hitboxPushOnBlock: 65
     hitboxLand: 1
-    hitboxDamage: 0
+    hitboxDamage: 76
+    chipDamage: 0
     hitboxHitStun: 15
     hitStop: 0
     hitStopOnBlock: 1
     hitboxBlockStun: 15
+    addJuggleScaling: 1
     canHitHighOrLow: 1
     canRotate: 0
     hitbox:
@@ -269,13 +289,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 65
+    hitboxPushAirVertical: 125
+    hitboxPushAirHorizontal: 125
     hitboxPushOnBlock: 65
     hitboxLand: 1
-    hitboxDamage: 0
+    hitboxDamage: 76
+    chipDamage: 0
     hitboxHitStun: 15
     hitStop: 0
     hitStopOnBlock: 1
     hitboxBlockStun: 15
+    addJuggleScaling: 1
     canHitHighOrLow: 1
     canRotate: 0
     hitbox:
@@ -318,13 +342,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 0
+    hitboxPushAirVertical: 0
+    hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
+    chipDamage: 0
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
     hitboxBlockStun: 0
+    addJuggleScaling: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -363,13 +391,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 0
+    hitboxPushAirVertical: 0
+    hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
+    chipDamage: 0
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
     hitboxBlockStun: 0
+    addJuggleScaling: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -408,13 +440,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 0
+    hitboxPushAirVertical: 0
+    hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
+    chipDamage: 0
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
     hitboxBlockStun: 0
+    addJuggleScaling: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -453,13 +489,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 0
+    hitboxPushAirVertical: 0
+    hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
+    chipDamage: 0
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
     hitboxBlockStun: 0
+    addJuggleScaling: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -498,13 +538,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 0
+    hitboxPushAirVertical: 0
+    hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
+    chipDamage: 0
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
     hitboxBlockStun: 0
+    addJuggleScaling: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -543,13 +587,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 0
+    hitboxPushAirVertical: 0
+    hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
+    chipDamage: 0
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
     hitboxBlockStun: 0
+    addJuggleScaling: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -588,13 +636,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 0
+    hitboxPushAirVertical: 0
+    hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
+    chipDamage: 0
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
     hitboxBlockStun: 0
+    addJuggleScaling: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -633,13 +685,17 @@ MonoBehaviour:
       sizeX: 776
       sizeY: 1219
     hitboxPush: 0
+    hitboxPushAirVertical: 0
+    hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
     hitboxLand: 0
     hitboxDamage: 0
+    chipDamage: 0
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
     hitboxBlockStun: 0
+    addJuggleScaling: 0
     canHitHighOrLow: 0
     canRotate: 1
     hitbox: []

@@ -28,10 +28,12 @@ public struct Frame
     public int hitboxPushOnBlock;
     public int hitboxLand;
     public int hitboxDamage;
+    public int chipDamage;
     public int hitboxHitStun;
     public int hitStop;
     public int hitStopOnBlock;
     public int hitboxBlockStun;
+    public int addJuggleScaling;
     public bool canHitHighOrLow;
     public bool canRotate;
     public Rectengale[] hitbox;

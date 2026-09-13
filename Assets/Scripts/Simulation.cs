@@ -67,6 +67,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     private int skipFrames = 0;
     public bool drawHitbox = true;
     public int frameBufferSize;
+    public int juggleLimit = 5;
     public TextMeshProUGUI txtDebug;
 
     public Characters characters;
@@ -340,7 +341,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
 
         if (currentAnimation.inAir && !isInAir(result))
         {
-            PlayAnimation(ref result, player, Animations.Idle);
+            int jumpAnimLength = characters.characters[player.character].animations[Animations.JumpStraight].data.frames.Length;
+            PlayAnimation(ref result, player, Animations.JumpStraight, jumpAnimLength - 1);
         }
 
         currentAnimation = characters.characters[player.character].animations[result.PlayerAnimation].data;
@@ -475,10 +477,27 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         Player player1 = AllClients[0].GameObject.GetComponent<Player>();
         Player player2 = AllClients[1].GameObject.GetComponent<Player>();
 
+        if (player1.startFrame != player2.startFrame)
+        {
+            if (player1.startFrame > player2.startFrame)
+            {
+                player2.startFrame = player1.startFrame;
+            }
+            else
+            {
+                player1.startFrame = player2.startFrame;
+            }
+            startFrame = player1.startFrame;
+        }
+
         int player1MovementInput = (int)player1.GetInput(simulationFrame).movement;
         int player2MovementInput = (int)player2.GetInput(simulationFrame).movement;
 
         if (player1MovementInput > 9 || player1MovementInput < 1 || player2MovementInput > 9 || player2MovementInput < 1 || startFrame == -1 || startFrame >= simulationFrame || simulationFrame % simulationSpeed != 0)
+        {
+            return;
+        }
+        if (player1.changebleStats.Health <= 0 || player2.changebleStats.Health <= 0)
         {
             return;
         }
@@ -629,6 +648,11 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                     player2Collision.posX += player2Data.PlayerPositionHorizontal;
                     player2Collision.posY += player2Data.PlayerPositionVertical;
 
+                    if (isInAir(player2Data) && player2Data.juggleScaling > juggleLimit)
+                    {
+                        break;
+                    }
+
                     if (CheckCollision(player1Collision, player2Collision, out player2HitX, out player2HitY))
                     {
                         int isBlocking = -1;
@@ -702,6 +726,11 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                     player1Collision.posX += player1Data.PlayerPositionHorizontal;
                     player1Collision.posY += player1Data.PlayerPositionVertical;
 
+                    if (isInAir(player1Data) && player1Data.juggleScaling > juggleLimit)
+                    {
+                        break;
+                    }
+
                     if (CheckCollision(player2Collision, player1Collision, out player1HitX, out player1HitY))
                     {
                         int isBlocking = -1;
@@ -769,6 +798,15 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             player1Data.Combo = 0;
         }
 
+        if (!isInAir(player1Data))
+        {
+            player1Data.juggleScaling = 0;
+        }
+        if (!isInAir(player2Data))
+        {
+            player2Data.juggleScaling = 0;
+        }
+
         //Apply the required data if pl1 or pl2 got hit
 
         if (player1Gothit != -1)
@@ -776,6 +814,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             if (player1Gothit == Animations.BlockHigh || player1Gothit == Animations.BlockLow)
             {
                 player1Data.InHitstun = player2Frame.hitboxBlockStun;
+                player1Data.Health -= player2Frame.chipDamage;
                 player1Data.PlayerAnimation = player1Gothit;
                 player1Data.PlayerAnimationFrame = 0;
                 player1Data.PlayerNextAnimation = Animations.Idle;
@@ -800,7 +839,9 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             {
                 player2Data.Combo++;
                 player1Data.InHitstun = player2Frame.hitboxHitStun;
+                player1Data.Health -= player2Frame.hitboxDamage;
                 if (player1Gothit == Animations.GetHitAir) player1Data.InHitstun = 999999;
+                if (player1Gothit == Animations.GetHitAir && player2Data.Combo != 0) player1Data.juggleScaling += player2Frame.addJuggleScaling;
                 player1Data.PlayerAnimation = player1Gothit;
                 player1Data.PlayerAnimationFrame = 0;
                 player1Data.PlayerNextAnimation = Animations.Idle;
@@ -835,6 +876,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             if (player2Gothit == Animations.BlockHigh || player2Gothit == Animations.BlockLow)
             {
                 player2Data.InHitstun = player1Frame.hitboxBlockStun;
+                player2Data.Health -= player1Frame.chipDamage;
                 player2Data.PlayerAnimation = player2Gothit;
                 player2Data.PlayerAnimationFrame = 0;
                 player2Data.PlayerNextAnimation = Animations.Idle;
@@ -861,7 +903,9 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             {
                 player1Data.Combo++;
                 player2Data.InHitstun = player1Frame.hitboxHitStun;
+                player2Data.Health -= player1Frame.hitboxDamage;
                 if (player2Gothit == Animations.GetHitAir) player2Data.InHitstun = 999999;
+                if (player2Gothit == Animations.GetHitAir && player1Data.Combo != 0) player2Data.juggleScaling += player1Frame.addJuggleScaling;
                 player2Data.PlayerAnimation = player2Gothit;
                 player2Data.PlayerAnimationFrame = 0;
                 player2Data.PlayerNextAnimation = Animations.Idle;
@@ -979,6 +1023,10 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             player2.changebleStats.PlayerPositionVertical = 0;
             player1.changebleStats.PlayerAnimationFrame = 0;
             player2.changebleStats.PlayerAnimationFrame = 0;
+            player1.changebleStats.juggleScaling = 0;
+            player2.changebleStats.juggleScaling = 0;
+            player1.changebleStats.Health = 10000;
+            player2.changebleStats.Health = 10000;
             ComboCounter.player1 = player1;
             ComboCounter.player2 = player2;
             _camera.player1 = player1.transform;
@@ -987,7 +1035,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             SimulationEnabled = AllClients.Count >= 2;
             if (player1.startFrame == -1 && player2.startFrame == -1)
             {
-                startFrame = CurrentSimulationFrame + 120;
+                startFrame = CurrentSimulationFrame + 240;
                 player1.startFrame = startFrame;
                 player2.startFrame = startFrame;
             }

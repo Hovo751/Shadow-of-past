@@ -10,6 +10,7 @@ public struct SimulationState
 [System.Serializable]
 public struct PlayerChangebleStats
 {
+    public int Health;
     public int PlayerPositionHorizontal;
     public int PlayerPositionVertical;
     public int PlayerVelocityHorizontal;
@@ -25,6 +26,7 @@ public struct PlayerChangebleStats
     public bool IsLookingRight;
     public bool IsInAir;
     public int Combo;
+    public int juggleScaling;
 
     //public static PlayerChangebleStats operator +(PlayerChangebleStats x, PlayerChangebleStats y)
     //{
