@@ -40,9 +40,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -69,9 +69,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -98,9 +98,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -127,9 +127,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -156,9 +156,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -185,9 +185,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -214,9 +214,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -243,9 +243,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -272,9 +272,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -301,9 +301,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -330,9 +330,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -359,9 +359,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -388,9 +388,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -417,9 +417,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -446,9 +446,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -475,9 +475,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -504,9 +504,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -533,9 +533,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -562,9 +562,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -591,9 +591,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -620,9 +620,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -649,9 +649,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -678,9 +678,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -707,9 +707,9 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000
   - cancelLvl: a4020000
     addPosX: 0
@@ -736,7 +736,7 @@ MonoBehaviour:
     hitbox: []
     throwbox: []
     collisionBox:
-      posX: 100
+      posX: -300
       posY: 0
-      sizeX: 1500
+      sizeX: 1800
       sizeY: 1000

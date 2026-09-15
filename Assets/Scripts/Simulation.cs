@@ -487,8 +487,8 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             {
                 player1.startFrame = player2.startFrame;
             }
-            startFrame = player1.startFrame;
         }
+        startFrame = player1.startFrame;
 
         int player1MovementInput = (int)player1.GetInput(simulationFrame).movement;
         int player2MovementInput = (int)player2.GetInput(simulationFrame).movement;

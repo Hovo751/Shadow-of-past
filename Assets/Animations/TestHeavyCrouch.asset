@@ -335,7 +335,7 @@ MonoBehaviour:
       sizeY: 1219
     hitboxPush: 147
     hitboxPushAirVertical: 401
-    hitboxPushAirHorizontal: 80
+    hitboxPushAirHorizontal: 45
     hitboxPushOnBlock: 65
     hitboxLand: 1
     hitboxDamage: 167
@@ -388,7 +388,7 @@ MonoBehaviour:
       sizeY: 1219
     hitboxPush: 147
     hitboxPushAirVertical: 401
-    hitboxPushAirHorizontal: 80
+    hitboxPushAirHorizontal: 45
     hitboxPushOnBlock: 65
     hitboxLand: 1
     hitboxDamage: 167
@@ -441,7 +441,7 @@ MonoBehaviour:
       sizeY: 1219
     hitboxPush: 147
     hitboxPushAirVertical: 401
-    hitboxPushAirHorizontal: 80
+    hitboxPushAirHorizontal: 45
     hitboxPushOnBlock: 65
     hitboxLand: 1
     hitboxDamage: 167
