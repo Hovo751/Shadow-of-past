@@ -235,6 +235,10 @@ MonoBehaviour:
       posY: 639
       sizeX: 776
       sizeY: 1219
+    - posX: 750
+      posY: 1850
+      sizeX: 1476
+      sizeY: 620
     hitboxPush: 65
     hitboxPushAirVertical: 125
     hitboxPushAirHorizontal: 125
@@ -288,6 +292,10 @@ MonoBehaviour:
       posY: 639
       sizeX: 776
       sizeY: 1219
+    - posX: 750
+      posY: 1850
+      sizeX: 1476
+      sizeY: 620
     hitboxPush: 65
     hitboxPushAirVertical: 125
     hitboxPushAirHorizontal: 125

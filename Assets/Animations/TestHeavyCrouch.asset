@@ -333,6 +333,10 @@ MonoBehaviour:
       posY: 639
       sizeX: 776
       sizeY: 1219
+    - posX: 247
+      posY: 2783
+      sizeX: 1257
+      sizeY: 1219
     hitboxPush: 147
     hitboxPushAirVertical: 401
     hitboxPushAirHorizontal: 45
@@ -348,9 +352,9 @@ MonoBehaviour:
     canHitHighOrLow: 0
     canRotate: 0
     hitbox:
-    - posX: 500
-      posY: 3000
-      sizeX: 1000
+    - posX: 360
+      posY: 3230
+      sizeX: 1067
       sizeY: 1000
     throwbox:
     - posX: 6
@@ -386,6 +390,10 @@ MonoBehaviour:
       posY: 639
       sizeX: 776
       sizeY: 1219
+    - posX: 247
+      posY: 2783
+      sizeX: 1257
+      sizeY: 1219
     hitboxPush: 147
     hitboxPushAirVertical: 401
     hitboxPushAirHorizontal: 45
@@ -401,9 +409,9 @@ MonoBehaviour:
     canHitHighOrLow: 0
     canRotate: 0
     hitbox:
-    - posX: 500
-      posY: 3000
-      sizeX: 1000
+    - posX: 360
+      posY: 3230
+      sizeX: 1067
       sizeY: 1000
     throwbox:
     - posX: 6
@@ -439,6 +447,10 @@ MonoBehaviour:
       posY: 639
       sizeX: 776
       sizeY: 1219
+    - posX: 247
+      posY: 2783
+      sizeX: 1257
+      sizeY: 1219
     hitboxPush: 147
     hitboxPushAirVertical: 401
     hitboxPushAirHorizontal: 45
@@ -454,9 +466,9 @@ MonoBehaviour:
     canHitHighOrLow: 0
     canRotate: 0
     hitbox:
-    - posX: 500
-      posY: 3000
-      sizeX: 1000
+    - posX: 360
+      posY: 3230
+      sizeX: 1067
       sizeY: 1000
     throwbox:
     - posX: 6

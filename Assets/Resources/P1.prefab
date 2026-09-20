@@ -570,6 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 0
   changebleStats:
+    Health: 0
     PlayerPositionHorizontal: 0
     PlayerPositionVertical: 0
     PlayerVelocityHorizontal: 0
@@ -579,11 +580,13 @@ MonoBehaviour:
     PlayerAnimation: 0
     PlayerNextAnimation: 0
     PlayerAnimationFrame: 0
+    PlayerNextAnimationFrame: 0
     HitLanded: 0
     InHitstun: 0
     IsLookingRight: 0
     IsInAir: 0
     Combo: 0
+    juggleScaling: 0
   animator: {fileID: 3136657249523467253}
   characters: {fileID: 11400000, guid: d069c27ff20b28340a6213ba28a5d6b7, type: 2}
   x: 0.5
@@ -710,6 +713,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f97aefef586d09b48947b07a14f33b84, type: 2}
+    - target: {fileID: -246153909103150758, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -9959567572622802, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -740,7 +747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1130305199406379087, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1299866208196833255, guid: fea8065c1da87ad498c70fed257ffa55, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

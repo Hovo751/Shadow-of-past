@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     public float x;
     public long startFrame = -1;
     public GameObject hitParticle;
-
+    
+    private AudioSource punchSound;
     private CoherenceInput input;
     private float transitionDuration = 1.0f;
     private string previousAnim;
@@ -78,6 +79,7 @@ public class Player : MonoBehaviour
     {
         input = GetComponent<CoherenceInput>();
         animator.speed = 0.0f;
+        punchSound = FindAnyObjectByType<AudioSource>();
     }
 
     // Retrieves the "movement" input state for a given frame
@@ -135,6 +137,10 @@ public class Player : MonoBehaviour
         if (particleSystem != null)
         {
             //particleSystem.Emit(30);
+        }
+        if (punchSound != null)
+        {
+            punchSound.Play();
         }
     }
 }

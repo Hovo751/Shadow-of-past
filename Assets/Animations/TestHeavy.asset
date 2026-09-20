@@ -350,6 +350,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 65
     hitboxPushAirVertical: 135
     hitboxPushAirHorizontal: 200
@@ -399,6 +403,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 65
     hitboxPushAirVertical: 135
     hitboxPushAirHorizontal: 200
@@ -448,6 +456,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 65
     hitboxPushAirVertical: 135
     hitboxPushAirHorizontal: 200
@@ -497,6 +509,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -542,6 +558,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -587,6 +607,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -632,6 +656,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -677,6 +705,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -722,6 +754,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -767,6 +803,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -812,6 +852,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -857,6 +901,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -902,6 +950,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -947,6 +999,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 1157
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -992,6 +1048,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 488
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -1037,6 +1097,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 488
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -1082,6 +1146,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 488
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
@@ -1127,6 +1195,10 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    - posX: 488
+      posY: 2994
+      sizeX: 1407
+      sizeY: 581
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
