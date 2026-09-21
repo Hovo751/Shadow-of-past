@@ -3096,7 +3096,7 @@ MonoBehaviour:
   ComboCounter: {fileID: 67180159}
   simulationSpeed: 1
   drawHitbox: 1
-  frameBufferSize: 5
+  InputBufferSize: 5
   juggleLimit: 2
   txtDebug: {fileID: 1964602098}
   characters: {fileID: 11400000, guid: d069c27ff20b28340a6213ba28a5d6b7, type: 2}

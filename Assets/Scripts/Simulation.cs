@@ -66,7 +66,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
     private long startFrame = -1;
     private int skipFrames = 0;
     public bool drawHitbox = true;
-    public int frameBufferSize;
+    public int InputBufferSize;
     public int juggleLimit = 5;
     public TextMeshProUGUI txtDebug;
 
@@ -224,12 +224,12 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         return movementBuffer.ToArray();
     }
 
-    private bool PressedButtonInFrameBuffer(ButtonInput[] buffer)
+    private bool PressedButtonInInputBuffer(ButtonInput[] buffer)
     {
-        if (buffer[0].buttonDown == true && buffer[0].holdTime < frameBufferSize) return true;
+        if (buffer[0].buttonDown == true && buffer[0].holdTime < InputBufferSize) return true;
         if (buffer[0].buttonDown == false && buffer.Length >= 2)
         {
-            if (buffer[1].buttonDown == true && buffer[0].holdTime + buffer[1].holdTime < frameBufferSize)
+            if (buffer[1].buttonDown == true && buffer[0].holdTime + buffer[1].holdTime < InputBufferSize)
             {
                 return true;
             }
@@ -350,7 +350,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
         {
             PlayAnimation(ref result, player, result.PlayerNextAnimation, result.PlayerNextAnimationFrame);
         }
-        if (PressedButtonInFrameBuffer(heavyButtonBuffer))
+        if (PressedButtonInInputBuffer(heavyButtonBuffer))
         {
             if (CanCancelInto(result, player, Animations.Heavy) && movement != 1 && movement != 2 && movement != 3)
                 PlayAnimation(ref result, player, Animations.Heavy);
@@ -359,7 +359,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             else if (CanCancelInto(result, player, Animations.JumpHeavy))
                 PlayAnimation(ref result, player, Animations.JumpHeavy);
         }
-        else if (PressedButtonInFrameBuffer(mediumButtonBuffer))
+        else if (PressedButtonInInputBuffer(mediumButtonBuffer))
         {
             if (CanCancelInto(result, player, Animations.Medium) && movement != 1 && movement != 2 && movement != 3)
                 PlayAnimation(ref result, player, Animations.Medium);
@@ -368,7 +368,7 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
             else if (CanCancelInto(result, player, Animations.JumpMedium))
                 PlayAnimation(ref result, player, Animations.JumpMedium);
         }
-        else if (PressedButtonInFrameBuffer(lightButtonBuffer))
+        else if (PressedButtonInInputBuffer(lightButtonBuffer))
         {
             if (CanCancelInto(result, player, Animations.Light) && movement != 1 && movement != 2 && movement != 3)
                 PlayAnimation(ref result, player, Animations.Light);
@@ -674,14 +674,13 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                             isBlocking = Animations.BlockLow;
                         }
 
-                        player2Collision = characters.characters[player2.character].blockHightBox;
                         player2Collision.posX *= player2Dir;
                         player2Collision.posX += player2Data.PlayerPositionHorizontal;
                         player2Collision.posY += player2Data.PlayerPositionVertical;
 
                         int didBlock = -1;
 
-                        if (isBlocking != -1 && CheckCollision(player1Collision, player2Collision))
+                        if (isBlocking != -1 && (CheckCollision(player1Collision, player2Collision) || !player1Frame.canHitHighOrLow))
                         {
                             didBlock = isBlocking;
                         }
@@ -752,14 +751,13 @@ public class Simulation : CoherenceInputSimulation<SimulationState>
                             isBlocking = Animations.BlockLow;
                         }
 
-                        player1Collision = characters.characters[player1.character].blockHightBox;
                         player1Collision.posX *= player1Dir;
                         player1Collision.posX += player1Data.PlayerPositionHorizontal;
                         player1Collision.posY += player1Data.PlayerPositionVertical;
 
                         int didBlock = -1;
 
-                        if (isBlocking != -1 && CheckCollision(player2Collision, player1Collision))
+                        if (isBlocking != -1 && (CheckCollision(player2Collision, player1Collision) || !player2Frame.canHitHighOrLow))
                         {
                             didBlock = isBlocking;
                         }
