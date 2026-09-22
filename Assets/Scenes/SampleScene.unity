@@ -3012,6 +3012,7 @@ GameObject:
   - component: {fileID: 1936648567}
   - component: {fileID: 1936648569}
   - component: {fileID: 1936648570}
+  - component: {fileID: 1936648571}
   m_Layer: 0
   m_Name: CoherenceBridge
   m_TagString: Untagged
@@ -3097,9 +3098,8 @@ MonoBehaviour:
   ComboCounter: {fileID: 67180159}
   simulationSpeed: 1
   drawHitbox: 1
-  InputBufferSize: 5
-  juggleLimit: 2
   txtDebug: {fileID: 1964602098}
+  simulation: {fileID: 1936648571}
   characters: {fileID: 11400000, guid: d069c27ff20b28340a6213ba28a5d6b7, type: 2}
   _camera: {fileID: 330585548}
 --- !u!114 &1936648570
@@ -3109,11 +3109,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936648566}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c4dd90f0754eec4b8f4cd57e0747c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1936648571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936648566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff82bc0400aac64ebbcfeb672213acf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  juggleLimit: 2
+  InputBufferSize: 5
+  startFrame: -1
 --- !u!1 &1964602097
 GameObject:
   m_ObjectHideFlags: 0

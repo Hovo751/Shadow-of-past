@@ -6,6 +6,8 @@ public struct SimulationState
 {
     public PlayerChangebleStats[] PlayerData;
     public int skipFrames;
+    public bool player1LandedHit;
+    public bool player2LandedHit;
 }
 [System.Serializable]
 public struct PlayerChangebleStats

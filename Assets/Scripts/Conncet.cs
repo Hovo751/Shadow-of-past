@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Conncet : MonoBehaviour
 {
+    // Replication server rooms service for problems
     void Start()
     {
         var bridge = FindAnyObjectByType<CoherenceBridge>();
