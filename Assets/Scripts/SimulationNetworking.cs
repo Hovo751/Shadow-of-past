@@ -12,11 +12,10 @@ public class SimulationNetworking : CoherenceInputSimulation<SimulationState>
     // IF SMTH EXPLODES THAN GO TO LINE 1361 IN COHERENCEBRIDGE
     public ComboCounter ComboCounter;
     public int simulationSpeed = 1;
-    Dictionary<long, SimulationState> history = new Dictionary<long, SimulationState>();
     private long startFrame = -1;
     private int skipFrames;
-    private bool player1LandedHit;
-    private bool player2LandedHit;
+    private Vector2Int player1LandedHit;
+    private Vector2Int player2LandedHit;
     public bool drawHitbox = true;
     public TextMeshProUGUI txtDebug;
     public Simulation simulation;
@@ -47,6 +46,7 @@ public class SimulationNetworking : CoherenceInputSimulation<SimulationState>
             }
         }
         startFrame = player1.startFrame;
+        simulation.SetStartParams(startFrame, characters.characters[player1.character], characters.characters[player2.character]);
 
         int player1MovementInput = (int)player1.GetInput(simulationFrame).movement;
         int player2MovementInput = (int)player2.GetInput(simulationFrame).movement;
@@ -57,19 +57,6 @@ public class SimulationNetworking : CoherenceInputSimulation<SimulationState>
             player1LandedHit = player1LandedHit,
             player2LandedHit = player2LandedHit,
         };
-        for (var i = 0; i < AllClients.Count; i++)
-        {
-            Player player = AllClients[i].GameObject.GetComponent<Player>();
-            currentState.PlayerData[i] = player.changebleStats;
-        }
-        try
-        {
-            history.Add(simulationFrame, currentState);
-        }
-        catch (ArgumentException)
-        {
-            history[simulationFrame] = currentState;
-        }
 
         if (player1MovementInput > 9 || player1MovementInput < 1 || player2MovementInput > 9 || player2MovementInput < 1 || startFrame == -1 || startFrame >= simulationFrame || simulationFrame % simulationSpeed != 0)
         {
@@ -107,9 +94,7 @@ public class SimulationNetworking : CoherenceInputSimulation<SimulationState>
             player2Inputs[simulationFrame - i] = player2Input;
         }
 
-        simulation.history = history;
-        simulation.startFrame = startFrame;
-        currentState = simulation.Simulate(currentState, player1Inputs, player2Inputs, characters.characters[player1.character], characters.characters[player2.character], simulationFrame);
+        currentState = simulation.Simulate(player1Inputs, player2Inputs, simulationFrame);
 
         //Applying the changes
 
@@ -118,21 +103,10 @@ public class SimulationNetworking : CoherenceInputSimulation<SimulationState>
         skipFrames = currentState.skipFrames;
         player1LandedHit = currentState.player1LandedHit;
         player2LandedHit = currentState.player2LandedHit;
-
-        //saving to history
-        history[simulationFrame] = currentState;
     }
 
     protected override void Rollback(long toFrame, SimulationState state)
     {
-        try
-        {
-            history.Add(toFrame, state);
-        }
-        catch (ArgumentException)
-        {
-            history[toFrame] = state;
-        }
         for (var i = 0; i < AllClients.Count; i++)
         {
             Player player = AllClients[i].GameObject.GetComponent<Player>();

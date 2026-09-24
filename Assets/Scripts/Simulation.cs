@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public static class Animations
 {
@@ -54,10 +55,31 @@ public class Simulation : MonoBehaviour
 
     public int juggleLimit = 2;
     public int InputBufferSize;
+    public SimulationState baseState;
 
-    public Dictionary<long, SimulationState> history = new Dictionary<long, SimulationState>();
-    public long startFrame = -1;
-    private long currentFrame = -1;
+    private Dictionary<long, SimulationState> history = new Dictionary<long, SimulationState>();
+    private long startFrame = -1;
+    private Character player1Character; 
+    private Character player2Character;
+    public Dictionary<long, SimulationState> GetHistory()
+    {
+        return history;
+    }
+
+    public SimulationState GetFrameState(long frame)
+    {
+        if (frame <= startFrame)
+        {
+            return baseState;
+        }
+        try
+        {
+            return history[frame];
+        }
+        catch { }
+        Debug.Log("No such frame exists");
+        return baseState;
+    }
 
     public bool CheckCollision(Rectengale a, Rectengale b)
     {
@@ -156,7 +178,7 @@ public class Simulation : MonoBehaviour
 
         return movementBuffer.ToArray();
     }
-    ButtonInput[] SortInputs(bool[] arr)
+    ButtonInput[] SortInputs(bool[] arr, long currentFrame)
     {
         bool prevInput = false;
         List<ButtonInput> movementBuffer = new List<ButtonInput>();
@@ -180,7 +202,7 @@ public class Simulation : MonoBehaviour
             }
             if (currentFrame - i > startFrame && startFrame != -1 && i != 0)
             {
-                if (history[currentFrame - i].skipFrames > 0)
+                if (GetFrameState(currentFrame - i).skipFrames > 0)
                 {
                     ButtonInput input = movementBuffer[movementBuffer.Count - 1];
                     input.holdTime--;
@@ -215,7 +237,7 @@ public class Simulation : MonoBehaviour
         }
         return false;
     }
-    private PlayerChangebleStats CalculatePerPlayer(MovementAndButtonInput[] inputs, PlayerChangebleStats result, Character character)
+    private PlayerChangebleStats CalculatePerPlayer(MovementAndButtonInput[] inputs, PlayerChangebleStats result, Character character, long currentFrame)
     {
         int movement = inputs[0].movement;
         if (movement > 9 || movement < 1)
@@ -275,9 +297,9 @@ public class Simulation : MonoBehaviour
         }
 
         MovementInput[] movementBuffer = SortInputs(movementBufferNotSorted);
-        ButtonInput[] lightButtonBuffer = SortInputs(lightButtonBufferNotSorted);
-        ButtonInput[] mediumButtonBuffer = SortInputs(mediumButtonBufferNotSorted);
-        ButtonInput[] heavyButtonBuffer = SortInputs(heavyButtonBufferNotSorted);
+        ButtonInput[] lightButtonBuffer = SortInputs(lightButtonBufferNotSorted, currentFrame);
+        ButtonInput[] mediumButtonBuffer = SortInputs(mediumButtonBufferNotSorted, currentFrame);
+        ButtonInput[] heavyButtonBuffer = SortInputs(heavyButtonBufferNotSorted, currentFrame);
 
         result.IsInAir = isInAir(result);
 
@@ -352,7 +374,7 @@ public class Simulation : MonoBehaviour
         }
         if (movement == 4)
         {
-            if (movementBuffer.Length > 3 &&
+            if (movementBuffer.Length >= 3 &&
                     movementBuffer[0].holdTime <= 10 &&
                     movementBuffer[1].input == 5 && movementBuffer[1].holdTime <= 10 &&
                     movementBuffer[2].input == 4 && movementBuffer[2].holdTime <= 10 &&
@@ -368,7 +390,7 @@ public class Simulation : MonoBehaviour
         }
         else if (movement == 6)
         {
-            if (movementBuffer.Length > 3 &&
+            if (movementBuffer.Length >= 3 &&
                     movementBuffer[0].holdTime <= 10 &&
                     movementBuffer[1].input == 5 && movementBuffer[1].holdTime <= 10 &&
                     movementBuffer[2].input == 6 && movementBuffer[2].holdTime <= 10 &&
@@ -444,15 +466,33 @@ public class Simulation : MonoBehaviour
 
         return result;
     }
-
-    public SimulationState Simulate(SimulationState state, MovementAndButtonInput[] player1Inputs, MovementAndButtonInput[] player2Inputs, Character player1Character, Character player2Character, long simulationFrame)
+    public void SetStartParams(long frame, Character player1C, Character player2C)
     {
+        startFrame = frame;
+        player1Character = player1C;
+        player2Character = player2C;
+    }
+
+    public SimulationState Simulate(MovementAndButtonInput[] player1Inputs, MovementAndButtonInput[] player2Inputs, long currentFrame)
+    {
+        SimulationState state = GetFrameState(currentFrame - 1);
         int skipFrames = state.skipFrames;
-        currentFrame = simulationFrame;
+        state.player1LandedHit = Vector2Int.zero;
+        state.player2LandedHit = Vector2Int.zero;
+        state.player1LandedHit.y = -10000;
+        state.player2LandedHit.y = -10000;
         if (skipFrames > 0)
         {
             skipFrames--;
             state.skipFrames = skipFrames;
+            try
+            {
+                history.Add(currentFrame, state);
+            }
+            catch (ArgumentException)
+            {
+                history[currentFrame] = state;
+            }
             return state;
         }
 
@@ -461,8 +501,8 @@ public class Simulation : MonoBehaviour
 
         //Calculating the players position based on velocity and acceleration and also playing animations based on players inputs
 
-        PlayerChangebleStats player1Data = CalculatePerPlayer(player1Inputs, state.PlayerData[0], player1Character);
-        PlayerChangebleStats player2Data = CalculatePerPlayer(player2Inputs, state.PlayerData[1], player2Character);
+        PlayerChangebleStats player1Data = CalculatePerPlayer(player1Inputs, state.PlayerData[0], player1Character, currentFrame);
+        PlayerChangebleStats player2Data = CalculatePerPlayer(player2Inputs, state.PlayerData[1], player2Character, currentFrame);
 
         //Setting which way the players look
 
@@ -766,7 +806,7 @@ public class Simulation : MonoBehaviour
             }
             else
             {
-                state.player2LandedHit = true;
+                state.player2LandedHit = new Vector2Int(player1HitX, player1HitY);
                 player2Data.Combo++;
                 player1Data.InHitstun = player2Frame.hitboxHitStun;
                 player1Data.Health -= player2Frame.hitboxDamage;
@@ -830,7 +870,7 @@ public class Simulation : MonoBehaviour
             }
             else
             {
-                state.player1LandedHit = true;
+                state.player1LandedHit = new Vector2Int(player2HitX, player2HitY);
                 player1Data.Combo++;
                 player2Data.InHitstun = player1Frame.hitboxHitStun;
                 player2Data.Health -= player1Frame.hitboxDamage;
@@ -887,6 +927,14 @@ public class Simulation : MonoBehaviour
         state.PlayerData[0] = player1Data;
         state.PlayerData[1] = player2Data;
         state.skipFrames = skipFrames;
+        try
+        {
+            history.Add(currentFrame, state);
+        }
+        catch (ArgumentException)
+        {
+            history[currentFrame] = state;
+        }
         return state;
     }
 }

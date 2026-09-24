@@ -3128,7 +3128,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   juggleLimit: 2
   InputBufferSize: 5
-  startFrame: -1
+  baseState:
+    PlayerData:
+    - Health: 10000
+      PlayerPositionHorizontal: 5000
+      PlayerPositionVertical: 0
+      PlayerVelocityHorizontal: 0
+      PlayerVelocityVertical: 0
+      PlayerAccelerationHorizontal: 0
+      PlayerAccelerationVertical: 0
+      PlayerAnimation: 0
+      PlayerNextAnimation: 0
+      PlayerAnimationFrame: 0
+      PlayerNextAnimationFrame: 0
+      HitLanded: 0
+      InHitstun: 0
+      IsLookingRight: 0
+      IsInAir: 0
+      Combo: 0
+      juggleScaling: 0
+    - Health: 10000
+      PlayerPositionHorizontal: -5000
+      PlayerPositionVertical: 0
+      PlayerVelocityHorizontal: 0
+      PlayerVelocityVertical: 0
+      PlayerAccelerationHorizontal: 0
+      PlayerAccelerationVertical: 0
+      PlayerAnimation: 0
+      PlayerNextAnimation: 0
+      PlayerAnimationFrame: 0
+      PlayerNextAnimationFrame: 0
+      HitLanded: 0
+      InHitstun: 0
+      IsLookingRight: 0
+      IsInAir: 0
+      Combo: 0
+      juggleScaling: 0
+    skipFrames: 0
+    player1LandedHit: 0
+    player2LandedHit: 0
 --- !u!1 &1964602097
 GameObject:
   m_ObjectHideFlags: 0
