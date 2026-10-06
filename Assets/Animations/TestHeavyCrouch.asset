@@ -346,7 +346,7 @@ MonoBehaviour:
     chipDamage: 0
     hitboxHitStun: 28
     hitStop: 10
-    hitStopOnBlock: 1
+    hitStopOnBlock: 12
     hitboxBlockStun: 27
     addJuggleScaling: 0
     canHitHighOrLow: 0
@@ -403,7 +403,7 @@ MonoBehaviour:
     chipDamage: 0
     hitboxHitStun: 28
     hitStop: 10
-    hitStopOnBlock: 1
+    hitStopOnBlock: 12
     hitboxBlockStun: 27
     addJuggleScaling: 0
     canHitHighOrLow: 0
@@ -460,7 +460,7 @@ MonoBehaviour:
     chipDamage: 0
     hitboxHitStun: 28
     hitStop: 10
-    hitStopOnBlock: 1
+    hitStopOnBlock: 12
     hitboxBlockStun: 27
     addJuggleScaling: 0
     canHitHighOrLow: 0

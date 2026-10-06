@@ -1,6 +1,7 @@
 using Coherence.Cloud;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
@@ -51,6 +52,15 @@ public class Simulation : MonoBehaviour
         public bool light;
         public bool medium;
         public bool heavy;
+
+        public static bool operator ==(MovementAndButtonInput a, MovementAndButtonInput b)
+        {
+            return (a.movement == b.movement) && (a.light == b.light) && (a.medium == b.medium) && (a.heavy == b.heavy);
+        }
+        public static bool operator !=(MovementAndButtonInput a, MovementAndButtonInput b)
+        {
+            return (a.movement != b.movement) || (a.light != b.light) || (a.medium != b.medium) || (a.heavy != b.heavy);
+        }
     }
 
     public int juggleLimit = 2;
@@ -475,6 +485,7 @@ public class Simulation : MonoBehaviour
 
     public SimulationState Simulate(MovementAndButtonInput[] player1Inputs, MovementAndButtonInput[] player2Inputs, long currentFrame)
     {
+        if (currentFrame < startFrame) return baseState;
         SimulationState state = GetFrameState(currentFrame - 1);
         int skipFrames = state.skipFrames;
         state.player1LandedHit = Vector2Int.zero;
