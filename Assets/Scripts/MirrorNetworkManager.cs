@@ -6,6 +6,18 @@ public class MirrorNetworkManager : NetworkManager
     public MirrorBridge bridge;
     int playersCount = 0;
     PlayerSync[] players = new PlayerSync[2];
+    public override void OnServerDisconnect(NetworkConnectionToClient conn)
+    {
+        playersCount--;
+        if (players[0] == conn.identity.GetComponent<PlayerSync>())
+        {
+            players[0] = players[1];
+        }
+        players[1] = new PlayerSync();
+        players[0].id = playersCount;
+        players[0].started = false;
+        base.OnServerDisconnect(conn);
+    }
 
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {

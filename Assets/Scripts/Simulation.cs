@@ -69,6 +69,7 @@ public class Simulation : MonoBehaviour
 
     private Dictionary<long, SimulationState> history = new Dictionary<long, SimulationState>();
     private long startFrame = -1;
+    private long lastFrame = -1;
     private Character player1Character; 
     private Character player2Character;
     public Dictionary<long, SimulationState> GetHistory()
@@ -78,17 +79,14 @@ public class Simulation : MonoBehaviour
 
     public SimulationState GetFrameState(long frame)
     {
+        SimulationState ret = baseState;
         if (frame <= startFrame)
         {
             return baseState;
         }
-        try
-        {
-            return history[frame];
-        }
-        catch { }
-        Debug.Log("No such frame exists");
-        return baseState;
+        if (!history.TryGetValue(frame, out ret))
+            Debug.Log("No such frame exists");
+        return ret;
     }
 
     public bool CheckCollision(Rectengale a, Rectengale b)
@@ -486,7 +484,11 @@ public class Simulation : MonoBehaviour
     public SimulationState Simulate(MovementAndButtonInput[] player1Inputs, MovementAndButtonInput[] player2Inputs, long currentFrame)
     {
         if (currentFrame < startFrame) return baseState;
-        SimulationState state = GetFrameState(currentFrame - 1);
+        SimulationState state = new SimulationState();
+        state.PlayerData = new PlayerChangebleStats[2];
+        state.PlayerData[0] = GetFrameState(currentFrame - 1).PlayerData[0];
+        state.PlayerData[1] = GetFrameState(currentFrame - 1).PlayerData[1];
+        state.skipFrames = GetFrameState(currentFrame - 1).skipFrames;
         int skipFrames = state.skipFrames;
         state.player1LandedHit = Vector2Int.zero;
         state.player2LandedHit = Vector2Int.zero;
@@ -496,14 +498,7 @@ public class Simulation : MonoBehaviour
         {
             skipFrames--;
             state.skipFrames = skipFrames;
-            try
-            {
-                history.Add(currentFrame, state);
-            }
-            catch (ArgumentException)
-            {
-                history[currentFrame] = state;
-            }
+            history[currentFrame] = state;
             return state;
         }
 
@@ -938,13 +933,10 @@ public class Simulation : MonoBehaviour
         state.PlayerData[0] = player1Data;
         state.PlayerData[1] = player2Data;
         state.skipFrames = skipFrames;
-        try
+        history[currentFrame] = state;
+        if (lastFrame < currentFrame)
         {
-            history.Add(currentFrame, state);
-        }
-        catch (ArgumentException)
-        {
-            history[currentFrame] = state;
+            lastFrame = currentFrame;
         }
         return state;
     }

@@ -1,6 +1,7 @@
 using Mirror;
 using Mirror.Examples.BilliardsPredicted;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Simulation;
@@ -31,6 +32,10 @@ public class MirrorBridge : NetworkBehaviour
     public long serverFrame = 0;
     public int id = 0;
     public bool started = false;
+    public TextMeshProUGUI t1;
+    public TextMeshProUGUI t2;
+    public TextMeshProUGUI t3;
+
     private void Start()
     {
         if (simulation != null)
@@ -132,6 +137,9 @@ public class MirrorBridge : NetworkBehaviour
 
     private void Update()
     {
+        t1.text = frame.ToString();
+        t2.text = currentFrame.ToString();
+        t3.text = serverFrame.ToString();
         if (!started) return;
         if (isClient)
         {
@@ -178,12 +186,14 @@ public class MirrorBridge : NetworkBehaviour
     {
         if (id != owner)
         {
+            MovementAndButtonInput oldInput = GetPlayerInput(inputFrame, owner);
             if (owner == 1) player1Inputs[inputFrame] = input;
             if (owner == 2) player2Inputs[inputFrame] = input;
-            if (GetPlayerInput(inputFrame, owner) == input) return;
-            if (frame > inputFrame - 3)
+            if (oldInput == input) return;
+            if (frame >= inputFrame)
             {
-                frame = inputFrame - 3;
+                Debug.Log("Rollback");
+                frame = inputFrame;
             }
         }
     }
