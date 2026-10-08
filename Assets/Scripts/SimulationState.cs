@@ -5,7 +5,8 @@ using UnityEngine;
 
 public struct SimulationState
 {
-    public PlayerChangebleStats[] PlayerData;
+    public PlayerChangebleStats Player1Data;
+    public PlayerChangebleStats Player2Data;
     public int skipFrames;
     public Vector2Int player1LandedHit;
     public Vector2Int player2LandedHit;

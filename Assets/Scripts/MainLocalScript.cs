@@ -96,8 +96,8 @@ public class MainLocalScript : MonoBehaviour
         player2Inputs[0] = player2Input;
 
         SimulationState state = simulation.Simulate(player1Inputs, player2Inputs, simulationFrame);
-        player1.changebleStats = state.PlayerData[0];
-        player2.changebleStats = state.PlayerData[1];
+        player1.changebleStats = state.Player1Data;
+        player2.changebleStats = state.Player2Data;
         simulationFrame++;
     }
 

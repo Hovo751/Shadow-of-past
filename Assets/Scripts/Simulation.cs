@@ -1,10 +1,5 @@
-using Coherence.Cloud;
-using System;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public static class Animations
 {
@@ -484,11 +479,8 @@ public class Simulation : MonoBehaviour
     public SimulationState Simulate(MovementAndButtonInput[] player1Inputs, MovementAndButtonInput[] player2Inputs, long currentFrame)
     {
         if (currentFrame < startFrame) return baseState;
-        SimulationState state = new SimulationState();
-        state.PlayerData = new PlayerChangebleStats[2];
-        state.PlayerData[0] = GetFrameState(currentFrame - 1).PlayerData[0];
-        state.PlayerData[1] = GetFrameState(currentFrame - 1).PlayerData[1];
-        state.skipFrames = GetFrameState(currentFrame - 1).skipFrames;
+        SimulationState state = GetFrameState(currentFrame - 1);
+        state.skipFrames = state.skipFrames;
         int skipFrames = state.skipFrames;
         state.player1LandedHit = Vector2Int.zero;
         state.player2LandedHit = Vector2Int.zero;
@@ -507,8 +499,8 @@ public class Simulation : MonoBehaviour
 
         //Calculating the players position based on velocity and acceleration and also playing animations based on players inputs
 
-        PlayerChangebleStats player1Data = CalculatePerPlayer(player1Inputs, state.PlayerData[0], player1Character, currentFrame);
-        PlayerChangebleStats player2Data = CalculatePerPlayer(player2Inputs, state.PlayerData[1], player2Character, currentFrame);
+        PlayerChangebleStats player1Data = CalculatePerPlayer(player1Inputs, state.Player1Data, player1Character, currentFrame);
+        PlayerChangebleStats player2Data = CalculatePerPlayer(player2Inputs, state.Player2Data, player2Character, currentFrame);
 
         //Setting which way the players look
 
@@ -930,8 +922,8 @@ public class Simulation : MonoBehaviour
         {
             player2Data.PlayerPositionHorizontal = 10000;
         }
-        state.PlayerData[0] = player1Data;
-        state.PlayerData[1] = player2Data;
+        state.Player1Data = player1Data;
+        state.Player2Data = player2Data;
         state.skipFrames = skipFrames;
         history[currentFrame] = state;
         if (lastFrame < currentFrame)

@@ -163,8 +163,8 @@ public class MirrorBridge : NetworkBehaviour
                         player2InputsArr[i] = GetPlayerInput(frame - i, 2);
                     }
                     SimulationState state = simulation.Simulate(player1InputsArr, player2InputsArr, frame);
-                    player1.changebleStats = state.PlayerData[0];
-                    player2.changebleStats = state.PlayerData[1];
+                    player1.changebleStats = state.Player1Data;
+                    player2.changebleStats = state.Player2Data;
                     frame++;
                 }
             }

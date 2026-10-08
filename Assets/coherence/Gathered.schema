@@ -1,9 +1,0 @@
-component _893829c7e6cfd85408e600884d32ee35_4071262622471428003 [id "18"]
-  startFrame Int64 [bits "64"]
-
-input _893829c7e6cfd85408e600884d32ee35 [id "0"]
-  Move Int [bits "32", range-min "-2147483648", range-max "2147483647"]
-  Light Bool
-  Medium Bool
-  Heavy Bool
-
