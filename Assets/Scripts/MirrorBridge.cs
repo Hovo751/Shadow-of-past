@@ -160,7 +160,7 @@ public class MirrorBridge : NetworkBehaviour
                     frame++;
                 }
             }
-            if (currentFrame < serverFrame)
+            if (currentFrame < serverFrame + 120)
             {
                 currentFrame++;
             }
