@@ -257,7 +257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 150.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &412629492
@@ -409,7 +409,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 52.9}
+  m_AnchoredPosition: {x: 0, y: 203}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &661875981
@@ -523,14 +523,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1465019848992433839, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f97aefef586d09b48947b07a14f33b84, type: 2}
     - target: {fileID: 3957947152047708388, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ee4410041e4655f4d9e9b07e182ccdcc, type: 2}
+      objectReference: {fileID: 2100000, guid: bf8bf7315e697574683bd8356998dd36, type: 2}
     - target: {fileID: 4071262622471428003, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: startFrame
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4542536537081226613, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f97aefef586d09b48947b07a14f33b84, type: 2}
     - target: {fileID: 5023663807860604596, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.03
@@ -710,7 +718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -59.94}
+  m_AnchoredPosition: {x: 0, y: 90.16}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &937163511
@@ -1105,7 +1113,7 @@ MonoBehaviour:
   onlineScene: 
   offlineSceneLoadDelay: 0
   transport: {fileID: 1236556372}
-  networkAddress: localhost
+  networkAddress: 87.241.141.150
   maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
@@ -1466,14 +1474,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1465019848992433839, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f97aefef586d09b48947b07a14f33b84, type: 2}
     - target: {fileID: 3957947152047708388, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: bf8bf7315e697574683bd8356998dd36, type: 2}
+      objectReference: {fileID: 2100000, guid: ee4410041e4655f4d9e9b07e182ccdcc, type: 2}
     - target: {fileID: 4071262622471428003, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: startFrame
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4542536537081226613, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f97aefef586d09b48947b07a14f33b84, type: 2}
     - target: {fileID: 5023663807860604596, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

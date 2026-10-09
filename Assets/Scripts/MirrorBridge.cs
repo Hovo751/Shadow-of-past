@@ -133,14 +133,6 @@ public class MirrorBridge : NetworkBehaviour
             serverFrame++;
             SendFrame(serverFrame);
         }
-    }
-
-    private void Update()
-    {
-        t1.text = frame.ToString();
-        t2.text = currentFrame.ToString();
-        t3.text = serverFrame.ToString();
-        if (!started) return;
         if (isClient)
         {
             if (frame < currentFrame)
@@ -172,7 +164,40 @@ public class MirrorBridge : NetworkBehaviour
             {
                 currentFrame++;
             }
+            if (currentFrame < serverFrame - 1)
+            {
+                MovementAndButtonInput input = GetPlayerInput();
+                if (id == 1) player1Inputs[currentFrame + 1] = input;
+                if (id == 2) player2Inputs[currentFrame + 1] = input;
+                SendInput(input, currentFrame + 1, id);
+                while (frame < currentFrame)
+                {
+                    MovementAndButtonInput[] player1InputsArr = new MovementAndButtonInput[64];
+                    MovementAndButtonInput[] player2InputsArr = new MovementAndButtonInput[64];
+                    for (int i = 0; i < 64; i++)
+                    {
+                        player1InputsArr[i] = GetPlayerInput(frame - i, 1);
+                    }
+
+                    for (int i = 0; i < 64; i++)
+                    {
+                        player2InputsArr[i] = GetPlayerInput(frame - i, 2);
+                    }
+                    SimulationState state = simulation.Simulate(player1InputsArr, player2InputsArr, frame);
+                    player1.changebleStats = state.Player1Data;
+                    player2.changebleStats = state.Player2Data;
+                    frame++;
+                }
+                currentFrame++;
+            }
         }
+    }
+
+    private void Update()
+    {
+        t1.text = frame.ToString();
+        t2.text = currentFrame.ToString();
+        t3.text = serverFrame.ToString();
     }
     [ClientRpc]
     void SendFrame(long _frame)
