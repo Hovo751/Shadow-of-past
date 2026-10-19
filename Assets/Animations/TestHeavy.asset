@@ -361,10 +361,10 @@ MonoBehaviour:
     hitboxLand: 1
     hitboxDamage: 611
     chipDamage: 100
-    hitboxHitStun: 21
+    hitboxHitStun: 23
     hitStop: 6
     hitStopOnBlock: 12
-    hitboxBlockStun: 17
+    hitboxBlockStun: 22
     addJuggleScaling: 1
     canHitHighOrLow: 0
     canRotate: 0
@@ -414,10 +414,10 @@ MonoBehaviour:
     hitboxLand: 1
     hitboxDamage: 611
     chipDamage: 100
-    hitboxHitStun: 21
+    hitboxHitStun: 23
     hitStop: 6
     hitStopOnBlock: 12
-    hitboxBlockStun: 17
+    hitboxBlockStun: 22
     addJuggleScaling: 1
     canHitHighOrLow: 0
     canRotate: 0
@@ -467,10 +467,10 @@ MonoBehaviour:
     hitboxLand: 1
     hitboxDamage: 611
     chipDamage: 100
-    hitboxHitStun: 21
+    hitboxHitStun: 23
     hitStop: 6
     hitStopOnBlock: 12
-    hitboxBlockStun: 17
+    hitboxBlockStun: 22
     addJuggleScaling: 1
     canHitHighOrLow: 0
     canRotate: 0

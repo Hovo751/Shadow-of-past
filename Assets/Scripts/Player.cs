@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using UnityEngine;
-using static Simulation;
 
 public class Player : MonoBehaviour
 {
@@ -15,10 +15,13 @@ public class Player : MonoBehaviour
 
     public PlayerChangebleStats changebleStats;
     public Animator animator;
+    public Simulation simulation;
     public Characters characters;
     public float x;
     public long startFrame = -1;
     public GameObject hitParticle;
+    public bool drawParticles = true;
+    public long currentFrame = 0;
     
     private AudioSource punchSound;
     private float transitionDuration = 1.0f;
@@ -26,12 +29,12 @@ public class Player : MonoBehaviour
     private float prevT;
     private string previousAnimSaved;
     private float prevTSaved;
-    private long lastFrame = -1;
+    private List<GameObject> particleGameobjects = new List<GameObject>();
 
     public float transitionTime = 0.2f;
     private void Update()
     {
-        transform.position = new Vector3(changebleStats.PlayerPositionHorizontal / 1000.0f, changebleStats.PlayerPositionVertical / 1000.0f + x, 0);
+        transform.position = new Vector3(changebleStats.PlayerPosition.x / 1000.0f, changebleStats.PlayerPosition.y / 1000.0f + x, 0);
         transform.rotation = Quaternion.Euler(0, 90, 0);
         if (changebleStats.IsLookingRight)
         {
@@ -69,6 +72,45 @@ public class Player : MonoBehaviour
 
         previousAnim = animationName;
         prevT = t;
+
+        
+    }
+
+    public void UpdateParticles()
+    {
+        if (drawParticles)
+        {
+            List<Vector3> particles = new List<Vector3>();
+            for (int i = 0; i < particleGameobjects.Count; i++)
+            {
+                Destroy(particleGameobjects[i]);
+            }
+            particleGameobjects = new List<GameObject>();
+
+            for (int i = 1; i < 60; i++)
+            {
+                SimulationState s = simulation.GetFrameState(currentFrame - i);
+                if (s.player1LandedHit != new Vector2Int(-100000, -100000))
+                {
+                    particles.Add(new Vector3(s.player1LandedHit.x / 1000.0f, s.player1LandedHit.y / 1000.0f, i / 60.0f));
+                }
+                if (s.player2LandedHit != new Vector2Int(-100000, -100000))
+                {
+                    particles.Add(new Vector3(s.player2LandedHit.x / 1000.0f, s.player2LandedHit.y / 1000.0f, i / 60.0f));
+                }
+            }
+
+            for (int i = 0; i < particles.Count; i++)
+            {
+                GameObject newParticle = Instantiate(hitParticle);
+                newParticle.transform.position = new Vector3(particles[i].x, particles[i].y + x, -8);
+                ParticleSystem particleSystem = newParticle.GetComponent<ParticleSystem>();
+                particleSystem.useAutoRandomSeed = false;
+                particleSystem.randomSeed = 0;
+                particleSystem.Simulate(particles[i].z);
+                particleGameobjects.Add(newParticle);
+            }
+        }
     }
 
     private void Awake()
@@ -76,7 +118,6 @@ public class Player : MonoBehaviour
         animator.speed = 0.0f;
         punchSound = FindAnyObjectByType<AudioSource>();
     }
-
     // Retrieves the "movement" input state for a given frame
     //public MovementAndButtonInput GetInput(long frame)
     //{

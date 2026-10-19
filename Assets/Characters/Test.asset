@@ -88,6 +88,12 @@ MonoBehaviour:
   - name: JumpHeavy
     data: {fileID: 11400000, guid: a1ba113ff940571499a6406899b6fbab, type: 2}
     nextAnim: 0
+  - name: Throw
+    data: {fileID: 11400000, guid: c622d0903b5a55b429ae457340b16432, type: 2}
+    nextAnim: 0
+  - name: Idle
+    data: {fileID: 11400000, guid: 4e45c33ed32639642943c19e2d26791e, type: 2}
+    nextAnim: 26
   blockHightBox:
     posX: 577
     posY: 3087

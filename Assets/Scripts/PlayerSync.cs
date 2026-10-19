@@ -1,7 +1,4 @@
 using Mirror;
-using UnityEngine;
-using UnityEngine.InputSystem;
-using static Simulation;
 
 public class PlayerSync : NetworkBehaviour
 {
@@ -9,12 +6,21 @@ public class PlayerSync : NetworkBehaviour
     public int id;
     [SyncVar]
     public bool started = false;
+
+    private MirrorNetworkManager networkManager;
+    private MirrorBridge bridge;
+    private void Start()
+    {
+        networkManager = FindAnyObjectByType<MirrorNetworkManager>();
+        bridge = FindAnyObjectByType<MirrorBridge>();
+    }
     private void Update()
     {
-        if (isLocalPlayer && FindAnyObjectByType<MirrorBridge>() != null)
+        if (isLocalPlayer && bridge != null)
         {
-            FindAnyObjectByType<MirrorBridge>().id = id;
-            FindAnyObjectByType<MirrorBridge>().started = started;
+            bridge.player = this;
+            bridge.id = id;
+            bridge.started = started;
         }
     }
 }

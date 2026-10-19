@@ -34,9 +34,13 @@ public struct Frame
     public int hitStopOnBlock;
     public int hitboxBlockStun;
     public int addJuggleScaling;
+    public bool alwaysLaunch;
     public bool canHitHighOrLow;
     public bool canRotate;
     public Rectengale[] hitbox;
     public Rectengale[] throwbox;
+    public Rectengale[] throwhitbox;
+    public bool isAirThrow;
+    public Vector2Int setOpponentPositionOnThrow;
     public Rectengale collisionBox;
 }

@@ -15,12 +15,15 @@ public struct SimulationState
 public struct PlayerChangebleStats
 {
     public int Health;
-    public int PlayerPositionHorizontal;
-    public int PlayerPositionVertical;
-    public int PlayerVelocityHorizontal;
-    public int PlayerVelocityVertical;
-    public int PlayerAccelerationHorizontal;
-    public int PlayerAccelerationVertical;
+    //public int PlayerPositionHorizontal;
+    //public int PlayerPositionVertical;
+    public Vector2Int PlayerPosition;
+    //public int PlayerVelocityHorizontal;
+    //public int PlayerVelocityVertical;
+    public Vector2Int PlayerVelocity;
+    //public int PlayerAccelerationHorizontal;
+    //public int PlayerAccelerationVertical;
+    public Vector2Int PlayerAcceleration;
     public int PlayerAnimation;
     public int PlayerNextAnimation;
     public int PlayerAnimationFrame;

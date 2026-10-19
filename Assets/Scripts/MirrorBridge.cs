@@ -27,14 +27,27 @@ public class MirrorBridge : NetworkBehaviour
     private InputAction player2H;
     Dictionary<long, MovementAndButtonInput> player1Inputs = new();
     Dictionary<long, MovementAndButtonInput> player2Inputs = new();
-    public long frame = 0;
-    public long currentFrame = 0;
-    public long serverFrame = 0;
+    private long frame = 0;
+    private long timeAfterUpdate = 0;
+    private long currentFrame = 0;
+    private long serverFrame = 0;
     public int id = 0;
     public bool started = false;
     public TextMeshProUGUI t1;
     public TextMeshProUGUI t2;
     public TextMeshProUGUI t3;
+    public PlayerSync player;
+
+    public void ResetFrames()
+    {
+        frame = 0;
+        timeAfterUpdate = 0;
+        currentFrame = 0;
+        serverFrame = 0;
+        simulation.ResetHistory();
+        player1Inputs.Clear();
+        player2Inputs.Clear();
+    }
 
     private void Start()
     {
@@ -76,25 +89,58 @@ public class MirrorBridge : NetworkBehaviour
     {
         MovementAndButtonInput input = new MovementAndButtonInput();
         input.movement = -1;
-        if (player1Move == null)
+        if (player1Move == null || player2Move == null)
             return input;
-        if (player1L == null)
+        if (player1L == null || player2L == null)
             return input;
-        if (player1M == null)
+        if (player1M == null || player2M == null)
             return input;
-        if (player1H == null)
+        if (player1H == null || player2H == null)
             return input;
-        Vector2 vec = player1Move.ReadValue<Vector2>();
+        Vector2 vec = player1Move.ReadValue<Vector2>() + player2Move.ReadValue<Vector2>();
         int m = 5;
-        if (vec.y > 0) m += 3;
-        else if (vec.y < 0) m -= 3;
-        if (vec.x > 0) m++;
-        else if (vec.x < 0) m--;
+        if (vec.sqrMagnitude > 0.01f)
+        {
+            float alpha = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
+
+            if (-22.5 <= alpha && alpha <= 22.5)
+            {
+                m = 6;
+            }
+            else if (22.5 <= alpha && alpha <= 67.5)
+            {
+                m = 9;
+            }
+            else if (67.5 <= alpha && alpha <= 112.5)
+            {
+                m = 8;
+            }
+            else if (112.5 <= alpha && alpha <= 157.5)
+            {
+                m = 7;
+            }
+            else if ((157.5f <= alpha && alpha <= 180) || (-157.5f >= alpha && alpha >= -180))
+            {
+                m = 4;
+            }
+            else if (-22.5 >= alpha && alpha >= -67.5)
+            {
+                m = 3;
+            }
+            else if (-67.5 >= alpha && alpha >= -112.5)
+            {
+                m = 2;
+            }
+            else if (-112.5 >= alpha && alpha >= -157.5)
+            {
+                m = 1;
+            }
+        }
 
         input.movement = m;
-        input.light = player1L.IsPressed();
-        input.medium = player1M.IsPressed();
-        input.heavy = player1H.IsPressed();
+        input.light = player1L.IsPressed() || player2L.IsPressed();
+        input.medium = player1M.IsPressed() || player2M.IsPressed();
+        input.heavy = player1H.IsPressed() || player2H.IsPressed();
 
         return input;
     }
@@ -125,9 +171,23 @@ public class MirrorBridge : NetworkBehaviour
 
         return input;
     }
+    [ClientRpc]
+    private void StopAll()
+    {
+        if (player != null)
+        {
+            player.started = false;
+            started = false;
+        }
+    }
     private void FixedUpdate()
     {
-        if (!started) return;
+        if (!started) { 
+            ResetFrames();
+            if (isServer)
+                StopAll();
+            return;
+        }
         if (isServer)
         {
             serverFrame++;
@@ -140,7 +200,8 @@ public class MirrorBridge : NetworkBehaviour
                 MovementAndButtonInput input = GetPlayerInput();
                 if (id == 1) player1Inputs[currentFrame + 1] = input;
                 if (id == 2) player2Inputs[currentFrame + 1] = input;
-                SendInput(input, currentFrame + 1, id);
+                if (id == 1 || id == 2)
+                    SendInput(input, currentFrame + 1, id);
                 while (frame < currentFrame)
                 {
                     MovementAndButtonInput[] player1InputsArr = new MovementAndButtonInput[64];
@@ -160,11 +221,9 @@ public class MirrorBridge : NetworkBehaviour
                     frame++;
                 }
             }
-            if (currentFrame < serverFrame + 60)
-            {
+            if (serverFrame + timeAfterUpdate > currentFrame)
                 currentFrame++;
-            }
-            if (currentFrame < serverFrame - 1)
+            if (currentFrame < serverFrame)
             {
                 MovementAndButtonInput input = GetPlayerInput();
                 if (id == 1) player1Inputs[currentFrame + 1] = input;
@@ -190,6 +249,11 @@ public class MirrorBridge : NetworkBehaviour
                 }
                 currentFrame++;
             }
+            timeAfterUpdate++;
+            player1.currentFrame = frame;
+            player2.currentFrame = frame;
+            player1.UpdateParticles();
+            player2.UpdateParticles();
         }
     }
 
@@ -203,8 +267,11 @@ public class MirrorBridge : NetworkBehaviour
     void SendFrame(long _frame)
     {
         started = true;
-        if (!isServer)
+        if (!isServer && _frame > serverFrame)
+        {
             serverFrame = _frame;
+            timeAfterUpdate = 0;
+        }
     }
     [ClientRpc]
     void BroadcastInput(MovementAndButtonInput input, long inputFrame, int owner)

@@ -51,6 +51,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -59,6 +60,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -100,6 +106,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -108,6 +115,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -149,6 +161,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -157,6 +170,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -198,6 +216,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -206,6 +225,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -247,6 +271,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -255,6 +280,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -296,6 +326,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -304,63 +335,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
-    collisionBox:
-      posX: 0
-      posY: 1328
-      sizeX: 1148
-      sizeY: 2644
-  - cancelLvl: 01000000
-    addPosX: 0
-    addPosY: 0
-    setVelocityHorizontal: 0
-    setVelocityHbool: 0
-    setVelocityVertical: 0
-    setVelocityVbool: 0
-    setAccelerationHorizontal: 0
-    setAccelerationHbool: 0
-    setAccelerationVertical: 0
-    setAccelerationVbool: 0
-    hurtbox:
-    - posX: -21
-      posY: 1165
-      sizeX: 1213
-      sizeY: 2330
-    - posX: 74
-      posY: 2500
-      sizeX: 817
-      sizeY: 484
-    - posX: 524
-      posY: 639
-      sizeX: 776
-      sizeY: 1219
-    - posX: 247
-      posY: 2783
-      sizeX: 1257
-      sizeY: 1219
-    hitboxPush: 147
-    hitboxPushAirVertical: 401
-    hitboxPushAirHorizontal: 45
-    hitboxPushOnBlock: 65
-    hitboxLand: 1
-    hitboxDamage: 167
-    chipDamage: 0
-    hitboxHitStun: 28
-    hitStop: 10
-    hitStopOnBlock: 12
-    hitboxBlockStun: 27
-    addJuggleScaling: 0
-    canHitHighOrLow: 0
-    canRotate: 0
-    hitbox:
-    - posX: 360
-      posY: 3230
-      sizeX: 1067
-      sizeY: 1000
-    throwbox:
-    - posX: 6
-      posY: 1753
-      sizeX: 1085
-      sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -406,6 +385,7 @@ MonoBehaviour:
     hitStopOnBlock: 12
     hitboxBlockStun: 27
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox:
@@ -418,6 +398,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -463,6 +448,7 @@ MonoBehaviour:
     hitStopOnBlock: 12
     hitboxBlockStun: 27
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox:
@@ -475,6 +461,74 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    collisionBox:
+      posX: 0
+      posY: 1328
+      sizeX: 1148
+      sizeY: 2644
+  - cancelLvl: 01000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 0
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: -21
+      posY: 1165
+      sizeX: 1213
+      sizeY: 2330
+    - posX: 74
+      posY: 2500
+      sizeX: 817
+      sizeY: 484
+    - posX: 524
+      posY: 639
+      sizeX: 776
+      sizeY: 1219
+    - posX: 247
+      posY: 2783
+      sizeX: 1257
+      sizeY: 1219
+    hitboxPush: 147
+    hitboxPushAirVertical: 401
+    hitboxPushAirHorizontal: 45
+    hitboxPushOnBlock: 65
+    hitboxLand: 1
+    hitboxDamage: 167
+    chipDamage: 0
+    hitboxHitStun: 28
+    hitStop: 10
+    hitStopOnBlock: 12
+    hitboxBlockStun: 27
+    addJuggleScaling: 0
+    alwaysLaunch: 0
+    canHitHighOrLow: 0
+    canRotate: 0
+    hitbox:
+    - posX: 360
+      posY: 3230
+      sizeX: 1067
+      sizeY: 1000
+    throwbox:
+    - posX: 6
+      posY: 1753
+      sizeX: 1085
+      sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -516,6 +570,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -524,6 +579,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -565,6 +625,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -573,6 +634,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -614,6 +680,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -622,6 +689,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -663,6 +735,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -671,6 +744,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -712,6 +790,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -720,6 +799,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -761,6 +845,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -769,6 +854,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -810,6 +900,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -818,6 +909,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -859,6 +955,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -867,6 +964,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -908,6 +1010,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -916,6 +1019,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -957,6 +1065,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -965,6 +1074,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1006,6 +1120,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1014,6 +1129,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1055,6 +1175,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1063,6 +1184,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1104,6 +1230,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1112,6 +1239,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1153,6 +1285,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1161,6 +1294,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1202,6 +1340,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1210,6 +1349,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1251,6 +1395,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1259,6 +1404,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1300,6 +1450,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1308,6 +1459,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1349,6 +1505,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1357,6 +1514,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1398,6 +1560,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1406,6 +1569,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1447,6 +1615,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1455,6 +1624,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1496,6 +1670,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1504,6 +1679,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1545,6 +1725,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1553,6 +1734,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1594,6 +1780,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1602,6 +1789,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1643,6 +1835,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1651,6 +1844,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1692,6 +1890,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
     hitbox: []
@@ -1700,6 +1899,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328
@@ -1741,6 +1945,7 @@ MonoBehaviour:
     hitStopOnBlock: 0
     hitboxBlockStun: 0
     addJuggleScaling: 0
+    alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 1
     hitbox: []
@@ -1749,6 +1954,11 @@ MonoBehaviour:
       posY: 1753
       sizeX: 1085
       sizeY: 3182
+    throwhitbox: []
+    setOpponentAnimationOnThrow: 0
+    setOpponentAnimationFrameOnThrow: 0
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
     collisionBox:
       posX: 0
       posY: 1328

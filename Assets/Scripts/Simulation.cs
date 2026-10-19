@@ -28,6 +28,8 @@ public static class Animations
     public const int JumpLight = 22;
     public const int JumpMedium = 23;
     public const int JumpHeavy = 24;
+    public const int Throw = 25;
+    public const int InfiniteHitstun = 26;
 }
 public class Simulation : MonoBehaviour
 {
@@ -71,6 +73,10 @@ public class Simulation : MonoBehaviour
     {
         return history;
     }
+    public void ResetHistory()
+    {
+        history = new Dictionary<long, SimulationState>();
+    }
 
     public SimulationState GetFrameState(long frame)
     {
@@ -80,7 +86,7 @@ public class Simulation : MonoBehaviour
             return baseState;
         }
         if (!history.TryGetValue(frame, out ret))
-            Debug.Log("No such frame exists");
+            Debug.Log("No such frame exists " + frame.ToString());
         return ret;
     }
 
@@ -120,7 +126,7 @@ public class Simulation : MonoBehaviour
     }
     private bool isInAir(PlayerChangebleStats player)
     {
-        if (player.PlayerPositionVertical <= 0)
+        if (player.PlayerPosition.y <= 0)
         {
             return false;
         }
@@ -331,7 +337,7 @@ public class Simulation : MonoBehaviour
                 result.PlayerAnimation = Animations.KnockdownRec;
                 result.PlayerAnimationFrame = 0;
                 result.InHitstun = 0;
-                result.PlayerPositionVertical = 0;
+                result.PlayerPosition.y = 0;
             }
         }
 
@@ -348,6 +354,10 @@ public class Simulation : MonoBehaviour
         {
             PlayAnimation(ref result, character, result.PlayerNextAnimation, result.PlayerNextAnimationFrame);
         }
+        if (PressedButtonInInputBuffer(lightButtonBuffer) && PressedButtonInInputBuffer(mediumButtonBuffer) && CanCancelInto(result, character, Animations.Throw))
+        {
+            PlayAnimation(ref result, character, Animations.Throw);
+        }
         if (PressedButtonInInputBuffer(heavyButtonBuffer))
         {
             if (CanCancelInto(result, character, Animations.Heavy) && movement != 1 && movement != 2 && movement != 3)
@@ -357,7 +367,7 @@ public class Simulation : MonoBehaviour
             else if (CanCancelInto(result, character, Animations.JumpHeavy))
                 PlayAnimation(ref result, character, Animations.JumpHeavy);
         }
-        else if (PressedButtonInInputBuffer(mediumButtonBuffer))
+        if (PressedButtonInInputBuffer(mediumButtonBuffer))
         {
             if (CanCancelInto(result, character, Animations.Medium) && movement != 1 && movement != 2 && movement != 3)
                 PlayAnimation(ref result, character, Animations.Medium);
@@ -366,7 +376,7 @@ public class Simulation : MonoBehaviour
             else if (CanCancelInto(result, character, Animations.JumpMedium))
                 PlayAnimation(ref result, character, Animations.JumpMedium);
         }
-        else if (PressedButtonInInputBuffer(lightButtonBuffer))
+        if (PressedButtonInInputBuffer(lightButtonBuffer))
         {
             if (CanCancelInto(result, character, Animations.Light) && movement != 1 && movement != 2 && movement != 3)
                 PlayAnimation(ref result, character, Animations.Light);
@@ -435,36 +445,36 @@ public class Simulation : MonoBehaviour
         currentAnimation = character.animations[result.PlayerAnimation].data;
 
         if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHbool)
-            result.PlayerVelocityHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHorizontal * direction;
+            result.PlayerVelocity.x = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHorizontal * direction;
         if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVbool)
-            result.PlayerVelocityVertical = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVertical;
+            result.PlayerVelocity.y = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityVertical;
         if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHbool)
-            result.PlayerAccelerationHorizontal = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHorizontal * direction;
+            result.PlayerAcceleration.x = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationHorizontal * direction;
         if (currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVbool)
-            result.PlayerAccelerationVertical = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVertical;
+            result.PlayerAcceleration.y = currentAnimation.frames[result.PlayerAnimationFrame].setAccelerationVertical;
 
-        result.PlayerVelocityHorizontal += result.PlayerAccelerationHorizontal;
-        result.PlayerVelocityVertical += result.PlayerAccelerationVertical;
+        result.PlayerVelocity.x += result.PlayerAcceleration.x;
+        result.PlayerVelocity.y += result.PlayerAcceleration.y;
 
         if (result.PlayerAnimation == Animations.GetHitUp || result.PlayerAnimation == Animations.GetHitDown ||
             result.PlayerAnimation == Animations.BlockHigh || result.PlayerAnimation == Animations.BlockLow)
         {
-            if (result.PlayerVelocityHorizontal / direction > 0)
+            if (result.PlayerVelocity.x / direction > 0)
             {
-                result.PlayerVelocityHorizontal = 0;
+                result.PlayerVelocity.x = 0;
             }
         }
 
-        result.PlayerPositionHorizontal += result.PlayerVelocityHorizontal;
-        result.PlayerPositionVertical += result.PlayerVelocityVertical;
-        result.PlayerPositionHorizontal += currentAnimation.frames[result.PlayerAnimationFrame].addPosX * direction;
-        result.PlayerPositionVertical += currentAnimation.frames[result.PlayerAnimationFrame].addPosY;
+        result.PlayerPosition.x += result.PlayerVelocity.x;
+        result.PlayerPosition.y += result.PlayerVelocity.y;
+        result.PlayerPosition.x += currentAnimation.frames[result.PlayerAnimationFrame].addPosX * direction;
+        result.PlayerPosition.y += currentAnimation.frames[result.PlayerAnimationFrame].addPosY;
 
         //Making sure that the player doesn't fall of the ground
 
-        if (result.PlayerPositionVertical < 0)
+        if (result.PlayerPosition.y < 0)
         {
-            result.PlayerPositionVertical = 0;
+            result.PlayerPosition.y = 0;
         }
 
         return result;
@@ -474,22 +484,25 @@ public class Simulation : MonoBehaviour
         startFrame = frame;
         player1Character = player1C;
         player2Character = player2C;
+        ResetHistory();
     }
 
     public SimulationState Simulate(MovementAndButtonInput[] player1Inputs, MovementAndButtonInput[] player2Inputs, long currentFrame)
     {
         if (currentFrame < startFrame) return baseState;
         SimulationState state = GetFrameState(currentFrame - 1);
-        state.skipFrames = state.skipFrames;
         int skipFrames = state.skipFrames;
-        state.player1LandedHit = Vector2Int.zero;
-        state.player2LandedHit = Vector2Int.zero;
-        state.player1LandedHit.y = -10000;
-        state.player2LandedHit.y = -10000;
+        state.player1LandedHit = new Vector2Int(-100000, -100000);
+        state.player2LandedHit = new Vector2Int(-100000, -100000);
         if (skipFrames > 0)
         {
             skipFrames--;
             state.skipFrames = skipFrames;
+            history[currentFrame] = state;
+            return state;
+        }
+        if (state.Player1Data.Health < 0 || state.Player2Data.Health < 0)
+        {
             history[currentFrame] = state;
             return state;
         }
@@ -509,7 +522,7 @@ public class Simulation : MonoBehaviour
 
         if (!isInAir(player1Data) && (player1Frame.cancelLvl[Mathf.Min(player1Data.HitLanded, player1Frame.cancelLvl.Length - 1)] == 0 || player1Frame.canRotate))
         {
-            if (player1Data.PlayerPositionHorizontal > player2Data.PlayerPositionHorizontal)
+            if (player1Data.PlayerPosition.x > player2Data.PlayerPosition.x)
             {
                 player1Data.IsLookingRight = false;
             }
@@ -521,7 +534,7 @@ public class Simulation : MonoBehaviour
 
         if (!isInAir(player2Data) && (player2Frame.cancelLvl[Mathf.Min(player2Data.HitLanded, player2Frame.cancelLvl.Length - 1)] == 0 || player2Frame.canRotate))
         {
-            if (player2Data.PlayerPositionHorizontal > player1Data.PlayerPositionHorizontal)
+            if (player2Data.PlayerPosition.x > player1Data.PlayerPosition.x)
             {
                 player2Data.IsLookingRight = false;
             }
@@ -567,42 +580,121 @@ public class Simulation : MonoBehaviour
         Rectengale player2Collision = player2Frame.collisionBox;
         player1Collision.posX *= player1Dir;
         player2Collision.posX *= player2Dir;
-        player1Collision.posX += player1Data.PlayerPositionHorizontal;
-        player1Collision.posY += player1Data.PlayerPositionVertical;
-        player2Collision.posX += player2Data.PlayerPositionHorizontal;
-        player2Collision.posY += player2Data.PlayerPositionVertical;
+        player1Collision.posX += player1Data.PlayerPosition.x;
+        player1Collision.posY += player1Data.PlayerPosition.y;
+        player2Collision.posX += player2Data.PlayerPosition.x;
+        player2Collision.posY += player2Data.PlayerPosition.y;
         int midle;
         int verticalMidle;
         if (CheckCollision(player1Collision, player2Collision, out midle, out verticalMidle))
         {
             Rectengale player1CollisionCopy = player1Frame.collisionBox;
             Rectengale player2CollisionCopy = player2Frame.collisionBox;
+            if (player1Collision.posX == player2Collision.posX)
+            {
+                SimulationState prevState = GetFrameState(currentFrame - 1);
+                Frame player1PrevFrame = player1Character.animations[prevState.Player1Data.PlayerAnimation].data.frames[prevState.Player1Data.PlayerAnimationFrame];
+                Frame player2PrevFrame = player2Character.animations[prevState.Player2Data.PlayerAnimation].data.frames[prevState.Player2Data.PlayerAnimationFrame];
+
+                int player1prevDir = 1;
+                int player2prevDir = 1;
+                if (prevState.Player1Data.IsLookingRight) player1prevDir = -1;
+                if (prevState.Player2Data.IsLookingRight) player2prevDir = -1;
+
+                int player1CollisonPrevPosX = prevState.Player1Data.PlayerPosition.x + player1Frame.collisionBox.posX * player1prevDir;
+                int player2CollisonPrevPosX = prevState.Player2Data.PlayerPosition.x + player2Frame.collisionBox.posX * player2prevDir;
+
+                if (player1CollisonPrevPosX < player2CollisonPrevPosX)
+                {
+                    player2Collision.posX++;
+                    player1Collision.posX--;
+                }
+                else 
+                { 
+                    player1Collision.posX++;
+                    player2Collision.posX--;
+                }
+            }
             if (player1Collision.posX < midle)
             {
-                player1Data.PlayerPositionHorizontal = midle - player1CollisionCopy.sizeX / 2 - player1CollisionCopy.posX * player1Dir;
+                player1Data.PlayerPosition.x = midle - player1CollisionCopy.sizeX / 2 - player1CollisionCopy.posX * player1Dir;
             }
             else if (player1Collision.posX > midle)
             {
-                player1Data.PlayerPositionHorizontal = midle + player1CollisionCopy.sizeX / 2 - player1CollisionCopy.posX * player1Dir;
+                player1Data.PlayerPosition.x = midle + player1CollisionCopy.sizeX / 2 - player1CollisionCopy.posX * player1Dir;
             }
             if (player2Collision.posX < midle)
             {
-                player2Data.PlayerPositionHorizontal = midle - player2CollisionCopy.sizeX / 2 - player2CollisionCopy.posX * player2Dir;
+                player2Data.PlayerPosition.x = midle - player2CollisionCopy.sizeX / 2 - player2CollisionCopy.posX * player2Dir;
             }
             else if (player2Collision.posX > midle)
             {
-                player2Data.PlayerPositionHorizontal = midle + player2CollisionCopy.sizeX / 2 - player2CollisionCopy.posX * player2Dir;
+                player2Data.PlayerPosition.x = midle + player2CollisionCopy.sizeX / 2 - player2CollisionCopy.posX * player2Dir;
             }
         }
 
-        //Detecting if anyone landed a hit
+        //Detecting if anyone landed a hit or a throw
 
         int player1Gothit = -1;
         int player2Gothit = -1;
+        bool player1GotThrown = false;
+        bool player2GotThrown = false;
         int player1HitX = 0;
         int player2HitX = 0;
         int player1HitY = 0;
         int player2HitY = 0;
+
+        if (isInAir(player2Data) == player1Frame.isAirThrow && player2Data.InHitstun <= 0)
+        {
+            for (int i = 0; i < player1Frame.throwhitbox.Length; i++)
+            {
+                for (int j = 0; j < player2Frame.throwbox.Length; j++)
+                {
+                    player1Collision = player1Frame.throwhitbox[i];
+                    player2Collision = player2Frame.throwbox[j];
+                    player1Collision.posX *= player1Dir;
+                    player2Collision.posX *= player2Dir;
+                    player1Collision.posX += player1Data.PlayerPosition.x;
+                    player1Collision.posY += player1Data.PlayerPosition.y;
+                    player2Collision.posX += player2Data.PlayerPosition.x;
+                    player2Collision.posY += player2Data.PlayerPosition.y;
+
+                    if (CheckCollision(player1Collision, player2Collision))
+                    {
+                        player2GotThrown = true;
+                        break;
+                    }
+                }
+                if (player2GotThrown)
+                    break;
+            }
+        }
+
+        if (isInAir(player2Data) == player2Frame.isAirThrow && player1Data.InHitstun <= 0)
+        {
+            for (int i = 0; i < player2Frame.throwhitbox.Length; i++)
+            {
+                for (int j = 0; j < player1Frame.throwbox.Length; j++)
+                {
+                    player1Collision = player2Frame.throwhitbox[i];
+                    player2Collision = player1Frame.throwbox[j];
+                    player1Collision.posX *= player1Dir;
+                    player2Collision.posX *= player2Dir;
+                    player1Collision.posX += player1Data.PlayerPosition.x;
+                    player1Collision.posY += player1Data.PlayerPosition.y;
+                    player2Collision.posX += player2Data.PlayerPosition.x;
+                    player2Collision.posY += player2Data.PlayerPosition.y;
+
+                    if (CheckCollision(player1Collision, player2Collision))
+                    {
+                        player1GotThrown = true;
+                        break;
+                    }
+                }
+                if (player1GotThrown)
+                    break;
+            }
+        }
 
         if (player1Data.HitLanded < player1Frame.hitboxLand)
         {
@@ -614,10 +706,10 @@ public class Simulation : MonoBehaviour
                     player2Collision = player2Frame.hurtbox[j];
                     player1Collision.posX *= player1Dir;
                     player2Collision.posX *= player2Dir;
-                    player1Collision.posX += player1Data.PlayerPositionHorizontal;
-                    player1Collision.posY += player1Data.PlayerPositionVertical;
-                    player2Collision.posX += player2Data.PlayerPositionHorizontal;
-                    player2Collision.posY += player2Data.PlayerPositionVertical;
+                    player1Collision.posX += player1Data.PlayerPosition.x;
+                    player1Collision.posY += player1Data.PlayerPosition.y;
+                    player2Collision.posX += player2Data.PlayerPosition.x;
+                    player2Collision.posY += player2Data.PlayerPosition.y;
 
                     if (isInAir(player2Data) && player2Data.juggleScaling > juggleLimit)
                     {
@@ -646,8 +738,8 @@ public class Simulation : MonoBehaviour
                         }
 
                         player2Collision.posX *= player2Dir;
-                        player2Collision.posX += player2Data.PlayerPositionHorizontal;
-                        player2Collision.posY += player2Data.PlayerPositionVertical;
+                        player2Collision.posX += player2Data.PlayerPosition.x;
+                        player2Collision.posY += player2Data.PlayerPosition.y;
 
                         int didBlock = -1;
 
@@ -668,7 +760,7 @@ public class Simulation : MonoBehaviour
                         {
                             player2Gothit = didBlock;
                         }
-                        if (didBlock == -1 && isInAir(player2Data))
+                        if (didBlock == -1 && (isInAir(player2Data) || player1Frame.alwaysLaunch))
                         {
                             player2Gothit = Animations.GetHitAir;
                         }
@@ -690,10 +782,10 @@ public class Simulation : MonoBehaviour
                     player1Collision = player1Frame.hurtbox[j];
                     player2Collision.posX *= player2Dir;
                     player1Collision.posX *= player1Dir;
-                    player2Collision.posX += player2Data.PlayerPositionHorizontal;
-                    player2Collision.posY += player2Data.PlayerPositionVertical;
-                    player1Collision.posX += player1Data.PlayerPositionHorizontal;
-                    player1Collision.posY += player1Data.PlayerPositionVertical;
+                    player2Collision.posX += player2Data.PlayerPosition.x;
+                    player2Collision.posY += player2Data.PlayerPosition.y;
+                    player1Collision.posX += player1Data.PlayerPosition.x;
+                    player1Collision.posY += player1Data.PlayerPosition.y;
 
                     if (isInAir(player1Data) && player1Data.juggleScaling > juggleLimit)
                     {
@@ -722,8 +814,8 @@ public class Simulation : MonoBehaviour
                         }
 
                         player1Collision.posX *= player1Dir;
-                        player1Collision.posX += player1Data.PlayerPositionHorizontal;
-                        player1Collision.posY += player1Data.PlayerPositionVertical;
+                        player1Collision.posX += player1Data.PlayerPosition.x;
+                        player1Collision.posY += player1Data.PlayerPosition.y;
 
                         int didBlock = -1;
 
@@ -744,7 +836,7 @@ public class Simulation : MonoBehaviour
                         {
                             player1Gothit = didBlock;
                         }
-                        if (didBlock == -1 && isInAir(player1Data))
+                        if (didBlock == -1 && (isInAir(player1Data) || player2Frame.alwaysLaunch))
                         {
                             player1Gothit = Animations.GetHitAir;
                         }
@@ -774,7 +866,20 @@ public class Simulation : MonoBehaviour
             player2Data.juggleScaling = 0;
         }
 
-        //Apply the required data if pl1 or pl2 got hit
+        //Apply the required data if pl1 or pl2 got hit or thrown
+
+        if (player1GotThrown && !player2GotThrown)
+        {
+            player1Data.IsLookingRight = !player2Data.IsLookingRight;
+            player1Data.PlayerPosition = player2Data.PlayerPosition + player2Frame.setOpponentPositionOnThrow * player2Dir;
+            PlayAnimation(ref player1Data, player1Character, Animations.InfiniteHitstun);
+        }
+        if (!player1GotThrown && player2GotThrown)
+        {
+            player2Data.IsLookingRight = !player1Data.IsLookingRight;
+            player2Data.PlayerPosition = player1Data.PlayerPosition + player1Frame.setOpponentPositionOnThrow * player1Dir;
+            PlayAnimation(ref player2Data, player2Character, Animations.InfiniteHitstun);
+        }
 
         if (player1Gothit != -1)
         {
@@ -786,18 +891,18 @@ public class Simulation : MonoBehaviour
                 player1Data.PlayerAnimationFrame = 0;
                 player1Data.PlayerNextAnimation = Animations.Idle;
                 player1Data.PlayerNextAnimationFrame = 0;
-                if (player1Data.PlayerPositionHorizontal <= -9990 || player1Data.PlayerPositionHorizontal >= 9990)
+                if ((player1Data.PlayerPosition.x <= -9990 && player2Dir == -1) || (player1Data.PlayerPosition.x >= 9990 && player2Dir == 1))
                 {
                     if (!isInAir(player2Data))
                     {
-                        player2Data.PlayerVelocityHorizontal = -player2Frame.hitboxPushOnBlock * player2Dir;
-                        player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                        player2Data.PlayerVelocity.x = -player2Frame.hitboxPushOnBlock * player2Dir;
+                        player2Data.PlayerAcceleration.x = player2Data.PlayerVelocity.x / -12;
                     }
                 }
                 else
                 {
-                    player1Data.PlayerVelocityHorizontal = player2Frame.hitboxPushOnBlock * player2Dir;
-                    player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                    player1Data.PlayerVelocity.x = player2Frame.hitboxPushOnBlock * player2Dir;
+                    player1Data.PlayerAcceleration.x = player1Data.PlayerVelocity.x / -12;
                 }
                 player2Data.HitLanded = player2Frame.hitboxLand;
                 skipFrames = player2Frame.hitStopOnBlock;
@@ -808,31 +913,36 @@ public class Simulation : MonoBehaviour
                 player2Data.Combo++;
                 player1Data.InHitstun = player2Frame.hitboxHitStun;
                 player1Data.Health -= player2Frame.hitboxDamage;
-                if (player1Gothit == Animations.GetHitAir) player1Data.InHitstun = 999999;
+                if (player1Gothit == Animations.GetHitAir)
+                {
+                    player1Data.InHitstun = 999999;
+                    player1Data.PlayerPosition.y++;
+                    player1Data.PlayerAcceleration.y = -17;
+                }
                 if (player1Gothit == Animations.GetHitAir && player2Data.Combo != 0) player1Data.juggleScaling += player2Frame.addJuggleScaling;
                 player1Data.PlayerAnimation = player1Gothit;
                 player1Data.PlayerAnimationFrame = 0;
                 player1Data.PlayerNextAnimation = Animations.Idle;
                 player1Data.PlayerNextAnimationFrame = 0;
-                if (player1Data.PlayerPositionHorizontal <= -9990 || player1Data.PlayerPositionHorizontal >= 9990)
+                if ((player1Data.PlayerPosition.x <= -9990 && player2Dir == -1) || (player1Data.PlayerPosition.x >= 9990 && player2Dir == 1))
                 {
                     if (!isInAir(player2Data))
                     {
-                        player2Data.PlayerVelocityHorizontal = -player2Frame.hitboxPush * player2Dir;
-                        player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                        player2Data.PlayerVelocity.x = -player2Frame.hitboxPush * player2Dir;
+                        player2Data.PlayerAcceleration.x = player2Data.PlayerVelocity.x / -12;
                     }
                 }
                 else
                 {
-                    player1Data.PlayerVelocityHorizontal = player2Frame.hitboxPush * player2Dir;
-                    player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                    player1Data.PlayerVelocity.x = player2Frame.hitboxPush * player2Dir;
+                    player1Data.PlayerAcceleration.x = player1Data.PlayerVelocity.x / -12;
                     if (player1Gothit == Animations.GetHitAir)
                     {
-                        player1Data.PlayerVelocityHorizontal = player2Frame.hitboxPushAirHorizontal * player2Dir;
-                        player1Data.PlayerAccelerationHorizontal = 0;
+                        player1Data.PlayerVelocity.x = player2Frame.hitboxPushAirHorizontal * player2Dir;
+                        player1Data.PlayerAcceleration.x = 0;
                     }
                 }
-                if (player1Gothit == Animations.GetHitAir) player1Data.PlayerVelocityVertical = player2Frame.hitboxPushAirVertical;
+                if (player1Gothit == Animations.GetHitAir) player1Data.PlayerVelocity.y = player2Frame.hitboxPushAirVertical;
                 player2Data.HitLanded = player2Frame.hitboxLand;
                 skipFrames = player2Frame.hitStop;
             }
@@ -848,19 +958,19 @@ public class Simulation : MonoBehaviour
                 player2Data.PlayerAnimationFrame = 0;
                 player2Data.PlayerNextAnimation = Animations.Idle;
                 player2Data.PlayerNextAnimationFrame = 0;
-                if (player2Data.PlayerPositionHorizontal <= -9990 || player2Data.PlayerPositionHorizontal >= 9990)
+                if ((player2Data.PlayerPosition.x <= -9990 && player1Dir == -1) || (player2Data.PlayerPosition.x >= 9990 && player1Dir == 1))
                 {
 
                     if (!isInAir(player1Data))
                     {
-                        player1Data.PlayerVelocityHorizontal = -player1Frame.hitboxPushOnBlock * player1Dir;
-                        player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                        player1Data.PlayerVelocity.x = -player1Frame.hitboxPushOnBlock * player1Dir;
+                        player1Data.PlayerAcceleration.x = player1Data.PlayerVelocity.x / -12;
                     }
                 }
                 else
                 {
-                    player2Data.PlayerVelocityHorizontal = player1Frame.hitboxPushOnBlock * player1Dir;
-                    player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                    player2Data.PlayerVelocity.x = player1Frame.hitboxPushOnBlock * player1Dir;
+                    player2Data.PlayerAcceleration.x = player2Data.PlayerVelocity.x / -12;
                 }
                 player1Data.HitLanded = player1Frame.hitboxLand;
                 if (skipFrames < player1Frame.hitStopOnBlock)
@@ -872,31 +982,36 @@ public class Simulation : MonoBehaviour
                 player1Data.Combo++;
                 player2Data.InHitstun = player1Frame.hitboxHitStun;
                 player2Data.Health -= player1Frame.hitboxDamage;
-                if (player2Gothit == Animations.GetHitAir) player2Data.InHitstun = 999999;
+                if (player2Gothit == Animations.GetHitAir)
+                { 
+                    player2Data.InHitstun = 999999;
+                    player2Data.PlayerPosition.y++;
+                    player2Data.PlayerAcceleration.y = -17;
+                }
                 if (player2Gothit == Animations.GetHitAir && player1Data.Combo != 0) player2Data.juggleScaling += player1Frame.addJuggleScaling;
                 player2Data.PlayerAnimation = player2Gothit;
                 player2Data.PlayerAnimationFrame = 0;
                 player2Data.PlayerNextAnimation = Animations.Idle;
                 player2Data.PlayerNextAnimationFrame = 0;
-                if (player2Data.PlayerPositionHorizontal <= -9990 || player2Data.PlayerPositionHorizontal >= 9990)
+                if ((player2Data.PlayerPosition.x <= -9990 && player1Dir == -1) || (player2Data.PlayerPosition.x >= 9990 && player1Dir == 1))
                 {
                     if (!isInAir(player1Data))
                     {
-                        player1Data.PlayerVelocityHorizontal = -player1Frame.hitboxPush * player1Dir;
-                        player1Data.PlayerAccelerationHorizontal = player1Data.PlayerVelocityHorizontal / -12;
+                        player1Data.PlayerVelocity.x = -player1Frame.hitboxPush * player1Dir;
+                        player1Data.PlayerAcceleration.x = player1Data.PlayerVelocity.x / -12;
                     }
                 }
                 else
                 {
-                    player2Data.PlayerVelocityHorizontal = player1Frame.hitboxPush * player1Dir;
-                    player2Data.PlayerAccelerationHorizontal = player2Data.PlayerVelocityHorizontal / -12;
+                    player2Data.PlayerVelocity.x = player1Frame.hitboxPush * player1Dir;
+                    player2Data.PlayerAcceleration.x = player2Data.PlayerVelocity.x / -12;
                     if (player2Gothit == Animations.GetHitAir)
                     {
-                        player2Data.PlayerVelocityHorizontal = player1Frame.hitboxPushAirHorizontal * player1Dir;
-                        player2Data.PlayerAccelerationHorizontal = 0;
+                        player2Data.PlayerVelocity.x = player1Frame.hitboxPushAirHorizontal * player1Dir;
+                        player2Data.PlayerAcceleration.x = 0;
                     }
                 }
-                if (player2Gothit == Animations.GetHitAir) player2Data.PlayerVelocityVertical = player1Frame.hitboxPushAirVertical;
+                if (player2Gothit == Animations.GetHitAir) player2Data.PlayerVelocity.y = player1Frame.hitboxPushAirVertical;
                 player1Data.HitLanded = player1Frame.hitboxLand;
                 if (skipFrames < player1Frame.hitStop)
                     skipFrames = player1Frame.hitStop;
@@ -905,22 +1020,22 @@ public class Simulation : MonoBehaviour
 
         //Making sure that the players are not out of bounds
 
-        if (player1Data.PlayerPositionHorizontal < -10000)
+        if (player1Data.PlayerPosition.x < -10000)
         {
-            player1Data.PlayerPositionHorizontal = -10000;
+            player1Data.PlayerPosition.x = -10000;
         }
-        if (player1Data.PlayerPositionHorizontal > 10000)
+        if (player1Data.PlayerPosition.x > 10000)
         {
-            player1Data.PlayerPositionHorizontal = 10000;
+            player1Data.PlayerPosition.x = 10000;
         }
 
-        if (player2Data.PlayerPositionHorizontal < -10000)
+        if (player2Data.PlayerPosition.x < -10000)
         {
-            player2Data.PlayerPositionHorizontal = -10000;
+            player2Data.PlayerPosition.x = -10000;
         }
-        if (player2Data.PlayerPositionHorizontal > 10000)
+        if (player2Data.PlayerPosition.x > 10000)
         {
-            player2Data.PlayerPositionHorizontal = 10000;
+            player2Data.PlayerPosition.x = 10000;
         }
         state.Player1Data = player1Data;
         state.Player2Data = player2Data;
@@ -931,5 +1046,117 @@ public class Simulation : MonoBehaviour
             lastFrame = currentFrame;
         }
         return state;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (player1Character == null || player2Character == null) return;
+        float x = 0.5f;
+        SimulationState state = GetFrameState(lastFrame);
+        Frame player1Frame = player1Character.animations[state.Player1Data.PlayerAnimation].data.frames[state.Player1Data.PlayerAnimationFrame];
+        Frame player2Frame = player2Character.animations[state.Player2Data.PlayerAnimation].data.frames[state.Player2Data.PlayerAnimationFrame];
+        Vector3 player1Pos = new Vector3(state.Player1Data.PlayerPosition.x / 1000.0f, state.Player1Data.PlayerPosition.y / 1000.0f + x, -1);
+        Vector3 player2Pos = new Vector3(state.Player2Data.PlayerPosition.x / 1000.0f, state.Player2Data.PlayerPosition.y / 1000.0f + x, -1);
+        int player1Dir = 1;
+        int player2Dir = 1;
+        if (!state.Player1Data.IsLookingRight)
+        {
+            player1Dir = -1;
+        }
+        if (!state.Player2Data.IsLookingRight)
+        {
+            player2Dir = -1;
+        }
+        Vector3 boxPos, boxSize;
+
+        Gizmos.color = new Color(0.0f, 0.0f, 1.0f, 0.5f);
+        for (int i = 0; i < player1Frame.hurtbox.Length; i++)
+        {
+            boxPos = new Vector3(player1Frame.hurtbox[i].posX / 1000.0f * player1Dir, player1Frame.hurtbox[i].posY / 1000.0f);
+            boxSize = new Vector3(player1Frame.hurtbox[i].sizeX / 1000.0f, player1Frame.hurtbox[i].sizeY / 1000.0f);
+            Gizmos.DrawCube(player1Pos + boxPos, boxSize);
+        }
+        for (int i = 0; i < player2Frame.hurtbox.Length; i++)
+        {
+            boxPos = new Vector3(player2Frame.hurtbox[i].posX / 1000.0f * player2Dir, player2Frame.hurtbox[i].posY / 1000.0f);
+            boxSize = new Vector3(player2Frame.hurtbox[i].sizeX / 1000.0f, player2Frame.hurtbox[i].sizeY / 1000.0f);
+            Gizmos.DrawCube(player2Pos + boxPos, boxSize);
+        }
+
+        Gizmos.color = new Color(1.0f, 0.0f, 0.0f, 0.5f);
+        for (int i = 0; i < player1Frame.hitbox.Length; i++)
+        {
+            boxPos = new Vector3(player1Frame.hitbox[i].posX / 1000.0f * player1Dir, player1Frame.hitbox[i].posY / 1000.0f);
+            boxSize = new Vector3(player1Frame.hitbox[i].sizeX / 1000.0f, player1Frame.hitbox[i].sizeY / 1000.0f);
+            Gizmos.DrawCube(player1Pos + boxPos, boxSize);
+        }
+        for (int i = 0; i < player2Frame.hitbox.Length; i++)
+        {
+            boxPos = new Vector3(player2Frame.hitbox[i].posX / 1000.0f * player2Dir, player2Frame.hitbox[i].posY / 1000.0f);
+            boxSize = new Vector3(player2Frame.hitbox[i].sizeX / 1000.0f, player2Frame.hitbox[i].sizeY / 1000.0f);
+            Gizmos.DrawCube(player2Pos + boxPos, boxSize);
+        }
+
+        Gizmos.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
+        for (int i = 0; i < player1Frame.throwhitbox.Length; i++)
+        {
+            boxPos = new Vector3(player1Frame.throwhitbox[i].posX / 1000.0f * player1Dir, player1Frame.throwhitbox[i].posY / 1000.0f);
+            boxSize = new Vector3(player1Frame.throwhitbox[i].sizeX / 1000.0f, player1Frame.throwhitbox[i].sizeY / 1000.0f);
+            Gizmos.DrawCube(player1Pos + boxPos, boxSize);
+        }
+        for (int i = 0; i < player2Frame.throwhitbox.Length; i++)
+        {
+            boxPos = new Vector3(player2Frame.throwhitbox[i].posX / 1000.0f * player2Dir, player2Frame.throwhitbox[i].posY / 1000.0f);
+            boxSize = new Vector3(player2Frame.throwhitbox[i].sizeX / 1000.0f, player2Frame.throwhitbox[i].sizeY / 1000.0f);
+            Gizmos.DrawCube(player2Pos + boxPos, boxSize);
+        }
+
+        Gizmos.color = new Color(1.0f, 0.0f, 1.0f, 0.5f);
+        for (int i = 0; i < player1Frame.throwbox.Length; i++)
+        {
+            boxPos = new Vector3(player1Frame.throwbox[i].posX / 1000.0f * player1Dir, player1Frame.throwbox[i].posY / 1000.0f);
+            boxSize = new Vector3(player1Frame.throwbox[i].sizeX / 1000.0f, player1Frame.throwbox[i].sizeY / 1000.0f);
+            Gizmos.DrawCube(player1Pos + boxPos, boxSize);
+        }
+        for (int i = 0; i < player2Frame.throwbox.Length; i++)
+        {
+            boxPos = new Vector3(player2Frame.throwbox[i].posX / 1000.0f * player2Dir, player2Frame.throwbox[i].posY / 1000.0f);
+            boxSize = new Vector3(player2Frame.throwbox[i].sizeX / 1000.0f, player2Frame.throwbox[i].sizeY / 1000.0f);
+            Gizmos.DrawCube(player2Pos + boxPos, boxSize);
+        }
+
+        Gizmos.color = new Color(0.0f, 1.0f, 0.0f, 0.5f);
+        boxPos = new Vector3(player1Frame.collisionBox.posX / 1000.0f * player1Dir, player1Frame.collisionBox.posY / 1000.0f);
+        boxSize = new Vector3(player1Frame.collisionBox.sizeX / 1000.0f, player1Frame.collisionBox.sizeY / 1000.0f);
+        Gizmos.DrawCube(player1Pos + boxPos, boxSize);
+        boxPos = new Vector3(player2Frame.collisionBox.posX / 1000.0f * player2Dir, player2Frame.collisionBox.posY / 1000.0f);
+        boxSize = new Vector3(player2Frame.collisionBox.sizeX / 1000.0f, player2Frame.collisionBox.sizeY / 1000.0f);
+        Gizmos.DrawCube(player2Pos + boxPos, boxSize);
+
+        Gizmos.color = new Color(0.0f, 1.0f, 1.0f, 0.5f);
+        if (state.Player1Data.PlayerAnimation == Animations.WalkBack || state.Player1Data.PlayerAnimation == Animations.BlockHigh)
+        {
+            boxPos = new Vector3(player1Character.blockHightBox.posX / 1000.0f * player1Dir, player1Character.blockHightBox.posY / 1000.0f);
+            boxSize = new Vector3(player1Character.blockHightBox.sizeX / 1000.0f, player1Character.blockHightBox.sizeY / 1000.0f);
+            Gizmos.DrawCube(player1Pos + boxPos, boxSize);
+        }
+        if (state.Player1Data.PlayerAnimation == Animations.CrouchBlock || state.Player1Data.PlayerAnimation == Animations.BlockLow)
+        {
+            boxPos = new Vector3(player1Character.blockLowBox.posX / 1000.0f * player1Dir, player1Character.blockLowBox.posY / 1000.0f);
+            boxSize = new Vector3(player1Character.blockLowBox.sizeX / 1000.0f, player1Character.blockLowBox.sizeY / 1000.0f);
+            Gizmos.DrawCube(player1Pos + boxPos, boxSize);
+        }
+        if (state.Player2Data.PlayerAnimation == Animations.WalkBack || state.Player2Data.PlayerAnimation == Animations.BlockHigh)
+        {
+            boxPos = new Vector3(player2Character.blockHightBox.posX / 1000.0f * player2Dir, player2Character.blockHightBox.posY / 1000.0f);
+            boxSize = new Vector3(player2Character.blockHightBox.sizeX / 1000.0f, player2Character.blockHightBox.sizeY / 1000.0f);
+            Gizmos.DrawCube(player2Pos + boxPos, boxSize);
+        }
+        if (state.Player2Data.PlayerAnimation == Animations.CrouchBlock || state.Player2Data.PlayerAnimation == Animations.BlockLow)
+        {
+            boxPos = new Vector3(player2Character.blockLowBox.posX / 1000.0f * player2Dir, player2Character.blockLowBox.posY / 1000.0f);
+            boxSize = new Vector3(player2Character.blockLowBox.sizeX / 1000.0f, player2Character.blockLowBox.sizeY / 1000.0f);
+            Gizmos.DrawCube(player2Pos + boxPos, boxSize);
+        }
     }
 }
