@@ -62,7 +62,9 @@ public class Simulation : MonoBehaviour
 
     public int juggleLimit = 2;
     public int InputBufferSize;
+    public int MotionInputBuffer;
     public SimulationState baseState;
+    public int speed = 1;
 
     private Dictionary<long, SimulationState> history = new Dictionary<long, SimulationState>();
     private long startFrame = -1;
@@ -246,6 +248,22 @@ public class Simulation : MonoBehaviour
         }
         return false;
     }
+
+    private bool SearchForMotion(MovementInput[] movementInputs, int[] targetInputs)
+    {
+        int framesPast = 0, i = 0, progress = 0;
+
+        while (framesPast < MotionInputBuffer && i < movementInputs.Length)
+        {
+            framesPast += movementInputs[i].holdTime;
+            if (movementInputs[i].input == targetInputs[progress])
+                progress++;
+            i++;
+            if (progress >= targetInputs.Length) return true;
+        }
+
+        return false;
+    }
     private PlayerChangebleStats CalculatePerPlayer(MovementAndButtonInput[] inputs, PlayerChangebleStats result, Character character, long currentFrame)
     {
         int movement = inputs[0].movement;
@@ -350,9 +368,17 @@ public class Simulation : MonoBehaviour
         }
 
         currentAnimation = character.animations[result.PlayerAnimation].data;
-        if (currentAnimation.frames.Length <= result.PlayerAnimationFrame && result.PlayerAnimation != Animations.GetHitUp)
+        if (currentAnimation.frames.Length <= result.PlayerAnimationFrame && (result.PlayerAnimation != Animations.GetHitUp || result.PlayerAnimation != Animations.GetHitDown))
         {
             PlayAnimation(ref result, character, result.PlayerNextAnimation, result.PlayerNextAnimationFrame);
+        }
+        if (character.name == "Boxer")
+        {
+            int[] motionArray = { 6, 2, 3 };
+            if (SearchForMotion(movementBuffer, motionArray) && CanCancelInto(result, character, 27) && (PressedButtonInInputBuffer(lightButtonBuffer) || PressedButtonInInputBuffer(mediumButtonBuffer) || PressedButtonInInputBuffer(heavyButtonBuffer)))
+            {
+                PlayAnimation(ref result, character, 27);
+            }
         }
         if (PressedButtonInInputBuffer(lightButtonBuffer) && PressedButtonInInputBuffer(mediumButtonBuffer) && CanCancelInto(result, character, Animations.Throw))
         {
@@ -494,15 +520,15 @@ public class Simulation : MonoBehaviour
         int skipFrames = state.skipFrames;
         state.player1LandedHit = new Vector2Int(-100000, -100000);
         state.player2LandedHit = new Vector2Int(-100000, -100000);
+        if (state.Player1Data.Health < 0 || state.Player2Data.Health < 0 || currentFrame % speed != 0)
+        {
+            history[currentFrame] = state;
+            return state;
+        }
         if (skipFrames > 0)
         {
             skipFrames--;
             state.skipFrames = skipFrames;
-            history[currentFrame] = state;
-            return state;
-        }
-        if (state.Player1Data.Health < 0 || state.Player2Data.Health < 0)
-        {
             history[currentFrame] = state;
             return state;
         }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23dbe6c68d063ee4dbe2e753253c1119, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
+  name: Boxer
   animations:
   - name: Idle
     data: {fileID: 11400000, guid: d1e11a49896bbf3428c65e9d63bd4dc7, type: 2}
@@ -94,6 +95,9 @@ MonoBehaviour:
   - name: Idle
     data: {fileID: 11400000, guid: 4e45c33ed32639642943c19e2d26791e, type: 2}
     nextAnim: 26
+  - name: DragonPunch
+    data: {fileID: 11400000, guid: 9c4191980c4963045973e41892176f10, type: 2}
+    nextAnim: 0
   blockHightBox:
     posX: 577
     posY: 3087

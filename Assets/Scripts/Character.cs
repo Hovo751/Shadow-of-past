@@ -11,6 +11,7 @@ public class Character : ScriptableObject
         public AnimBase data;
         public int nextAnim;
     }
+    public string name;
     public AnimationData[] animations;
     public Rectengale blockHightBox; 
     public Rectengale blockLowBox;
