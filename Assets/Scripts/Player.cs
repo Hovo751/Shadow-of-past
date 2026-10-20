@@ -46,8 +46,8 @@ public class Player : MonoBehaviour
         }
         int animId = changebleStats.PlayerAnimation;
         if (animId == 7) animId = 6;
-        string animationName = characters.characters[character].animations[animId].name;
-        float t = ((float)changebleStats.PlayerAnimationFrame) / characters.characters[character].animations[changebleStats.PlayerAnimation].data.frames.Length;
+        string animationName = simulation.GetAnimation(animId, characters.characters[character]).name;
+        float t = ((float)changebleStats.PlayerAnimationFrame) / simulation.GetAnimation(animId, characters.characters[character]).data.frames.Length;
         animator.Play(animationName, 0, t);
 
         if (animationName != previousAnim)

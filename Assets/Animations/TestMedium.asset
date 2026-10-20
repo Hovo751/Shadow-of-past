@@ -15,7 +15,7 @@ MonoBehaviour:
   cancelLvl: 0
   inAir: 0
   frames:
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -240,7 +240,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -293,7 +293,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -346,7 +346,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -399,7 +399,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -497,7 +497,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -546,7 +546,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -595,7 +595,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -640,7 +640,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -685,7 +685,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -730,7 +730,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -775,7 +775,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -820,7 +820,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -865,7 +865,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -910,7 +910,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -955,7 +955,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -1000,7 +1000,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0
@@ -1045,7 +1045,7 @@ MonoBehaviour:
       posY: 1783
       sizeX: 1035
       sizeY: 3230
-  - cancelLvl: 01000000
+  - cancelLvl: 0200000001000000
     addPosX: 0
     addPosY: 0
     setVelocityHorizontal: 0

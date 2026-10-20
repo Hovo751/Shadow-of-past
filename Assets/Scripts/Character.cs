@@ -13,6 +13,7 @@ public class Character : ScriptableObject
     }
     public string name;
     public AnimationData[] animations;
+    public AnimationData[] specialAnimations;
     public Rectengale blockHightBox; 
     public Rectengale blockLowBox;
 }

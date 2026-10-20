@@ -289,7 +289,7 @@ MonoBehaviour:
   MotionInputBuffer: 40
   baseState:
     Player1Data:
-      Health: 2147483647
+      Health: 10000
       PlayerPosition: {x: -5000, y: 0}
       PlayerVelocity: {x: 0, y: 0}
       PlayerAcceleration: {x: 0, y: 0}
@@ -304,7 +304,7 @@ MonoBehaviour:
       Combo: 0
       juggleScaling: 0
     Player2Data:
-      Health: 2147483647
+      Health: 10000
       PlayerPosition: {x: 5000, y: 0}
       PlayerVelocity: {x: 0, y: 0}
       PlayerAcceleration: {x: 0, y: 0}
@@ -457,7 +457,7 @@ PrefabInstance:
     - target: {fileID: 4071262622471428003, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: simulation
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 528855820}
     - target: {fileID: 4071262622471428003, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: startFrame
       value: 0
@@ -684,7 +684,7 @@ PrefabInstance:
     - target: {fileID: 4071262622471428003, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: simulation
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 528855820}
     - target: {fileID: 4071262622471428003, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: startFrame
       value: 0

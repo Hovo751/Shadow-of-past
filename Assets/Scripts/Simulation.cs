@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.TextCore.Text;
+using static Character;
 public static class Animations
 {
     public const int Idle = 0;
@@ -80,6 +81,15 @@ public class Simulation : MonoBehaviour
         history = new Dictionary<long, SimulationState>();
     }
 
+    public AnimationData GetAnimation(int n, Character character)
+    {
+        if (n >= 100)
+        {
+            return character.specialAnimations[n - 100];
+        }
+        return character.animations[n];
+    }
+
     public SimulationState GetFrameState(long frame)
     {
         SimulationState ret = baseState;
@@ -136,12 +146,12 @@ public class Simulation : MonoBehaviour
     }
     private void PlayAnimation(ref PlayerChangebleStats result, Character character, int anim)
     {
-        result.PlayerNextAnimation = character.animations[anim].nextAnim;
+        result.PlayerNextAnimation = GetAnimation(anim, character).nextAnim;
         result.PlayerNextAnimationFrame = 0;
         result.HitLanded = 0;
-        if (character.animations[anim].data.inAir)
+        if (GetAnimation(anim, character).data.inAir)
         {
-            result.PlayerNextAnimationFrame = result.PlayerAnimationFrame + character.animations[anim].data.frames.Length;
+            result.PlayerNextAnimationFrame = result.PlayerAnimationFrame + GetAnimation(anim, character).data.frames.Length;
             result.PlayerNextAnimation = result.PlayerAnimation;
         }
         result.PlayerAnimationFrame = 0;
@@ -151,8 +161,8 @@ public class Simulation : MonoBehaviour
     {
         PlayAnimation(ref result, character, anim);
         result.PlayerAnimationFrame = frame;
-        if (character.animations[anim].data.frames.Length <= frame)
-            result.PlayerAnimationFrame = character.animations[anim].data.frames.Length - 1;
+        if (GetAnimation(anim, character).data.frames.Length <= frame)
+            result.PlayerAnimationFrame = GetAnimation(anim, character).data.frames.Length - 1;
     }
     MovementInput[] SortInputs(int[] arr)
     {
@@ -226,10 +236,9 @@ public class Simulation : MonoBehaviour
     }
     bool CanCancelInto(PlayerChangebleStats result, Character character, int anim)
     {
-        AnimBase currentAnim = character.animations[result.PlayerAnimation].data;
-        AnimBase nextAnim = character.animations[anim].data;
+        AnimBase currentAnim = GetAnimation(result.PlayerAnimation, character).data;
+        AnimBase nextAnim = GetAnimation(anim, character).data;
         int hitLanded = Mathf.Min(result.HitLanded, currentAnim.frames[result.PlayerAnimationFrame].cancelLvl.Length - 1);
-        if (hitLanded != 0) Debug.Log(hitLanded);
         if (result.PlayerAnimation != anim &&
             currentAnim.frames[result.PlayerAnimationFrame].cancelLvl[hitLanded] <= nextAnim.cancelLvl &&
             nextAnim.inAir == isInAir(result))
@@ -332,7 +341,7 @@ public class Simulation : MonoBehaviour
 
         //Stepping over to next frame of animation and changing it based on the inputs
 
-        AnimBase currentAnimation = character.animations[result.PlayerAnimation].data;
+        AnimBase currentAnimation = GetAnimation(result.PlayerAnimation, character).data;
 
         result.PlayerAnimationFrame++;
 
@@ -359,15 +368,15 @@ public class Simulation : MonoBehaviour
             }
         }
 
-        currentAnimation = character.animations[result.PlayerAnimation].data;
+        currentAnimation = GetAnimation(result.PlayerAnimation, character).data;
 
         if (currentAnimation.inAir && !isInAir(result))
         {
-            int jumpAnimLength = character.animations[Animations.JumpStraight].data.frames.Length;
+            int jumpAnimLength = GetAnimation(Animations.JumpStraight, character).data.frames.Length;
             PlayAnimation(ref result, character, Animations.JumpStraight, jumpAnimLength - 1);
         }
 
-        currentAnimation = character.animations[result.PlayerAnimation].data;
+        currentAnimation = GetAnimation(result.PlayerAnimation, character).data;
         if (currentAnimation.frames.Length <= result.PlayerAnimationFrame && (result.PlayerAnimation != Animations.GetHitUp || result.PlayerAnimation != Animations.GetHitDown))
         {
             PlayAnimation(ref result, character, result.PlayerNextAnimation, result.PlayerNextAnimationFrame);
@@ -375,9 +384,9 @@ public class Simulation : MonoBehaviour
         if (character.name == "Boxer")
         {
             int[] motionArray = { 6, 2, 3 };
-            if (SearchForMotion(movementBuffer, motionArray) && CanCancelInto(result, character, 27) && (PressedButtonInInputBuffer(lightButtonBuffer) || PressedButtonInInputBuffer(mediumButtonBuffer) || PressedButtonInInputBuffer(heavyButtonBuffer)))
+            if (SearchForMotion(movementBuffer, motionArray) && CanCancelInto(result, character, 100) && (PressedButtonInInputBuffer(lightButtonBuffer) || PressedButtonInInputBuffer(mediumButtonBuffer) || PressedButtonInInputBuffer(heavyButtonBuffer)))
             {
-                PlayAnimation(ref result, character, 27);
+                PlayAnimation(ref result, character, 100);
             }
         }
         if (PressedButtonInInputBuffer(lightButtonBuffer) && PressedButtonInInputBuffer(mediumButtonBuffer) && CanCancelInto(result, character, Animations.Throw))
@@ -468,7 +477,7 @@ public class Simulation : MonoBehaviour
             PlayAnimation(ref result, character, Animations.Idle);
         }
 
-        currentAnimation = character.animations[result.PlayerAnimation].data;
+        currentAnimation = GetAnimation(result.PlayerAnimation, character).data;
 
         if (currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHbool)
             result.PlayerVelocity.x = currentAnimation.frames[result.PlayerAnimationFrame].setVelocityHorizontal * direction;
@@ -543,8 +552,8 @@ public class Simulation : MonoBehaviour
 
         //Setting which way the players look
 
-        Frame player1Frame = player1Character.animations[player1Data.PlayerAnimation].data.frames[player1Data.PlayerAnimationFrame];
-        Frame player2Frame = player2Character.animations[player2Data.PlayerAnimation].data.frames[player2Data.PlayerAnimationFrame];
+        Frame player1Frame = GetAnimation(player1Data.PlayerAnimation, player1Character).data.frames[player1Data.PlayerAnimationFrame];
+        Frame player2Frame = GetAnimation(player2Data.PlayerAnimation, player2Character).data.frames[player2Data.PlayerAnimationFrame];
 
         if (!isInAir(player1Data) && (player1Frame.cancelLvl[Mathf.Min(player1Data.HitLanded, player1Frame.cancelLvl.Length - 1)] == 0 || player1Frame.canRotate))
         {
@@ -619,8 +628,8 @@ public class Simulation : MonoBehaviour
             if (player1Collision.posX == player2Collision.posX)
             {
                 SimulationState prevState = GetFrameState(currentFrame - 1);
-                Frame player1PrevFrame = player1Character.animations[prevState.Player1Data.PlayerAnimation].data.frames[prevState.Player1Data.PlayerAnimationFrame];
-                Frame player2PrevFrame = player2Character.animations[prevState.Player2Data.PlayerAnimation].data.frames[prevState.Player2Data.PlayerAnimationFrame];
+                Frame player1PrevFrame = GetAnimation(prevState.Player1Data.PlayerAnimation, player1Character).data.frames[prevState.Player1Data.PlayerAnimationFrame];
+                Frame player2PrevFrame = GetAnimation(prevState.Player2Data.PlayerAnimation, player2Character).data.frames[prevState.Player2Data.PlayerAnimationFrame];
 
                 int player1prevDir = 1;
                 int player2prevDir = 1;
@@ -1079,8 +1088,8 @@ public class Simulation : MonoBehaviour
         if (player1Character == null || player2Character == null) return;
         float x = 0.5f;
         SimulationState state = GetFrameState(lastFrame);
-        Frame player1Frame = player1Character.animations[state.Player1Data.PlayerAnimation].data.frames[state.Player1Data.PlayerAnimationFrame];
-        Frame player2Frame = player2Character.animations[state.Player2Data.PlayerAnimation].data.frames[state.Player2Data.PlayerAnimationFrame];
+        Frame player1Frame = GetAnimation(state.Player1Data.PlayerAnimation, player1Character).data.frames[state.Player1Data.PlayerAnimationFrame];
+        Frame player2Frame = GetAnimation(state.Player2Data.PlayerAnimation, player2Character).data.frames[state.Player2Data.PlayerAnimationFrame];
         Vector3 player1Pos = new Vector3(state.Player1Data.PlayerPosition.x / 1000.0f, state.Player1Data.PlayerPosition.y / 1000.0f + x, -1);
         Vector3 player2Pos = new Vector3(state.Player2Data.PlayerPosition.x / 1000.0f, state.Player2Data.PlayerPosition.y / 1000.0f + x, -1);
         int player1Dir = 1;
