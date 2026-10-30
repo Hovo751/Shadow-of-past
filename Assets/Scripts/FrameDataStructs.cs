@@ -7,6 +7,8 @@ public struct Rectengale
     public int sizeX;
     public int sizeY;
 }
+
+//Add to frame drawer after ading smth
 [System.Serializable]
 public struct Frame
 {
@@ -22,11 +24,12 @@ public struct Frame
     public int setAccelerationVertical;
     public bool setAccelerationVbool;
     public Rectengale[] hurtbox;
+    public Rectengale[] hitbox;
+    public int hitboxLand;
     public int hitboxPush;
     public int hitboxPushAirVertical;
     public int hitboxPushAirHorizontal;
     public int hitboxPushOnBlock;
-    public int hitboxLand;
     public int hitboxDamage;
     public int chipDamage;
     public int hitboxHitStun;
@@ -37,10 +40,11 @@ public struct Frame
     public bool alwaysLaunch;
     public bool canHitHighOrLow;
     public bool canRotate;
-    public Rectengale[] hitbox;
     public Rectengale[] throwbox;
     public Rectengale[] throwhitbox;
     public bool isAirThrow;
     public Vector2Int setOpponentPositionOnThrow;
+    public int setAnimOnMiss;
+    public int setAnimFrameOnMiss;
     public Rectengale collisionBox;
 }

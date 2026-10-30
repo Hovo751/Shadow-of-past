@@ -29,7 +29,7 @@ public static class Animations
     public const int JumpLight = 22;
     public const int JumpMedium = 23;
     public const int JumpHeavy = 24;
-    public const int Throw = 25;
+    public const int ThrowHit = 25;
     public const int InfiniteHitstun = 26;
 }
 public class Simulation : MonoBehaviour
@@ -262,6 +262,11 @@ public class Simulation : MonoBehaviour
     {
         int framesPast = 0, i = 0, progress = 0;
 
+        for (int j = 0; j < targetInputs.Length / 2; j++)
+        {
+            targetInputs[j] = targetInputs[targetInputs.Length - 1 - j];
+        }
+
         while (framesPast < MotionInputBuffer && i < movementInputs.Length)
         {
             framesPast += movementInputs[i].holdTime;
@@ -389,9 +394,9 @@ public class Simulation : MonoBehaviour
                 PlayAnimation(ref result, character, 100);
             }
         }
-        if (PressedButtonInInputBuffer(lightButtonBuffer) && PressedButtonInInputBuffer(mediumButtonBuffer) && CanCancelInto(result, character, Animations.Throw))
+        if (PressedButtonInInputBuffer(lightButtonBuffer) && PressedButtonInInputBuffer(mediumButtonBuffer) && CanCancelInto(result, character, Animations.ThrowHit))
         {
-            PlayAnimation(ref result, character, Animations.Throw);
+            PlayAnimation(ref result, character, Animations.ThrowHit);
         }
         if (PressedButtonInInputBuffer(heavyButtonBuffer))
         {
@@ -902,6 +907,15 @@ public class Simulation : MonoBehaviour
         }
 
         //Apply the required data if pl1 or pl2 got hit or thrown
+        if (!player1GotThrown && player2Frame.throwhitbox.Length > 0)
+        {
+            PlayAnimation(ref player2Data, player2Character, player2Frame.setAnimFrameOnMiss, player2Frame.setAnimFrameOnMiss);
+        }
+
+        if (!player2GotThrown && player1Frame.throwhitbox.Length > 0)
+        {
+            PlayAnimation(ref player1Data, player2Character, player1Frame.setAnimFrameOnMiss, player1Frame.setAnimFrameOnMiss);
+        }
 
         if (player1GotThrown && !player2GotThrown)
         {

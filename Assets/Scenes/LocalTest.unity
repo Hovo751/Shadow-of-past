@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   juggleLimit: 2
   InputBufferSize: 5
-  MotionInputBuffer: 40
+  MotionInputBuffer: 10
   baseState:
     Player1Data:
       Health: 10000
