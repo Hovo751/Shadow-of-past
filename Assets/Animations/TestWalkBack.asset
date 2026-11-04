@@ -16,7 +16,7 @@ MonoBehaviour:
   inAir: 0
   frames:
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -57,7 +57,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -139,7 +139,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -180,7 +180,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -221,7 +221,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -262,7 +262,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -303,7 +303,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -344,7 +344,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -385,7 +385,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -426,7 +426,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -467,7 +467,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -508,7 +508,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -549,7 +549,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -590,7 +590,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -631,7 +631,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -672,7 +672,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -713,7 +713,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -754,7 +754,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -795,7 +795,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -836,7 +836,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -877,7 +877,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -918,7 +918,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -959,7 +959,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1000,7 +1000,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1041,7 +1041,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1082,7 +1082,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1123,7 +1123,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1164,7 +1164,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1205,7 +1205,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1246,7 +1246,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1287,7 +1287,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1328,7 +1328,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1369,7 +1369,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1410,7 +1410,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1451,7 +1451,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1492,7 +1492,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1533,7 +1533,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1574,7 +1574,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1
@@ -1615,7 +1615,7 @@ MonoBehaviour:
       sizeX: 1035
       sizeY: 3230
   - cancelLvl: 00000000
-    addPosX: -35
+    addPosX: -50
     addPosY: 0
     setVelocityHorizontal: 0
     setVelocityHbool: 1

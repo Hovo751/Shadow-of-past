@@ -95,6 +95,9 @@ MonoBehaviour:
   - name: Idle
     data: {fileID: 11400000, guid: 4e45c33ed32639642943c19e2d26791e, type: 2}
     nextAnim: 26
+  - name: ThrowMiss
+    data: {fileID: 11400000, guid: ec0006c47d57d9a45b37edf529b76020, type: 2}
+    nextAnim: 0
   specialAnimations:
   - name: DragonPunch
     data: {fileID: 11400000, guid: 9c4191980c4963045973e41892176f10, type: 2}

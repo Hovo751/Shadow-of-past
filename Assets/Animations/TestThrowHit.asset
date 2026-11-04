@@ -267,8 +267,8 @@ MonoBehaviour:
       sizeY: 500
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 1035, y: 0}
-    setAnimOnMiss: 0
-    setAnimFrameOnMiss: 0
+    setAnimOnMiss: 27
+    setAnimFrameOnMiss: 4
     collisionBox:
       posX: 100
       posY: 1783

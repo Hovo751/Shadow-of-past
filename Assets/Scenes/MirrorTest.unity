@@ -812,7 +812,7 @@ PrefabInstance:
     - target: {fileID: 4071262622471428003, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: simulation
       value: 
-      objectReference: {fileID: 1959268091}
+      objectReference: {fileID: 0}
     - target: {fileID: 4071262622471428003, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: startFrame
       value: 0
@@ -2349,7 +2349,7 @@ PrefabInstance:
     - target: {fileID: 4071262622471428003, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: simulation
       value: 
-      objectReference: {fileID: 1959268091}
+      objectReference: {fileID: 0}
     - target: {fileID: 4071262622471428003, guid: 893829c7e6cfd85408e600884d32ee35, type: 3}
       propertyPath: startFrame
       value: 0
@@ -2491,7 +2491,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   InputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  simulation: {fileID: 1959268091}
+  simulation: {fileID: 0}
   player1: {fileID: 1725724792}
   player2: {fileID: 424580041}
   characters: {fileID: 11400000, guid: d069c27ff20b28340a6213ba28a5d6b7, type: 2}
@@ -2637,7 +2637,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1959268092}
-  - component: {fileID: 1959268091}
+  - component: {fileID: 1959268093}
   m_Layer: 0
   m_Name: Simulation
   m_TagString: Untagged
@@ -2645,7 +2645,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1959268091
+--- !u!4 &1959268092
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959268090}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1959268093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2659,6 +2674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   juggleLimit: 2
   InputBufferSize: 5
+  MotionInputBuffer: 20
   baseState:
     Player1Data:
       Health: 10000
@@ -2693,21 +2709,7 @@ MonoBehaviour:
     skipFrames: 0
     player1LandedHit: {x: -100000, y: -100000}
     player2LandedHit: {x: -100000, y: -100000}
---- !u!4 &1959268092
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959268090}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  speed: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

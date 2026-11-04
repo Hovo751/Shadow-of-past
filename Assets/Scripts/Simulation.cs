@@ -31,6 +31,7 @@ public static class Animations
     public const int JumpHeavy = 24;
     public const int ThrowHit = 25;
     public const int InfiniteHitstun = 26;
+    public const int ThrowMiss = 27;
 }
 public class Simulation : MonoBehaviour
 {
@@ -348,7 +349,8 @@ public class Simulation : MonoBehaviour
 
         AnimBase currentAnimation = GetAnimation(result.PlayerAnimation, character).data;
 
-        result.PlayerAnimationFrame++;
+        if (result.PlayerAnimation != Animations.KnockdownRec || result.Health > 0)
+            result.PlayerAnimationFrame++;
 
         if (result.PlayerAnimation == Animations.GetHitUp || result.PlayerAnimation == Animations.GetHitDown || result.PlayerAnimation == Animations.GetHitAir ||
             result.PlayerAnimation == Animations.BlockHigh || result.PlayerAnimation == Animations.BlockLow)
@@ -534,7 +536,7 @@ public class Simulation : MonoBehaviour
         int skipFrames = state.skipFrames;
         state.player1LandedHit = new Vector2Int(-100000, -100000);
         state.player2LandedHit = new Vector2Int(-100000, -100000);
-        if (state.Player1Data.Health < 0 || state.Player2Data.Health < 0 || currentFrame % speed != 0)
+        if (currentFrame % speed != 0)
         {
             history[currentFrame] = state;
             return state;
@@ -800,7 +802,7 @@ public class Simulation : MonoBehaviour
                         {
                             player2Gothit = didBlock;
                         }
-                        if (didBlock == -1 && (isInAir(player2Data) || player1Frame.alwaysLaunch))
+                        if (didBlock == -1 && (isInAir(player2Data) || player1Frame.alwaysLaunch || player2Data.Health - player1Frame.hitboxDamage <= 0))
                         {
                             player2Gothit = Animations.GetHitAir;
                         }
@@ -876,7 +878,7 @@ public class Simulation : MonoBehaviour
                         {
                             player1Gothit = didBlock;
                         }
-                        if (didBlock == -1 && (isInAir(player1Data) || player2Frame.alwaysLaunch))
+                        if (didBlock == -1 && (isInAir(player1Data) || player2Frame.alwaysLaunch || player1Data.Health - player2Frame.hitboxDamage <= 0))
                         {
                             player1Gothit = Animations.GetHitAir;
                         }
@@ -906,24 +908,30 @@ public class Simulation : MonoBehaviour
             player2Data.juggleScaling = 0;
         }
 
+        if (player1GotThrown && player2GotThrown)
+        {
+            player1GotThrown = false;
+            player2GotThrown = false;
+        }
+
         //Apply the required data if pl1 or pl2 got hit or thrown
         if (!player1GotThrown && player2Frame.throwhitbox.Length > 0)
         {
-            PlayAnimation(ref player2Data, player2Character, player2Frame.setAnimFrameOnMiss, player2Frame.setAnimFrameOnMiss);
+            PlayAnimation(ref player2Data, player2Character, player2Frame.setAnimOnMiss, player2Frame.setAnimFrameOnMiss);
         }
 
         if (!player2GotThrown && player1Frame.throwhitbox.Length > 0)
         {
-            PlayAnimation(ref player1Data, player2Character, player1Frame.setAnimFrameOnMiss, player1Frame.setAnimFrameOnMiss);
+            PlayAnimation(ref player1Data, player2Character, player1Frame.setAnimOnMiss, player1Frame.setAnimFrameOnMiss);
         }
 
-        if (player1GotThrown && !player2GotThrown)
+        if (player1GotThrown)
         {
             player1Data.IsLookingRight = !player2Data.IsLookingRight;
             player1Data.PlayerPosition = player2Data.PlayerPosition + player2Frame.setOpponentPositionOnThrow * player2Dir;
             PlayAnimation(ref player1Data, player1Character, Animations.InfiniteHitstun);
         }
-        if (!player1GotThrown && player2GotThrown)
+        if (player2GotThrown)
         {
             player2Data.IsLookingRight = !player1Data.IsLookingRight;
             player2Data.PlayerPosition = player1Data.PlayerPosition + player1Frame.setOpponentPositionOnThrow * player1Dir;
@@ -936,6 +944,7 @@ public class Simulation : MonoBehaviour
             {
                 player1Data.InHitstun = player2Frame.hitboxBlockStun;
                 player1Data.Health -= player2Frame.chipDamage;
+                if (player1Data.Health <= 0) player1Data.Health = 1;
                 player1Data.PlayerAnimation = player1Gothit;
                 player1Data.PlayerAnimationFrame = 0;
                 player1Data.PlayerNextAnimation = Animations.Idle;
@@ -992,8 +1001,10 @@ public class Simulation : MonoBehaviour
                     }
                 }
                 if (player1Gothit == Animations.GetHitAir) player1Data.PlayerVelocity.y = player2Frame.hitboxPushAirVertical;
+                if (player1Gothit == Animations.GetHitAir && player1Data.Health <= 0) player1Data.PlayerVelocity.y = 350;
                 player2Data.HitLanded = player2Frame.hitboxLand;
                 skipFrames = player2Frame.hitStop;
+                if (player1Data.Health <= 0) skipFrames = 20;
             }
         }
 
@@ -1003,6 +1014,7 @@ public class Simulation : MonoBehaviour
             {
                 player2Data.InHitstun = player1Frame.hitboxBlockStun;
                 player2Data.Health -= player1Frame.chipDamage;
+                if (player2Data.Health <= 0) player2Data.Health = 1;
                 player2Data.PlayerAnimation = player2Gothit;
                 player2Data.PlayerAnimationFrame = 0;
                 player2Data.PlayerNextAnimation = Animations.Idle;
@@ -1061,9 +1073,11 @@ public class Simulation : MonoBehaviour
                     }
                 }
                 if (player2Gothit == Animations.GetHitAir) player2Data.PlayerVelocity.y = player1Frame.hitboxPushAirVertical;
+                if (player2Gothit == Animations.GetHitAir && player2Data.Health <= 0) player2Data.PlayerVelocity.y = 350;
                 player1Data.HitLanded = player1Frame.hitboxLand;
                 if (skipFrames < player1Frame.hitStop)
                     skipFrames = player1Frame.hitStop;
+                if (player2Data.Health <= 0) skipFrames = 20;
             }
         }
 
