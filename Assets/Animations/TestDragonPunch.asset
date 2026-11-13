@@ -27,13 +27,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
@@ -42,7 +43,6 @@ MonoBehaviour:
     alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox:
     - posX: 100
       posY: 1753
@@ -51,6 +51,8 @@ MonoBehaviour:
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -68,13 +70,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
@@ -83,7 +86,6 @@ MonoBehaviour:
     alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox:
     - posX: 100
       posY: 1753
@@ -92,6 +94,8 @@ MonoBehaviour:
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -109,13 +113,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
@@ -124,7 +129,6 @@ MonoBehaviour:
     alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox:
     - posX: 100
       posY: 1753
@@ -133,6 +137,8 @@ MonoBehaviour:
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -150,13 +156,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 1
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 0
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 0
     hitStopOnBlock: 0
@@ -165,7 +172,6 @@ MonoBehaviour:
     alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox:
     - posX: 100
       posY: 1753
@@ -174,121 +180,8 @@ MonoBehaviour:
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
-    collisionBox:
-      posX: 100
-      posY: 1783
-      sizeX: 1035
-      sizeY: 3230
-  - cancelLvl: 02000000
-    addPosX: 0
-    addPosY: 0
-    setVelocityHorizontal: 30
-    setVelocityHbool: 0
-    setVelocityVertical: 297
-    setVelocityVbool: 0
-    setAccelerationHorizontal: 0
-    setAccelerationHbool: 1
-    setAccelerationVertical: -17
-    setAccelerationVbool: 0
-    hurtbox: []
-    hitboxPush: 0
-    hitboxPushAirVertical: 1
-    hitboxPushAirHorizontal: 0
-    hitboxPushOnBlock: 0
-    hitboxLand: 0
-    hitboxDamage: 0
-    chipDamage: 0
-    hitboxHitStun: 0
-    hitStop: 10
-    hitStopOnBlock: 10
-    hitboxBlockStun: 11
-    addJuggleScaling: 1
-    alwaysLaunch: 1
-    canHitHighOrLow: 0
-    canRotate: 0
-    hitbox: []
-    throwbox:
-    - posX: 100
-      posY: 1753
-      sizeX: 1096
-      sizeY: 3182
-    throwhitbox: []
-    isAirThrow: 0
-    setOpponentPositionOnThrow: {x: 0, y: 0}
-    collisionBox:
-      posX: 100
-      posY: 1783
-      sizeX: 1035
-      sizeY: 3230
-  - cancelLvl: 02000000
-    addPosX: 0
-    addPosY: 0
-    setVelocityHorizontal: 0
-    setVelocityHbool: 0
-    setVelocityVertical: 63
-    setVelocityVbool: 0
-    setAccelerationHorizontal: 0
-    setAccelerationHbool: 0
-    setAccelerationVertical: 0
-    setAccelerationVbool: 0
-    hurtbox: []
-    hitboxPush: 0
-    hitboxPushAirVertical: 1
-    hitboxPushAirHorizontal: 0
-    hitboxPushOnBlock: 0
-    hitboxLand: 0
-    hitboxDamage: 0
-    chipDamage: 0
-    hitboxHitStun: 0
-    hitStop: 10
-    hitStopOnBlock: 10
-    hitboxBlockStun: 11
-    addJuggleScaling: 1
-    alwaysLaunch: 1
-    canHitHighOrLow: 0
-    canRotate: 0
-    hitbox: []
-    throwbox: []
-    throwhitbox: []
-    isAirThrow: 0
-    setOpponentPositionOnThrow: {x: 0, y: 0}
-    collisionBox:
-      posX: 100
-      posY: 1783
-      sizeX: 1035
-      sizeY: 3230
-  - cancelLvl: 02000000
-    addPosX: 0
-    addPosY: 0
-    setVelocityHorizontal: 0
-    setVelocityHbool: 0
-    setVelocityVertical: 63
-    setVelocityVbool: 0
-    setAccelerationHorizontal: 0
-    setAccelerationHbool: 0
-    setAccelerationVertical: 0
-    setAccelerationVbool: 0
-    hurtbox: []
-    hitboxPush: 0
-    hitboxPushAirVertical: 1
-    hitboxPushAirHorizontal: 0
-    hitboxPushOnBlock: 0
-    hitboxLand: 0
-    hitboxDamage: 0
-    chipDamage: 0
-    hitboxHitStun: 0
-    hitStop: 10
-    hitStopOnBlock: 10
-    hitboxBlockStun: 11
-    addJuggleScaling: 1
-    alwaysLaunch: 1
-    canHitHighOrLow: 0
-    canRotate: 0
-    hitbox: []
-    throwbox: []
-    throwhitbox: []
-    isAirThrow: 0
-    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -299,37 +192,168 @@ MonoBehaviour:
     addPosY: 0
     setVelocityHorizontal: 30
     setVelocityHbool: 1
-    setVelocityVertical: 280
+    setVelocityVertical: 300
     setVelocityVbool: 1
     setAccelerationHorizontal: 0
     setAccelerationHbool: 0
-    setAccelerationVertical: -17
+    setAccelerationVertical: -20
     setAccelerationVbool: 1
     hurtbox: []
-    hitboxPush: 100
-    hitboxPushAirVertical: 300
-    hitboxPushAirHorizontal: 100
-    hitboxPushOnBlock: 50
-    hitboxLand: 1
-    hitboxDamage: 500
-    chipDamage: 0
-    hitboxHitStun: 0
-    hitStop: 10
-    hitStopOnBlock: 10
-    hitboxBlockStun: 11
-    addJuggleScaling: 1
-    alwaysLaunch: 1
-    canHitHighOrLow: 0
-    canRotate: 0
     hitbox:
     - posX: 504
       posY: 1908
       sizeX: 1019
       sizeY: 612
+    hitboxLand: 1
+    hitboxPush: 100
+    hitboxPushAirVertical: 300
+    hitboxPushAirHorizontal: 100
+    hitboxPushOnBlock: 50
+    hitboxDamage: 500
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 30
+    setVelocityHbool: 0
+    setVelocityVertical: 229
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: -17
+    setAccelerationVbool: 0
+    hurtbox: []
+    hitbox:
+    - posX: 504
+      posY: 1908
+      sizeX: 1019
+      sizeY: 612
+    hitboxLand: 1
+    hitboxPush: 100
+    hitboxPushAirVertical: 300
+    hitboxPushAirHorizontal: 100
+    hitboxPushOnBlock: 50
+    hitboxDamage: 500
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox: []
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 30
+    setVelocityHbool: 0
+    setVelocityVertical: 229
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: -17
+    setAccelerationVbool: 0
+    hurtbox: []
+    hitbox:
+    - posX: 504
+      posY: 1908
+      sizeX: 1019
+      sizeY: 612
+    hitboxLand: 1
+    hitboxPush: 100
+    hitboxPushAirVertical: 300
+    hitboxPushAirHorizontal: 100
+    hitboxPushOnBlock: 50
+    hitboxDamage: 500
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox: []
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 30
+    setVelocityHbool: 0
+    setVelocityVertical: 229
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: -17
+    setAccelerationVbool: 0
+    hurtbox: []
+    hitbox:
+    - posX: 504
+      posY: 1908
+      sizeX: 1019
+      sizeY: 612
+    hitboxLand: 1
+    hitboxPush: 100
+    hitboxPushAirVertical: 300
+    hitboxPushAirHorizontal: 100
+    hitboxPushOnBlock: 50
+    hitboxDamage: 500
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox: []
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -347,30 +371,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
-    hitboxPush: 100
-    hitboxPushAirVertical: 300
-    hitboxPushAirHorizontal: 100
-    hitboxPushOnBlock: 50
-    hitboxLand: 1
-    hitboxDamage: 500
-    chipDamage: 0
-    hitboxHitStun: 0
-    hitStop: 10
-    hitStopOnBlock: 10
-    hitboxBlockStun: 11
-    addJuggleScaling: 1
-    alwaysLaunch: 1
-    canHitHighOrLow: 0
-    canRotate: 0
     hitbox:
     - posX: 625
       posY: 2166
       sizeX: 1019
       sizeY: 612
+    hitboxLand: 1
+    hitboxPush: 100
+    hitboxPushAirVertical: 300
+    hitboxPushAirHorizontal: 100
+    hitboxPushOnBlock: 50
+    hitboxDamage: 500
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -388,30 +414,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
-    hitboxPush: 100
-    hitboxPushAirVertical: 300
-    hitboxPushAirHorizontal: 100
-    hitboxPushOnBlock: 50
-    hitboxLand: 1
-    hitboxDamage: 500
-    chipDamage: 0
-    hitboxHitStun: 0
-    hitStop: 10
-    hitStopOnBlock: 10
-    hitboxBlockStun: 11
-    addJuggleScaling: 1
-    alwaysLaunch: 1
-    canHitHighOrLow: 0
-    canRotate: 0
     hitbox:
     - posX: 745
       posY: 2395
       sizeX: 1019
       sizeY: 772
+    hitboxLand: 1
+    hitboxPush: 100
+    hitboxPushAirVertical: 300
+    hitboxPushAirHorizontal: 100
+    hitboxPushOnBlock: 50
+    hitboxDamage: 500
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -429,30 +457,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
-    hitboxPush: 100
-    hitboxPushAirVertical: 300
-    hitboxPushAirHorizontal: 100
-    hitboxPushOnBlock: 50
-    hitboxLand: 1
-    hitboxDamage: 500
-    chipDamage: 0
-    hitboxHitStun: 0
-    hitStop: 10
-    hitStopOnBlock: 10
-    hitboxBlockStun: 11
-    addJuggleScaling: 1
-    alwaysLaunch: 1
-    canHitHighOrLow: 0
-    canRotate: 0
     hitbox:
     - posX: 865
       posY: 3057
       sizeX: 1019
       sizeY: 1216
+    hitboxLand: 1
+    hitboxPush: 100
+    hitboxPushAirVertical: 300
+    hitboxPushAirHorizontal: 100
+    hitboxPushOnBlock: 50
+    hitboxDamage: 500
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -470,30 +500,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
-    hitboxPush: 100
-    hitboxPushAirVertical: 300
-    hitboxPushAirHorizontal: 100
-    hitboxPushOnBlock: 50
-    hitboxLand: 1
-    hitboxDamage: 500
-    chipDamage: 0
-    hitboxHitStun: 0
-    hitStop: 10
-    hitStopOnBlock: 10
-    hitboxBlockStun: 11
-    addJuggleScaling: 1
-    alwaysLaunch: 1
-    canHitHighOrLow: 0
-    canRotate: 0
     hitbox:
     - posX: 901
       posY: 3057
       sizeX: 1019
       sizeY: 1306
+    hitboxLand: 1
+    hitboxPush: 100
+    hitboxPushAirVertical: 300
+    hitboxPushAirHorizontal: 100
+    hitboxPushOnBlock: 50
+    hitboxDamage: 500
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -511,30 +543,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
-    hitboxPush: 100
-    hitboxPushAirVertical: 300
-    hitboxPushAirHorizontal: 100
-    hitboxPushOnBlock: 50
-    hitboxLand: 1
-    hitboxDamage: 500
-    chipDamage: 0
-    hitboxHitStun: 0
-    hitStop: 10
-    hitStopOnBlock: 10
-    hitboxBlockStun: 11
-    addJuggleScaling: 1
-    alwaysLaunch: 1
-    canHitHighOrLow: 0
-    canRotate: 0
     hitbox:
     - posX: 901
       posY: 3057
       sizeX: 1019
       sizeY: 1306
+    hitboxLand: 1
+    hitboxPush: 100
+    hitboxPushAirVertical: 300
+    hitboxPushAirHorizontal: 100
+    hitboxPushOnBlock: 50
+    hitboxDamage: 500
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -552,30 +586,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
-    hitboxPush: 100
-    hitboxPushAirVertical: 300
-    hitboxPushAirHorizontal: 100
-    hitboxPushOnBlock: 50
-    hitboxLand: 1
-    hitboxDamage: 500
-    chipDamage: 0
-    hitboxHitStun: 0
-    hitStop: 10
-    hitStopOnBlock: 10
-    hitboxBlockStun: 11
-    addJuggleScaling: 1
-    alwaysLaunch: 1
-    canHitHighOrLow: 0
-    canRotate: 0
     hitbox:
     - posX: 901
       posY: 3258
       sizeX: 1019
       sizeY: 1625
+    hitboxLand: 1
+    hitboxPush: 100
+    hitboxPushAirVertical: 300
+    hitboxPushAirHorizontal: 100
+    hitboxPushOnBlock: 50
+    hitboxDamage: 500
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -593,30 +629,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
-    hitboxPush: 100
-    hitboxPushAirVertical: 300
-    hitboxPushAirHorizontal: 100
-    hitboxPushOnBlock: 50
-    hitboxLand: 1
-    hitboxDamage: 500
-    chipDamage: 0
-    hitboxHitStun: 0
-    hitStop: 10
-    hitStopOnBlock: 10
-    hitboxBlockStun: 11
-    addJuggleScaling: 1
-    alwaysLaunch: 1
-    canHitHighOrLow: 0
-    canRotate: 0
     hitbox:
     - posX: 901
       posY: 3258
       sizeX: 1130
       sizeY: 1706
+    hitboxLand: 1
+    hitboxPush: 100
+    hitboxPushAirVertical: 300
+    hitboxPushAirHorizontal: 100
+    hitboxPushOnBlock: 50
+    hitboxDamage: 500
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -634,30 +672,32 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
-    hitboxPush: 100
-    hitboxPushAirVertical: 300
-    hitboxPushAirHorizontal: 100
-    hitboxPushOnBlock: 50
-    hitboxLand: 1
-    hitboxDamage: 500
-    chipDamage: 0
-    hitboxHitStun: 0
-    hitStop: 10
-    hitStopOnBlock: 10
-    hitboxBlockStun: 11
-    addJuggleScaling: 1
-    alwaysLaunch: 1
-    canHitHighOrLow: 0
-    canRotate: 0
     hitbox:
     - posX: 901
       posY: 3258
       sizeX: 1130
       sizeY: 1706
+    hitboxLand: 1
+    hitboxPush: 100
+    hitboxPushAirVertical: 300
+    hitboxPushAirHorizontal: 100
+    hitboxPushOnBlock: 50
+    hitboxDamage: 500
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -675,13 +715,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -690,11 +731,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -712,13 +754,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -727,11 +770,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -749,13 +793,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -764,11 +809,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -786,13 +832,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -801,11 +848,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -823,13 +871,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -838,11 +887,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -860,13 +910,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -875,11 +926,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -897,13 +949,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -912,11 +965,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -934,13 +988,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -949,11 +1004,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -971,13 +1027,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -986,11 +1043,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1008,13 +1066,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1023,11 +1082,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1045,13 +1105,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1060,11 +1121,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1082,13 +1144,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1097,11 +1160,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1119,13 +1183,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1134,11 +1199,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1156,13 +1222,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1171,11 +1238,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1193,13 +1261,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1208,11 +1277,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1230,13 +1300,14 @@ MonoBehaviour:
     setAccelerationVertical: 0
     setAccelerationVbool: 0
     hurtbox: []
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1245,11 +1316,12 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1275,13 +1347,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1290,11 +1363,63 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
     throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 1
+    setVelocityVertical: 63
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1213
+      sizeY: 3465
+    - posX: 100
+      posY: 3643
+      sizeX: 817
+      sizeY: 431
+    hitbox: []
+    hitboxLand: 0
+    hitboxPush: 0
+    hitboxPushAirVertical: 1
+    hitboxPushAirHorizontal: 0
+    hitboxPushOnBlock: 0
+    hitboxDamage: 0
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1320,13 +1445,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1335,11 +1461,16 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
-    throwbox: []
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1365,13 +1496,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1380,11 +1512,16 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
-    throwbox: []
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1410,13 +1547,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1425,11 +1563,16 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
-    throwbox: []
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1455,13 +1598,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1470,11 +1614,16 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
-    throwbox: []
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1500,13 +1649,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1515,11 +1665,16 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
-    throwbox: []
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1545,13 +1700,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1560,11 +1716,16 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
-    throwbox: []
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
@@ -1590,13 +1751,14 @@ MonoBehaviour:
       posY: 3643
       sizeX: 817
       sizeY: 431
+    hitbox: []
+    hitboxLand: 0
     hitboxPush: 0
     hitboxPushAirVertical: 1
     hitboxPushAirHorizontal: 0
     hitboxPushOnBlock: 0
-    hitboxLand: 0
     hitboxDamage: 0
-    chipDamage: 0
+    chipDamage: 75
     hitboxHitStun: 0
     hitStop: 10
     hitStopOnBlock: 10
@@ -1605,11 +1767,475 @@ MonoBehaviour:
     alwaysLaunch: 1
     canHitHighOrLow: 0
     canRotate: 0
-    hitbox: []
-    throwbox: []
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 63
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1213
+      sizeY: 3465
+    - posX: 100
+      posY: 3643
+      sizeX: 817
+      sizeY: 431
+    hitbox: []
+    hitboxLand: 0
+    hitboxPush: 0
+    hitboxPushAirVertical: 1
+    hitboxPushAirHorizontal: 0
+    hitboxPushOnBlock: 0
+    hitboxDamage: 0
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 63
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1213
+      sizeY: 3465
+    - posX: 100
+      posY: 3643
+      sizeX: 817
+      sizeY: 431
+    hitbox: []
+    hitboxLand: 0
+    hitboxPush: 0
+    hitboxPushAirVertical: 1
+    hitboxPushAirHorizontal: 0
+    hitboxPushOnBlock: 0
+    hitboxDamage: 0
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 63
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1213
+      sizeY: 3465
+    - posX: 100
+      posY: 3643
+      sizeX: 817
+      sizeY: 431
+    hitbox: []
+    hitboxLand: 0
+    hitboxPush: 0
+    hitboxPushAirVertical: 1
+    hitboxPushAirHorizontal: 0
+    hitboxPushOnBlock: 0
+    hitboxDamage: 0
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 63
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1213
+      sizeY: 3465
+    - posX: 100
+      posY: 3643
+      sizeX: 817
+      sizeY: 431
+    hitbox: []
+    hitboxLand: 0
+    hitboxPush: 0
+    hitboxPushAirVertical: 1
+    hitboxPushAirHorizontal: 0
+    hitboxPushOnBlock: 0
+    hitboxDamage: 0
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 63
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1213
+      sizeY: 3465
+    - posX: 100
+      posY: 3643
+      sizeX: 817
+      sizeY: 431
+    hitbox: []
+    hitboxLand: 0
+    hitboxPush: 0
+    hitboxPushAirVertical: 1
+    hitboxPushAirHorizontal: 0
+    hitboxPushOnBlock: 0
+    hitboxDamage: 0
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 63
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1213
+      sizeY: 3465
+    - posX: 100
+      posY: 3643
+      sizeX: 817
+      sizeY: 431
+    hitbox: []
+    hitboxLand: 0
+    hitboxPush: 0
+    hitboxPushAirVertical: 1
+    hitboxPushAirHorizontal: 0
+    hitboxPushOnBlock: 0
+    hitboxDamage: 0
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 63
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1213
+      sizeY: 3465
+    - posX: 100
+      posY: 3643
+      sizeX: 817
+      sizeY: 431
+    hitbox: []
+    hitboxLand: 0
+    hitboxPush: 0
+    hitboxPushAirVertical: 1
+    hitboxPushAirHorizontal: 0
+    hitboxPushOnBlock: 0
+    hitboxDamage: 0
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 63
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1213
+      sizeY: 3465
+    - posX: 100
+      posY: 3643
+      sizeX: 817
+      sizeY: 431
+    hitbox: []
+    hitboxLand: 0
+    hitboxPush: 0
+    hitboxPushAirVertical: 1
+    hitboxPushAirHorizontal: 0
+    hitboxPushOnBlock: 0
+    hitboxDamage: 0
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
+    collisionBox:
+      posX: 100
+      posY: 1783
+      sizeX: 1035
+      sizeY: 3230
+  - cancelLvl: 02000000
+    addPosX: 0
+    addPosY: 0
+    setVelocityHorizontal: 0
+    setVelocityHbool: 0
+    setVelocityVertical: 63
+    setVelocityVbool: 0
+    setAccelerationHorizontal: 0
+    setAccelerationHbool: 0
+    setAccelerationVertical: 0
+    setAccelerationVbool: 0
+    hurtbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1213
+      sizeY: 3465
+    - posX: 100
+      posY: 3643
+      sizeX: 817
+      sizeY: 431
+    hitbox: []
+    hitboxLand: 0
+    hitboxPush: 0
+    hitboxPushAirVertical: 1
+    hitboxPushAirHorizontal: 0
+    hitboxPushOnBlock: 0
+    hitboxDamage: 0
+    chipDamage: 75
+    hitboxHitStun: 0
+    hitStop: 10
+    hitStopOnBlock: 10
+    hitboxBlockStun: 11
+    addJuggleScaling: 1
+    alwaysLaunch: 1
+    canHitHighOrLow: 0
+    canRotate: 0
+    throwbox:
+    - posX: 100
+      posY: 1753
+      sizeX: 1096
+      sizeY: 3182
+    throwhitbox: []
+    isAirThrow: 0
+    setOpponentPositionOnThrow: {x: 0, y: 0}
+    setAnimOnMiss: 0
+    setAnimFrameOnMiss: 0
     collisionBox:
       posX: 100
       posY: 1783
