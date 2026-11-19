@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using static Character;
@@ -67,6 +68,7 @@ public class Simulation : MonoBehaviour
     public int MotionInputBuffer;
     public SimulationState baseState;
     public int speed = 1;
+    public int gravity = -20;
 
     private Dictionary<long, SimulationState> history = new Dictionary<long, SimulationState>();
     private long startFrame = -1;
@@ -391,9 +393,20 @@ public class Simulation : MonoBehaviour
         if (character.name == "Boxer")
         {
             int[] motionArray = { 6, 2, 3 };
-            if (SearchForMotion(movementBuffer, motionArray) && CanCancelInto(result, character, 100) && (PressedButtonInInputBuffer(lightButtonBuffer) || PressedButtonInInputBuffer(mediumButtonBuffer) || PressedButtonInInputBuffer(heavyButtonBuffer)))
+            if (SearchForMotion(movementBuffer, motionArray) && CanCancelInto(result, character, 100))
             {
-                PlayAnimation(ref result, character, 100);
+                if (PressedButtonInInputBuffer(heavyButtonBuffer) && CanCancelInto(result, character, 102))
+                {
+                    PlayAnimation(ref result, character, 102);
+                }
+                if (PressedButtonInInputBuffer(mediumButtonBuffer) && CanCancelInto(result, character, 101))
+                {
+                    PlayAnimation(ref result, character, 101);
+                }
+                if (PressedButtonInInputBuffer(lightButtonBuffer) && CanCancelInto(result, character, 100))
+                {
+                    PlayAnimation(ref result, character, 100);
+                }
             }
         }
         if (PressedButtonInInputBuffer(lightButtonBuffer) && PressedButtonInInputBuffer(mediumButtonBuffer) && CanCancelInto(result, character, Animations.ThrowHit))
@@ -975,7 +988,7 @@ public class Simulation : MonoBehaviour
                 {
                     player1Data.InHitstun = 999999;
                     player1Data.PlayerPosition.y++;
-                    player1Data.PlayerAcceleration.y = -17;
+                    player1Data.PlayerAcceleration.y = gravity;
                 }
                 if (player1Gothit == Animations.GetHitAir && player2Data.Combo != 0) player1Data.juggleScaling += player2Frame.addJuggleScaling;
                 player1Data.PlayerAnimation = player1Gothit;
@@ -1047,7 +1060,7 @@ public class Simulation : MonoBehaviour
                 { 
                     player2Data.InHitstun = 999999;
                     player2Data.PlayerPosition.y++;
-                    player2Data.PlayerAcceleration.y = -17;
+                    player2Data.PlayerAcceleration.y = gravity;
                 }
                 if (player2Gothit == Animations.GetHitAir && player1Data.Combo != 0) player2Data.juggleScaling += player1Frame.addJuggleScaling;
                 player2Data.PlayerAnimation = player2Gothit;

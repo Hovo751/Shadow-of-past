@@ -102,6 +102,12 @@ MonoBehaviour:
   - name: DragonPunch
     data: {fileID: 11400000, guid: 9c4191980c4963045973e41892176f10, type: 2}
     nextAnim: 0
+  - name: DragonPunch
+    data: {fileID: 11400000, guid: 763b0ecebd5c7b347bf1ac50cdc439c7, type: 2}
+    nextAnim: 0
+  - name: DragonPunch
+    data: {fileID: 11400000, guid: 4d9e9363cdd22cf4d84e5cb30be394dc, type: 2}
+    nextAnim: 0
   blockHightBox:
     posX: 577
     posY: 3087
