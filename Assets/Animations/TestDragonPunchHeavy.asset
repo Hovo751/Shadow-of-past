@@ -43,11 +43,7 @@ MonoBehaviour:
     alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
-    throwbox:
-    - posX: 100
-      posY: 1753
-      sizeX: 1096
-      sizeY: 3182
+    throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
@@ -86,11 +82,7 @@ MonoBehaviour:
     alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
-    throwbox:
-    - posX: 100
-      posY: 1753
-      sizeX: 1096
-      sizeY: 3182
+    throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
@@ -129,11 +121,7 @@ MonoBehaviour:
     alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
-    throwbox:
-    - posX: 100
-      posY: 1753
-      sizeX: 1096
-      sizeY: 3182
+    throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
@@ -172,11 +160,7 @@ MonoBehaviour:
     alwaysLaunch: 0
     canHitHighOrLow: 0
     canRotate: 0
-    throwbox:
-    - posX: 100
-      posY: 1753
-      sizeX: 1096
-      sizeY: 3182
+    throwbox: []
     throwhitbox: []
     isAirThrow: 0
     setOpponentPositionOnThrow: {x: 0, y: 0}
@@ -200,10 +184,10 @@ MonoBehaviour:
     setAccelerationVbool: 1
     hurtbox: []
     hitbox:
-    - posX: 504
-      posY: 1908
-      sizeX: 1019
-      sizeY: 612
+    - posX: 915
+      posY: 2387
+      sizeX: 916
+      sizeY: 1069
     hitboxLand: 1
     hitboxPush: 100
     hitboxPushAirVertical: 300
@@ -243,10 +227,10 @@ MonoBehaviour:
     setAccelerationVbool: 0
     hurtbox: []
     hitbox:
-    - posX: 504
-      posY: 1908
-      sizeX: 1019
-      sizeY: 612
+    - posX: 941
+      posY: 2887
+      sizeX: 916
+      sizeY: 1459
     hitboxLand: 1
     hitboxPush: 100
     hitboxPushAirVertical: 300
@@ -286,10 +270,14 @@ MonoBehaviour:
     setAccelerationVbool: 0
     hurtbox: []
     hitbox:
-    - posX: 504
-      posY: 1908
-      sizeX: 1019
-      sizeY: 612
+    - posX: 941
+      posY: 2887
+      sizeX: 916
+      sizeY: 1459
+    - posX: 368
+      posY: 3541
+      sizeX: 1127
+      sizeY: 435
     hitboxLand: 1
     hitboxPush: 100
     hitboxPushAirVertical: 300
@@ -329,10 +317,14 @@ MonoBehaviour:
     setAccelerationVbool: 0
     hurtbox: []
     hitbox:
-    - posX: 504
-      posY: 1908
-      sizeX: 1019
-      sizeY: 612
+    - posX: 941
+      posY: 2887
+      sizeX: 916
+      sizeY: 1459
+    - posX: 368
+      posY: 3541
+      sizeX: 1127
+      sizeY: 435
     hitboxLand: 1
     hitboxPush: 100
     hitboxPushAirVertical: 300
@@ -372,10 +364,14 @@ MonoBehaviour:
     setAccelerationVbool: 0
     hurtbox: []
     hitbox:
-    - posX: 625
-      posY: 2166
-      sizeX: 1019
-      sizeY: 612
+    - posX: 941
+      posY: 2887
+      sizeX: 916
+      sizeY: 1459
+    - posX: 368
+      posY: 3541
+      sizeX: 1127
+      sizeY: 435
     hitboxLand: 1
     hitboxPush: 100
     hitboxPushAirVertical: 300
@@ -415,10 +411,14 @@ MonoBehaviour:
     setAccelerationVbool: 0
     hurtbox: []
     hitbox:
-    - posX: 745
-      posY: 2395
-      sizeX: 1019
-      sizeY: 772
+    - posX: 941
+      posY: 2887
+      sizeX: 916
+      sizeY: 1459
+    - posX: 368
+      posY: 3541
+      sizeX: 1127
+      sizeY: 435
     hitboxLand: 1
     hitboxPush: 100
     hitboxPushAirVertical: 300
@@ -458,10 +458,14 @@ MonoBehaviour:
     setAccelerationVbool: 0
     hurtbox: []
     hitbox:
-    - posX: 865
-      posY: 3057
-      sizeX: 1019
-      sizeY: 1216
+    - posX: 941
+      posY: 2887
+      sizeX: 916
+      sizeY: 1459
+    - posX: 368
+      posY: 3541
+      sizeX: 1127
+      sizeY: 435
     hitboxLand: 1
     hitboxPush: 100
     hitboxPushAirVertical: 300
@@ -501,10 +505,14 @@ MonoBehaviour:
     setAccelerationVbool: 0
     hurtbox: []
     hitbox:
-    - posX: 901
-      posY: 3057
-      sizeX: 1019
-      sizeY: 1306
+    - posX: 941
+      posY: 2887
+      sizeX: 916
+      sizeY: 1459
+    - posX: 368
+      posY: 3541
+      sizeX: 1127
+      sizeY: 435
     hitboxLand: 1
     hitboxPush: 100
     hitboxPushAirVertical: 300
@@ -544,10 +552,14 @@ MonoBehaviour:
     setAccelerationVbool: 0
     hurtbox: []
     hitbox:
-    - posX: 901
-      posY: 3057
-      sizeX: 1019
-      sizeY: 1306
+    - posX: 941
+      posY: 2887
+      sizeX: 916
+      sizeY: 1459
+    - posX: 368
+      posY: 3541
+      sizeX: 1127
+      sizeY: 435
     hitboxLand: 1
     hitboxPush: 100
     hitboxPushAirVertical: 300
@@ -587,10 +599,14 @@ MonoBehaviour:
     setAccelerationVbool: 0
     hurtbox: []
     hitbox:
-    - posX: 901
-      posY: 3258
-      sizeX: 1019
-      sizeY: 1625
+    - posX: 941
+      posY: 2887
+      sizeX: 916
+      sizeY: 1459
+    - posX: 368
+      posY: 3541
+      sizeX: 1127
+      sizeY: 435
     hitboxLand: 1
     hitboxPush: 100
     hitboxPushAirVertical: 300
@@ -630,10 +646,14 @@ MonoBehaviour:
     setAccelerationVbool: 0
     hurtbox: []
     hitbox:
-    - posX: 901
-      posY: 3258
-      sizeX: 1130
-      sizeY: 1706
+    - posX: 941
+      posY: 2887
+      sizeX: 916
+      sizeY: 1459
+    - posX: 368
+      posY: 3541
+      sizeX: 1127
+      sizeY: 435
     hitboxLand: 1
     hitboxPush: 100
     hitboxPushAirVertical: 300
@@ -673,10 +693,14 @@ MonoBehaviour:
     setAccelerationVbool: 0
     hurtbox: []
     hitbox:
-    - posX: 901
-      posY: 3258
-      sizeX: 1130
-      sizeY: 1706
+    - posX: 941
+      posY: 2887
+      sizeX: 916
+      sizeY: 1459
+    - posX: 368
+      posY: 3541
+      sizeX: 1127
+      sizeY: 435
     hitboxLand: 1
     hitboxPush: 100
     hitboxPushAirVertical: 300

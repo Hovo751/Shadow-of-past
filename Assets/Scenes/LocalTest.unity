@@ -322,6 +322,7 @@ MonoBehaviour:
     player1LandedHit: {x: -100000, y: -100000}
     player2LandedHit: {x: -100000, y: -100000}
   speed: 1
+  gravity: -20
 --- !u!1 &701253381
 GameObject:
   m_ObjectHideFlags: 0
