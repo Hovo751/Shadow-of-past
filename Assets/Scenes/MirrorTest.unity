@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &51327
 RectTransform:
   m_ObjectHideFlags: 0
@@ -459,6 +459,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -535,7 +536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &521783541
 RectTransform:
   m_ObjectHideFlags: 0
@@ -667,7 +668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &627484781
 RectTransform:
   m_ObjectHideFlags: 0
@@ -820,6 +821,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1295,6 +1297,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1698,7 +1701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1200573634
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1906,7 +1909,7 @@ MonoBehaviour:
   onlineScene: 
   offlineSceneLoadDelay: 0
   transport: {fileID: 1236556372}
-  networkAddress: 87.241.141.150
+  networkAddress: localhost
   maxConnections: 110
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
@@ -1931,6 +1934,8 @@ MonoBehaviour:
   evaluationInterval: 3
   timeInterpolationGui: 0
   bridge: {fileID: 1707366821}
+  rooms: []
+  playerList: []
 --- !u!1 &1490902230
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,7 +2576,10 @@ MonoBehaviour:
   player1: {fileID: 1725724792}
   player2: {fileID: 424580041}
   characters: {fileID: 11400000, guid: d069c27ff20b28340a6213ba28a5d6b7, type: 2}
+  serverFrame: 0
   id: 0
+  roomId: -1
+  frameDifference: -1
   started: 0
   t1: {fileID: 661875981}
   t2: {fileID: 412629492}
@@ -2611,7 +2619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1737025522
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2657,6 +2665,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+    m_Priority: 0
   m_PointerMoveAction:
     m_Name: 
     m_Type: 0
@@ -2666,6 +2675,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+    m_Priority: 0
 --- !u!114 &1737025524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2786,6 +2796,7 @@ MonoBehaviour:
     player1LandedHit: {x: -100000, y: -100000}
     player2LandedHit: {x: -100000, y: -100000}
   speed: 1
+  gravity: -20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

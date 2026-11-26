@@ -30,13 +30,22 @@ public class MirrorBridge : NetworkBehaviour
     private long frame = 0;
     private long timeAfterUpdate = 0;
     private long currentFrame = 0;
-    private long serverFrame = 0;
+    public long serverFrame = 0;
     public int id = 0;
+    public long roomId = -1;
+    public long frameDifference = -1;
     public bool started = false;
     public TextMeshProUGUI t1;
     public TextMeshProUGUI t2;
     public TextMeshProUGUI t3;
     public PlayerSync player;
+
+    private int GetOpponent()
+    {
+        if (id == 1) return 2;
+        if (id == 2) return 1;
+        return 0;
+    }
 
     public void ResetFrames()
     {
@@ -269,14 +278,14 @@ public class MirrorBridge : NetworkBehaviour
         started = true;
         if (!isServer && _frame > serverFrame)
         {
-            serverFrame = _frame;
+            serverFrame = _frame - frameDifference;
             timeAfterUpdate = 0;
         }
     }
     [ClientRpc]
-    void BroadcastInput(MovementAndButtonInput input, long inputFrame, int owner)
+    void BroadcastInput(MovementAndButtonInput input, long inputFrame, int owner, long currentRoomId)
     {
-        if (id != owner)
+        if (currentRoomId == roomId)
         {
             MovementAndButtonInput oldInput = GetPlayerInput(inputFrame, owner);
             if (owner == 1) player1Inputs[inputFrame] = input;
@@ -292,6 +301,6 @@ public class MirrorBridge : NetworkBehaviour
     [Command(requiresAuthority = false)]
     void SendInput(MovementAndButtonInput input, long inputFrame, int owner)
     {
-        BroadcastInput(input, inputFrame, owner);
+        BroadcastInput(input, inputFrame, owner, roomId);
     }
 }
