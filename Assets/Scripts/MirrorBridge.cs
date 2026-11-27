@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static Simulation;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using static MirrorNetworkManager;
 
 public class MirrorBridge : NetworkBehaviour
 {
@@ -31,10 +32,14 @@ public class MirrorBridge : NetworkBehaviour
     private long timeAfterUpdate = 0;
     private long currentFrame = 0;
     public long serverFrame = 0;
-    public int id = 0;
+    public int playerNumber = 0;
     public long roomId = -1;
     public long frameDifference = -1;
     public bool started = false;
+    private bool otherPlayerStarted = false;
+    private List<Room> rooms = new();
+    private ulong refreshDate = 0;
+    public MirrorNetworkManager networkManager;
     public TextMeshProUGUI t1;
     public TextMeshProUGUI t2;
     public TextMeshProUGUI t3;
@@ -42,8 +47,8 @@ public class MirrorBridge : NetworkBehaviour
 
     private int GetOpponent()
     {
-        if (id == 1) return 2;
-        if (id == 2) return 1;
+        if (playerNumber == 1) return 2;
+        if (playerNumber == 2) return 1;
         return 0;
     }
 
@@ -52,7 +57,6 @@ public class MirrorBridge : NetworkBehaviour
         frame = 0;
         timeAfterUpdate = 0;
         currentFrame = 0;
-        serverFrame = 0;
         simulation.ResetHistory();
         player1Inputs.Clear();
         player2Inputs.Clear();
@@ -180,23 +184,8 @@ public class MirrorBridge : NetworkBehaviour
 
         return input;
     }
-    [ClientRpc]
-    private void StopAll()
-    {
-        if (player != null)
-        {
-            player.started = false;
-            started = false;
-        }
-    }
     private void FixedUpdate()
     {
-        if (!started) { 
-            ResetFrames();
-            if (isServer)
-                StopAll();
-            return;
-        }
         if (isServer)
         {
             serverFrame++;
@@ -204,13 +193,26 @@ public class MirrorBridge : NetworkBehaviour
         }
         if (isClient)
         {
+            if (started)
+            {
+                IsReady(roomId, playerNumber);
+            }
+            if (!started || !otherPlayerStarted) {
+                if (otherPlayerStarted)
+                {
+                    otherPlayerStarted = false;
+                }
+                ResetFrames();
+                return;
+            }
+            long serverFrameDelayed = serverFrame - frameDifference;
             if (frame < currentFrame)
             {
                 MovementAndButtonInput input = GetPlayerInput();
-                if (id == 1) player1Inputs[currentFrame + 1] = input;
-                if (id == 2) player2Inputs[currentFrame + 1] = input;
-                if (id == 1 || id == 2)
-                    SendInput(input, currentFrame + 1, id);
+                if (playerNumber == 1) player1Inputs[currentFrame + 1] = input;
+                if (playerNumber == 2) player2Inputs[currentFrame + 1] = input;
+                if (playerNumber == 1 || playerNumber == 2)
+                    SendInput(input, currentFrame + 1, playerNumber);
                 while (frame < currentFrame)
                 {
                     MovementAndButtonInput[] player1InputsArr = new MovementAndButtonInput[64];
@@ -230,14 +232,14 @@ public class MirrorBridge : NetworkBehaviour
                     frame++;
                 }
             }
-            if (serverFrame + timeAfterUpdate > currentFrame)
+            if (serverFrameDelayed + timeAfterUpdate > currentFrame)
                 currentFrame++;
-            if (currentFrame < serverFrame)
+            if (currentFrame < serverFrameDelayed)
             {
                 MovementAndButtonInput input = GetPlayerInput();
-                if (id == 1) player1Inputs[currentFrame + 1] = input;
-                if (id == 2) player2Inputs[currentFrame + 1] = input;
-                SendInput(input, currentFrame + 1, id);
+                if (playerNumber == 1) player1Inputs[currentFrame + 1] = input;
+                if (playerNumber == 2) player2Inputs[currentFrame + 1] = input;
+                SendInput(input, currentFrame + 1, playerNumber);
                 while (frame < currentFrame)
                 {
                     MovementAndButtonInput[] player1InputsArr = new MovementAndButtonInput[64];
@@ -275,10 +277,9 @@ public class MirrorBridge : NetworkBehaviour
     [ClientRpc]
     void SendFrame(long _frame)
     {
-        started = true;
         if (!isServer && _frame > serverFrame)
         {
-            serverFrame = _frame - frameDifference;
+            serverFrame = _frame;
             timeAfterUpdate = 0;
         }
     }
@@ -298,9 +299,38 @@ public class MirrorBridge : NetworkBehaviour
             }
         }
     }
+    [ClientRpc]
+    void BroadcastIsReady(long currentRoomId, int owner)
+    {
+        if (currentRoomId == roomId && playerNumber != owner)
+        {
+            otherPlayerStarted = started;
+        }
+    }
+    [ClientRpc]
+    public void RefreshRooms(Room[] _rooms, ulong date)
+    {
+        if (refreshDate < date)
+            rooms = new List<Room>(_rooms);
+    }
     [Command(requiresAuthority = false)]
     void SendInput(MovementAndButtonInput input, long inputFrame, int owner)
     {
         BroadcastInput(input, inputFrame, owner, roomId);
+    }
+    [Command(requiresAuthority = false)]
+    void IsReady(long currentRoomId, int owner)
+    {
+        BroadcastIsReady(currentRoomId, owner);
+    }
+    [Command(requiresAuthority = false)]
+    public void JoinRoom(long playerId, long roomId)
+    {
+        networkManager.JoinRoom(playerId, roomId);
+    }
+    [Command(requiresAuthority = false)]
+    public void CreateRoom(long playerId)
+    {
+        networkManager.CreateRoom(playerId);
     }
 }

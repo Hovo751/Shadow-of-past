@@ -22,7 +22,7 @@ public class PlayerSync : NetworkBehaviour
         if (isLocalPlayer && bridge != null)
         {
             bridge.player = this;
-            bridge.id = playerNumber;
+            bridge.playerNumber = playerNumber;
             bridge.roomId = roomId;
             bridge.frameDifference = frameDifference;
             bridge.started = started;
